@@ -1,14 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
-    author: `Kyle Mathews`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    title: `Gatsby webste for ReactGrid`,
+    author: `Silevis`,
+    description: ``,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `kylemathews`,
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: { }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -21,6 +25,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/assets/img`,
+        name: `img`,
       },
     },
     {
@@ -67,12 +78,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    `gatsby-plugin-react-helmet`
   ],
 }
