@@ -4,9 +4,6 @@ module.exports = {
     author: `Silevis`,
     description: ``,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `kylemathews`,
-    },
   },
   plugins: [
     {
