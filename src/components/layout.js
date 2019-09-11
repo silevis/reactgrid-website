@@ -6,12 +6,10 @@ import "../assets/demo/react-demo.css";
 import "../assets/css/all.css";
 import Footer from "./Footer";
 import MainNavbar from "./MainNavbar";
-import ColorNavbar from "../components/Navbars/ColorNavbar";
 
 class Layout extends React.Component {
   render() {
-    const { location, title, social, pages, description, children} = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
+    const { title, social, pages, description, children} = this.props
     return (
       <div>
         <header>

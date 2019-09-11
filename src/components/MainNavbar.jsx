@@ -4,10 +4,6 @@ import { Link } from "gatsby";
 import {
     Button,
     UncontrolledCollapse,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    UncontrolledDropdown,
     NavbarBrand,
     Navbar,
     NavItem,
@@ -32,9 +28,9 @@ class MainNavbar extends React.Component {
     }
 
     changeNavbarColor = () => {
-        if ( document.documentElement.scrollTop > 299 || document.body.scrollTop > 299 ) {
+        if ( document.documentElement.scrollTop > 29 || document.body.scrollTop > 29 ) {
             this.setState({ navbarColor: "dark" });
-        } else if (document.documentElement.scrollTop < 300 || document.body.scrollTop < 300 ) {
+        } else if (document.documentElement.scrollTop < 30 || document.body.scrollTop < 30 ) {
             this.setState({ navbarColor: "navbar-transparent" });
         }
     };
@@ -42,14 +38,14 @@ class MainNavbar extends React.Component {
   render() {
     const { pages, title, description } = this.props;
     const navbarLinks = pages.map((page) => {
-        return <NavbarLink key={page.id} route={page.route} title={page.title}/> 
+        return <NavbarLink  key={page.id} route={page.route} title={page.title}/> 
     })
     return (
         <Navbar className={"fixed-top " + this.state.navbarColor} expand="lg" color={this.state.navbarColor}>
           <Container>
             <div className="navbar-translate">
               <NavbarBrand to={pages[0].route} tag={Link}>
-                <span>{title}</span> | {description}
+                <span style={{fontSize: '1.3em'}}>{title}</span> | {description}
               </NavbarBrand>
               <button className="navbar-toggler" id="navigation">
                 <span className="navbar-toggler-bar bar1" />
@@ -75,13 +71,7 @@ class MainNavbar extends React.Component {
               <Nav className="ml-auto" navbar>
                 {navbarLinks}
                 <NavItem>
-                  <Button
-                    className="nav-link"
-                    color="white"
-                    href=""
-                    size="sm"
-                    target="_blank"
-                  >
+                  <Button className="btn btn-primary btn-simple" to={pages[0].route} size="sm" target="_blank">
                     <p>Buy Now</p>
                   </Button>
                 </NavItem>
@@ -95,13 +85,12 @@ class MainNavbar extends React.Component {
 
 const NavbarLink = ({route, title}) => {
     return (
-        <NavItem>
-            <NavLink to={route} tag={Link}>
-                {title}
-            </NavLink>
-        </NavItem>
+      <NavItem>
+        <NavLink to={route} tag={Link} activeStyle={{ fontWeight: "700"}} >
+          {title}
+        </NavLink>
+      </NavItem>
     )
 }
-
 
 export default MainNavbar;
