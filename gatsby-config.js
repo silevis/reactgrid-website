@@ -1,14 +1,25 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby webste for ReactGrid`,
-    author: `Silevis`,
-    description: ``,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    title: `ReactGrid`,
+    author: `Silevis Software`,
+    description: `Advanced spreadsheet for developers`,
+    siteUrl: `http://reactgrid.com`,
+    pages: [
+      {id: 0, title: `Home`,        description: ``, route: `/` },
+      {id: 1, title: `Demo`,        description: ``, route: `/demo` },
+      {id: 2, title: `Features`,    description: ``, route: `/features` },
+      {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
+    ],
+    social: [
+      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://facebook.com`, fontAwesomeIcon: 'fab fa-facebook-square' },
+      { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
+      { title: `npm`, description: `Check our npm repo`, url: `https://www.npmjs.com/org/silevis`, fontAwesomeIcon: 'fab fa-npm' },
+    ],
   },
   plugins: [
     {
       resolve: `gatsby-plugin-sass`,
-      options: { }
+      options: {}
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -59,19 +70,6 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-    `gatsby-plugin-feed`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-offline`,
