@@ -8,6 +8,7 @@ module.exports = {
       {id: 0, title: `Home`,        description: ``, route: `/` },
       {id: 1, title: `Demo`,        description: ``, route: `/demo` },
       {id: 2, title: `Features`,    description: ``, route: `/features` },
+      {id: 4, title: `Blog`,        description: ``, route: `/blog` },
       {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
     ],
     social: [

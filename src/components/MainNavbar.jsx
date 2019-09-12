@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "gatsby";
 
 import {
-    Button,
     UncontrolledCollapse,
     NavbarBrand,
     Navbar,
@@ -37,9 +36,7 @@ class MainNavbar extends React.Component {
 
   render() {
     const { pages, title, description } = this.props;
-    const navbarLinks = pages.map((page) => {
-        return <NavbarLink  key={page.id} route={page.route} title={page.title}/> 
-    })
+    const navbarLinks = pages.map((page) =>  <NavbarLink  key={page.id} route={page.route} title={page.title}/> )
     return (
         <Navbar className={"fixed-top " + this.state.navbarColor} expand="lg" color={this.state.navbarColor}>
           <Container>
@@ -70,11 +67,6 @@ class MainNavbar extends React.Component {
               </div>
               <Nav className="ml-auto" navbar>
                 {navbarLinks}
-                <NavItem>
-                  <Button className="btn btn-primary btn-simple" to={pages[0].route} size="sm" target="_blank">
-                    <p>Buy Now</p>
-                  </Button>
-                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>
@@ -86,7 +78,7 @@ class MainNavbar extends React.Component {
 const NavbarLink = ({route, title}) => {
     return (
       <NavItem>
-        <NavLink to={route} tag={Link} activeClassName="text-success font-weight-bold" >
+        <NavLink to={route} tag={Link} partiallyActive={route == '/' ? false : true} activeClassName="text-success font-weight-bold" >
           {title}
         </NavLink>
       </NavItem>

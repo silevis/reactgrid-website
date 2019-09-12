@@ -3,6 +3,7 @@
   "private": true,
   "description": "Create to build great spreadsheet based apps",
   "version": "0.1.0",
+  "homepage": "https://silevis.github.io/reactgrid",
   "dependencies": {
     "@hot-loader/react-dom": "^16.9.0",
     "@silevis/reactgrid": "^2.0.1-rc.12",
