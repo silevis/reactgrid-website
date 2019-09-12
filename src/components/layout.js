@@ -4,6 +4,7 @@ import "../assets/scss/blk-design-system-pro-react.scss?v1.0.0";
 import "../assets/demo/demo.css";
 import "../assets/demo/react-demo.css";
 import "../assets/css/all.css";
+import "../assets/scss/customStyles.scss";
 import Footer from "./Footer";
 import MainNavbar from "./MainNavbar";
 

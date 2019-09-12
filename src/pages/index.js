@@ -20,15 +20,11 @@ class Index extends React.Component {
   }
   render() {
     const { data } = this.props
-    const title = data.site.siteMetadata.title
-    const description = data.site.siteMetadata.description
     // const posts = data.allMarkdownRemark.edges
-    const pages = data.site.siteMetadata.pages
-    const social = data.site.siteMetadata.social
+    const { title, description, pages, social } = data.site.siteMetadata;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-
         {/* header */}
         <div className="wrapper" ref="wrapper">
           <div className="page-header">
@@ -43,13 +39,15 @@ class Index extends React.Component {
               <Row>
                 <Col className="mr-auto text-left mt-5" lg="5" md="7">
                   <h6 className="category">by Silevis Software </h6>
-                  <h1 className="title">ReactGrid</h1>
+                  <h1 className="title">
+                    <strong className="text-info">ReactGrid</strong>
+                  </h1>
                   <h3 className="title">Hightly customizable spreadsheet grid for bulding custom solutions</h3>
                   <br />
                   <div className="buttons">
                     <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={pages[1].route}
                       onClick={e => e.preventDefault()} size="lg">
-                      <i class="fas fa-th"></i>
+                      <i className="fas fa-th"></i>
                     </Button>
                     <Link tag={Link} to={pages[1].route}> <p style={{display: 'inline'}}>Check demo!</p></Link>
                   </div>
@@ -64,7 +62,6 @@ class Index extends React.Component {
           </div>
         </div>
         {/* END header */}
-
         {/* features */}
         <div className="features-4">
           <Container>
@@ -82,7 +79,7 @@ class Index extends React.Component {
                   href="#pablo"
                   onClick={e => e.preventDefault()}
                 >
-                  Learn more <i className="tim-icons icon-double-right" />
+                  Check all features<i className="tim-icons icon-double-right" />
                 </Button>
               </Col>
               <Col className="p-sm-0" lg="8">
@@ -104,7 +101,7 @@ class Index extends React.Component {
                       <div className="icon icon-white">
                         <i className="tim-icons icon-palette" />
                       </div>
-                      <h4 className="info-title">Awesome Design</h4>
+                      <h4 className="info-title">Developer first design</h4>
                       <p className="description">
                         Gain access to the demographics, psychographics, and
                         location of unique people.
@@ -126,7 +123,7 @@ class Index extends React.Component {
                     </div>
                   </Col>
                   <Col md="6">
-                    <div className="info info-dark">
+                    <div className="info info-info">
                       <div className="icon icon-white">
                         <i className="tim-icons icon-bulb-63" />
                       </div>

@@ -4,6 +4,9 @@
   "description": "Create to build great spreadsheet based apps",
   "version": "0.1.0",
   "dependencies": {
+    "@hot-loader/react-dom": "^16.9.0",
+    "@silevis/reactgrid": "^2.0.1-rc.12",
+    "babel-polyfill": "^6.26.0",
     "chart.js": "2.8.0",
     "gatsby": "^2.15.11",
     "gatsby-image": "^2.2.17",
@@ -43,6 +46,7 @@
     "react-tagsinput": "3.19.0",
     "react-typography": "^0.16.19",
     "reactstrap": "8.0.0",
+    "styled-components": "^4.3.2",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.75"
   },

@@ -7,12 +7,8 @@ import SEO from "../components/seo"
 class NotFoundPage extends React.Component {
   render() {
     const { data } = this.props
-    const title = data.site.siteMetadata.title
-    const description = data.site.siteMetadata.description
     // const posts = data.allMarkdownRemark.edges
-    const pages = data.site.siteMetadata.pages
-    const social = data.site.siteMetadata.social
-
+    const { title, description, pages, social } = data.site.siteMetadata;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title="404: Not Found" />

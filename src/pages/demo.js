@@ -2,21 +2,26 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Header from "../components/Header"
+import Features from "../components/Features"
+import DemoWrapper from "../components/DemoWrapper"
+import FAQ from "../components/FAQ"
 
 class Demo extends React.Component {
   render() {
     const { data } = this.props
-    const title = data.site.siteMetadata.title
-    const description = data.site.siteMetadata.description
-    // const posts = data.allMarkdownRemark.edges
-    const pages = data.site.siteMetadata.pages
-    const social = data.site.siteMetadata.social
+    const { title, description, pages, social } = data.site.siteMetadata;
+    const headerTitle = <h1 className="title">Spreadsheet demo</h1>;
+    const headerDescription = (
+      <p className="description"> Check all available feature</p>
+    );
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={title} />
-        <div style={{height: 1000}} className="wrapper" ref="wrapper">
-          <div className="section-space" />
-        </div>
+        <SEO title={'Demo'} />
+        <Header header={headerTitle} description={headerDescription}/>
+        <DemoWrapper/>
+        <Features/>
+        <FAQ/>
       </Layout>
     )
   }
