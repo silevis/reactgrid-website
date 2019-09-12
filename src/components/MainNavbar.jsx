@@ -86,7 +86,7 @@ class MainNavbar extends React.Component {
 const NavbarLink = ({route, title}) => {
     return (
       <NavItem>
-        <NavLink to={route} tag={Link} activeStyle={{ fontWeight: "700"}} >
+        <NavLink to={route} tag={Link} activeClassName="text-success font-weight-bold" >
           {title}
         </NavLink>
       </NavItem>

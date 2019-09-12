@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ErrorPage from "../components/404"
 
 class NotFoundPage extends React.Component {
   render() {
@@ -12,8 +13,7 @@ class NotFoundPage extends React.Component {
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title="404: Not Found" />
-        
-        
+        <ErrorPage/>
       </Layout>
     )
   }

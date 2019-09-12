@@ -1,27 +1,35 @@
 import React from 'react';
-
 import {
   Container,
   Row,
   Col
 } from "reactstrap";
+import bg from "../assets/img/braden-collum.jpg";
 
-import bg from "../assets/img/matt-palmer.jpg";
-
-const ErrorPage = ({header, description}) => {
-    return (
-      <div className="page-header header-filter page-header-compact">
-        <div className="page-header-image" style={{ backgroundImage: "url(" + bg + ")" }} />
-        <Container>
-          <Row className="text-left">
-            <Col md="6" xs="12">
-              {header}
-              {description}
-            </Col>
-          </Row>
-        </Container>
-      </div>
-    )
+  class ErrorPage extends React.Component {
+    render() {
+      return (
+        <div className="wrapper" ref="wrapper">
+          <div className="page-header error-page header-filter">
+            <div
+              className="page-header-image"
+              style={{ backgroundImage: "url(" + bg + ")" }}
+            />
+            <Container>
+              <Row>
+                <Col md="12">
+                  <h1 className="title">404</h1>
+                  <h2 className="description">Page not found :(</h2>
+                  <h4 className="description">
+                    Ooooups! Looks like you got lost.
+                  </h4>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+        </div>
+      )
+    }
 }
 
 export default ErrorPage;

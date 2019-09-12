@@ -46,7 +46,7 @@ class Index extends React.Component {
                   <br />
                   <div className="buttons">
                     <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={pages[1].route}
-                      onClick={e => e.preventDefault()} size="lg">
+                       size="lg">
                       <i className="fas fa-th"></i>
                     </Button>
                     <Link tag={Link} to={pages[1].route}> <p style={{display: 'inline'}}>Check demo!</p></Link>
@@ -76,7 +76,8 @@ class Index extends React.Component {
                 <Button
                   className="mt-3"
                   color="primary"
-                  href="#pablo"
+                  to={pages[2].route}
+                  tag={Link}
                   onClick={e => e.preventDefault()}
                 >
                   Check all features<i className="tim-icons icon-double-right" />
