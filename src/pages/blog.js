@@ -10,11 +10,11 @@ class Blog extends React.Component {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
     const posts = data.allMarkdownRemark.edges;
-    const blogPageRoute = pages[2].route;
+    const blogPageRoute = pages[3].route;
 
     const headerTitle = <h1 className="title">Latest blogposts</h1>;
     const headerDescription = (
-      <p className="description"></p>
+      <p className="description">Read our newsfeed</p>
     );
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>

@@ -36,9 +36,9 @@ const BlogPost = ({node, blogRoute}) => {
     <Card className="card-blog card-plain blog-horizontal">
       <Row>
         <Col lg="4">
-          <div className="card-image" style={{height: '100%'}}>
-            <Link to={blogRoute + node.fields.slug}>
-              <Img sizes={node.frontmatter.thumbnail.childImageSharp.sizes} className="img rounded"/>
+          <div className="card-image h-100">
+            <Link to={blogRoute + node.fields.slug} className="h-100">
+              <Img sizes={node.frontmatter.thumbnail.childImageSharp.sizes} className="img rounded h-100"/>
             </Link>
           </div>
         </Col>

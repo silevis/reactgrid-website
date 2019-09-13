@@ -9,7 +9,7 @@ import {
 
 class Footer extends React.Component {
   render() {
-    const { pages, social, title, description } = this.props;
+    const { pages, social, title } = this.props;
     const footerLinks = pages.map((page) => {
         return <FooterLink key={page.id} route={page.route} title={page.title}/> 
     })
@@ -20,7 +20,7 @@ class Footer extends React.Component {
     return (
         <footer className="footer" data-background-color="black">
             <Container>
-                <Link to={pages[0].route} className="footer-brand">{title} | {description}</Link>
+                <Link to={pages[0].route} className="footer-brand"><strong>{title}</strong> by Silevis Software </Link>
                 <ul className="pull-center">
                     {footerLinks}
                 </ul>

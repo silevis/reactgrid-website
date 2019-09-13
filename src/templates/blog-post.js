@@ -8,7 +8,6 @@ import {
   Col
 } from "reactstrap";
 import Img from 'gatsby-image'
-import BackgroundImage from 'gatsby-background-image'
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -49,8 +48,8 @@ class BlogPostTemplate extends React.Component {
         <div className="section">
           <Container>
             <Row>
-              <Col className="ml-auto mr-auto" md="8">
-                <p style={{fontSize: '1.3em'}} dangerouslySetInnerHTML={{ __html: post.html }}></p>
+              <Col className="ml-auto mr-auto" md="9">
+                <div style={{fontSize: '1.3em'}} dangerouslySetInnerHTML={{ __html: post.html }}></div>
               </Col>
             </Row>
           </Container>
@@ -101,7 +100,7 @@ export const pageQuery = graphql`
         thumbnail {
           childImageSharp {
             fluid(quality: 100, maxWidth: 1920) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid
             }
           }
         }

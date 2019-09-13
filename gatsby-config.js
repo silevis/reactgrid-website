@@ -7,7 +7,7 @@ module.exports = {
     pages: [
       {id: 0, title: `Home`,        description: ``, route: `/` },
       {id: 1, title: `Demo`,        description: ``, route: `/demo` },
-      // {id: 2, title: `Features`,    description: ``, route: `/features` },
+      {id: 2, title: `Docs`,    description: ``, route: `/docs` },
       {id: 4, title: `Blog`,        description: ``, route: `/blog` },
       {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
     ],
@@ -18,12 +18,6 @@ module.exports = {
     ],
   },
   plugins: [
-    {
-      resolve: 'gatsby-background-image-es5',
-      options: {
-        specialChars: '/:',
-      },
-    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {}
@@ -56,7 +50,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 1100,
+              wrapperStyle: `border-radius: 10px`,
+              quality: 90,
             },
           },
           {

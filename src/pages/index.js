@@ -9,6 +9,7 @@ import {
   Col, 
   Button
 } from "reactstrap";
+import demoGIF from "../assets/img/demo.gif";
 
 
 class Index extends React.Component {
@@ -20,7 +21,6 @@ class Index extends React.Component {
   }
   render() {
     const { data } = this.props
-    // const posts = data.allMarkdownRemark.edges
     const { title, description, pages, social } = data.site.siteMetadata;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
@@ -33,14 +33,13 @@ class Index extends React.Component {
             <div className="squares square3" />
             <div className="squares square4" />
             <div className="squares square5" />
-            <div className="squares square6" />
             <div className="page-header-image" />
             <Container>
               <Row>
                 <Col className="mr-auto text-left mt-5" lg="5" md="7">
                   <h6 className="category">by Silevis Software </h6>
                   <h1 className="title">
-                    <strong className="text-info">ReactGrid</strong>
+                    <strong className="text-warning">ReactGrid</strong>
                   </h1>
                   <h3 className="title">Hightly customizable spreadsheet grid for bulding custom solutions</h3>
                   <br />
@@ -54,9 +53,10 @@ class Index extends React.Component {
                 </Col>
                 <Col className="ml-auto mt-5" lg="7" md="12">
                   <div className="iframe-container">
-                    <img alt="..." src="https://s3.amazonaws.com/creativetim_bucket/github/gif/black-dashboard.gif"/>
+                    <img alt="Demo animation" src={demoGIF}/>
                   </div>
                 </Col>
+                
               </Row>
             </Container>
           </div>
@@ -80,7 +80,7 @@ class Index extends React.Component {
                   tag={Link}
                   onClick={e => e.preventDefault()}
                 >
-                  Check all features<i className="tim-icons icon-double-right" />
+                  Check all features<i className="tim-icons icon-double-right"/>
                 </Button>
               </Col>
               <Col className="p-sm-0" lg="8">
@@ -141,6 +141,21 @@ class Index extends React.Component {
           </Container>
         </div>
         {/*  END features */}
+        <div className="section">
+          <Container>
+            <Row>
+              <Col className="ml-auto mr-auto text-center mt-4" md="8">
+                <h2 className="title">Curious yet?</h2>
+                <h4 className="description mb-5">
+                  Dive in setup tutorial right now and develop your first ReactGrid application!
+                </h4>
+                <Button color="success" size="lg">
+                  Get started <i className="tim-icons icon-double-right" />
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </div>      
       </Layout>
     )
   }
