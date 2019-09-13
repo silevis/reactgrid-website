@@ -3,14 +3,15 @@
   "private": true,
   "description": "Create to build great spreadsheet based apps",
   "version": "0.1.0",
-  "homepage": "https://silevis.github.io/reactgrid",
+  "homepage": "https://reactgrid.com",
   "dependencies": {
     "@hot-loader/react-dom": "^16.9.0",
     "@silevis/reactgrid": "^2.0.1-rc.12",
     "babel-polyfill": "^6.26.0",
     "chart.js": "2.8.0",
     "gatsby": "^2.15.11",
-    "gatsby-image": "^2.2.17",
+    "gatsby-background-image": "^0.8.9",
+    "gatsby-image": "^2.2.18",
     "gatsby-plugin-css-literal-loader": "^1.0.0",
     "gatsby-plugin-feed": "^2.3.11",
     "gatsby-plugin-google-analytics": "^2.1.15",
@@ -54,7 +55,6 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "homepage": "https://reactgrid.com",
   "keywords": [
     "spreadsheet",
     "software"

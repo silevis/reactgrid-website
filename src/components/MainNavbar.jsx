@@ -78,7 +78,7 @@ class MainNavbar extends React.Component {
 const NavbarLink = ({route, title}) => {
     return (
       <NavItem>
-        <NavLink to={route} tag={Link} partiallyActive={route == '/' ? false : true} activeClassName="text-success font-weight-bold" >
+        <NavLink to={route} tag={Link} partiallyActive={route === '/' ? false : true} activeClassName="text-success font-weight-bold" >
           {title}
         </NavLink>
       </NavItem>

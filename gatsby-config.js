@@ -7,17 +7,23 @@ module.exports = {
     pages: [
       {id: 0, title: `Home`,        description: ``, route: `/` },
       {id: 1, title: `Demo`,        description: ``, route: `/demo` },
-      {id: 2, title: `Features`,    description: ``, route: `/features` },
+      // {id: 2, title: `Features`,    description: ``, route: `/features` },
       {id: 4, title: `Blog`,        description: ``, route: `/blog` },
       {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
     ],
     social: [
-      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://facebook.com`, fontAwesomeIcon: 'fab fa-facebook-square' },
+      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
       { title: `npm`, description: `Check our npm repo`, url: `https://www.npmjs.com/org/silevis`, fontAwesomeIcon: 'fab fa-npm' },
     ],
   },
   plugins: [
+    {
+      resolve: 'gatsby-background-image-es5',
+      options: {
+        specialChars: '/:',
+      },
+    },
     {
       resolve: `gatsby-plugin-sass`,
       options: {}

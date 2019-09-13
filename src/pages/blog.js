@@ -10,6 +10,7 @@ class Blog extends React.Component {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
     const posts = data.allMarkdownRemark.edges;
+    const blogPageRoute = pages[2].route;
 
     const headerTitle = <h1 className="title">Latest blogposts</h1>;
     const headerDescription = (
@@ -19,7 +20,7 @@ class Blog extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={'Blog'} />
         <Header header={headerTitle} description={headerDescription}/>
-        <BlogView posts={posts} blogRoute={pages[3].route}/>
+        <BlogView posts={posts} blogRoute={blogPageRoute}/>
       </Layout>
     )
   }
@@ -55,9 +56,24 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "DD MMMM YYYY")
             title
             description
+            author
+            thumbnail {
+              childImageSharp {
+                sizes(maxWidth: 900) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
+            authorImg {
+              childImageSharp {
+                sizes(maxWidth: 120) {
+                  ...GatsbyImageSharpSizes
+                }
+              }
+            }
           }
         }
       }

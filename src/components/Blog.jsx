@@ -7,7 +7,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import bg from "../assets/img/serge-kutuzov.jpg";
+import Img from 'gatsby-image'
 import { Link } from 'gatsby';
 
   class BlogView extends React.Component {
@@ -16,8 +16,6 @@ import { Link } from 'gatsby';
       const blogPosts = posts && posts.map( ({node}) => {
         return <BlogPost key={node.fields.slug} node={node} blogRoute={blogRoute} />
       });
-      console.log(blogRoute);
-      
       return (
         <section className="section">
           <Container>
@@ -38,9 +36,9 @@ const BlogPost = ({node, blogRoute}) => {
     <Card className="card-blog card-plain blog-horizontal">
       <Row>
         <Col lg="4">
-          <div className="card-image">
+          <div className="card-image" style={{height: '100%'}}>
             <Link to={blogRoute + node.fields.slug}>
-              <img alt="..." className="img rounded" src={bg} />
+              <Img sizes={node.frontmatter.thumbnail.childImageSharp.sizes} className="img rounded"/>
             </Link>
           </div>
         </Col>
@@ -54,9 +52,9 @@ const BlogPost = ({node, blogRoute}) => {
               <Link to={blogRoute + node.fields.slug}>Read more</Link>
             </p>
             <div className="author">
-              <img alt="..." className="avatar img-raised" src={bg}/>
-              <div className="text">
-                <span className="name">Tom Hanks</span>
+              <Img sizes={node.frontmatter.authorImg.childImageSharp.sizes} className="avatar img-raised"/>
+              <div className="text" style={{top: '-42px'}}>
+                <span className="name">{node.frontmatter.author}</span>
                 <div className="meta">{node.frontmatter.date}</div>
               </div>
             </div>
