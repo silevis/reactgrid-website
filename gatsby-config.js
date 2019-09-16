@@ -7,7 +7,7 @@ module.exports = {
     pages: [
       {id: 0, title: `Home`,        description: ``, route: `/` },
       {id: 1, title: `Demo`,        description: ``, route: `/demo` },
-      {id: 2, title: `Docs`,    description: ``, route: `/docs` },
+      {id: 2, title: `Docs`,        description: ``, route: `/docs` },
       {id: 4, title: `Blog`,        description: ``, route: `/blog` },
       {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
     ],
@@ -21,6 +21,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sass`,
       options: {}
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/authors`,
+        name: 'assets',
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -48,12 +55,10 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-remark-relative-images`,
+          },
+          {
             resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1100,
-              wrapperStyle: `border-radius: 10px`,
-              quality: 90,
-            },
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,

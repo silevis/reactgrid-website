@@ -4,7 +4,7 @@ date: "2015-05-01T22:12:03.284Z"
 description: "Hello World"
 thumbnail: "./thumbnail.jpg"
 author: "Silevis"
-authorImg: "./silevis.png"
+authorImg: ./../../authors/silevis.png
 ---
 
 This is my first post on my new fake blog! How exciting!
