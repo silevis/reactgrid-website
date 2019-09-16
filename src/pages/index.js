@@ -37,9 +37,9 @@ class Index extends React.Component {
             <Container>
               <Row>
                 <Col className="mr-auto text-left mt-5" lg="5" md="7">
-                  <h6 className="category">by Silevis Software </h6>
+                  <h6 className="category">A brand new approach to old known solutions</h6>
                   <h1 className="title">
-                    <strong className="text-warning">ReactGrid</strong>
+                    <span className="text-danger">ReactGrid</span>
                   </h1>
                   <h3 className="title">Hightly customizable spreadsheet grid built on React</h3>
                   <br />
@@ -56,7 +56,6 @@ class Index extends React.Component {
                     <img alt="Demo animation" src={demoGIF}/>
                   </div>
                 </Col>
-                
               </Row>
             </Container>
           </div>
@@ -69,15 +68,9 @@ class Index extends React.Component {
               <Col className="mr-auto text-left" lg="3">
                 <h1 className="title">You should be here!</h1>
                 <p className="description">
-                  
+                  description
                 </p>
-                <Button
-                  className="mt-3"
-                  color="primary"
-                  to={pages[2].route}
-                  tag={Link}
-                  onClick={e => e.preventDefault()}
-                >
+                <Button className="mt-3" color="primary" to={pages[2].route} tag={Link} onClick={e => e.preventDefault()}>
                   Check all features<i className="tim-icons icon-double-right"/>
                 </Button>
               </Col>
@@ -88,10 +81,9 @@ class Index extends React.Component {
                       <div className="icon icon-white">
                         <i className="tim-icons icon-satisfied" />
                       </div>
-                      <h4 className="info-title">Best Quality</h4>
+                      <h4 className="info-title">Super fast</h4>
                       <p className="description">
-                        Gain access to the demographics, psychographics, and
-                        location of unique people.
+                        Fill and modify ReactGrid simultaneusly with thousands of records without any lag.
                       </p>
                     </div>
                   </Col>
@@ -102,8 +94,7 @@ class Index extends React.Component {
                       </div>
                       <h4 className="info-title">Developer first design</h4>
                       <p className="description">
-                        Gain access to the demographics, psychographics, and
-                        location of unique people.
+                        You decide how to present your data and interact with them due to simple API.
                       </p>
                     </div>
                   </Col>
@@ -114,10 +105,9 @@ class Index extends React.Component {
                       <div className="icon icon-white">
                         <i className="tim-icons icon-user-run" />
                       </div>
-                      <h4 className="info-title">Fast Development</h4>
+                      <h4 className="info-title">A perfect foundation</h4>
                       <p className="description">
-                        Gain access to the demographics, psychographics, and
-                        location of unique people.
+                        Create yor own app and adjust it to your personal needs in easy way. 
                       </p>
                     </div>
                   </Col>
@@ -126,10 +116,9 @@ class Index extends React.Component {
                       <div className="icon icon-white">
                         <i className="tim-icons icon-bulb-63" />
                       </div>
-                      <h4 className="info-title">Super Fresh</h4>
+                      <h4 className="info-title">Continously improved</h4>
                       <p className="description">
-                        Gain access to the demographics, psychographics, and
-                        location of unique people.
+                        ReactGrid is constantly improved by out dev to provide new features and functionality improvements.
                       </p>
                     </div>
                   </Col>

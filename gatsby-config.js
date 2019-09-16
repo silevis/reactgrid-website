@@ -82,18 +82,18 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: "ReactGrid",
-    //     short_name: "ReactGrid",
-    //     start_url: "/",
-    //     background_color: "#171941",
-    //     theme_color: "#171941",
-    //     display: "standalone",
-    //     icon: "src/assets/img/icon.png", 
-    //     crossOrigin: `use-credentials`,
-    //   }
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: "ReactGrid",
+        short_name: "ReactGrid",
+        start_url: "/",
+        background_color: "#171941",
+        theme_color: "#171941",
+        display: "standalone",
+        icon: "src/assets/img/icon.png", 
+        crossOrigin: `use-credentials`,
+      }
+    },
   ],
 }
