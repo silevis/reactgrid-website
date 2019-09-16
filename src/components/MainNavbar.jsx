@@ -36,7 +36,7 @@ class MainNavbar extends React.Component {
 
   render() {
     const { pages, title, description } = this.props;
-    const navbarLinks = pages.map((page) =>  <NavbarLink  key={page.id} route={page.route} title={page.title}/> )
+    const navbarLinks = pages.map((page) => page.route !== '/'? <NavbarLink  key={page.id} route={page.route} title={page.title}/> : false )
     return (
         <Navbar className={"fixed-top " + this.state.navbarColor} expand="lg" color={this.state.navbarColor}>
           <Container>

@@ -4,7 +4,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-// import DynagridDemo from '@silevis/reactgrid'
+import DynagridDemo from '@silevis/reactgrid';
 
 
 const DemoWrapper = () => {
@@ -12,11 +12,13 @@ const DemoWrapper = () => {
       <Container>
         <Row>
           <Col>
-            {/* <DynagridDemo/> */}
+            <div className="section">
+              <DynagridDemo/>
+            </div>
           </Col>
         </Row>
       </Container>
     )
-}
+  }
 
 export default DemoWrapper;

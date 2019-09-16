@@ -41,7 +41,7 @@ class Index extends React.Component {
                   <h1 className="title">
                     <strong className="text-warning">ReactGrid</strong>
                   </h1>
-                  <h3 className="title">Hightly customizable spreadsheet grid for bulding custom solutions</h3>
+                  <h3 className="title">Hightly customizable spreadsheet grid built on React</h3>
                   <br />
                   <div className="buttons">
                     <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={pages[1].route}
@@ -69,9 +69,7 @@ class Index extends React.Component {
               <Col className="mr-auto text-left" lg="3">
                 <h1 className="title">You should be here!</h1>
                 <p className="description">
-                  5,000 capacity venue, holding some of the latest technology
-                  lighting with a 24 colour laser system Amnesia is one of the
-                  islands most legendary clubs.
+                  
                 </p>
                 <Button
                   className="mt-3"
@@ -149,7 +147,7 @@ class Index extends React.Component {
                 <h4 className="description mb-5">
                   Dive in setup tutorial right now and develop your first ReactGrid application!
                 </h4>
-                <Button color="success" size="lg">
+                <Button color="success"size="lg">
                   Get started <i className="tim-icons icon-double-right" />
                 </Button>
               </Col>

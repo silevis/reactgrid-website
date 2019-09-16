@@ -1,25 +1,12 @@
 import React from 'react';
 
 import {
-  // Button,
-  // UncontrolledCollapse,
-  // Label,
-  // FormGroup,
-  // Input,
-  // InputGroupAddon,
-  // InputGroupText,
-  // InputGroup,
-  // NavbarBrand,
-  // Navbar,
-  // NavItem,
-  // NavLink,
-  // Nav,
   Container,
   Row,
   Col
 } from "reactstrap";
 
-import bg from "../assets/img/matt-palmer.jpg";
+import bg from "../assets/img/lucas-benjamin.jpg";
 
 const Header = ({header, description}) => {
     return (

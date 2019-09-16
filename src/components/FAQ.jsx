@@ -27,7 +27,7 @@ class FAQ extends React.Component {
         <Container>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="6">
-              <h2 className="title mb-4 mt-5">You should know about</h2>
+              <h2 className="title mb-4 mt-5">FAQ</h2>
               <div className="section-space" />
             </Col>
           </Row>

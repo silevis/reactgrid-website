@@ -6,7 +6,8 @@ import {
   Table,
   Container,
   Row,
-  Col
+  Col,
+  UncontrolledTooltip
 } from "reactstrap";
 
 class Features extends React.Component {
@@ -28,42 +29,19 @@ class Features extends React.Component {
                     <thead className="text-primary">
                       <tr>
                         <th>
-                          <h3 className="mb-0">Space individual</h3>
+                          <h3 className="mb-0">Product features</h3>
                         </th>
                         <th>
                           <h6>Team</h6>
-                          <h4 className="desc">$39/mo</h4>
-                          <Button
-                            className="btn-simple"
-                            color="success"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                            size="sm"
-                          >
+                          <h4 className="desc">Community</h4>
+                          <Button className="btn-simple" color="success" href="#pablo" onClick={e => e.preventDefault()} size="sm">
                             Choose Plan
                           </Button>
                         </th>
                         <th>
-                          <h6>Growth</h6>
+                          <h6>Premium</h6>
                           <h4 className="desc">$79/mo</h4>
-                          <Button
-                            color="success"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                            size="sm"
-                          >
-                            Choose Plan
-                          </Button>
-                        </th>
-                        <th>
-                          <h6>Enterprise</h6>
-                          <h4 className="desc">$99/mo</h4>
-                          <Button
-                            color="success"
-                            href="#pablo"
-                            onClick={e => e.preventDefault()}
-                            size="sm"
-                          >
+                          <Button  color="success" href="#pablo" onClick={e => e.preventDefault()} size="sm">
                             Choose Plan
                           </Button>
                         </th>
@@ -72,23 +50,7 @@ class Features extends React.Component {
                     <tbody>
                       <tr>
                         <td>
-                          Community support{" "}
-                          <i className="tim-icons icon-alert-circle-exc" />
-                        </td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
-                        </td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
-                        </td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>100+ Example Pages</td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
+                          Column resize
                         </td>
                         <td>
                           <i className="tim-icons icon-check-2 text-success" />
@@ -98,10 +60,7 @@ class Features extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>50+ Section Examples</td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
-                        </td>
+                        <td>Column reorder</td>
                         <td>
                           <i className="tim-icons icon-check-2 text-success" />
                         </td>
@@ -110,31 +69,91 @@ class Features extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>Multiple use</td>
+                        <td>Row reorder</td>
+                        <td>
+                          <i className="tim-icons icon-check-2 text-success" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-check-2 text-success" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Frozen rows and columns</td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />
                         </td>
                         <td>upon request</td>
-                        <td>
-                          <i className="tim-icons icon-check-2 text-success" />
-                        </td>
                       </tr>
                       <tr>
-                        <td>Custom messages</td>
+                        <td>Multiple focuses</td>
                         <td>
                           <i className="tim-icons icon-check-2 text-success" />
                         </td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />
                         </td>
+                      </tr>
+                      <tr>
+                        <td>Fill handle</td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />
                         </td>
                       </tr>
                       <tr>
-                        <td>Multiple requests</td>
+                        <td>Area selection</td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Multi selection</td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Copy</td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Cut</td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Paste</td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                        <td>
+                          <i className="tim-icons icon-simple-remove" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>                          
+                          Touch capability{" "}
+                          <i className="tim-icons icon-alert-circle-exc" id="tc-tooltip" />
+                          <UncontrolledTooltip delay={0} placement="right" target="tc-tooltip" >
+                            Safari open
+                          </UncontrolledTooltip>
                         </td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />

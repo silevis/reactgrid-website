@@ -26,7 +26,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/authors`,
-        name: 'assets',
+        name: 'authors',
       },
     },
     {
@@ -54,9 +54,9 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          {
-            resolve: `gatsby-remark-relative-images`,
-          },
+          // {
+          //   resolve: `gatsby-remark-relative-images`,
+          // },
           {
             resolve: `gatsby-remark-images`,
           },
@@ -81,6 +81,19 @@ module.exports = {
       },
     },
     `gatsby-plugin-offline`,
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-react-helmet`,
+    // {
+    //   resolve: `gatsby-plugin-manifest`,
+    //   options: {
+    //     name: "ReactGrid",
+    //     short_name: "ReactGrid",
+    //     start_url: "/",
+    //     background_color: "#171941",
+    //     theme_color: "#171941",
+    //     display: "standalone",
+    //     icon: "src/assets/img/icon.png", 
+    //     crossOrigin: `use-credentials`,
+    //   }
+    // },
   ],
 }
