@@ -23,7 +23,7 @@ class Features extends React.Component {
         <Row>
           <Col className="mx-auto" md="12">
             <div>
-              <Card className="card-plain">
+              <Card className="card card-plain">
                 <CardBody>
                   <Table className="table-pricing" responsive>
                     <thead className="text-primary">

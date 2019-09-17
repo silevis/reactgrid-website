@@ -8,8 +8,9 @@ module.exports = {
       {id: 0, title: `Home`,        description: ``, route: `/` },
       {id: 1, title: `Demo`,        description: ``, route: `/demo` },
       {id: 2, title: `Docs`,        description: ``, route: `/docs` },
-      {id: 4, title: `Blog`,        description: ``, route: `/blog` },
-      {id: 3, title: `Contact Us`,  description: ``, route: `/contact-us` },
+      {id: 3, title: `Pricing`,     description: ``, route: `/pricing` },
+      // {id: 4, title: `Blog`,        description: ``, route: `/blog` },
+
     ],
     social: [
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
@@ -22,6 +23,7 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {}
     },
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -34,6 +36,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/blog`,
         name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/docs`,
+        name: `docs`,
       },
     },
     {

@@ -6,14 +6,13 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const docsPost = path.resolve(`./src/templates/docs-post.js`)
   const blogRoute = "/blog"
+  const docsRoute = "/docs"
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMarkdownRemark {
           edges {
             node {
               fields {
@@ -21,6 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                posttype
               }
             }
           }
@@ -36,13 +36,23 @@ exports.createPages = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges
 
   posts.forEach((post, index) => {
-    createPage({
-      path: blogRoute + post.node.fields.slug,
-      component: blogPost,
-      context: {
-        slug: post.node.fields.slug,
-      },
-    })
+    if (post.node.frontmatter.posttype === 'docs') {
+      createPage({
+        path: docsRoute + post.node.fields.slug,
+        component: docsPost,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      })
+    } else {
+      createPage({
+        path: blogRoute + post.node.fields.slug,
+        component: blogPost,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      })
+    }
   })
 }
 

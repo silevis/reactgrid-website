@@ -67,6 +67,9 @@ class MainNavbar extends React.Component {
               </div>
               <Nav className="ml-auto" navbar>
                 {navbarLinks}
+                <NavItem className="align-items-center d-flex">
+                  <button type="button" className="btn btn-success btn-simple btn-sm">Buy</button>
+                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>
