@@ -1,10 +1,9 @@
 ---
 posttype: "docs"
-title: Hello Wordn w docs
+title:  topic 1
 metaTitle: "metaTitle"
 metaDescription: "metaDescription"
 ---
 
-Index .md
-
+ topic 1
 

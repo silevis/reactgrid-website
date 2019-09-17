@@ -91,7 +91,7 @@ class Footer extends React.Component {
                 <ul className="pull-left">
                     {footerLinks}
                 </ul>
-                <div class="copyright">
+                <div className="copyright">
                     <ul className="social-buttons pull-left pr-3">
                         {socialLinks}
                     </ul>

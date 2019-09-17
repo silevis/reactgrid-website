@@ -5,9 +5,9 @@ import SEO from "../components/seo"
 import {
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
-import Img from 'gatsby-image'
+import Tree from "../components/sidebar/Tree";
 
 class DocsPostTemplate extends React.Component {
   componentDidMount() {
@@ -19,36 +19,31 @@ class DocsPostTemplate extends React.Component {
     document.body.classList.remove("blog-post");
   }
   render() {
-    const post = this.props.data.markdownRemark
+    const post = this.props.data.markdownRemark;
+    const posts = this.props.data.allMarkdownRemark.edges;
     const { title, description, pages, social } = this.props.data.site.siteMetadata
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
-        
-        <h1 className="">DOCS</h1>
-        <div className="page-header header-filter">
-          <div
-            className="page-header-image"
-            data-parallax={true}
-            // style={{ backgroundImage:"url(" + post.frontmatter.thumbnail.childImageSharp.fluid.base64 + ")"}}
-          />
-          <Container>
-            <Row>
-              <Col className="ml-auto mr-auto text-center" md="8">
-                <h1  className="title">{post.frontmatter.title}</h1>
-                <div className="author">
-                  {/* <Img sizes={post.frontmatter.authorImg.childImageSharp.sizes} className="avatar img-raised"/>  */}
-                </div>
-                <br />
-                {/* <h4 className="description">By {post.frontmatter.author} on {post.frontmatter.date}</h4> */}
+        <div className="section"> 
+          <div className="page-header header-filter page-header-compact mt-3">
+            <Container>
+              <Col>
+                <Row>
+                  <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}
+                  <h4>{post.frontmatter.title}</h4>
+                </Row>
               </Col>
-            </Row>
-          </Container>
+            </Container>
+          </div>
         </div>
         <div className="section">
           <Container>
             <Row>
-              <Col className="ml-auto mr-auto" md="9">
+              <Col md="3">
+                <Tree edges={posts} location={this.props.location} />
+              </Col>
+              <Col md="9">
                 <div style={{fontSize: '1.3em'}} dangerouslySetInnerHTML={{ __html: post.html }}></div>
               </Col>
             </Row>
@@ -87,6 +82,23 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        metaDescription
+        metaTitle
+      }
+    }
+    allMarkdownRemark( filter: {frontmatter: {posttype: {eq: "docs"}}} ){
+      edges {
+        node {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            metaDescription
+            metaTitle
+          }
+        }
       }
     }
   }

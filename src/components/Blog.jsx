@@ -31,7 +31,6 @@ import { Link } from 'gatsby';
 }
 
 const BlogPost = ({node, blogRoute}) => {
-  console.log(node);
   return (
     <Card className="card-blog card-plain blog-horizontal">
       <Row>

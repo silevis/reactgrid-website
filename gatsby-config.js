@@ -23,7 +23,6 @@ module.exports = {
       resolve: `gatsby-plugin-sass`,
       options: {}
     },
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
