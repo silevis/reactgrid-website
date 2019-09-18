@@ -1,6 +1,6 @@
 ---
 posttype: "docs"
-title: Introduction
+title:  verb
 metaTitle: "metaTitle"
 metaDescription: "metaDescription"
 ---

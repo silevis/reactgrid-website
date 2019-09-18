@@ -15,3 +15,10 @@
 .firstLevel > ul {
     padding-left: 0 !important;
 }
+
+.nav-docs-item.active {
+    color: #fb6340;
+    & a h4 {
+        color: #fb6340;
+    }
+}

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import NextPrevious from "../components/NextPrevious"
 import {
   Container,
   Row,
@@ -21,6 +22,7 @@ class DocsPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const posts = this.props.data.allMarkdownRemark.edges;
+    const allMarkdownRemark = this.props.data.allMarkdownRemark;
     const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
 
     return (
@@ -40,7 +42,7 @@ class DocsPostTemplate extends React.Component {
           <Container>
             <Row>
               <Col md="3">
-                <Tree edges={posts} location={this.props.location} navOrder={navOrder} />
+                {this.props.location && <Tree edges={posts} location={this.props.location} navOrder={navOrder} />}
               </Col>
               <Col md="9">
                 <div className="pt-1 text-xl" dangerouslySetInnerHTML={{ __html: post.html }}></div>

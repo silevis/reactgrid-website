@@ -77,7 +77,8 @@ const Tree = ({edges, location, navOrder}) => {
     return calculateTreeData(navOrder, edges);
   });
   
-  const [collapsed, setCollapsed] = useState({});
+  
+  const [collapsed, setCollapsed] = useState({})
   const toggle = (url) => {
     setCollapsed({
       ...collapsed,
@@ -86,9 +87,13 @@ const Tree = ({edges, location, navOrder}) => {
   }
   return (
     <>
-      <Nav className="flex-column pl-0">
-        <TreeNode className={`${false ? 'showFrontLine' : 'hideFrontLine'} firstLevel`}
-                  setCollapsed={toggle} collapsed={collapsed} url={location.pathname} location={location} {...treeData}/>
+      <Nav className="" card vertical>
+      {treeData.items.map((item, idx) => {
+        console.log(location);
+        
+        return <TreeNode key={idx} setCollapsed={toggle} collapsed={collapsed} url={location.pathname} 
+                location={location} items={item.items}/>
+      })}
       </Nav>
     </>
   );
