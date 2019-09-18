@@ -21,30 +21,29 @@ class DocsPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const posts = this.props.data.allMarkdownRemark.edges;
-    const { title, description, pages, social } = this.props.data.site.siteMetadata
+    const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
+
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
-        <div className="section"> 
-          <div className="page-header header-filter page-header-compact mt-3">
-            <Container>
-              <Col>
-                <Row>
-                  <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}
-                  <h4>{post.frontmatter.title}</h4>
-                </Row>
-              </Col>
-            </Container>
-          </div>
+        <div className="page-header header-filter page-header-compact-min mt-3">
+          <Container>
+            <Col>
+              <Row>
+                {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
+                <h1><span className="text-danger">{post.frontmatter.title}</span></h1>
+              </Row>
+            </Col>
+          </Container>
         </div>
-        <div className="section">
+        <div className="py-5">
           <Container>
             <Row>
               <Col md="3">
-                <Tree edges={posts} location={this.props.location} />
+                <Tree edges={posts} location={this.props.location} navOrder={navOrder} />
               </Col>
               <Col md="9">
-                <div style={{fontSize: '1.3em'}} dangerouslySetInnerHTML={{ __html: post.html }}></div>
+                <div className="pt-1 text-xl" dangerouslySetInnerHTML={{ __html: post.html }}></div>
               </Col>
             </Row>
           </Container>
@@ -74,6 +73,7 @@ export const pageQuery = graphql`
           title
           url
         }
+        navOrder
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

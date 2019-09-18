@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import TreeNode from './TreeNode';
 
-const calculateTreeData = edges => {
+import {
+  Nav
+} from "reactstrap";
+
+const calculateTreeData = (navOrder, edges) => {
   const originalData = false ? edges.filter(({node: {fields: {slug}}}) => slug !== '/') : edges;
   const tree = originalData.reduce((accu, {node: {fields: {slug}, frontmatter : {title}}}) => {
     const parts = slug.split('/');
@@ -32,12 +36,7 @@ const calculateTreeData = edges => {
     }
     return accu;
   }, {items: []});
-  const forcedNavOrder = [
-    "/",
-      "/topic1",
-      "/topic2"
-  ];
-  const tmp = [...forcedNavOrder];
+  const tmp = [...navOrder];
   tmp.reverse();
   return tmp.reduce((accu, slug) => {
     const parts = slug.split('/');
@@ -73,9 +72,9 @@ const calculateTreeData = edges => {
 }
 
 
-const Tree = ({edges, location}) => {
+const Tree = ({edges, location, navOrder}) => {
   const [treeData] = useState(() => {
-    return calculateTreeData(edges);
+    return calculateTreeData(navOrder, edges);
   });
   
   const [collapsed, setCollapsed] = useState({});
@@ -85,12 +84,13 @@ const Tree = ({edges, location}) => {
       [url]: !collapsed[url],
     });
   }
-  console.log(location);
-  
   return (
-    <TreeNode className={`${false ? 'showFrontLine' : 'hideFrontLine'} firstLevel`}
-              setCollapsed={toggle} collapsed={collapsed} url={location.pathname} location={location} {...treeData} 
-    />
+    <>
+      <Nav className="flex-column pl-0">
+        <TreeNode className={`${false ? 'showFrontLine' : 'hideFrontLine'} firstLevel`}
+                  setCollapsed={toggle} collapsed={collapsed} url={location.pathname} location={location} {...treeData}/>
+      </Nav>
+    </>
   );
 }
 

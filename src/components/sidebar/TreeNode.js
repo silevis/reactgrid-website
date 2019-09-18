@@ -2,7 +2,7 @@ import React from "react";
 import {  Link } from "gatsby"
 
 import {
-  Button,
+  NavItem,
 } from "reactstrap";
 
 const TreeNode = ({className = '', setCollapsed, collapsed, url, title, items, location, ...rest}) => {
@@ -12,24 +12,25 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, title, items, l
   }
   const hasChildren = items.length !== 0;
   
-  const active = location && (location.pathname === url || location.pathname === (url));
-  const calculatedClassName = `${className} item ${active ? 'active' : ''}`;
+  const active = location && (location.pathname === (url));
+  const calculatedClassName = `item ${active ? 'active' : ''} py-1 ${className}`;
+  
   return (
-    <li className={calculatedClassName}>
-      {title  ? (
-        <Button onClick={collapse} className='collapser'> {!isCollapsed ? <i class="fas fa-chevron-right"></i> : <i class="fas fa-chevron-down"></i>}</Button>
+    <NavItem className={calculatedClassName}>
+      {title ? (
+        <span onClick={collapse} className='collapser pr-2'> {!isCollapsed ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-down"></i>}</span>
       ) : null}
 
-      {title && (<Link to={'/docs' + url}>{title}</Link>)}
-
+      {title && (<Link to={'/docs' + url} className="text-white  d-inline-block">{" "}<h4 className="mb-0">{title}</h4></Link>)}
+      
       {!isCollapsed && hasChildren ? (
-        <ul>
+        <ul className="pl-4 list-unstyled">
           {items.map((item, idx) => (
             <TreeNode key={idx} setCollapsed={setCollapsed} collapsed={collapsed} {...item} />
           ))}
         </ul>
       ) : null}
-    </li>
+    </NavItem>
   );
 }
 export default TreeNode

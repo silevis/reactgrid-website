@@ -12,6 +12,12 @@ module.exports = {
       // {id: 4, title: `Blog`,        description: ``, route: `/blog` },
 
     ],
+    navOrder: [
+      "/introduction",
+      "/tutorial",
+      "/topic1",
+      "/topic2"
+    ],
     social: [
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
