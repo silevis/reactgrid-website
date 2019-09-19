@@ -84,7 +84,6 @@ const Tree = ({edges, location, navOrder}) => {
       [url]: !collapsed[url],
     });
   }
-  console.log(JSON.stringify(treeData));
   return (
     <>
       <Nav className="" card vertical>

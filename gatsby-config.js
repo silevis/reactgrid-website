@@ -65,8 +65,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
+        extensions: ['.mdx', '.md'],
         plugins: [
           // {
           //   resolve: `gatsby-remark-relative-images`,
@@ -80,9 +81,9 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
+          {resolve: `gatsby-remark-prismjs`},
+          {resolve: `gatsby-remark-copy-linked-files`},
+          {resolve: `gatsby-remark-smartypants`},
         ],
       },
     },

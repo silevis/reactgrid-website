@@ -12,7 +12,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark {
+        allMdx {
           edges {
             node {
               fields {
@@ -28,12 +28,13 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     `
   )
-
+  
+  
   if (result.errors)
     throw result.errors
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.edges
 
   posts.forEach((post, index) => {
     if (post.node.frontmatter.posttype === 'docs') {
@@ -45,13 +46,13 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     } else {
-      createPage({
-        path: blogRoute + post.node.fields.slug,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-        },
-      })
+      // createPage({
+      //   path: blogRoute + post.node.fields.slug,
+      //   component: blogPost,
+      //   context: {
+      //     slug: post.node.fields.slug,
+      //   },
+      // })
     }
   })
 }
@@ -59,12 +60,18 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   // fmImagesToRelative(node);  // TODO FIX dla obrazow 
   const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
       value,
     })
+
+    createNodeField({
+      name: "id",
+      node,
+      value: node.id
+    });
   }
 }

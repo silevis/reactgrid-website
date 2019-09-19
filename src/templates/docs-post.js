@@ -1,13 +1,19 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {
   Container,
   Row,
   Col,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from "reactstrap";
 import Tree from "../components/sidebar/Tree";
+
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class DocsPostTemplate extends React.Component {
   componentDidMount() {
@@ -18,9 +24,24 @@ class DocsPostTemplate extends React.Component {
   componentWillUnmount() {
     document.body.classList.remove("blog-post");
   }
+  constructor(props) {
+    super(props)
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      selectedVersionSlug: '/1.0.1'
+    };
+  }
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }));
+  }
   render() {
-    const post = this.props.data.markdownRemark;
-    const posts = this.props.data.allMarkdownRemark.edges;
+    const post = this.props.data.mdx;
+    const posts = this.props.data.allMdx.edges;
+    console.log(post);
+    
 
     const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
 
@@ -41,10 +62,29 @@ class DocsPostTemplate extends React.Component {
           <Container>
             <Row>
               <Col md="3">
-                {this.props.location && <Tree edges={posts} location={this.props.location} navOrder={navOrder} />}
+                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                  <DropdownToggle caret>
+                    Select version
+                  </DropdownToggle>
+                  <DropdownMenu>
+                    <DropdownItem header>Header</DropdownItem>
+                    <DropdownItem>
+                      <Link to={'/docs'}>v.1
+                      </Link>
+
+                    </DropdownItem>
+                    <DropdownItem disabled>Action (disabled)</DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>Foo Action</DropdownItem>
+                    <DropdownItem>Bar Action</DropdownItem>
+                    <DropdownItem>Quo Action</DropdownItem>
+                  </DropdownMenu>
+                </Dropdown>
+
+                {this.props.location && <Tree version='1337' edges={posts} location={this.props.location} navOrder={navOrder} />}
               </Col>
               <Col md="9">
-                <div className="pt-1 text-xl" dangerouslySetInnerHTML={{ __html: post.html }}></div>
+                <MDXRenderer>{post.body}</MDXRenderer>
               </Col>
             </Row>
           </Container>
@@ -77,17 +117,17 @@ export const pageQuery = graphql`
         navOrder
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       id
       excerpt(pruneLength: 160)
-      html
       frontmatter {
         title
         metaDescription
         metaTitle
       }
     }
-    allMarkdownRemark( filter: {frontmatter: {posttype: {eq: "docs"}}} ){
+    allMdx ( filter: {frontmatter: {posttype: {eq: "docs"}}} ){
       edges {
         node {
           excerpt
@@ -95,6 +135,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            posttype
             title
             metaDescription
             metaTitle

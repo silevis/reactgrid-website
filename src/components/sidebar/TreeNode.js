@@ -8,10 +8,9 @@ import {
 const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, items, location, ...rest}) => {
   const isCollapsed = Object.keys(collapsed).includes(url) && collapsed[url];
   
-  
-  const collapse = () => {
-    setCollapsed(url);
-  }
+  // const collapse = () => {
+  //   setCollapsed(url);
+  // }
   
   const hasChildren = items.length !== 0;
   
@@ -23,9 +22,9 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, ite
     <NavItem className={calculatedClassName}>
       {title && (
         <>
-          <span onClick={collapse} className='collapser pr-1 float-left'> 
+          {/* <span onClick={collapse} className='collapser pr-1 float-left'> 
             {!isCollapsed ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-down"></i>}
-          </span>
+          </span> */}
           <Link to={'/docs' + url} className="text-white  d-inline-block">
             <h4 className="mb-0 py-1">
               <span className={calculatedTitleClassName}>{title}</span>
