@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import NextPrevious from "../components/NextPrevious"
 import {
   Container,
   Row,
@@ -22,7 +21,7 @@ class DocsPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark;
     const posts = this.props.data.allMarkdownRemark.edges;
-    const allMarkdownRemark = this.props.data.allMarkdownRemark;
+
     const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
 
     return (

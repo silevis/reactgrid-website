@@ -76,8 +76,7 @@ const Tree = ({edges, location, navOrder}) => {
   const [treeData] = useState(() => {
     return calculateTreeData(navOrder, edges);
   });
-  
-  
+  const lvl = 0;
   const [collapsed, setCollapsed] = useState({})
   const toggle = (url) => {
     setCollapsed({
@@ -85,13 +84,12 @@ const Tree = ({edges, location, navOrder}) => {
       [url]: !collapsed[url],
     });
   }
+  console.log(JSON.stringify(treeData));
   return (
     <>
       <Nav className="" card vertical>
       {treeData.items.map((item, idx) => {
-        console.log(location);
-        
-        return <TreeNode key={idx} setCollapsed={toggle} collapsed={collapsed} url={location.pathname} 
+        return <TreeNode key={idx} lvl={lvl} setCollapsed={toggle} collapsed={collapsed} url={location.pathname} 
                 location={location} items={item.items}/>
       })}
       </Nav>
