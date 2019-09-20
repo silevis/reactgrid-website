@@ -5,10 +5,11 @@ import {
   Nav
 } from "reactstrap";
 
-const calculateTreeData = (navOrder, edges) => {
+const calculateTreeData = (navOrder, edges, version) => {
   const originalData = false ? edges.filter(({node: {fields: {slug}}}) => slug !== '/') : edges;
   const tree = originalData.reduce((accu, {node: {fields: {slug}, frontmatter : {title}}}) => {
     const parts = slug.split('/');
+    if (parts[1] !== version) return accu;
     let {items: prevItems} = accu;
     for (const part of parts.slice(1, -1)) {
       let tmp = prevItems.find(({label}) => label === part);
@@ -72,9 +73,9 @@ const calculateTreeData = (navOrder, edges) => {
 }
 
 
-const Tree = ({edges, location, navOrder}) => {
+const Tree = ({edges, location, navOrder, version}) => {
   const [treeData] = useState(() => {
-    return calculateTreeData(navOrder, edges);
+    return calculateTreeData(navOrder, edges, version);
   });
   const lvl = 0;
   const [collapsed, setCollapsed] = useState({})

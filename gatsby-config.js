@@ -13,10 +13,9 @@ module.exports = {
 
     ],
     navOrder: [
-      "/introduction",
-      "/tutorial",
-      "/topic1",
-      "/topic2"
+      "/1.0.3",
+      "/1.0.2",
+      "/1.0.1",
     ],
     social: [
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
@@ -69,9 +68,6 @@ module.exports = {
       options: {
         extensions: ['.mdx', '.md'],
         plugins: [
-          // {
-          //   resolve: `gatsby-remark-relative-images`,
-          // },
           {
             resolve: `gatsby-remark-images`,
           },

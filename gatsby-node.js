@@ -46,13 +46,13 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     } else {
-      // createPage({
-      //   path: blogRoute + post.node.fields.slug,
-      //   component: blogPost,
-      //   context: {
-      //     slug: post.node.fields.slug,
-      //   },
-      // })
+      createPage({
+        path: blogRoute + post.node.fields.slug,
+        component: blogPost,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      })
     }
   })
 }

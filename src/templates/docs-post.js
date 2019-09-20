@@ -6,7 +6,7 @@ import {
   Container,
   Row,
   Col,
-  Dropdown,
+  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
@@ -24,27 +24,26 @@ class DocsPostTemplate extends React.Component {
   componentWillUnmount() {
     document.body.classList.remove("blog-post");
   }
-  constructor(props) {
-    super(props)
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      dropdownOpen: false,
-      selectedVersionSlug: '/1.0.1'
-    };
+
+  handleVersionChange = (version) => {
+    this.setState( {selectedVersionSlug: version} )
   }
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
-  }
+
   render() {
     const post = this.props.data.mdx;
     const posts = this.props.data.allMdx.edges;
-    console.log(post);
-    
-
     const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
+    const slug = this.props.location.pathname.split('/');
+    const version = slug[2];
 
+    const dropdownItemsList = navOrder.map(version => {
+        return (
+          <DropdownItem key={version} tag={Link} to={`/docs${version}/Introduction/`} 
+                        onClick={() => this.handleVersionChange(version)} >
+            <h4 className="text-darker mb-0">{version.replace('/','')}</h4>
+          </DropdownItem>
+        );
+    });
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
@@ -53,7 +52,7 @@ class DocsPostTemplate extends React.Component {
             <Col>
               <Row>
                 {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                <h1><span className="text-danger">{post.frontmatter.title}</span></h1>
+                <h1><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
               </Row>
             </Col>
           </Container>
@@ -62,26 +61,15 @@ class DocsPostTemplate extends React.Component {
           <Container>
             <Row>
               <Col md="3">
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                  <DropdownToggle caret>
-                    Select version
+                <UncontrolledDropdown>
+                  <DropdownToggle caret size="sm" className="btn-danger">
+                    Select version ({version})
                   </DropdownToggle>
                   <DropdownMenu>
-                    <DropdownItem header>Header</DropdownItem>
-                    <DropdownItem>
-                      <Link to={'/docs'}>v.1
-                      </Link>
-
-                    </DropdownItem>
-                    <DropdownItem disabled>Action (disabled)</DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>Foo Action</DropdownItem>
-                    <DropdownItem>Bar Action</DropdownItem>
-                    <DropdownItem>Quo Action</DropdownItem>
+                    {dropdownItemsList}
                   </DropdownMenu>
-                </Dropdown>
-
-                {this.props.location && <Tree version='1337' edges={posts} location={this.props.location} navOrder={navOrder} />}
+                </UncontrolledDropdown>
+                <Tree version={version} edges={posts} location={this.props.location} navOrder={navOrder}/>
               </Col>
               <Col md="9">
                 <MDXRenderer>{post.body}</MDXRenderer>

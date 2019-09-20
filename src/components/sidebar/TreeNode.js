@@ -16,7 +16,7 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, ite
   
   const active = location && location.pathname === ('/docs' + url);
   const calculatedClassName = `nav-docs-item ${active ? 'active' : ''} ${className}`;
-  const calculatedTitleClassName = `${lvl === 1 ? "font-weight-bold" : "font-weight-light"}`;
+  const calculatedTitleClassName = `${lvl < 3 ? "font-weight-bold" : "font-weight-light"}`;
 
   return (
     <NavItem className={calculatedClassName}>
@@ -34,7 +34,7 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, ite
       )}
   
       {!isCollapsed && hasChildren ? (
-        <ul className="pl-4 mb-0 list-unstyled">
+        <ul className={`${lvl > 1 ? 'pl-4' : '' } mb-0 list-unstyled`}>
           {items.map((item, idx) => {
               return ( <TreeNode key={idx} setCollapsed={setCollapsed} lvl={lvl+1} collapsed={collapsed} location={location} url={url} {...item} />
           )})}
