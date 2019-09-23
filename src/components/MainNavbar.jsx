@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 
 import {
     UncontrolledCollapse,
@@ -36,7 +36,6 @@ class MainNavbar extends React.Component {
 
   render() {
     const { pages, title, description } = this.props;
-    const navbarLinks = pages.map((page) => page.route !== '/'? <NavbarLink  key={page.id} route={page.route} title={page.title}/> : false )
     return (
         <Navbar className={"fixed-top " + this.state.navbarColor} expand="lg" color={this.state.navbarColor}>
           <Container>
@@ -66,7 +65,30 @@ class MainNavbar extends React.Component {
                 </Row>
               </div>
               <Nav className="ml-auto" navbar>
-                {navbarLinks}
+                <StaticQuery
+                  query={graphql`
+                    query {
+                      site {
+                        siteMetadata {
+                          docsVersions {
+                            slug
+                            desc
+                            index
+                          }
+                        }
+                      }
+                    }
+                  `}
+                  render={data => {
+                    const docsVersions = data.site.siteMetadata.docsVersions[0];
+                    console.log(pages);
+                    
+                    return pages.filter(page => page.active === true).map((page) => 
+                      page.route !== '/' ? 
+                        <NavbarLink  key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
+                        : false )
+                    }}
+                />
                 <NavItem className="align-items-center d-flex">
                   <button type="button" className="btn btn-success btn-simple btn-sm">Buy</button>
                 </NavItem>

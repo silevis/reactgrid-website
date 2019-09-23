@@ -73,7 +73,7 @@ const calculateTreeData = (navOrder, edges, version) => {
 }
 
 
-const Tree = ({edges, location, navOrder, version}) => {
+const Tree = ({edges, location, navOrder, version, docsRoute}) => {
   const [treeData] = useState(() => {
     return calculateTreeData(navOrder, edges, version);
   });
@@ -105,7 +105,7 @@ const Tree = ({edges, location, navOrder, version}) => {
       <Nav className="" card vertical>
       {treeData.items.map((item, idx) => {
         return <TreeNode key={idx} lvl={lvl} setCollapsed={toggle} collapsed={collapsed} url={location.pathname} 
-                location={location} items={item.items}/>
+                location={location} docsRoute={docsRoute} items={item.items}/>
       })}
       </Nav>
     </>

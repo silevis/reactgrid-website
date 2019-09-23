@@ -12,7 +12,7 @@ import {
   DropdownItem,
 } from "reactstrap";
 import Tree from "../components/sidebar/Tree";
-import SidebarLayout from "../components/SidebarLayout";
+import SidebarLayout from "../components/DocsSideNav";
 import CustomMDXComponents from "../components/CustomMDXComponents";
 
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
@@ -20,7 +20,6 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 class DocsPostTemplate extends React.Component {
   state = {
     isDocsNavFloating: false,
-    distanceToOnFloatingNav: 10,
   };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
@@ -40,7 +39,7 @@ class DocsPostTemplate extends React.Component {
     } else if (document.documentElement.scrollTop < 146 || document.body.scrollTop < 146 ) {
       this.setState({ isDocsNavFloating: false });
     }
-};
+  };
 
   render() {
     const post = this.props.data.mdx;
@@ -48,10 +47,11 @@ class DocsPostTemplate extends React.Component {
     const { title, description, pages, social, docsVersions, docsPagesOrder } = this.props.data.site.siteMetadata;
     const slug = this.props.location.pathname.split('/');
     const version = slug[2];
+    const docsRoute = pages[2].route;
 
     const dropdownItemsList = docsVersions.map(version => {
         return (
-          <DropdownItem key={version.slug} tag={Link} to={`/docs${version.slug+version.index}/`}>
+          <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsRoute+version.slug+version.index}/`}>
             <h4 className="text-darker mb-0">{version.desc}</h4>
           </DropdownItem>
         );
@@ -59,37 +59,39 @@ class DocsPostTemplate extends React.Component {
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
-        <div className="page-header header-filter page-header-compact-min mt-3">
+        <div style={{overflow: 'unset'}} className="page-header header-filter page-header-compact-min overlay">
           <Container>
-            <Col>
-              <Row>
-                {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                <h1><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
-              </Row>
-            </Col>
+            <Row>
+              <Col xs="auto" className="flex-fill">
+                  {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
+                  <h1><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
+              </Col>
+              <Col xs="auto">
+                <UncontrolledDropdown className="pull-right">
+                  <DropdownToggle caret size="sm" className="btn-success">
+                    Select version<br/>({version})
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    {dropdownItemsList}
+                  </DropdownMenu>
+                </UncontrolledDropdown>
+              </Col>
+            </Row>
           </Container>
         </div>
         <div className="py-5">
           <Container>
             <Row>
               <Col md="3">
-                <UncontrolledDropdown>
-                  <DropdownToggle caret size="sm" className="btn-danger">
-                    Select version<br/>({version})
-                  </DropdownToggle>
-                  <DropdownMenu>
-                    {dropdownItemsList}
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-                <Tree version={version} edges={posts} location={this.props.location} navOrder={docsPagesOrder}/>
+                <Tree version={version} edges={posts} docsRoute={docsRoute} location={this.props.location} navOrder={docsPagesOrder}/>
               </Col>
               <Col md="9" lg="7" xl="6">
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
               </Col>
-              <Col lg="2" xl="3" className="d-none d-lg-flex">
-                <SidebarLayout isFloating={this.state.isDocsNavFloating} location={this.props.location}/>
+              <Col lg="2" xl="3" className="d-none d-lg-flex position-relative">
+                <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsRoute} location={this.props.location}/>
               </Col>
             </Row>
           </Container>
@@ -112,6 +114,7 @@ export const pageQuery = graphql`
           id
           route
           title
+          active
         }
         social {
           description

@@ -161,6 +161,7 @@ export const pageQuery = graphql`
           id
           route
           title
+          active
         }
         social {
           description

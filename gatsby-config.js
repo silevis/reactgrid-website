@@ -5,11 +5,11 @@ module.exports = {
     description: `Advanced spreadsheet for developers`,
     siteUrl: `http://reactgrid.com`,
     pages: [
-      {id: 0, title: `Home`,        description: ``, route: `/` },
-      {id: 1, title: `Demo`,        description: ``, route: `/demo` },
-      {id: 2, title: `Docs`,        description: ``, route: `/docs` },
-      {id: 3, title: `Pricing`,     description: ``, route: `/pricing` },
-      // {id: 4, title: `Blog`,        description: ``, route: `/blog` },
+      {id: 0, title: `Home`,        description: ``, route: `/`,        active: false },
+      {id: 1, title: `Demo`,        description: ``, route: `/demo`,    active: true  },
+      {id: 2, title: `Docs`,        description: ``, route: `/docs`,    active: true  },
+      {id: 3, title: `Pricing`,     description: ``, route: `/pricing`, active: true  },
+      {id: 4, title: `Blog`,        description: ``, route: `/blog`,    active: false  },
 
     ],
     docsVersions: [
@@ -73,9 +73,14 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        plugins: [
+        plugins: [ `gatsby-remark-images` ],
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
+            options: {
+              linkImagesToOriginal: false,
+              maxWidth: 800
+            }
           },
           {
             resolve: `gatsby-remark-responsive-iframe`,
@@ -86,23 +91,17 @@ module.exports = {
           {resolve: `gatsby-remark-prismjs`},
           {resolve: `gatsby-remark-copy-linked-files`},
           {resolve: `gatsby-remark-smartypants`},
-          {
-            resolve: `gatsby-remark-autolink-headers`,
-            options: {
-              enableCustomId: true
-            },
-          },
         ],
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     //trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
@@ -118,6 +117,5 @@ module.exports = {
         crossOrigin: `use-credentials`,
       }
     },
-    `gatsby-plugin-client-side-redirect`,
   ],
 }

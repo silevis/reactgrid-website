@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 import { Nav, NavItem } from 'reactstrap';
 import classNames from 'classnames';
 
-const SidebarLayout = ({ location, isFloating }) => (
+const DocsSideNav = ({ location, isFloating, docsRoute }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -25,13 +25,13 @@ const SidebarLayout = ({ location, isFloating }) => (
         allMdx.edges.map((item, index) => {
           let innerItems;
           if(item !== undefined) {
-            if ((item.node.fields.slug === location.pathname) || ('/docs' + item.node.fields.slug) === location.pathname) {
+            if ((item.node.fields.slug === location.pathname) || (docsRoute + item.node.fields.slug) === location.pathname) {
               if (item.node.tableOfContents.items) {
                 innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
                   const itemId = innerItem.title ? innerItem.title.replace(/\s+/g, '').toLowerCase() : '#';
                   return (
                     <NavItem key={index} className="py-1">
-                      <a href={`#${itemId}`} >{innerItem.title}</a>
+                      <a href={`#${itemId}`} className="text-danger">{innerItem.title}</a>
                     </NavItem>
                   );
                 });
@@ -44,15 +44,17 @@ const SidebarLayout = ({ location, isFloating }) => (
         });
       }
       const cl = classNames({
-          'w-100 vh-100 overflow-auto ': true,
-          'position-fixed': isFloating,
+          'overflow-auto': true,
+          'vh-100 position-fixed': isFloating,
       })
       if (finalNavItems && finalNavItems.length) {
         return (
           <div style={{top: 0}} className={cl}>
-             <Nav vertical className="pl-3" style={{paddingTop: isFloating ? '117px' : '0'}}>
-                <div className="h4 text-white">CONTENTS</div>
-                {finalNavItems}
+             <Nav vertical  style={{paddingTop: isFloating ? '102px' : '0'}}>
+                <div style={{borderLeft: '1px solid rgba(255, 255, 255, 0.35)'}} className="pl-2">
+                  <div className="h4 text-white">CONTENTS</div>
+                  {finalNavItems}
+                </div>
              </Nav>
           </div>
         );
@@ -65,4 +67,4 @@ const SidebarLayout = ({ location, isFloating }) => (
   />
 );
 
-export default SidebarLayout;
+export default DocsSideNav;

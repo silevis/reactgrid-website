@@ -4,7 +4,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-import DynagridDemo from '@silevis/reactgrid';
+// import DynagridDemo from '@silevis/reactgrid';
 
 
 const DemoWrapper = () => {
