@@ -13,7 +13,7 @@ const DemoWrapper = () => {
         <Row>
           <Col>
             <div className="section">
-              <DynagridDemo/>
+              {/* <DynagridDemo/> */}
             </div>
           </Col>
         </Row>

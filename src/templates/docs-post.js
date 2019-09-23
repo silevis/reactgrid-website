@@ -12,35 +12,47 @@ import {
   DropdownItem,
 } from "reactstrap";
 import Tree from "../components/sidebar/Tree";
+import SidebarLayout from "../components/SidebarLayout";
+import CustomMDXComponents from "../components/CustomMDXComponents";
 
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class DocsPostTemplate extends React.Component {
+  state = {
+    isDocsNavFloating: false,
+    distanceToOnFloatingNav: 10,
+  };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     document.body.classList.add("blog-post");
-  }
-  componentWillUnmount() {
-    document.body.classList.remove("blog-post");
+    window.addEventListener("scroll", this.handleScroll);
   }
 
-  handleVersionChange = (version) => {
-    this.setState( {selectedVersionSlug: version} )
+  componentWillUnmount() {
+    document.body.classList.remove("blog-post");
+    window.removeEventListener("scroll", this.handleScroll);
   }
+
+  handleScroll = () => {
+    if ( document.documentElement.scrollTop > 145 || document.body.scrollTop > 145 ) {
+      this.setState({ isDocsNavFloating: true });
+    } else if (document.documentElement.scrollTop < 146 || document.body.scrollTop < 146 ) {
+      this.setState({ isDocsNavFloating: false });
+    }
+};
 
   render() {
     const post = this.props.data.mdx;
     const posts = this.props.data.allMdx.edges;
-    const { title, description, pages, social, navOrder } = this.props.data.site.siteMetadata;
+    const { title, description, pages, social, docsVersions, docsPagesOrder } = this.props.data.site.siteMetadata;
     const slug = this.props.location.pathname.split('/');
     const version = slug[2];
 
-    const dropdownItemsList = navOrder.map(version => {
+    const dropdownItemsList = docsVersions.map(version => {
         return (
-          <DropdownItem key={version} tag={Link} to={`/docs${version}/Introduction/`} 
-                        onClick={() => this.handleVersionChange(version)} >
-            <h4 className="text-darker mb-0">{version.replace('/','')}</h4>
+          <DropdownItem key={version.slug} tag={Link} to={`/docs${version.slug+version.index}/`}>
+            <h4 className="text-darker mb-0">{version.desc}</h4>
           </DropdownItem>
         );
     });
@@ -63,16 +75,21 @@ class DocsPostTemplate extends React.Component {
               <Col md="3">
                 <UncontrolledDropdown>
                   <DropdownToggle caret size="sm" className="btn-danger">
-                    Select version ({version})
+                    Select version<br/>({version})
                   </DropdownToggle>
                   <DropdownMenu>
                     {dropdownItemsList}
                   </DropdownMenu>
                 </UncontrolledDropdown>
-                <Tree version={version} edges={posts} location={this.props.location} navOrder={navOrder}/>
+                <Tree version={version} edges={posts} location={this.props.location} navOrder={docsPagesOrder}/>
               </Col>
-              <Col md="9">
-                <MDXRenderer>{post.body}</MDXRenderer>
+              <Col md="9" lg="7" xl="6">
+                <CustomMDXComponents>
+                  <MDXRenderer>{post.body}</MDXRenderer>
+                </CustomMDXComponents>
+              </Col>
+              <Col lg="2" xl="3" className="d-none d-lg-flex">
+                <SidebarLayout isFloating={this.state.isDocsNavFloating} location={this.props.location}/>
               </Col>
             </Row>
           </Container>
@@ -102,7 +119,12 @@ export const pageQuery = graphql`
           title
           url
         }
-        navOrder
+        docsVersions {
+          slug
+          desc
+          index
+        }
+        docsPagesOrder
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {

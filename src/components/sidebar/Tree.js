@@ -6,7 +6,7 @@ import {
 } from "reactstrap";
 
 const calculateTreeData = (navOrder, edges, version) => {
-  const originalData = false ? edges.filter(({node: {fields: {slug}}}) => slug !== '/') : edges;
+  const originalData = true ? edges.filter(({node: {fields: {slug}}}) => slug !== '/') : edges;
   const tree = originalData.reduce((accu, {node: {fields: {slug}, frontmatter : {title}}}) => {
     const parts = slug.split('/');
     if (parts[1] !== version) return accu;
@@ -85,6 +85,21 @@ const Tree = ({edges, location, navOrder, version}) => {
       [url]: !collapsed[url],
     });
   }
+
+  // let items = edges.map(item => {
+  //   return item.node
+  // }).filter(item => {
+  //   return item.fields.slug.split('/')[1] === version
+  // });
+
+
+  // items = items.filter(item => {
+  //   console.log(item.fields.slug.split('/'));
+  //   return item.fields.slug.split('/')[2] === '1.0.3'
+  // });
+
+  
+
   return (
     <>
       <Nav className="" card vertical>

@@ -25,7 +25,7 @@ class Footer extends React.Component {
                 <Link to={pages[0].route} className="footer-brand"></Link>
                 <div>
                     <Row>
-                        <Col lg="3">
+                        <Col md="6" lg="3">
                             <div className="info info-hover pt-3">
                                 <Row>
                                     <Col sm="3">
@@ -40,7 +40,7 @@ class Footer extends React.Component {
                                 </Row>
                             </div>
                         </Col>
-                        <Col lg="3">
+                        <Col  md="6" lg="3">
                             <div className="info info-hover pt-3">
                                 <Row>
                                     <Col sm="3">
@@ -55,7 +55,7 @@ class Footer extends React.Component {
                                 </Row>
                             </div>
                         </Col>
-                        <Col lg="3">
+                        <Col md="6" lg="3">
                             <div className="info info-hover pt-3">
                                 <Row>
                                     <Col sm="3">
@@ -70,7 +70,7 @@ class Footer extends React.Component {
                                 </Row>
                             </div>
                         </Col>
-                        <Col lg="3">
+                        <Col md="6" lg="3">
                             <div className="info info-hover pt-3">
                                 <Row>
                                     <Col sm="3">

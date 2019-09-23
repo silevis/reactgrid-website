@@ -3,7 +3,14 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
+  createRedirect({
+		fromPath: `/docs`,
+		toPath: `/docs/3.0.1/Introduction`,
+		isPermanent: `true`,
+  })
+  
+  // TODO pobieranie ostaniej werjsji z configu
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const docsPost = path.resolve(`./src/templates/docs-post.js`)

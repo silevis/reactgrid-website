@@ -12,10 +12,16 @@ module.exports = {
       // {id: 4, title: `Blog`,        description: ``, route: `/blog` },
 
     ],
-    navOrder: [
-      "/1.0.3",
-      "/1.0.2",
-      "/1.0.1",
+    docsVersions: [
+      {slug: "/1.0.3", desc: '1.0.3', index: '/Introduction' },
+      {slug: "/1.0.2", desc: '1.0.2 (deprecated)', index: '/Introduction' },
+      {slug: "/1.0.1", desc: '1.0.1 (deprecated)', index: '/Introduction' },
+    ],
+    docsPagesOrder: [
+      "/Za",
+      "/Tutorial",
+      "/Introduction",
+      
     ],
     social: [
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
@@ -80,6 +86,12 @@ module.exports = {
           {resolve: `gatsby-remark-prismjs`},
           {resolve: `gatsby-remark-copy-linked-files`},
           {resolve: `gatsby-remark-smartypants`},
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              enableCustomId: true
+            },
+          },
         ],
       },
     },
@@ -106,5 +118,6 @@ module.exports = {
         crossOrigin: `use-credentials`,
       }
     },
+    `gatsby-plugin-client-side-redirect`,
   ],
 }

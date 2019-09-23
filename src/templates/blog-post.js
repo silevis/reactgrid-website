@@ -8,7 +8,7 @@ import {
   Col
 } from "reactstrap";
 import Img from 'gatsby-image'
-
+import CustomMDXComponents from "../components/CustomMDXComponents";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class BlogPostTemplate extends React.Component {
@@ -51,7 +51,9 @@ class BlogPostTemplate extends React.Component {
           <Container>
             <Row>
               <Col className="ml-auto mr-auto" md="9">
-                <MDXRenderer>{post.body}</MDXRenderer>
+                <CustomMDXComponents>
+                  <MDXRenderer>{post.body}</MDXRenderer>
+                </CustomMDXComponents>
               </Col>
             </Row>
           </Container>
