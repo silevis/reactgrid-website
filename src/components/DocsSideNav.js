@@ -22,7 +22,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
     render={({ allMdx }) => {
       let finalNavItems;
       if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
-        allMdx.edges.map((item, index) => {
+        allMdx.edges.map(item => {
           let innerItems;
           if(item !== undefined) {
             if ((item.node.fields.slug === location.pathname) || (docsRoute + item.node.fields.slug) === location.pathname) {
@@ -43,16 +43,16 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
           return item;
         });
       }
-      const cl = classNames({
+      const navWrapperClasses = classNames({
           'overflow-auto': true,
-          'vh-100 position-fixed': isFloating,
+          'vh-100 position-fixed px-3 ml-n3': isFloating,
       })
       if (finalNavItems && finalNavItems.length) {
         return (
-          <div style={{top: 0}} className={cl}>
-             <Nav vertical  style={{paddingTop: isFloating ? '102px' : '0'}}>
-                <div style={{borderLeft: '1px solid rgba(255, 255, 255, 0.35)'}} className="pl-2">
-                  <div className="h4 text-white">CONTENTS</div>
+          <div style={{top: 0}} className={navWrapperClasses}>
+             <Nav vertical style={{paddingTop: isFloating ? '102px' : '0'}}>
+                <div style={{borderLeft: '1px solid rgba(255, 255, 255, 0.25)'}} className="pl-2">
+                  <div className="h5 text-white">CONTENTS</div>
                   {finalNavItems}
                 </div>
              </Nav>

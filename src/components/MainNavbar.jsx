@@ -54,7 +54,7 @@ class MainNavbar extends React.Component {
                 <Row>
                   <Col className="collapse-brand" xs="10">
                     <NavLink to={pages[0].route} tag={Link}>
-                        {title} | {description}
+                        {title} <span className="d-none">| {description}</span>
                     </NavLink>
                   </Col>
                   <Col className="collapse-close text-right" xs="2">
@@ -81,8 +81,6 @@ class MainNavbar extends React.Component {
                   `}
                   render={data => {
                     const docsVersions = data.site.siteMetadata.docsVersions[0];
-                    console.log(pages);
-                    
                     return pages.filter(page => page.active === true).map((page) => 
                       page.route !== '/' ? 
                         <NavbarLink  key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 

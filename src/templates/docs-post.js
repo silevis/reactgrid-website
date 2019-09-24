@@ -90,7 +90,7 @@ class DocsPostTemplate extends React.Component {
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
               </Col>
-              <Col lg="2" xl="3" className="d-none d-lg-flex position-relative">
+              <Col lg="2" xl="3" className="d-none d-lg-flex position-relative justify-content-start">
                 <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsRoute} location={this.props.location}/>
               </Col>
             </Row>
