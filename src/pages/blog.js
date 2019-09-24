@@ -10,7 +10,8 @@ class Blog extends React.Component {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
     const posts = data.allMdx.edges;
-    const blogPageRoute = pages[4].route;
+    const blogPage = pages.find(page => page.id === 'blog')
+    const blogPageRoute = blogPage.route;
 
     const headerTitle = <h1 className="title">Latest blogposts</h1>;
     const headerDescription = (

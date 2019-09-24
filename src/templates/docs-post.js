@@ -61,10 +61,10 @@ class DocsPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
         <div style={{overflow: 'unset'}} className="page-header header-filter page-header-compact-min overlay">
           <Container>
-            <Row>
+            <Row className="pt-5">
               <Col xs="auto" className="flex-fill">
                   {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                  <h1><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
+                  <h1 className="mb-0"><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
               </Col>
               <Col xs="auto">
                 <UncontrolledDropdown className="pull-right">

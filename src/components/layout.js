@@ -14,7 +14,7 @@ class Layout extends React.Component {
     return (
       <div>
         <header>
-          <MainNavbar pages={pages} title={title} description={description}/>
+          <MainNavbar pages={pages} title={title} social={social} description={description}/>
         </header>
         <main className="layout-main-wrapper">{children}</main>
         <footer>

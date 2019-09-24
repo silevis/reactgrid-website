@@ -19,7 +19,7 @@ class Footer extends React.Component {
     return (
       <footer className="footer" data-background-color="black">
         <Container>
-          <Link to={pages[0].route} className="footer-brand"></Link>
+          <Link to={'/'} className="footer-brand"></Link>
           <div>
             <Row>
               <Col md="6" lg="3">

@@ -11,6 +11,7 @@ import {
     Container,
     Row,
     Col,
+    Button,
   } from "reactstrap";
 
 class MainNavbar extends React.Component {
@@ -35,12 +36,12 @@ class MainNavbar extends React.Component {
     };
 
   render() {
-    const { pages, title, description } = this.props;
+    const { pages, title, description, social } = this.props;
     return (
         <Navbar className={"fixed-top " + this.state.navbarColor} expand="lg" color={this.state.navbarColor}>
           <Container>
             <div className="navbar-translate">
-              <NavbarBrand to={pages[0].route} tag={Link}>
+              <NavbarBrand to={'/'} tag={Link}>
                 <span style={{fontSize: '1.3em'}}>{title}</span> | {description}
               </NavbarBrand>
               <button className="navbar-toggler" id="navigation">
@@ -53,7 +54,7 @@ class MainNavbar extends React.Component {
               <div className="navbar-collapse-header">
                 <Row>
                   <Col className="collapse-brand" xs="10">
-                    <NavLink to={pages[0].route} tag={Link}>
+                    <NavLink to={'/'} tag={Link}>
                         {title} <span className="d-none">| {description}</span>
                     </NavLink>
                   </Col>
@@ -64,7 +65,7 @@ class MainNavbar extends React.Component {
                   </Col>
                 </Row>
               </div>
-              <Nav className="ml-auto" navbar>
+              <Nav className="ml-auto d-flex" navbar>
                 <StaticQuery
                   query={graphql`
                     query {
@@ -81,15 +82,27 @@ class MainNavbar extends React.Component {
                   `}
                   render={data => {
                     const docsVersions = data.site.siteMetadata.docsVersions[0];
-                    return pages.filter(page => page.active === true).map((page) => 
-                      page.route !== '/' ? 
-                        <NavbarLink  key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
-                        : false )
-                    }}
+                    const docsPage = pages.find(page => page.id === 'docs')
+                    const githubSocial = social.find(social => social.title === 'Github')
+                    const navbarLinks = pages.filter(page => page.active && page.active === true).map(page => {
+                      const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
+                      return <li className="px-0 align-items-center d-flex"><NavbarLink key={page.id} route={route} title={page.title}/> </li>
+                    })
+                    const getStarted =  <li className="align-items-center d-flex">
+                                          <NavLink to={`${docsPage.route}${docsVersions.slug}${docsVersions.index}/`} tag={Link}>
+                                            <button type="button" className="btn btn-success btn-simple btn-sm">Get started</button>
+                                          </NavLink>
+                                        </li>
+                  
+                    const github =  <li className="align-items-center d-flex p-0">
+                                      <Button className="btn-sm btn-simple m-0" color="github" href={githubSocial.url} target="_blank">
+                                        Check on Github{' '}<i className={`${githubSocial.fontAwesomeIcon} p-0`} />
+                                      </Button>
+                                    </li>
+
+                    return [...navbarLinks, getStarted, github]
+                  }}
                 />
-                <NavItem className="align-items-center d-flex">
-                  <button type="button" className="btn btn-success btn-simple btn-sm">Buy</button>
-                </NavItem>
               </Nav>
             </UncontrolledCollapse>
           </Container>

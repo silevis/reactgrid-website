@@ -5,11 +5,12 @@ module.exports = {
     description: `Advanced spreadsheet for developers`,
     siteUrl: `http://reactgrid.com`,
     pages: [
-      {id: 0, title: `Home`,        description: ``, route: `/`,        active: false },
-      {id: 1, title: `Demo`,        description: ``, route: `/demo`,    active: true  },
-      {id: 2, title: `Docs`,        description: ``, route: `/docs`,    active: true  },
-      {id: 3, title: `Pricing`,     description: ``, route: `/pricing`, active: true  },
-      {id: 4, title: `Blog`,        description: ``, route: `/blog`,    active: false  },
+      {id: 'home', title: `Home`,        description: ``, route: `/`,        active: false },
+      {id: 'demo', title: `Demo`,        description: ``, route: `/demo`,    active: true  },
+      {id: 'docs', title: `Docs`,        description: ``, route: `/docs`,    active: true  },
+      {id: 'pricing', title: `Pricing`,  description: ``, route: `/pricing`, active: true  },
+      {id: 'blog', title: `Blog`,        description: ``, route: `/blog`,    active: false  },
+      {id: 'features', title: `Features`,description: ``, route: `/blog`,    active: true  },
 
     ],
     docsVersions: [
@@ -100,6 +101,19 @@ module.exports = {
     //   resolve: `gatsby-plugin-google-analytics`,
     //   options: {
     //     //trackingId: `ADD YOUR TRACKING ID HERE`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-plugin-gdpr-cookies`,
+    //   options: {
+    //     googleAnalytics: {
+    //       trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
+    //       anonymize: true
+    //     },
+    //     facebookPixel: {
+    //       pixelId: 'YOUR_FACEBOOK_PIXEL_ID'
+    //     },
+    //     environments: ['production', 'development']
     //   },
     // },
     `gatsby-plugin-offline`,

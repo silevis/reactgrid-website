@@ -21,7 +21,12 @@ class Index extends React.Component {
   }
   render() {
     const { data } = this.props
-    const { title, description, pages, social } = data.site.siteMetadata;
+    const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
+    const docsVersion = docsVersions[0];
+    const demoPage = pages.find(page => page.id === 'demo')
+    const featuresPage = pages.find(page => page.id === 'features')
+    const docsPage = pages.find(page => page.id === 'docs')
+    
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
@@ -44,11 +49,11 @@ class Index extends React.Component {
                   <h3 className="title">Hightly customizable spreadsheet grid built on React</h3>
                   <br />
                   <div className="buttons">
-                    <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={pages[1].route}
+                    <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={demoPage.route}
                        size="lg">
                       <i className="fas fa-th"></i>
                     </Button>
-                    <Link tag={Link} to={pages[1].route}> <p style={{display: 'inline'}}>Check demo!</p></Link>
+                    <Link tag={Link} to={demoPage.route}> <p style={{display: 'inline'}}>Check demo!</p></Link>
                   </div>
                 </Col>
                 <Col className="ml-auto mt-5" lg="7" md="12">
@@ -70,7 +75,7 @@ class Index extends React.Component {
                 <p className="description">
                   description
                 </p>
-                <Button className="mt-3" color="primary" to={pages[2].route} tag={Link} onClick={e => e.preventDefault()}>
+                <Button className="mt-3" color="primary" to={featuresPage.route} tag={Link} onClick={e => e.preventDefault()}>
                   Check all features<i className="tim-icons icon-double-right"/>
                 </Button>
               </Col>
@@ -136,8 +141,8 @@ class Index extends React.Component {
                 <h4 className="description mb-5">
                   Dive in setup tutorial right now and develop your first ReactGrid application!
                 </h4>
-                <Button color="success"size="lg">
-                  Get started <i className="tim-icons icon-double-right" />
+                <Button color="success" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
+                  Get started
                 </Button>
               </Col>
             </Row>
@@ -162,6 +167,11 @@ export const pageQuery = graphql`
           route
           title
           active
+        }
+        docsVersions {
+          slug
+          desc
+          index
         }
         social {
           description
