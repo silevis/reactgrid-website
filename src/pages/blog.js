@@ -19,7 +19,7 @@ class Blog extends React.Component {
     );
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={'Blog'} />
+        <SEO title={title} />
         <Header header={headerTitle} description={headerDescription}/>
         <BlogView posts={posts} blogRoute={blogPageRoute}/>
       </Layout>

@@ -12,6 +12,7 @@ import {
     Row,
     Col,
     Button,
+    Badge,
   } from "reactstrap";
 
 class MainNavbar extends React.Component {
@@ -86,7 +87,8 @@ class MainNavbar extends React.Component {
                     const githubSocial = social.find(social => social.title === 'Github')
                     const navbarLinks = pages.filter(page => page.active && page.active === true).map(page => {
                       const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
-                      return <li className="px-0 align-items-center d-flex"><NavbarLink key={page.id} route={route} title={page.title}/> </li>
+                    const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
+                      return <li className="px-0 align-items-center d-flex"><NavbarLink key={page.id} route={route}>{title}</NavbarLink> </li>
                     })
                     const getStarted =  <li className="align-items-center d-flex">
                                           <NavLink to={`${docsPage.route}${docsVersions.slug}${docsVersions.index}/`} tag={Link}>
@@ -111,11 +113,11 @@ class MainNavbar extends React.Component {
   }
 }
 
-const NavbarLink = ({route, title}) => {
+const NavbarLink = ({route, children}) => {
     return (
       <NavItem>
-        <NavLink to={route} tag={Link} partiallyActive={route === '/' ? false : true} activeClassName="text-success font-weight-bold" >
-          {title}
+        <NavLink to={route} tag={Link} partiallyActive={route === '/' ? false : true} className="d-flex align-items-center" activeClassName="text-success font-weight-bold">
+          {children}
         </NavLink>
       </NavItem>
     )

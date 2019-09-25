@@ -22,3 +22,14 @@
         color: #fb6340;
     }
 }
+
+.single-feature:nth-child(even) {
+    .single-feature-col-img {
+        order: 12;
+    }
+    .feature-description {
+        h3{
+            text-align: right;
+        }
+    }
+}

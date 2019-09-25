@@ -5,13 +5,12 @@ module.exports = {
     description: `Advanced spreadsheet for developers`,
     siteUrl: `http://reactgrid.com`,
     pages: [
-      {id: 'home', title: `Home`,        description: ``, route: `/`,        active: false },
-      {id: 'demo', title: `Demo`,        description: ``, route: `/demo`,    active: true  },
-      {id: 'docs', title: `Docs`,        description: ``, route: `/docs`,    active: true  },
-      {id: 'pricing', title: `Pricing`,  description: ``, route: `/pricing`, active: true  },
-      {id: 'blog', title: `Blog`,        description: ``, route: `/blog`,    active: false  },
-      {id: 'features', title: `Features`,description: ``, route: `/blog`,    active: true  },
-
+      {id: 'home',      title: `Home`,        description: ``, route: `/`,          active: false},
+      {id: 'features',  title: `Features`,    description: ``, route: `/features`,  active: true},
+      {id: 'demo',      title: `Demo`,        description: ``, route: `/demo`,      active: true},
+      {id: 'docs',      title: `Docs`,        description: ``, route: `/docs`,      active: true},
+      {id: 'pricing',   title: `Pricing`,     description: ``, route: `/pricing`,   active: true},
+      {id: 'blog',      title: `Blog`,        description: ``, route: `/blog`,      active: false},
     ],
     docsVersions: [
       {slug: "/1.0.3", desc: '1.0.3', index: '/Introduction' },

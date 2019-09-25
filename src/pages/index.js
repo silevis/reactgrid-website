@@ -26,6 +26,7 @@ class Index extends React.Component {
     const demoPage = pages.find(page => page.id === 'demo')
     const featuresPage = pages.find(page => page.id === 'features')
     const docsPage = pages.find(page => page.id === 'docs')
+    const githubSocial = social.find(social => social.title === 'Github')
     
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
@@ -141,9 +142,12 @@ class Index extends React.Component {
                 <h4 className="description mb-5">
                   Dive in setup tutorial right now and develop your first ReactGrid application!
                 </h4>
-                <Button color="success" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
-                  Get started
+                <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
+                  Get started{' '}<i className="tim-icons icon-double-right"/>
                 </Button>
+                <a className="btn btn-lg mx-2" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
+                  View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`}/>
+                </a>
               </Col>
             </Row>
           </Container>
