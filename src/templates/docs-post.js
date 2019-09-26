@@ -47,11 +47,11 @@ class DocsPostTemplate extends React.Component {
     const { title, description, pages, social, docsVersions, docsPagesOrder } = this.props.data.site.siteMetadata;
     const slug = this.props.location.pathname.split('/');
     const version = slug[2];
-    const docsRoute = pages[2].route;
+    const docsPage = pages.find(page => page.id === 'docs')
 
     const dropdownItemsList = docsVersions.map(version => {
         return (
-          <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsRoute+version.slug+version.index}/`}>
+          <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route+version.slug+version.index}/`}>
             <h4 className="text-darker mb-0">{version.desc}</h4>
           </DropdownItem>
         );
@@ -61,15 +61,15 @@ class DocsPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
         <div style={{overflow: 'unset'}} className="page-header header-filter page-header-compact-min overlay">
           <Container>
-            <Row className="pt-5">
+            <Row className="pt-4">
               <Col xs="auto" className="flex-fill">
                   {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                  <h1 className="mb-0"><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
+                  <h1 className="mb"><span className="text-danger">{post.frontmatter.title}</span> v.{version}</h1>
               </Col>
               <Col xs="auto">
                 <UncontrolledDropdown className="pull-right">
-                  <DropdownToggle caret size="sm" className="btn-success">
-                    Select version<br/>({version})
+                  <DropdownToggle caret size="md" className="btn-success text-nowrap">
+                    Select version{' '}({version})
                   </DropdownToggle>
                   <DropdownMenu right>
                     {dropdownItemsList}
@@ -83,7 +83,7 @@ class DocsPostTemplate extends React.Component {
           <Container>
             <Row>
               <Col md="3">
-                <Tree version={version} edges={posts} docsRoute={docsRoute} location={this.props.location} navOrder={docsPagesOrder}/>
+                <Tree version={version} edges={posts} docsRoute={docsPage.route} location={this.props.location} navOrder={docsPagesOrder}/>
               </Col>
               <Col md="9" lg="7" xl="6">
                 <CustomMDXComponents>
@@ -91,7 +91,7 @@ class DocsPostTemplate extends React.Component {
                 </CustomMDXComponents>
               </Col>
               <Col lg="2" xl="3" className="d-none d-lg-flex position-relative justify-content-start">
-                <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsRoute} location={this.props.location}/>
+                <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsPage.route} location={this.props.location}/>
               </Col>
             </Row>
           </Container>

@@ -23,7 +23,7 @@ class Index extends React.Component {
     const { data } = this.props
     const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
     const docsVersion = docsVersions[0];
-    const demoPage = pages.find(page => page.id === 'demo')
+    const demoPage = pages.find(page => page.id === 'examples')
     const featuresPage = pages.find(page => page.id === 'features')
     const docsPage = pages.find(page => page.id === 'docs')
     const githubSocial = social.find(social => social.title === 'Github')

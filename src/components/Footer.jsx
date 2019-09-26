@@ -17,106 +17,92 @@ class Footer extends React.Component {
               url={link.url} title={link.title}/> 
     })
     return (
-      <footer className="footer" data-background-color="black">
+      <>
+      <footer className="footer footer-simple" data-background-color="black">
         <Container>
-          <Link to={'/'} className="footer-brand"></Link>
-          <div>
+          {/* <Link to={'/'} className="footer-brand"></Link> */}
+          <div className="content">
             <Row>
-              <Col md="6" lg="3">
-                <div className="info info-hover pt-3">
-                  <Row>
-                    <Col sm="3">
-                      <div className="icon icon-primary">
-                        <i className="tim-icons icon-square-pin" />
-                      </div>
-                    </Col>
-                    <Col sm="9" className="text-left">
-                      <h4>Address</h4>
-                      <p className="p-0 description">Sienkiewicza Street 17/3<br/>kod-pocztowy Kielce<br/></p>
-                    </Col>
-                  </Row>
-                </div>
+              <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
+                <h5>Market</h5>
+                <ul className="links-vertical">
+                  <StaticQuery
+                    query={graphql`
+                      query {
+                        site {
+                          siteMetadata {
+                            docsVersions {
+                              slug
+                              desc
+                              index
+                            }
+                          }
+                        }
+                      }
+                    `}
+                    render={data => {
+                      const docsVersions = data.site.siteMetadata.docsVersions[0];
+                      return pages.filter(page => page.active).map(page => 
+                          <FooterLink key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
+                      )
+                    }}
+                  />
+                </ul>
               </Col>
-                <Col  md="6" lg="3">
-                  <div className="info info-hover pt-3">
-                    <Row>
-                      <Col sm="3">
-                        <div className="icon icon-primary">
-                          <i className="tim-icons icon-email-85" />
-                        </div>
-                      </Col>
-                      <Col sm="9" className="text-left">
-                        <h4>Email</h4>
-                        <p className="p-0 description">support@youremail.com</p>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
-                <Col md="6" lg="3">
-                  <div className="info info-hover pt-3">
-                    <Row>
-                      <Col sm="3">
-                        <div className="icon icon-warning">
-                          <i className="tim-icons icon-mobile" />
-                        </div>
-                      </Col>
-                      <Col sm="9" className="text-left">
-                        <h4>Phone Number</h4>
-                        <p className="p-0 description">+48 (424) 535 3523</p>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
-                <Col md="6" lg="3">
-                  <div className="info info-hover pt-3">
-                    <Row>
-                      <Col sm="3">
-                        <div className="icon icon-info">
-                          <i className="tim-icons icon-single-02" />
-                        </div>
-                      </Col>
-                      <Col sm="9" className="text-left">
-                        <h4>Contact</h4>
-                        <p className="p-0 description">Michał Matejko</p>
-                      </Col>
-                    </Row>
-                  </div>
-                </Col>
+              <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
+                <h5>Company</h5>
+                <ul className="links-vertical">
+                  <StaticQuery
+                    query={graphql`
+                      query {
+                        site {
+                          siteMetadata {
+                            footerNav {
+                              id
+                              title
+                              description
+                              route
+                              active
+                            }
+                          }
+                        }
+                      }
+                    `}
+                    render={data => {
+                      const {footerNav} = data.site.siteMetadata;
+                      return footerNav.filter(page => page.active).map(page => 
+                          <FooterLink key={page.id} route={page.route} title={page.title}/> 
+                      )
+                    }}
+                  />
+                </ul>
+              </Col>
+              <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0"> 
+                <h5>Contact</h5>
+                <p>
+                  Silevis Software<br/>
+                  Sienkiewicza Street 17/3<br/>
+                  25-007 Kielce<br/>
+                  Poland<br/>
+                  <br/>
+                  +48 000 000 000<br/>
+                </p>
+              </Col>
+              <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
+                <h5>Social</h5>
+                <ul className="links-horizontal">
+                  {socialLinks}
+                </ul>
+              </Col>
             </Row>
           </div>
           <hr className="w-100"/>
-          <ul className="pull-left">
-            <StaticQuery
-              query={graphql`
-                query {
-                  site {
-                    siteMetadata {
-                      docsVersions {
-                        slug
-                        desc
-                        index
-                      }
-                    }
-                  }
-                }
-              `}
-              render={data => {
-                const docsVersions = data.site.siteMetadata.docsVersions[0];
-                return pages.map((page) => 
-                  page.route !== '/' ? 
-                    <FooterLink key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
-                    : false )
-                }}
-            />
-          </ul>
           <div className="copyright">
-            <ul className="social-buttons pull-left pr-3">
-              {socialLinks}
-            </ul>
             Copyright © 2019 Silevis Software, All Rights Reserved.
           </div>
         </Container>
       </footer>
+      </>
     );
   }
 }
@@ -133,8 +119,8 @@ const SocialLink = ({fontAwesomeIcon, description, url, id}) => {
   const tooltipId = 'tooltip' + id
   return (
     <li>
-      <Button className="btn btn-link btn-neutral ml-1" color="link"  id={tooltipId} href={url} target="_blank">
-        <i className={fontAwesomeIcon} />
+      <Button className="btn-icon btn-simple" id={tooltipId} href={url} target="_blank">
+        <i className={fontAwesomeIcon} /> 
       </Button>
       <UncontrolledTooltip delay={0} target={tooltipId}>{description}</UncontrolledTooltip>
     </li>

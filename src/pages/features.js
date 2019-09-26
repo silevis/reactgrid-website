@@ -2,17 +2,16 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Header from "../components/Header"
+// import Header from "../components/Header"
 
 import { 
   Container,
   Row,
   Col, 
-  Button
+  // Button
 } from "reactstrap";
 
 import demoGIF from "../assets/img/demo.gif";
-import blob from "../assets/img/path2.png";
 
 class Features extends React.Component {
   componentDidMount() {
@@ -23,51 +22,41 @@ class Features extends React.Component {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
 
-    const headerTitle = <h1 className="title">Features</h1>;
-    const headerDescription = (
-      <p className="description">Available ReactGrid options</p>
-    );
+    // const headerTitle = <h1 className="title">Features</h1>;
+    // const headerDescription = (
+    //   <p className="description">Available ReactGrid options</p>
+    // );
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-        <Header header={headerTitle} description={headerDescription}/>
+        {/* <Header header={headerTitle} description={headerDescription}/> */}
         <div className="section">
-          <img alt="blob" className="path" src={blob} />
           <Container>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left">Feature title</h3>
-              <p class="description">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 class="profile-title text-left mb-3">Feature title</h3>
+              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
-                <Button className="btn-lg btn-info btn-simple mt-3 px-4" size="lg" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io{'  '}<i class="fab fa-codepen text-white"></i>
-                </Button>
+                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
+                  Try out on codepen.io
+                </a>
               </div>
             </SingleFeature>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left">Feature title</h3>
-              <p class="description">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 class="profile-title text-left mb-3">Feature title</h3>
+              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
-                <Button className="btn-lg btn-info btn-simple mt-3 px-4" size="lg" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io{'  '}<i class="fab fa-codepen text-white"></i>
-                </Button>
+                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
+                  Try out on codepen.io
+                </a>
               </div>
             </SingleFeature>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left">Feature title</h3>
-              <p class="description">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 class="profile-title text-left mb-3">Feature title</h3>
+              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
-                <Button className="btn-lg btn-info btn-simple mt-3 px-4" size="lg" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io{'  '}<i class="fab fa-codepen text-white"></i>
-                </Button>
-              </div>
-            </SingleFeature>
-            <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left">Feature title</h3>
-              <p class="description">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
-              <div>
-                <Button className="btn-lg btn-info btn-simple mt-3 px-4" size="lg" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io{'  '}<i class="fab fa-codepen text-white"></i>
-                </Button>
+                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
+                  Try out on codepen.io
+                </a>
               </div>
             </SingleFeature>
           </Container>
@@ -81,24 +70,27 @@ export default Features
 
 const SingleFeature = ({imgSrc, imgAlt, children}) => {
   return (
-    <div className="single-feature mb-5">
+    <div className="single-feature my-lg-5 py-lg-5">
       <Row>
         <Col xs={12} lg={5} className="single-feature-col-img">
           <FeatureImage imgSrc={imgSrc} imgAlt={imgAlt} />
         </Col>
-        <Col xs={12} lg={7} className="single-feature-col-desc d-flex align-items-center">
+        <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
+        <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
           <div className="feature-description flex-column d-flex mt-4">
             {children}
           </div>
         </Col>
-      </Row> 
+      </Row>
+      <hr className="line-success my-5 d-lg-none" />
     </div>
+    
   )
 }
 
 const FeatureImage = ({imgSrc, imgAlt}) => {
   return (
-    <div className="iframe-container d-flex align-items-center h-100">
+    <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
         <img alt={imgAlt} src={imgSrc}/>
     </div>
   )

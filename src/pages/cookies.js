@@ -19,6 +19,8 @@ import {
 
 class Index extends React.Component {
   componentDidMount() {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
     document.body.classList.add("reset-page");
   }
   componentWillUnmount() {

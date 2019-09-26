@@ -10,15 +10,17 @@ import {
   Card,
   CardHeader,
   CardBody,
-  Nav,
-  NavItem,
-  NavLink,
-  Button,
+  // Nav,
+  // NavItem,
+  // NavLink,
+  // Button,
 } from "reactstrap";
 
 
 class Index extends React.Component {
   componentDidMount() {
+    document.documentElement.scrollTop = 0;
+    document.scrollingElement.scrollTop = 0;
     document.body.classList.add("reset-page");
   }
   componentWillUnmount() {
@@ -35,19 +37,19 @@ class Index extends React.Component {
             <Container>
               <Row>
                 <Col className="ml-auto mr-auto" md="10">
-                  <Card className="card-invoice">
+                  <Card>
                     <CardHeader className="text-center pt-5" data-color-icon="warning">
                       <Row className="justify-content-between">
                         <Col>
                           <h1 className="h1 px-3">Privacy Policy</h1>
                           <h3 className="h3 px-5 text-muted">Effective date: xx.xx.xxxx</h3>
-                          <Nav justified className="mt-5">
+                          {/* <Nav justified className="mt-5">
                             <NavItem className="success">
                               <NavLink href="#cookies-guide" className="h4">
                                 <Button className="btn-simple" color="success">Cookies guide</Button>
                               </NavLink>
                             </NavItem>
-                          </Nav>
+                          </Nav> */}
                         </Col>
                       </Row>
                       <br />
@@ -56,7 +58,7 @@ class Index extends React.Component {
                       <Row>
                         <Col xs="11" className="mx-auto">
                           <div className="cookies-policy-topic-wrapper">
-                            <h2 id="cookies-guide" className="h2">Cookies guide</h2>
+                            <h2 id="cookies-guide" className="h2">Privacy Policy</h2>
                             <p className="pb-3">Lorem ipsum dolor <strong>sit amet, consectetur adipiscing elit.</strong> Fusce eu sodales erat. Morbi eu eros nulla. 
                               Proin odio diam, pulvinar sed rhoncus at, finibus et dui. Duis enim tellus, ultrices vel lectus id,
                               maximus venenatis nisi. Aenean vitae tempus odio. Cras scelerisque accumsan felis, et tincidunt 
@@ -76,7 +78,7 @@ class Index extends React.Component {
                             <hr class="line-primary ml-auto"/>
                           </div>
                           <div className="cookies-policy-topic-wrapper">
-                            <h2 id="what-is-a-cookie" className="h2">Cookies guide</h2>
+                            <h2 id="what-is-a-cookie" className="h2">Privacy Policy</h2>
                             <p className="pb-3">Lorem ipsum dolor <strong>sit amet, consectetur adipiscing elit.</strong> Fusce eu sodales erat. Morbi eu eros nulla. 
                               Proin odio diam, pulvinar sed rhoncus at, finibus et dui. Duis enim tellus, ultrices vel lectus id,
                               maximus venenatis nisi. Aenean vitae tempus odio. Cras scelerisque accumsan felis, et tincidunt 
@@ -95,7 +97,6 @@ class Index extends React.Component {
                             </p>
                             <hr class="line-primary ml-auto"/>
                           </div>
-                        
                         </Col>
                       </Row>
                     </CardBody>

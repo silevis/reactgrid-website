@@ -7,10 +7,16 @@ module.exports = {
     pages: [
       {id: 'home',      title: `Home`,        description: ``, route: `/`,          active: false},
       {id: 'features',  title: `Features`,    description: ``, route: `/features`,  active: true},
-      {id: 'demo',      title: `Demo`,        description: ``, route: `/demo`,      active: true},
+      {id: 'examples',  title: `Examples`,    description: ``, route: `/examples`,  active: true},
       {id: 'docs',      title: `Docs`,        description: ``, route: `/docs`,      active: true},
       {id: 'pricing',   title: `Pricing`,     description: ``, route: `/pricing`,   active: true},
       {id: 'blog',      title: `Blog`,        description: ``, route: `/blog`,      active: false},
+    ],
+    footerNav: [
+      {id: 'team',          title: `Team`,          description: ``, route: `/team`,            active: true},
+      {id: 'faq',           title: `FAQ`,           description: ``, route: `/faq`,             active: true},
+      {id: 'cookie',        title: `Cookie Policy`, description: ``, route: `/cookies`,         active: true},
+      {id: 'privacyPolicy', title: `Privacy Policy`,description: ``, route: `/privacy-policy`,  active: true},
     ],
     docsVersions: [
       {slug: "/1.0.3", desc: '1.0.3', index: '/Introduction' },
@@ -24,8 +30,8 @@ module.exports = {
       
     ],
     social: [
-      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
+      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
       { title: `npm`, description: `Check our npm repo`, url: `https://www.npmjs.com/org/silevis`, fontAwesomeIcon: 'fab fa-npm' },
     ],
   },

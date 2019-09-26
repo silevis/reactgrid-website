@@ -7,7 +7,7 @@ import Features from "../components/Features"
 import DemoWrapper from "../components/DemoWrapper"
 import FAQ from "../components/FAQ"
 
-class Demo extends React.Component {
+class Examples extends React.Component {
   render() {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
@@ -17,7 +17,7 @@ class Demo extends React.Component {
     );
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={'Demo'} />
+        <SEO title={'Examples'} />
         <Header header={headerTitle} description={headerDescription}/>
         <DemoWrapper/>
         <Features/>
@@ -27,7 +27,7 @@ class Demo extends React.Component {
   }
 }
 
-export default Demo
+export default Examples
 
 export const pageQuery = graphql`
   query {
