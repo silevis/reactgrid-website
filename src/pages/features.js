@@ -31,10 +31,11 @@ class Features extends React.Component {
         <SEO title={title} />
         {/* <Header header={headerTitle} description={headerDescription}/> */}
         <div className="section">
+          <div className="space-50"></div>
           <Container>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left mb-3">Feature title</h3>
-              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 className="profile-title text-left mb-3">Feature title</h3>
+              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
                 <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
                   Try out on codepen.io
@@ -42,8 +43,8 @@ class Features extends React.Component {
               </div>
             </SingleFeature>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left mb-3">Feature title</h3>
-              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 className="profile-title text-left mb-3">Feature title</h3>
+              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
                 <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
                   Try out on codepen.io
@@ -51,8 +52,8 @@ class Features extends React.Component {
               </div>
             </SingleFeature>
             <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 class="profile-title text-left mb-3">Feature title</h3>
-              <p class="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
+              <h3 className="profile-title text-left mb-3">Feature title</h3>
+              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
               <div>
                 <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
                   Try out on codepen.io
@@ -84,7 +85,6 @@ const SingleFeature = ({imgSrc, imgAlt, children}) => {
       </Row>
       <hr className="line-success my-5 d-lg-none" />
     </div>
-    
   )
 }
 

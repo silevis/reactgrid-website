@@ -54,7 +54,7 @@ class MainNavbar extends React.Component {
               <div className="navbar-collapse-header">
                 <Row>
                   <Col className="collapse-brand" xs="10">
-                    <NavLink to={'/'} tag={Link}>
+                    <NavLink to={'/'} tag={Link} className="text-white pl-0">
                         {title} <span className="d-none">| {description}</span>
                     </NavLink>
                   </Col>
@@ -96,8 +96,8 @@ class MainNavbar extends React.Component {
                                         </li>
                   
                     const github =  <li key={'githubLink'} className="align-items-center d-flex p-0">
-                                      <Button className="btn-sm btn-simple m-0" color="github" href={githubSocial.url} target="_blank">
-                                        Check on Github{' '}<i className={`${githubSocial.fontAwesomeIcon} p-0`} />
+                                      <Button className="btn-sm btn-simple m-0 align-items-center d-flex" color="github" href={githubSocial.url} target="_blank">
+                                        Check on Github{' '}<i className={`${githubSocial.fontAwesomeIcon} pl-1`} />
                                       </Button>
                                     </li>
 

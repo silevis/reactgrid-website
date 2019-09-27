@@ -1,6 +1,6 @@
 import React from "react";
-import { StaticQuery, graphql, Link } from "gatsby";
-
+import CommonFooterLinks from "../components/CommonFooterLinks"
+import FooterOnlyLinks from "../components/FooterOnlyLinks"
 import {
   Button,
   Container,
@@ -20,61 +20,18 @@ class Footer extends React.Component {
       <>
       <footer className="footer footer-simple" data-background-color="black">
         <Container>
-          {/* <Link to={'/'} className="footer-brand"></Link> */}
           <div className="content">
             <Row>
               <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
-                <h5>Market</h5>
+                <h5>About</h5>
                 <ul className="links-vertical">
-                  <StaticQuery
-                    query={graphql`
-                      query {
-                        site {
-                          siteMetadata {
-                            docsVersions {
-                              slug
-                              desc
-                              index
-                            }
-                          }
-                        }
-                      }
-                    `}
-                    render={data => {
-                      const docsVersions = data.site.siteMetadata.docsVersions[0];
-                      return pages.filter(page => page.active).map(page => 
-                          <FooterLink key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
-                      )
-                    }}
-                  />
+                  <CommonFooterLinks pages={pages}/>
                 </ul>
               </Col>
               <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
                 <h5>Company</h5>
                 <ul className="links-vertical">
-                  <StaticQuery
-                    query={graphql`
-                      query {
-                        site {
-                          siteMetadata {
-                            footerNav {
-                              id
-                              title
-                              description
-                              route
-                              active
-                            }
-                          }
-                        }
-                      }
-                    `}
-                    render={data => {
-                      const {footerNav} = data.site.siteMetadata;
-                      return footerNav.filter(page => page.active).map(page => 
-                          <FooterLink key={page.id} route={page.route} title={page.title}/> 
-                      )
-                    }}
-                  />
+                  <FooterOnlyLinks/>
                 </ul>
               </Col>
               <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0"> 
@@ -105,14 +62,6 @@ class Footer extends React.Component {
       </>
     );
   }
-}
-
-const FooterLink = ({route, title}) => {
-  return (
-    <li>
-      <Link to={route} activeStyle={{fontWeight: 600}} className="ml-1">{title}</Link>
-    </li>
-  )
 }
 
 const SocialLink = ({fontAwesomeIcon, description, url, id}) => {

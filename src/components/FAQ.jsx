@@ -26,8 +26,8 @@ class FAQ extends React.Component {
       <div className="accordion-1">
         <Container>
           <Row>
-            <Col className="ml-auto mr-auto text-center" md="6">
-              <h2 className="title mb-4 mt-5">FAQ</h2>
+            <Col className="ml-auto mr-auto text-center" md="8">
+              <h2 className="title mb-4 mt-5">Frequently Asked Questions</h2>
               <div className="section-space" />
             </Col>
           </Row>

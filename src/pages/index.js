@@ -24,120 +24,90 @@ class Index extends React.Component {
     const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
     const docsVersion = docsVersions[0];
     const demoPage = pages.find(page => page.id === 'examples')
-    const featuresPage = pages.find(page => page.id === 'features')
+    // const featuresPage = pages.find(page => page.id === 'features')
     const docsPage = pages.find(page => page.id === 'docs')
     const githubSocial = social.find(social => social.title === 'Github')
     
+    const usps = [
+      {
+        number: '01',
+        header: <span>Highly customizable / flexible at runtime/ Dynamic / reactive</span>,
+        description: '',
+        features: [
+          'Not limited to the way how other grids render data',
+          'Free yourself from / Don’t think in terms of fields and records',
+        ],
+        imgSrc: demoGIF,
+        imgAlt: '',
+      },
+      {
+        number: '02',
+        header: <span>Spreadsheet-like look and feel</span>,
+        description: '',
+        features: [],
+        imgSrc: demoGIF,
+        imgAlt: '',
+      },
+      {
+        number: '03',
+        header: <span>Using ReactJS concepts <br/>(Thinking in react)</span>,
+        description: '',
+        features: [],
+        imgSrc: 'https://cdn.worldvectorlogo.com/logos/react.svg',
+        imgAlt: '',
+      },
+    ]
+
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-        {/* header */}
         <div className="wrapper" ref="wrapper">
-          <div className="page-header">
-            <div className="squares square1" />
-            <div className="squares square2" />
-            <div className="squares square3" />
-            <div className="squares square4" />
-            <div className="squares square5" />
-            <div className="page-header-image" />
+          <div className="">
+            <div className="space"></div>
             <Container>
               <Row>
-                <Col className="mr-auto text-left mt-5" lg="5" md="7">
-                  <h6 className="category">A brand new approach to old known solutions</h6>
-                  <h1 className="title">
-                    <span className="text-danger">ReactGrid</span>
+                <Col className="mr-auto text-left align-items-center" lg="5" md="7">
+                  <h1 className="title display-1 mb-3">
+                    Build <span className="text-success">WOW!</span><br/>-tables
                   </h1>
-                  <h3 className="title">Hightly customizable spreadsheet grid built on React</h3>
+                  <h3 className="title">Create highly customizable spreadsheet-like grids</h3>
                   <br />
                   <div className="buttons">
-                    <Button className="btn-round mr-3 pulse" color="primary" tag={Link} to={demoPage.route}
-                       size="lg">
-                      <i className="fas fa-th"></i>
+                    <Button className="mr-3 px-3 " color="warning" tag={Link} to={demoPage.route} size="lg">
+                      Check examples {' '}<i className="tim-icons icon-double-right"/>
                     </Button>
-                    <Link tag={Link} to={demoPage.route}> <p style={{display: 'inline'}}>Check demo!</p></Link>
                   </div>
                 </Col>
-                <Col className="ml-auto mt-5" lg="7" md="12">
-                  <div className="iframe-container">
+                <Col className="ml-auto mt-5 d-flex align-items-center" lg="7" md="12">
+                  <div className="iframe-container ">
                     <img alt="Demo animation" src={demoGIF}/>
                   </div>
                 </Col>
               </Row>
             </Container>
+            <div className="space"></div>
           </div>
         </div>
-        {/* END header */}
-        {/* features */}
-        <div className="features-4">
+        <div>
           <Container>
             <Row className="align-items-center">
-              <Col className="mr-auto text-left" lg="3">
-                <h1 className="title">You should be here!</h1>
-                <p className="description">
-                  description
-                </p>
-                <Button className="mt-3" color="primary" to={featuresPage.route} tag={Link} onClick={e => e.preventDefault()}>
-                  Check all features<i className="tim-icons icon-double-right"/>
-                </Button>
+              <Col className="pb-5">
+                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
               </Col>
-              <Col className="p-sm-0" lg="8">
+            </Row>
+            <Row className="align-items-center">
+              <Col>
                 <Row>
-                  <Col md="6">
-                    <div className="info info-success">
-                      <div className="icon icon-white">
-                        <i className="tim-icons icon-satisfied" />
-                      </div>
-                      <h4 className="info-title">Super fast</h4>
-                      <p className="description">
-                        Fill and modify ReactGrid simultaneusly with thousands of records without any lag.
-                      </p>
-                    </div>
-                  </Col>
-                  <Col md="6">
-                    <div className="info info-warning">
-                      <div className="icon icon-white">
-                        <i className="tim-icons icon-palette" />
-                      </div>
-                      <h4 className="info-title">Developer first design</h4>
-                      <p className="description">
-                        You decide how to present your data and interact with them due to simple API.
-                      </p>
-                    </div>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col md="6">
-                    <div className="info info-primary">
-                      <div className="icon icon-white">
-                        <i className="tim-icons icon-user-run" />
-                      </div>
-                      <h4 className="info-title">A perfect foundation</h4>
-                      <p className="description">
-                        Create yor own app and adjust it to your personal needs in easy way. 
-                      </p>
-                    </div>
-                  </Col>
-                  <Col md="6">
-                    <div className="info info-info">
-                      <div className="icon icon-white">
-                        <i className="tim-icons icon-bulb-63" />
-                      </div>
-                      <h4 className="info-title">Continously improved</h4>
-                      <p className="description">
-                        ReactGrid is constantly improved by out dev to provide new features and functionality improvements.
-                      </p>
-                    </div>
-                  </Col>
+                  {usps.map(item => <USP key={item.number} {...item}></USP> )}
                 </Row>
               </Col>
             </Row>
           </Container>
         </div>
-        {/*  END features */}
         <div className="section">
           <Container>
             <Row>
-              <Col className="ml-auto mr-auto text-center mt-4" md="8">
+              <Col className="ml-auto mr-auto text-center mt-4" md="10">
                 <h2 className="title">Curious yet?</h2>
                 <h4 className="description mb-5">
                   Dive in setup tutorial right now and develop your first ReactGrid application!
@@ -145,7 +115,7 @@ class Index extends React.Component {
                 <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
                   Get started{' '}<i className="tim-icons icon-double-right"/>
                 </Button>
-                <a className="btn btn-lg mx-2" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
+                <a className="btn btn-lg mx-2" color="success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
                   View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`}/>
                 </a>
               </Col>
@@ -158,6 +128,31 @@ class Index extends React.Component {
 }
 
 export default Index
+
+const USP = ({number, header, description, features, imgSrc, imgAlt}) => {
+  return (
+    <Col md="12" className="py-md-5">
+      <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center ">
+        <Col md="3" lg="2">
+          <h4 className="text-muted display-1 text-bold pb-4 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
+        </Col>
+        <Col>
+          {imgSrc && <div className="d-flex align-items-center justify-content-center pb-5 pb-md-0" >
+            <img alt={imgAlt} src={imgSrc} style={{maxHeight: '200px'}} />
+          </div>}
+        </Col>
+        <Col>
+          <h4 className="">{header}</h4>
+          {features && <ul className="text-left pl-3">
+            {features.map(item => <li key={item}>{item}</li> )}
+          </ul>}
+          <p className="description">{description}</p>
+        </Col>
+      </Row>
+      <hr class="line-primary mx-auto d-md-none"/>
+    </Col>
+  )
+}
 
 export const pageQuery = graphql`
   query {

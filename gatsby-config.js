@@ -13,6 +13,7 @@ module.exports = {
       {id: 'blog',      title: `Blog`,        description: ``, route: `/blog`,      active: false},
     ],
     footerNav: [
+      {id: 'blog',          title: `Blog`,          description: ``, route: `/blog`,            active: true},
       {id: 'team',          title: `Team`,          description: ``, route: `/team`,            active: true},
       {id: 'faq',           title: `FAQ`,           description: ``, route: `/faq`,             active: true},
       {id: 'cookie',        title: `Cookie Policy`, description: ``, route: `/cookies`,         active: true},
