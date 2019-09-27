@@ -115,7 +115,7 @@ class Index extends React.Component {
                 <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
                   Get started{' '}<i className="tim-icons icon-double-right"/>
                 </Button>
-                <a className="btn btn-lg mx-2" color="success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
+                <a className="btn btn-lg mx-2 btn-success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
                   View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`}/>
                 </a>
               </Col>

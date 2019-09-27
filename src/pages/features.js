@@ -2,13 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import Header from "../components/Header"
 
 import { 
   Container,
   Row,
-  Col, 
-  // Button
+  Col,
 } from "reactstrap";
 
 import demoGIF from "../assets/img/demo.gif";
@@ -22,10 +20,72 @@ class Features extends React.Component {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
 
-    // const headerTitle = <h1 className="title">Features</h1>;
-    // const headerDescription = (
-    //   <p className="description">Available ReactGrid options</p>
-    // );
+    const features = [
+      {
+        imgSrc: demoGIF,
+        imgAlt: 'Animation for multi user capability feature',
+        title: 'Multi user capability',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Optimized for Touch devices',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Custom cell types',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Fill handle',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Custom cell types',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Resize / reorder',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Copy, Cut, Paste',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+      {
+        imgSrc: demoGIF,
+        imgAlt: '',
+        title: 'Additional features',
+        description: '',
+        externalLinkText: 'Try out on codepen.io',
+        externalLink: 'https://codepen.io/'
+      },
+    ]
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
@@ -33,33 +93,7 @@ class Features extends React.Component {
         <div className="section">
           <div className="space-50"></div>
           <Container>
-            <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 className="profile-title text-left mb-3">Feature title</h3>
-              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
-              <div>
-                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io
-                </a>
-              </div>
-            </SingleFeature>
-            <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 className="profile-title text-left mb-3">Feature title</h3>
-              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
-              <div>
-                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io
-                </a>
-              </div>
-            </SingleFeature>
-            <SingleFeature imgSrc={demoGIF} imgAlt={''}>
-              <h3 className="profile-title text-left mb-3">Feature title</h3>
-              <p className="description pb-3">We aim high at being focused on building relationships with our clients and community. Using our creative gifts drives this foundation.</p>
-              <div>
-                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href="https://codepen.io/">
-                  Try out on codepen.io
-                </a>
-              </div>
-            </SingleFeature>
+            {features.map(item => <SingleFeature key={item.title} {...item}/>)}
           </Container>
         </div>
       </Layout>
@@ -69,7 +103,7 @@ class Features extends React.Component {
 
 export default Features
 
-const SingleFeature = ({imgSrc, imgAlt, children}) => {
+const SingleFeature = ({imgSrc, imgAlt, title, description, externalLinkText, externalLink}) => {
   return (
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
@@ -79,7 +113,11 @@ const SingleFeature = ({imgSrc, imgAlt, children}) => {
         <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
           <div className="feature-description flex-column d-flex mt-4">
-            {children}
+            <h3 className="profile-title text-left mb-3">{title}</h3>
+            <p className="description pb-3">{description}</p>
+            <div>
+              <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href={externalLink}>{externalLinkText}</a>
+            </div>
           </div>
         </Col>
       </Row>
