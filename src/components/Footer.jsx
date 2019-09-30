@@ -18,7 +18,7 @@ class Footer extends React.Component {
     })
     return (
       <>
-      <footer className="footer footer-simple" data-background-color="black">
+      <footer className="footer footer-simple bg-darker" data-background-color="black">
         <Container>
           <div className="content">
             <Row>

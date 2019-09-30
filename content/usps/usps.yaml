@@ -1,0 +1,27 @@
+-   
+    number: '01'
+    header: Highly customizable / flexible at runtime/ Dynamic / reactive
+    description: ''
+    features: 
+        - Build Tables as you need them
+        - Control over each individual cell
+        - Not limited to the way how other grids render data
+        - Free yourself from / Don’t think in terms of fields and records
+    imgSrc: demo.gif
+    imgAlt: ''
+-   
+    number: '02'
+    header: Spreadsheet-like look and feel
+    description: ''
+    features: 
+        - Reuse well known user experience
+    imgSrc: demo.gif
+    imgAlt: ''
+-   
+    number: '03'
+    header: Using ReactJS concepts
+    description: ''
+    features: 
+        - Thinking in react
+    imgSrc: reactLogo.png
+    imgAlt: ''

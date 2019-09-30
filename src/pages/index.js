@@ -28,35 +28,37 @@ class Index extends React.Component {
     const docsPage = pages.find(page => page.id === 'docs')
     const githubSocial = social.find(social => social.title === 'Github')
     
-    const usps = [
-      {
-        number: '01',
-        header: <span>Highly customizable / flexible at runtime/ Dynamic / reactive</span>,
-        description: '',
-        features: [
-          'Not limited to the way how other grids render data',
-          'Free yourself from / Don’t think in terms of fields and records',
-        ],
-        imgSrc: demoGIF,
-        imgAlt: '',
-      },
-      {
-        number: '02',
-        header: <span>Spreadsheet-like look and feel</span>,
-        description: '',
-        features: [],
-        imgSrc: demoGIF,
-        imgAlt: '',
-      },
-      {
-        number: '03',
-        header: <span>Using ReactJS concepts <br/>(Thinking in react)</span>,
-        description: '',
-        features: [],
-        imgSrc: 'https://cdn.worldvectorlogo.com/logos/react.svg',
-        imgAlt: '',
-      },
-    ]
+    const usps = data.allUspsYaml.edges;
+
+    // const usps = [
+    //   {
+    //     number: '01',
+    //     header: <span>Highly customizable / flexible at runtime/ Dynamic / reactive</span>,
+    //     description: '',
+    //     features: [
+    //       'Not limited to the way how other grids render data',
+    //       'Free yourself from / Don’t think in terms of fields and records',
+    //     ],
+    //     imgSrc: demoGIF,
+    //     imgAlt: '',
+    //   },
+    //   {
+    //     number: '02',
+    //     header: <span>Spreadsheet-like look and feel</span>,
+    //     description: '',
+    //     features: [],
+    //     imgSrc: demoGIF,
+    //     imgAlt: '',
+    //   },
+    //   {
+    //     number: '03',
+    //     header: <span>Using ReactJS concepts <br/>(Thinking in react)</span>,
+    //     description: '',
+    //     features: [],
+    //     imgSrc: 'https://cdn.worldvectorlogo.com/logos/react.svg',
+    //     imgAlt: '',
+    //   },
+    // ]
 
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
@@ -98,7 +100,8 @@ class Index extends React.Component {
             <Row className="align-items-center">
               <Col>
                 <Row>
-                  {usps.map(item => <USP key={item.number} {...item}></USP> )}
+                  {/* {usps.map(item => <USP key={item.number} {...item}></USP> )} */}
+                  {usps.map(item => <USP key={item.node.number} {...item.node}/>)}
                 </Row>
               </Col>
             </Row>
@@ -138,11 +141,11 @@ const USP = ({number, header, description, features, imgSrc, imgAlt}) => {
         </Col>
         <Col>
           {imgSrc && <div className="d-flex align-items-center justify-content-center pb-5 pb-md-0" >
-            <img alt={imgAlt} src={imgSrc} style={{maxHeight: '200px'}} />
+            <img alt={imgAlt} src={require(`./../../content/usps/${imgSrc.name+imgSrc.ext}`)} style={{maxHeight: '200px'}} />
           </div>}
         </Col>
         <Col>
-          <h4 className="">{header}</h4>
+          <h4 className=""><span>{header}</span></h4>
           {features && <ul className="text-left pl-3">
             {features.map(item => <li key={item}>{item}</li> )}
           </ul>}
@@ -177,6 +180,21 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+        }
+      }
+    }
+    allUspsYaml {
+      edges {
+        node {
+          number
+          header
+          features
+          description
+          imgAlt
+          imgSrc {
+            ext
+            name
+          }
         }
       }
     }

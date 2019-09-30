@@ -29,7 +29,7 @@ class MainNavbar extends React.Component {
 
     changeNavbarColor = () => {
         if ( document.documentElement.scrollTop > 29 || document.body.scrollTop > 29 ) {
-            this.setState({ navbarColor: "dark" });
+            this.setState({ navbarColor: "bg-darker" });
         } else if (document.documentElement.scrollTop < 30 || document.body.scrollTop < 30 ) {
             this.setState({ navbarColor: "navbar-transparent" });
         }

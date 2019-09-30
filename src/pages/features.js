@@ -9,8 +9,6 @@ import {
   Col,
 } from "reactstrap";
 
-import demoGIF from "../assets/img/demo.gif";
-
 class Features extends React.Component {
   componentDidMount() {
     document.documentElement.scrollTop = 0;
@@ -19,81 +17,14 @@ class Features extends React.Component {
   render() {
     const { data } = this.props
     const { title, description, pages, social } = data.site.siteMetadata;
-
-    const features = [
-      {
-        imgSrc: demoGIF,
-        imgAlt: 'Animation for multi user capability feature',
-        title: 'Multi user capability',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Optimized for Touch devices',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Custom cell types',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Fill handle',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Custom cell types',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Resize / reorder',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Copy, Cut, Paste',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-      {
-        imgSrc: demoGIF,
-        imgAlt: '',
-        title: 'Additional features',
-        description: '',
-        externalLinkText: 'Try out on codepen.io',
-        externalLink: 'https://codepen.io/'
-      },
-    ]
+    const features = data.allFeaturesYaml.edges;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-        {/* <Header header={headerTitle} description={headerDescription}/> */}
         <div className="section">
           <div className="space-50"></div>
           <Container>
-            {features.map(item => <SingleFeature key={item.title} {...item}/>)}
+            {features.map(item => <SingleFeature key={item.node.title} {...item.node}/>)}
           </Container>
         </div>
       </Layout>
@@ -108,7 +39,7 @@ const SingleFeature = ({imgSrc, imgAlt, title, description, externalLinkText, ex
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
         <Col xs={12} lg={5} className="single-feature-col-img">
-          <FeatureImage imgSrc={imgSrc} imgAlt={imgAlt} />
+          <FeatureImage imgSrc={require(`./../../content/features/${imgSrc.name+imgSrc.ext}`)} imgAlt={imgAlt} />
         </Col>
         <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
@@ -157,6 +88,21 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+        }
+      }
+    }
+    allFeaturesYaml {
+      edges {
+        node {
+          title
+          externalLink
+          externalLinkText
+          description
+          imgAlt
+          imgSrc {
+            name
+            ext
+          }
         }
       }
     }

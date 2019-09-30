@@ -76,6 +76,19 @@ module.exports = {
         name: `img`,
       },
     },
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/features/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/usps/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
