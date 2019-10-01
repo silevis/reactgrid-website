@@ -20,9 +20,7 @@ module.exports = {
       {id: 'privacyPolicy', title: `Privacy Policy`,description: ``, route: `/privacy-policy`,  active: true},
     ],
     docsVersions: [
-      {slug: "/1.0.3", desc: '1.0.3', index: '/Introduction' },
-      {slug: "/1.0.2", desc: '1.0.2 (deprecated)', index: '/Introduction' },
-      {slug: "/1.0.1", desc: '1.0.1 (deprecated)', index: '/Introduction' },
+      {slug: "/2.0.30", desc: '2.0.30', index: '/1-getting-started' },
     ],
     docsPagesOrder: [
       "/Za",
