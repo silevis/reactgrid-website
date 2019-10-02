@@ -140,7 +140,7 @@ export const pageQuery = graphql`
         metaTitle
       }
     }
-    allMdx ( filter: {frontmatter: {posttype: {eq: "docs"}}} ){
+    allMdx(filter: {frontmatter: {posttype: {eq: "docs"}}}, sort: {fields: fileAbsolutePath, order: DESC}) {
       edges {
         node {
           excerpt

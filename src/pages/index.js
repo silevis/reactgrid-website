@@ -29,37 +29,6 @@ class Index extends React.Component {
     const githubSocial = social.find(social => social.title === 'Github')
     
     const usps = data.allUspsYaml.edges;
-
-    // const usps = [
-    //   {
-    //     number: '01',
-    //     header: <span>Highly customizable / flexible at runtime/ Dynamic / reactive</span>,
-    //     description: '',
-    //     features: [
-    //       'Not limited to the way how other grids render data',
-    //       'Free yourself from / Don’t think in terms of fields and records',
-    //     ],
-    //     imgSrc: demoGIF,
-    //     imgAlt: '',
-    //   },
-    //   {
-    //     number: '02',
-    //     header: <span>Spreadsheet-like look and feel</span>,
-    //     description: '',
-    //     features: [],
-    //     imgSrc: demoGIF,
-    //     imgAlt: '',
-    //   },
-    //   {
-    //     number: '03',
-    //     header: <span>Using ReactJS concepts <br/>(Thinking in react)</span>,
-    //     description: '',
-    //     features: [],
-    //     imgSrc: 'https://cdn.worldvectorlogo.com/logos/react.svg',
-    //     imgAlt: '',
-    //   },
-    // ]
-
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
@@ -152,7 +121,7 @@ const USP = ({number, header, description, features, imgSrc, imgAlt}) => {
           <p className="description">{description}</p>
         </Col>
       </Row>
-      <hr class="line-primary mx-auto d-md-none"/>
+      <hr className="line-primary mx-auto d-md-none"/>
     </Col>
   )
 }

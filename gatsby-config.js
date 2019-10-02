@@ -106,8 +106,7 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-remark-prismjs`,
-            options: {}
+            resolve: `gatsby-remark-prismjs`
           },
           {resolve: `gatsby-remark-copy-linked-files`},
           {resolve: `gatsby-remark-smartypants`},

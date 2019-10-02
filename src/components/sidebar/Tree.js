@@ -38,7 +38,7 @@ const calculateTreeData = (navOrder, edges, version) => {
     return accu;
   }, {items: []});
   const tmp = [...navOrder];
-  tmp.reverse();
+  // tmp.reverse();
   return tmp.reduce((accu, slug) => {
     const parts = slug.split('/');
     let {items: prevItems} = accu;
@@ -85,20 +85,6 @@ const Tree = ({edges, location, navOrder, version, docsRoute}) => {
       [url]: !collapsed[url],
     });
   }
-
-  // let items = edges.map(item => {
-  //   return item.node
-  // }).filter(item => {
-  //   return item.fields.slug.split('/')[1] === version
-  // });
-
-
-  // items = items.filter(item => {
-  //   console.log(item.fields.slug.split('/'));
-  //   return item.fields.slug.split('/')[2] === '1.0.3'
-  // });
-
-  
 
   return (
     <>
