@@ -82,15 +82,15 @@ class DocsPostTemplate extends React.Component {
         <div className="py-5">
           <Container>
             <Row>
-              <Col md="3">
+              <Col md="3" lg="3" xl="3">
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={this.props.location} navOrder={docsPagesOrder}/>
               </Col>
-              <Col md="9" lg="7" xl="6">
+              <Col md="9" lg="7" xl="7">
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
               </Col>
-              <Col lg="2" xl="3" className="d-none d-lg-flex position-relative justify-content-start">
+              <Col lg="2" xl="2" className="d-none d-lg-flex position-relative justify-content-start">
                 <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsPage.route} location={this.props.location}/>
               </Col>
             </Row>

@@ -27,6 +27,17 @@
     background-color: #0f102c !important;
 }
 
+.gatsby-highlight {
+    padding-bottom: 1em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #222a42;
+    border-radius: 5px;
+    box-shadow: 0.2em 0.2em 0.1em #0f102c;
+}
+
 // [id]::before {
 //     content: '';
 //     display: block;

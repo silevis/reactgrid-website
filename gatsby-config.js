@@ -20,13 +20,12 @@ module.exports = {
       {id: 'privacyPolicy', title: `Privacy Policy`,description: ``, route: `/privacy-policy`,  active: true},
     ],
     docsVersions: [
-      {slug: "/2.0.30", desc: '2.0.30', index: '/1-getting-started' },
+      {slug: "/2.0.30", desc: '2.0.30', index: '/0-introduction' },
     ],
     docsPagesOrder: [
       "/Za",
       "/Tutorial",
       "/Introduction",
-      
     ],
     social: [
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
@@ -106,7 +105,10 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          {resolve: `gatsby-remark-prismjs`},
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {}
+          },
           {resolve: `gatsby-remark-copy-linked-files`},
           {resolve: `gatsby-remark-smartypants`},
         ],
