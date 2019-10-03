@@ -1,0 +1,169 @@
+---
+posttype: "docs"
+title: Cell
+metaTitle: "metaTitle"
+metaDescription: "metaDescription"
+---
+
+## Cell  
+
+ReactGrid already contains a few predefined cell templates that you can mark your fields type:
+
+| **Cell name** |  **Related cell class name**  |
+|-----------    |  -------------------------|
+| `text`        | `TextCellTemplate`        |
+| `number`      | `NumberCellTemplate`      |
+| `header`      | `HeaderCellTemplate`      |
+| `checkbox`    | `CheckboxCellTemplate`    |
+| `date`        | `DateCellTemplate`        |
+| `email`       | `EmailCellTemplate`       |
+| `time`        | `TimeCellTemplate`        |
+| `group`       | `GroupHeaderCellTemplate` |
+
+In most often cases `CellTemplate` is used for declaring the type of the cell and providing adequate data validation, handling keyboard events and render content of cell.
+
+## Template types:
+
+### TextCellTemplate
+
+This template is used for working with plain text by implementing methods like:
+
+```tsx
+validate(data: any): string {
+    return (typeof (data) === 'string') ? data : '';
+}
+```
+
+We can check the data provided to cell and replace text by nothing if condition is not fulfilled as we want to.
+
+### NumberCellTemplate
+
+Used for validating incoming data from cell matrix and e.g numbers and keypad ???
+
+### HeaderCellTemplate
+
+Styles cell header and prevents user to edit content.
+
+### CheckboxCellTemplate
+
+This template renders checkbox input html tag. Pressing the Enter key or space toggling state of it.
+
+### DateCellTemplate, EmailCellTemplate, TimeCellTemplate
+
+Main function of these cells is validating content for given regex statement e.g. “2019-02-12” for DateCellTemplate, if the content is not valid - cell is cleared.
+
+### GroupHeaderCellTemplate
+
+This type of cell is most advanced in out set - it provides actions on tree-like structure rendered in ReactGrid like expanding and collapsing child rows.
+
+## Custom cell templates
+
+CellTemplate is generic interface for existing cell templates and creating your own templates. This interface contains a set of functions that you have to implement in your custom cell template. 
+
+List of functions provided by CellTemplate interface:
+
+```tsx
+isReadonly?(data: TCellData, props?: TCellProps): boolean;
+```
+
+Returns true if the data is valid:
+
+```tsx
+isValid(data: TCellData, props?: TCellProps): boolean;
+```
+
+Returns true if accepts focus
+
+```tsx
+isFocusable?(data: TCellData, props?: TCellProps): boolean;
+```
+
+Convert plain text (not encoded stuff) to cell datar, returns null when the data couldn't be converted
+
+```tsx
+textToCellData?(text: string): TCellData | null;
+```
+
+Convert cell data to plain text (not encoded stuff)
+
+```tsx
+cellDataToText(cellData: TCellData): string
+```
+
+The keyCode represents the key pressed on the keyboard, or 1 for a pointer event (double click), returns the cell data either affected by the event or not
+
+```tsx
+handleKeyDown?(keyCode: number, cellData: TCellData): { cellData: TCellData, enableEditMode: boolean }
+```
+
+Custom styles based on cell data applied to the cells div element
+
+```tsx
+getCustomStyle?(cellData: TCellData): React.CSSProperties;
+```
+
+```tsx
+renderContent(props: CellRenderProps<TCellData>): React.ReactNode
+```
+
+## TextCellTemplate as example
+
+TextCellTemplate is most common cell template in ReactGrid. Below we show implementation of class TextCellTemplate with one implements CellTemplate interface.
+
+```tsx
+export class TextCellTemplate implements CellTemplate<string, any> {
+
+    isValid(cellData: string): boolean {
+        return typeof (cellData) === 'string';
+    }
+
+    textToCellData(text: string): string {
+        return text;
+    }
+
+    cellDataToText(cellData: string) {
+        return cellData;
+    }
+
+    handleKeyDown(cellData: string, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean, props?: any) {
+        if (!ctrl && !alt && isTextInput(keyCode))
+            return { cellData: '', enableEditMode: true }
+        return { cellData, enableEditMode: keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER }
+    }
+
+    renderContent: (props: CellRenderProps<string, any>) => React.ReactNode = (props) => {
+        if (!props.isInEditMode)
+            return props.cellData;
+
+        return <input
+            style={{
+                position: 'inherit',
+                width: '100%',
+                height: '100%',
+                padding: 0,
+                border: 0,
+                background: 'transparent',
+                fontSize: 14,
+                outline: 'none',
+            }}
+            ref={input => {
+                if (input) {
+                    input.focus();
+                    input.setSelectionRange(input.value.length, input.value.length);
+                }
+            }}
+            defaultValue={props.cellData}
+            onChange={e => props.onCellDataChanged(e.currentTarget.value, false)}
+            onBlur={e => props.onCellDataChanged(e.currentTarget.value, true)}
+            onCopy={e => e.stopPropagation()}
+            onCut={e => e.stopPropagation()}
+            onPaste={e => e.stopPropagation()}
+            onPointerDown={e => e.stopPropagation()}
+                        onKeyDown={e => {
+                if (isTextInput(e.keyCode) || isNavigationKey(e.keyCode)) e.stopPropagation();
+                if (e.keyCode == keyCodes.ESC) e.currentTarget.value = props.cellData;
+            }}
+        />
+    }
+}
+```

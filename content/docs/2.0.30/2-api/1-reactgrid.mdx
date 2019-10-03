@@ -6,3 +6,23 @@ metaDescription: "metaDescription"
 ---
 
 ## ReactGrid 
+
+ReactGrid has only one property that is necessary to render whole grid - `cellMatrixProps` with contains a list and number of rows and columns.
+
+Full list of props:
+
+Props name                      | Props description
+------------                    | -------------
+`cellMatrixProps`               | Inforamiotion about row and columns in ReactGrid
+`style`                         | Custom styles applied to `ReactGrid` component
+`cellTemplates`                 | Object that contains name (as string) of cell template and class that implements `CellTemplate<TCellData>` interface
+`customFocuses`                 | Array of objects that implements Focus interface (its own `columnID`, `rowID` and `color`)
+`disableFillHandle`             | Disables Fill Handle functionality
+`disableRangeSelection`         | Disables Range Selection functionality
+`disableRowSelection`           | Disables Row Selection functionality
+`disableColumnSelection`        | Disables Column Selection functionality
+`onDataChanged`                 | Function that is called on changing data in cell e.g. to update state of your application
+`onCellFocused`                 | Function that is called when cell is focused
+`onRowContextMenu`              | Function that let you append custom options to row context menu
+`onColumnContextMenu`           | Function that let you append custom options to column context menu
+`onRangeContextMenu`            | Function that let you append custom options to range context menu

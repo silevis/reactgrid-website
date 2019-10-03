@@ -1,5 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
-import React from 'react'
+import React from 'react';
+import { Table } from 'reactstrap';
 export default function CustomMDXComponents({ children }) {
   return (
     <MDXProvider
@@ -21,6 +22,9 @@ export default function CustomMDXComponents({ children }) {
         h5: props => <h5 {...props} id={props.children && props.children.toString().replace(/ /g,"").toLowerCase()}>{props.children}</h5>,
         h6: props => <h6 {...props} id={props.children && props.children.toString().replace(/ /g,"").toLowerCase()}>{props.children}</h6>,
         p:  props => <p {...props} style={{paddingBottom: '1em'}}>{props.children}</p>,
+        table: props => <Table {...props}>{props.children}</Table>,
+        th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
+        li: props => <li {...props}><p>{props.children}</p></li>,
       }}
     >
       {children}

@@ -5,4 +5,113 @@ metaTitle: "metaTitle"
 metaDescription: "metaDescription"
 ---
 
-## Generating CellMatrix 
+### Introduction
+
+Let's create the sample structure needed to build your first cell matrix.
+First of all, we will describe the main props interface needed to build the ReactGrid.
+
+
+### CellMatrixProps:
+```tsx
+interface CellMatrixProps {
+    readonly columns: ColumnProps[];
+    readonly rows: RowProps[];
+    // other additional props that will be discussed later
+}
+```
+
+At this moment we are going to focus at the mandatory properties.
+Frozen elements will be discussed later in the “How to implement features” section.
+
+### ColumnProps:
+
+```tsx
+interface ColumnProps {
+    readonly id: Id;
+    readonly width: number;
+    readonly reorderable: boolean
+    readonly resizable: boolean
+    // other additional props that will be discussed later
+}
+```
+
+For each column, you have to provide its unique id, width and declare whether the column can be reordered or resized. 
+
+### RowProps:
+
+```tsx
+interface RowProps {
+    readonly id: Id;
+    cells: { type: string, data: any }[];
+    readonly height: number;
+    readonly reorderable: boolean;
+    readonly canDrop?: (rowIds: Id[], position: DropPosition) => boolean;
+    readonly onDrop?: (rowIds: Id[], position: DropPosition) => void;
+}
+```
+
+Similarly to the `ColumnProps`, RowProps needs the `id`, `height`, `reorderable` property and optional functions. This is the place where you put the actual grid data.
+For each row, pass the list of objects that contain the data of the cell, and the type of the `CellTemplate` you want to use for the cell.
+
+
+### Examples:
+
+So, let's create our React stateful Component that will render ReactGrid with sample data. App state will contain fields object array (it must be extends `ColumnProps` interface) and array of records that describes single entities.
+
+```tsx
+class DogsGrid extends React.Component {
+    state = {
+        fields: [
+            { id: 1, name: 'breed', type: 'text', width: 120 },
+            { id: 2, name: 'name', type: 'text', width: 120 },
+            { id: 3, name: 'age', type: 'number', width: 40 },
+            { id: 4, name: 'vaccinated', type: 'checkbox', width: 80 },
+        ],
+        records: [
+            { id: '1', breed: 'Breed', name: 'Name', age: 'Age', vaccinated: 'Vaccinated' },
+            { id: '2', breed: 'Rasa 1', name: 'Pluto', age: 3, vaccinated: true },
+            { id: '3', breed: 'Rasa 2', name: 'Goofy', age: 2, vaccinated: false },
+            { id: '4', breed: 'Rasa 3', name: 'Collie', age: 5, vaccinated: true },
+        ]
+  }
+```
+
+Then you have to provide custom data mapping of our columns ...
+
+```tsx
+private getColumns(): ColumnProps[] {
+    return this.state.fields.map(field => ({
+      id: field.id,
+      width: field.width,
+      reorderable: false,
+      resizable: false,
+    }));
+}
+```
+
+... and then for rows:
+
+```tsx
+private getRows(): RowProps[] {
+    return this.state.records.map((record: any, rowIdx: number) => ({
+        id: record.id,
+        height: 25,
+        reorderable: false,
+        cells: this.state.fields.map(f => { return { data: record[f.name], type: rowIdx == 0 ? 'header' : f.type } }),
+    }))
+}
+```
+
+Finally pass prepared columns and rows to `cellMatrixProps` props:
+
+```tsx
+render(){
+   <ReactGrid 
+        cellMatrixProps={{columns: getColumns(), rows: getRows()}}
+   />
+}
+```
+
+Result:
+
+XXXX
