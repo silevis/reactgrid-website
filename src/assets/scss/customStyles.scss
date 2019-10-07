@@ -38,14 +38,18 @@ pre[class*="language-"] {
     box-shadow: 0.2em 0.2em 0.1em #0f102c;
 }
 
-// [id]::before {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     height:      85px;
-//     margin-top: -85px;
-//     visibility: hidden;
-// }
+.gatsby-highlight-code-line {
+    display: block;
+    width: 100%;
+    background-color: rgba(255,255,255, 0.2);
+}
+
+span.anchor {
+    display: block;
+    position: relative;
+    top: -90px;
+    visibility: hidden;
+}
 
 @media (min-width: 576px) {  }
 
