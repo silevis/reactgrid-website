@@ -32,6 +32,10 @@ jobs:
           command: git checkout gh-pages
 
       - run: 
+          name: Git diff
+          command: git diff
+
+      - run: 
           name: Print files
           command: ls
       
