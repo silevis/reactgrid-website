@@ -32,8 +32,8 @@ jobs:
           command: git checkout gh-pages
 
       - run: 
-          name: Git diff
-          command: git diff
+          name: Git diff, only filenames
+          command: git diff --name-only
 
       - run: 
           name: Print files
