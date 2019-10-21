@@ -32,6 +32,10 @@ jobs:
           command: git checkout gh-pages
 
       - run: 
+          name: Current branch
+          command: git branch
+          
+      - run: 
           name: Git diff, only filenames
           command: git diff --name-only
 
