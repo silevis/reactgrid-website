@@ -1,0 +1,25 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.0
+
+version: 2
+jobs:
+
+  deploy-on-gh-pages: 
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Set configuration
+          command: git config --global user.email "$GITHUB_AUTHOR_EMAIL" && git config --global user.name "$GITHUB_AUTHOR_NAME"
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - deploy-on-gh-pages:
+          filters:
+            branches:
+              only: gh-pages-stage
