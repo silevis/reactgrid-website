@@ -68,7 +68,8 @@ class Index extends React.Component {
                       <Row>
                         <Col xs="11" className="mx-auto">
                           <div className="cookies-policy-topic-wrapper">
-                            <h2 id="cookies-guide" className="h2">Cookies guide</h2>
+                            <span class="anchor" id="cookies-guide"></span>
+                            <h2  className="h2">Cookies guide</h2>
                             <p className="pb-3">Lorem ipsum dolor <strong>sit amet, consectetur adipiscing elit.</strong> Fusce eu sodales erat. Morbi eu eros nulla. 
                               Proin odio diam, pulvinar sed rhoncus at, finibus et dui. Duis enim tellus, ultrices vel lectus id,
                               maximus venenatis nisi. Aenean vitae tempus odio. Cras scelerisque accumsan felis, et tincidunt 
@@ -88,7 +89,8 @@ class Index extends React.Component {
                             <hr class="line-primary ml-auto"/>
                           </div>
                           <div className="cookies-policy-topic-wrapper">
-                            <h2 id="what-is-a-cookie" className="h2">Cookies guide</h2>
+                            <span class="anchor" id="what-is-a-cookie"></span>
+                            <h2  className="h2">Cookies guide</h2>
                             <p className="pb-3">Lorem ipsum dolor <strong>sit amet, consectetur adipiscing elit.</strong> Fusce eu sodales erat. Morbi eu eros nulla. 
                               Proin odio diam, pulvinar sed rhoncus at, finibus et dui. Duis enim tellus, ultrices vel lectus id,
                               maximus venenatis nisi. Aenean vitae tempus odio. Cras scelerisque accumsan felis, et tincidunt 
@@ -108,7 +110,8 @@ class Index extends React.Component {
                             <hr class="line-primary ml-auto"/>
                           </div>
                           <div className="cookies-policy-topic-wrapper">
-                            <h2 id="how-do-we-use-cookie" className="h2">Cookies guide</h2>
+                            <span class="anchor" id="how-do-we-use-cookie"></span>
+                            <h2 className="h2">Cookies guide</h2>
                             <p className="pb-3">Lorem ipsum dolor <strong>sit amet, consectetur adipiscing elit.</strong> Fusce eu sodales erat. Morbi eu eros nulla. 
                               Proin odio diam, pulvinar sed rhoncus at, finibus et dui. Duis enim tellus, ultrices vel lectus id,
                               maximus venenatis nisi. Aenean vitae tempus odio. Cras scelerisque accumsan felis, et tincidunt 
