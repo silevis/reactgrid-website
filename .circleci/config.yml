@@ -24,12 +24,16 @@ jobs:
           command: npm run build
 
       - run: 
-          name: Build static files
-          command: npm run build
+          name: Print files 
+          command: cd public && ls && cd ..
+
+      - run: 
+          name: Checkout to gh-pages 
+          command: git checkout gh-pages
 
       - run: 
           name: Print files
-          command: cd public && ls
+          command: ls
       
 
 workflows:
