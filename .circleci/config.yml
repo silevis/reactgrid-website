@@ -32,13 +32,17 @@ jobs:
           name: Move build files to tmp
           command:  
                     mkdir /tmp/build && 
-                    mv public/* /tmp/build && 
-                    mv .gitignore /tmp/build && 
-                    mv CNAME /tmp/build
+                    mv public/* /tmp/build/public && 
+                    
+      - run: 
+          name: Checkout to deploy branch
+          command: git checkout $GITHUB_DEPLOY_BRANCH
 
       - run: 
-          name: Checkout to $GITHUB_DEPLOY_BRANCH
-          command: git checkout $GITHUB_DEPLOY_BRANCH
+          name: Move project contant files to tmp
+          command:  
+                    mv .gitignore /tmp/build &&
+                    mv CNAME /tmp/build
 
       - run: 
           name: Current branch
