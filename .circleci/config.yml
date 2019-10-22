@@ -13,7 +13,8 @@ jobs:
 
       - run:
           name: Set configuration
-          command: git config --global user.email "$GITHUB_AUTHOR_EMAIL" && git config --global user.name "$GITHUB_AUTHOR_NAME"
+          command:  git config --global user.email "$GITHUB_AUTHOR_EMAIL" && 
+                    git config --global user.name "$GITHUB_AUTHOR_NAME"
 
       - run:
           name: Current location
@@ -35,8 +36,8 @@ jobs:
                     mv CNAME /tmp/build
 
       - run: 
-          name: Checkout to gh-pages
-          command: git checkout gh-pages
+          name: Checkout to $GITHUB_DEPLOY_BRANCH
+          command: git checkout $GITHUB_DEPLOY_BRANCH
 
       - run: 
           name: Current branch
@@ -72,7 +73,7 @@ jobs:
 
       - run:
           name: Push upgraded version
-          command: git push https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git develop
+          command: git push https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
       
 
 workflows:
