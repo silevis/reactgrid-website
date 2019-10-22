@@ -61,6 +61,18 @@ jobs:
       - run: 
           name: List files
           command: ls -all
+
+      - run:
+          name: Add changes
+          command: git add .
+
+      - run:
+          name: Commit updated package version
+          command: git commit -m "Version update [ci skip]"
+
+      - run:
+          name: Push upgraded version
+          command: git push https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git develop
       
 
 workflows:
