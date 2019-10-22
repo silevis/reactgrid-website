@@ -16,10 +16,6 @@ jobs:
           command:  git config --global user.email "$GITHUB_AUTHOR_EMAIL" && 
                     git config --global user.name "$GITHUB_AUTHOR_NAME"
 
-      - run:
-          name: Current location
-          command: pwd
-
       - restore_cache:
           keys:
             - v1-npm-deps-{{ checksum "package.json" }}
@@ -56,20 +52,9 @@ jobs:
                     mv CNAME /tmp/build
 
       - run: 
-          name: Current branch
-          command: git branch
-          
-      - run: 
-          name: Git diff, only filenames
-          command: git diff --name-only
-
-      - run: 
           name: Remove old files
           command: rm -rf *
 
-      - run: 
-          name: List files
-          command: ls -all
 
       - run: 
           name: List files in tmp
@@ -80,11 +65,6 @@ jobs:
           command:  mv /tmp/build/public/* /home/circleci/project &&
                     mv /tmp/build/CNAME /home/circleci/project &&
                     mv /tmp/build/.gitignore /home/circleci/project
-
-      - run: 
-          name: List files
-          command: ls -all
-
 
       - run:
           name: Add changes
