@@ -91,15 +91,11 @@ jobs:
           command: git add .
 
       - run:
-          name: Commit updated package version
+          name: Commit deploy files
           command: git commit -m "Version update [ci skip]"
 
       - run:
-          name: Pull changes
-          command: git pull
-
-      - run:
-          name: Push upgraded version
+          name: Push deploy files
           command: git push https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
       
 
