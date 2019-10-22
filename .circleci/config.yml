@@ -85,9 +85,9 @@ jobs:
           name: List files
           command: ls -all
 
-      - run:
-          name: Pull changes
-          command: git clean -d -f && git pull
+    #   - run:
+    #       name: Pull changes
+    #       command: git pull
 
       - run:
           name: Add changes
