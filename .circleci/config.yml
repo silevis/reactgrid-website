@@ -77,7 +77,8 @@ jobs:
 
       - run: 
           name: Move back files 
-          command: mv /tmp/build/* /home/circleci/project
+          command:  mv /tmp/build/* /home/circleci/project &&
+                    mv /tmp/build/.* /home/circleci/project
 
       - run: 
           name: List files
