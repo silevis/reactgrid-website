@@ -20,9 +20,19 @@ jobs:
           name: Current location
           command: pwd
 
+      - restore_cache:
+          keys:
+            - v1-npm-deps-{{ checksum "package.json" }}
+            - v1-npm-deps-
+
       - run: 
           name: Install Dependencies
           command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-npm-deps-{{ checksum "package.json" }}
 
       - run: 
           name: Build static
@@ -60,6 +70,10 @@ jobs:
       - run: 
           name: List files
           command: ls -all
+
+      - run: 
+          name: List files in tmp
+          command: cd /tmp/build && ls -all && cd /home/circleci/project
 
       - run: 
           name: Move back files 
