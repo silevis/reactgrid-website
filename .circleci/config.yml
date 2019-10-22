@@ -77,7 +77,8 @@ jobs:
 
       - run: 
           name: Move back files 
-          command:  mv /tmp/build/* /home/circleci/project &&
+          command:  mv /tmp/build/public/* /home/circleci/project &&
+                    mv /tmp/build/CNAME /home/circleci/project &&
                     mv /tmp/build/.gitignore /home/circleci/project
 
       - run: 
