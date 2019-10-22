@@ -85,9 +85,6 @@ jobs:
           name: List files
           command: ls -all
 
-    #   - run:
-    #       name: Pull changes
-    #       command: git pull
 
       - run:
           name: Add changes
@@ -96,6 +93,10 @@ jobs:
       - run:
           name: Commit updated package version
           command: git commit -m "Version update [ci skip]"
+
+      - run:
+          name: Pull changes
+          command: git pull
 
       - run:
           name: Push upgraded version
