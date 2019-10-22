@@ -24,11 +24,11 @@ jobs:
           command: npm run build
 
       - run: 
-          name: Print files 
-          command: cd public && ls && cd ..
+          name: Move build files to tmp
+          command: mv public/* /tmp/build && mv .gitignore /tmp/build && mv CNAME /tmp/build
 
       - run: 
-          name: Checkout to gh-pages 
+          name: Checkout to gh-pages
           command: git checkout gh-pages
 
       - run: 
@@ -40,8 +40,16 @@ jobs:
           command: git diff --name-only
 
       - run: 
-          name: Print files
-          command: ls
+          name: Remove old files
+          command: rm -rf *
+
+      - run: 
+          name: Move back files 
+          command: mv /tmp/build/* /
+
+      - run: 
+          name: List files
+          command: ls -all
       
 
 workflows:
