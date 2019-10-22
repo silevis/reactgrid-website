@@ -96,7 +96,7 @@ jobs:
 
       - run:
           name: Push deploy files
-          command: git push https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
+          command: git push -f https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
       
 
 workflows:
