@@ -32,7 +32,7 @@ jobs:
           name: Move build files to tmp
           command:  
                     mkdir /tmp/build && 
-                    mv public/* /tmp/build/public && 
+                    mv public/* /tmp/build/public
                     
       - run: 
           name: Checkout to deploy branch
