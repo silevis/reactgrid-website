@@ -11,64 +11,39 @@ import {
   NavLink,
 } from "reactstrap";
 import { BudgetPlannerSample, DropdownNumberCellSample, MultiUserSample, RateCellSample, ResizeCellSample } from '@silevis/reactgrid-samples';
+
+const samplesData = [
+  { title: 'Budget planner', description: 'Short description of demo content', component: <BudgetPlannerSample /> },
+  { title: 'Dropdown number cell', description: 'Short description of demo content', component: <DropdownNumberCellSample /> },
+  { title: 'Multiuser', description: 'Short description of demo content', component: <MultiUserSample /> },
+  { title: 'Rate cell', description: 'Short description of demo content', component: <RateCellSample /> },
+  { title: 'Resize columns', description: 'Short description of demo content', component: <ResizeCellSample /> }
+];
 class DemoWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: 0
+      activeTabIdx: 0,
+      activeComponent: samplesData[0].component
     };
   }
-  toggle = (tab) => {
-    if (this.state.activeTab !== tab) {
+  setActiveTab = (idx) => {
+    if (this.state.activeTabIdx !== idx) {
       this.setState({
-        activeTab: tab
+        activeTabIdx: idx,
+        activeComponent: samplesData[idx].component
       });
     }
   }
+
   render() {
-    const examples = [
-      {
-        title: 'Budget planner',
-        description: 'Short description of demo content',
-        content: <BudgetPlannerSample />
-      },
-      {
-        title: 'Dropdown number cell',
-        description: 'Short description of demo content',
-        content: <DropdownNumberCellSample />
-      },
-      {
-        title: 'Multiuser',
-        description: 'Short description of demo content',
-        content: <MultiUserSample />
-      },
-      {
-        title: 'Rate cell',
-        description: 'Short description of demo content',
-        content: <RateCellSample />
-      },
-      {
-        title: 'Resize columns',
-        description: 'Short description of demo content',
-        content: <ResizeCellSample />
-      }
-    ];
-    const tabMenuItems = examples.map((example, idx) => {
-      return (
-        <NavItem>
-          <NavLink className={classnames({ active: this.state.activeTab === idx })} onClick={() => { this.toggle(idx) }}>
-            {example.title}
-          </NavLink>
-        </NavItem>
-      )
-    });
-    const examplesTabs = examples.map((example, idx) => {
-      return (
-        <ExampleTab tabId={idx} title={example.title} description={example.description}>
-          {example.content}
-        </ExampleTab>
-      )
-    });
+    const tabMenuItems = samplesData.map((sample, idx) =>
+      <NavItem key={idx}>
+        <NavLink className={classnames({ active: this.state.activeTabIdx === idx })} onClick={() => { this.setActiveTab(idx) }}>
+          {sample.title}
+        </NavLink>
+      </NavItem>
+    );
     return (
       <div className="section">
         <Container>
@@ -82,11 +57,11 @@ class DemoWrapper extends React.Component {
                   </NavLink>
                 </NavItem> */}
                 {tabMenuItems}
+                <div className="space-50"></div>
+                <TabContent activeTab={this.state.activeTabIdx}>
+                  {samplesData.map((sample, idx) => <SampleTab key={idx} tabId={idx} title={sample.title} description={sample.description} component={this.state.activeComponent} />)}
+                </TabContent>
               </Nav>
-              <div className="space-50"></div>
-              <TabContent activeTab={this.state.activeTab}>
-                {examplesTabs}
-              </TabContent>
             </Col>
           </Row>
         </Container>
@@ -95,14 +70,14 @@ class DemoWrapper extends React.Component {
   }
 }
 
-const ExampleTab = ({ tabId, title, description, children }) => {
+const SampleTab = ({ tabId, title, description, component }) => {
   return (
     <TabPane tabId={tabId}>
       <Row>
         <Col>
           <h1 className="h1 text-white">{title}</h1>
           <p>{description}</p>
-          {children}
+          {component}
         </Col>
       </Row>
     </TabPane>
