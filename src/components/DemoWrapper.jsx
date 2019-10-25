@@ -30,27 +30,32 @@ class DemoWrapper extends React.Component {
       {
         title: 'Budget planner',
         description: 'Short description of demo content',
-        content: <BudgetPlannerSample />
-      },
-      {
-        title: 'Dropdown number cell',
-        description: 'Short description of demo content',
-        content: <DropdownNumberCellSample />
+        className: 'budget-planner-sample',
+        content: BudgetPlannerSample
       },
       {
         title: 'Multiuser',
         description: 'Short description of demo content',
-        content: <MultiUserSample />
+        className: 'multi-user-sample',
+        content: MultiUserSample
+      },
+      {
+        title: 'Dropdown number cell',
+        description: 'Short description of demo content',
+        className: 'dropdown-number-cell-sample',
+        content: DropdownNumberCellSample
       },
       {
         title: 'Rate cell',
         description: 'Short description of demo content',
-        content: <RateCellSample />
+        className: 'rate-cell-sample',
+        content: RateCellSample
       },
       {
         title: 'Resize columns',
         description: 'Short description of demo content',
-        content: <ResizeCellSample />
+        className: 'resize-cell-sample',
+        content: ResizeCellSample
       }
     ];
     const tabMenuItems = examples.map((example, idx) => {
@@ -63,9 +68,10 @@ class DemoWrapper extends React.Component {
       )
     });
     const examplesTabs = examples.map((example, idx) => {
+      const Component = example.content;
       return (
-        <ExampleTab tabId={idx} title={example.title} description={example.description}>
-          {example.content}
+        <ExampleTab tabId={idx} title={example.title} className={example.className} description={example.description}>
+          {<Component/>}
         </ExampleTab>
       )
     });
@@ -95,11 +101,11 @@ class DemoWrapper extends React.Component {
   }
 }
 
-const ExampleTab = ({ tabId, title, description, children }) => {
+const ExampleTab = ({ tabId, title, description, className, children }) => {
   return (
     <TabPane tabId={tabId}>
       <Row>
-        <Col>
+        <Col className={className}>
           <h1 className="h1 text-white">{title}</h1>
           <p>{description}</p>
           {children}
