@@ -13,11 +13,11 @@ import {
 import { BudgetPlannerSample, DropdownNumberCellSample, MultiUserSample, RateCellSample, ResizeCellSample } from '@silevis/reactgrid-samples';
 
 const samplesData = [
-  { title: 'Budget planner', description: 'Short description of demo content', component: <BudgetPlannerSample /> },
-  { title: 'Dropdown number cell', description: 'Short description of demo content', component: <DropdownNumberCellSample /> },
-  { title: 'Multiuser', description: 'Short description of demo content', component: <MultiUserSample /> },
-  { title: 'Rate cell', description: 'Short description of demo content', component: <RateCellSample /> },
-  { title: 'Resize columns', description: 'Short description of demo content', component: <ResizeCellSample /> }
+  { title: 'Budget planner', description: 'Short description of demo content', className: 'budget-planner-sample', component: <BudgetPlannerSample /> },
+  { title: 'Dropdown number cell', description: 'Short description of demo content', className: 'dropdown-number-cell-sample', component: <DropdownNumberCellSample /> },
+  { title: 'Multiuser', description: 'Short description of demo content', className: 'multi-user-sample', component: <MultiUserSample /> },
+  { title: 'Rate cell', description: 'Short description of demo content', className: 'rate-cell-sample', component: <RateCellSample /> },
+  { title: 'Resize columns', description: 'Short description of demo content', className: 'resize-cell-sample', component: <ResizeCellSample /> }
 ];
 class DemoWrapper extends React.Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class DemoWrapper extends React.Component {
                 {tabMenuItems}
                 <div className="space-50"></div>
                 <TabContent activeTab={this.state.activeTabIdx}>
-                  {samplesData.map((sample, idx) => <SampleTab key={idx} tabId={idx} title={sample.title} description={sample.description} component={this.state.activeComponent} />)}
+                  {samplesData.map((sample, idx) => <SampleTab key={idx} tabId={idx} title={sample.title} description={sample.description} className={sample.className} component={this.state.activeComponent} />)}
                 </TabContent>
               </Nav>
             </Col>
@@ -70,7 +70,7 @@ class DemoWrapper extends React.Component {
   }
 }
 
-const SampleTab = ({ tabId, title, description, component }) => {
+const SampleTab = ({ tabId, title, description, component, className }) => {
   return (
     <TabPane tabId={tabId}>
       <Row>
