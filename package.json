@@ -9,7 +9,7 @@
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "@mdx-js/tag": "^0.20.3",
-    "@silevis/reactgrid": "^2.0.4",
+    "@silevis/reactgrid": "^2.0.6",
     "babel-polyfill": "^6.26.0",
     "chart.js": "2.8.0",
     "classnames": "^2.2.6",
@@ -64,6 +64,7 @@
     "typeface-poppins": "0.0.72"
   },
   "devDependencies": {
+    "@silevis/reactgrid-samples": "github:silevis/reactgrid-samples#build",
     "prettier": "^1.18.2"
   },
   "keywords": [

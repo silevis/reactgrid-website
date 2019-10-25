@@ -4,16 +4,14 @@ import {
   Container,
   Row,
   Col,
-  TabContent, 
-  TabPane, 
-  Nav, 
-  NavItem, 
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
   NavLink,
 } from "reactstrap";
-import DynagridDemo from '@silevis/reactgrid';
-
-
-class DemoWrapper  extends React.Component {
+import { BudgetPlannerSample, DropdownNumberCellSample, MultiUserSample, RateCellSample, ResizeCellSample } from '@silevis/reactgrid-samples';
+class DemoWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,20 +28,35 @@ class DemoWrapper  extends React.Component {
   render() {
     const examples = [
       {
-        title: 'Full demo',
+        title: 'Budget planner',
         description: 'Short description of demo content',
-        content: <DynagridDemo/>
+        content: <BudgetPlannerSample />
       },
       {
-        title: 'GroupHeaderCell',
+        title: 'Dropdown number cell',
         description: 'Short description of demo content',
-        content: <DynagridDemo/>
+        content: <DropdownNumberCellSample />
       },
+      {
+        title: 'Multiuser',
+        description: 'Short description of demo content',
+        content: <MultiUserSample />
+      },
+      {
+        title: 'Rate cell',
+        description: 'Short description of demo content',
+        content: <RateCellSample />
+      },
+      {
+        title: 'Resize columns',
+        description: 'Short description of demo content',
+        content: <ResizeCellSample />
+      }
     ];
     const tabMenuItems = examples.map((example, idx) => {
       return (
         <NavItem>
-          <NavLink className={classnames({ active: this.state.activeTab === idx })} onClick={() => {this.toggle(idx)}}>
+          <NavLink className={classnames({ active: this.state.activeTab === idx })} onClick={() => { this.toggle(idx) }}>
             {example.title}
           </NavLink>
         </NavItem>
@@ -82,7 +95,7 @@ class DemoWrapper  extends React.Component {
   }
 }
 
-const ExampleTab = ({tabId, title, description, children}) => {
+const ExampleTab = ({ tabId, title, description, children }) => {
   return (
     <TabPane tabId={tabId}>
       <Row>
