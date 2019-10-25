@@ -44,6 +44,30 @@ pre[class*="language-"] {
     background-color: rgba(255,255,255, 0.2);
 }
 
+.budget-planner-sample {
+    $primary-color:                     #00f2c3 !default;
+    $bg-color:                          #ffffff !default;
+    $frozens-bg-color:                  #ffffff !default;
+    $shadow-color:                      #000000 !default;
+    $resize-line-color:                 #3ef5d0b7 !default;
+    $row-line-color:                    rgba(255, 255, 255, 0.3) !default;
+    $col-line-color:                    rgba(255, 255, 255, 0.3) !default;
+    $fillhandle-action-border-color:    #000000 !default;
+    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+}
+
+.multi-user-sample {
+    $primary-color:                     #ba00f2 !default;
+    $bg-color:                          #ffffff !default;
+    $frozens-bg-color:                  #ffffff !default;
+    $shadow-color:                      #000000 !default;
+    $resize-line-color:                 #d560f8 !default;
+    $row-line-color:                    rgba(255, 255, 255, 0.3) !default;
+    $col-line-color:                    rgba(255, 255, 255, 0.3) !default;
+    $fillhandle-action-border-color:    #000000 !default;
+    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+}
+
 span.anchor {
     display: block;
     position: relative;

@@ -74,7 +74,7 @@ const SampleTab = ({ tabId, title, description, component }) => {
   return (
     <TabPane tabId={tabId}>
       <Row>
-        <Col>
+        <Col className={className}>
           <h1 className="h1 text-white">{title}</h1>
           <p>{description}</p>
           {component}
