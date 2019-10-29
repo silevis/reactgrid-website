@@ -44,28 +44,49 @@ pre[class*="language-"] {
     background-color: rgba(255,255,255, 0.2);
 }
 
-.budget-planner-sample {
-    $primary-color:                     #00f2c3 !default;
-    $bg-color:                          #ffffff !default;
-    $frozens-bg-color:                  #ffffff !default;
-    $shadow-color:                      #000000 !default;
-    $resize-line-color:                 #3ef5d0b7 !default;
-    $row-line-color:                    rgba(255, 255, 255, 0.3) !default;
-    $col-line-color:                    rgba(255, 255, 255, 0.3) !default;
-    $fillhandle-action-border-color:    #000000 !default;
+.all-in-one-sample,
+.multi-user-sample,
+.budget-planner-sample,
+.rate-cell-sample, 
+.resize-cell-sample,
+.dropdown-number-cell-sample {
+    $primary-color:                     #00f2c3;
+    $bg-color:                          #ffffff;
+    $frozens-bg-color:                  #ffffff;
+    $shadow-color:                      #000000;
+    $resize-line-color:                 #3ef5d0b7;
+    $row-line-color:                    rgba(255, 255, 255, 0.3);
+    $col-line-color:                    rgba(255, 255, 255, 0.3);
+    $fillhandle-action-border-color:    #00f2c3;
     @import '@silevis/reactgrid/dist/lib/assets/core.scss';
-}
-
-.multi-user-sample {
-    $primary-color:                     #ba00f2 !default;
-    $bg-color:                          #ffffff !default;
-    $frozens-bg-color:                  #ffffff !default;
-    $shadow-color:                      #000000 !default;
-    $resize-line-color:                 #d560f8 !default;
-    $row-line-color:                    rgba(255, 255, 255, 0.3) !default;
-    $col-line-color:                    rgba(255, 255, 255, 0.3) !default;
-    $fillhandle-action-border-color:    #000000 !default;
-    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    // SCROLLBARS
+    .rg-viewport {
+        overflow: scroll;
+        scrollbar-color: #33c9ab rgba(255, 255, 255, 0.3);
+    }
+    ::-webkit-scrollbar {
+        width: 1em;
+        height: 1em;
+    }
+    ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #33c9ab;
+        transition: background-color 0.5s ease;
+        border-radius: 7px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #299e87; 
+    }
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+    // CHECKBOX
+    .rg-checkbox-cell-template {
+        // ... TODO
+    }
 }
 
 span.anchor {
