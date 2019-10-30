@@ -67,25 +67,69 @@ pre[class*="language-"] {
     ::-webkit-scrollbar {
         width: 1em;
         height: 1em;
-    }
-    ::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 7px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #33c9ab;
-        transition: background-color 0.5s ease;
-        border-radius: 7px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-        background: #299e87; 
-    }
-    ::-webkit-scrollbar-corner {
-        background: transparent;
+        &-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 7px;
+        }
+        &-thumb {
+            background: #33c9ab;
+            transition: background-color 0.5s ease;
+            border-radius: 7px;
+            &:hover {background: #299e87 }
+        }
+        &-corner { background: transparent }
     }
     // CHECKBOX
-    .rg-checkbox-cell-template {
         // ... TODO
+    .rg-checkbox-container {
+        display: block;
+        position: relative;
+        height: 20px;
+        width: 20px;
+        margin: 0 auto;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        &:hover input ~ .rg-checkbox-checkmark {
+            background-color: #ffffffd3
+        }
+        .rg-checkbox-checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 20px;
+            width: 20px;
+            background-color: #fffffff1;
+            border-radius: 50%;
+            &:after {
+                content: "";
+                position: absolute;
+                display: none;
+                left: 7px;
+                top: 4px;
+                width: 6px;
+                height: 11px;
+                border: solid white;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+        }
+        input:checked ~ .rg-checkbox-checkmark {
+            background-color: #33c9ab;
+            &:after { display: block }
+        }
     }
 }
 
@@ -96,8 +140,7 @@ span.anchor {
     visibility: hidden;
 }
 
-@media (min-width: 576px) {  }
-
+@media (min-width: 576px) { }
 
 @media (min-width: 768px) { }
 
@@ -111,9 +154,7 @@ span.anchor {
             order: 6
         }
         .feature-description {
-            h3{
-                text-align: right;
-            }
+            h3 { text-align: right }
         }
     }
 }
