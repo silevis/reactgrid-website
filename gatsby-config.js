@@ -5,22 +5,22 @@ module.exports = {
     description: `Advanced spreadsheet for developers`,
     siteUrl: `http://reactgrid.com`,
     pages: [
-      {id: 'home',      title: `Home`,        description: ``, route: `/`,          active: false},
-      {id: 'features',  title: `Features`,    description: ``, route: `/features`,  active: true},
-      {id: 'examples',  title: `Examples`,    description: ``, route: `/examples`,  active: true},
-      {id: 'docs',      title: `Docs`,        description: ``, route: `/docs`,      active: true},
-      {id: 'pricing',   title: `Pricing`,     description: ``, route: `/pricing`,   active: true},
-      {id: 'blog',      title: `Blog`,        description: ``, route: `/blog`,      active: false},
+      { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
+      { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
+      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
+      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
+      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: true },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],
     footerNav: [
-      {id: 'blog',          title: `Blog`,          description: ``, route: `/blog`,            active: true},
-      {id: 'team',          title: `Team`,          description: ``, route: `/team`,            active: true},
-      {id: 'faq',           title: `FAQ`,           description: ``, route: `/faq`,             active: true},
-      {id: 'cookie',        title: `Cookie Policy`, description: ``, route: `/cookies`,         active: true},
-      {id: 'privacyPolicy', title: `Privacy Policy`,description: ``, route: `/privacy-policy`,  active: true},
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
+      { id: 'team', title: `Team`, description: ``, route: `/team`, active: true },
+      { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: true },
+      { id: 'cookie', title: `Cookie Policy`, description: ``, route: `/cookies`, active: true },
+      { id: 'privacyPolicy', title: `Privacy Policy`, description: ``, route: `/privacy-policy`, active: true },
     ],
     docsVersions: [
-      {slug: "/2.0.30", desc: '2.0.30', index: '/0-introduction' },
+      { slug: "/2.0.30", desc: '2.0.30', index: '/0-introduction' },
     ],
     docsPagesOrder: [
       "/Za",
@@ -90,7 +90,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        plugins: [ `gatsby-remark-images` ],
+        plugins: [`gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -108,8 +108,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`
           },
-          {resolve: `gatsby-remark-copy-linked-files`},
-          {resolve: `gatsby-remark-smartypants`},
+          { resolve: `gatsby-remark-copy-linked-files` },
+          { resolve: `gatsby-remark-smartypants` },
         ],
       },
     },
@@ -145,7 +145,7 @@ module.exports = {
         background_color: "#171941",
         theme_color: "#171941",
         display: "standalone",
-        icon: "src/assets/img/icon.png", 
+        icon: "src/assets/img/icon.png",
         crossOrigin: `use-credentials`,
       }
     },

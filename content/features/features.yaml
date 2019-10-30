@@ -2,55 +2,78 @@
     imgSrc: demo.gif
     imgAlt: Animation for multi user capability feature
     title: Multi user capability
-    description: fds
+    description: 'Many users can easily use the React-grid capabilities.'
     externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
--   
+    externalLink: https://codepen.io/   
+-
     imgSrc: demo.gif
-    imgAlt: Animation for optimized for Touch devices feature
-    title: Optimized for Touch devices
-    description: gfd
-    externalLinkText: Try out on codepen.io
+    imgAlt: ''
+    title: 'Cell Editing'
+    description: 'Users can update data with cell editing.'
+    externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
--   
+-
     imgSrc: demo.gif
     imgAlt: ''
     title: 'Custom cell types'
-    description: Animation for custom cell types feature
+    description: 'The ability to add your own custom cells of different types.'
     externalLinkText: 'Try out on codepen.io'
     externalLink: 'https://codepen.io/'
--   
+-
     imgSrc: demo.gif
     imgAlt: ''
-    title: 'Custom cell types'
-    description: Animation for fill handle feature
+    title: 'Tree data '
+    description: 'You can easily display data has parent / child relationships'
+    externalLinkText: 'Try out on codepen.io'
+    externalLink: 'https://codepen.io/'
+-
+    imgSrc: demo.gif
+    imgAlt: ''
+    title: 'Column Resize'
+    description: Allows manual modification column sizes.
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
     imgSrc: demo.gif
     imgAlt: ''
-    title: 'Custom cell types'
-    description: 'Animation for custom cell types feature'
+    title: 'Column / Row Reordering'
+    description: 'Allows users to change the order of displayed records and columns.'
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
     imgSrc: demo.gif
     imgAlt: ''
-    title: 'Resize / reorder'
-    description: 'Animation for reesize / reorder feature'
+    title: 'Column Freeze'
+    description: 'The ability to lock specific columns so that they are always visible when scrolling, so that data is visible regardless of which part of the spreadsheet is currently displayed.'
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
     imgSrc: demo.gif
     imgAlt: ''
     title: 'Copy, Cut, Paste'
-    description: 'Animation for Copy, Cut, Paste feature'
+    description: 'Allows users to copy / paste / cut data from a grid to another grid or spreadsheet and the other way round.'
     externalLinkText: 'Try out on codepen.io'
     externalLink: 'https://codepen.io/'
 -
     imgSrc: demo.gif
     imgAlt: ''
-    title: 'Additional features'
-    description: 'Animation for additional features feature'
-    externalLinkText: 'Try out on codepen.io'
+    title: Pinned
+    description: 'Pinning any row or cell allows the user constant access to the most important information.'
+    externalLinkText: Try out on codepen.io
     externalLink: https://codepen.io/
+-
+    imgSrc: demo.gif
+    imgAlt: ''
+    title: Cross-browser
+    description: 'React-Grid performs great in all modern browsers and has backward compatibility.'
+    externalLinkText: Try out on codepen.io
+    externalLink: https://codepen.io/
+-
+    imgSrc: demo.gif
+    imgAlt: Animation for optimized for Touch devices feature
+    title: Optimized for Touch devices
+    description: 'React-grid is adapted for use ontouch devices.'
+    externalLinkText: Try out on codepen.io
+    externalLink: https://codepen.io/
+
+  
