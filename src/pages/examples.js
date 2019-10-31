@@ -3,8 +3,8 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Header from "../components/Header"
-import Features from "../components/Features"
-import DemoWrapper from "../components/DemoWrapper"
+// import Features from "../components/Features"
+import SamplesWrapper from "../components/SamplesWrapper"
 
 class Examples extends React.Component {
   render() {
@@ -18,8 +18,8 @@ class Examples extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={'Examples'} />
         {/* <Header header={headerTitle} description={headerDescription}/> */}
-        <DemoWrapper/>
-        <Features/>
+        <SamplesWrapper/>
+        {/* <Features/> */}
       </Layout>
     )
   }

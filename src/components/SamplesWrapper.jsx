@@ -24,25 +24,38 @@ const samplesData = [
   { 
     title: 'All-in-1', 
     enabled: false,
-    description: 'This demo shouldn\'t be displayed, set "enabled: false" in DemoWrapper.jsx', 
+    description: 'This demo shouldn\'t be displayed, set "enabled: false" in SamplesWrapper.jsx', 
     className: 'all-in-one-sample', 
     component: <AllInOneSample /> 
   },
   { 
     title: 'Budget planner', 
     enabled: true,
-    description: `
-      Usage: <br/>
-      1. Press <code>space</code> key on first top row or column to expand/collapse<br/>
-      2. Double click on empty cell will open cell editor, type new numeric value and commit changes by pressing <code>Enter</code> key
-      Short description of demo content
-    `, 
+    description: [
+      {
+        header: `Usage:`,
+        content: [
+          `Press <code>space</code> key on top row or left column to expand/collapse`,
+          `Double click on empty cell will open cell editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Area selection`,
+          `Custom cell templates`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
     className: 'budget-planner-sample', 
     component: <BudgetPlannerSample /> 
   },
   { 
     title: 'Dropdown number cell', 
-    enabled: true,
+    enabled: false,
     description: 'Short description of demo content', 
     className: 'dropdown-number-cell-sample', 
     component: <DropdownNumberCellSample /> 
@@ -50,15 +63,33 @@ const samplesData = [
   { 
     title: 'Multi user', 
     enabled: true,
-    description: `
-      This demo shows how multiple users can cooperate on the same sheet due to custom focus feature
-    `, 
+    description: [
+      {
+        header: `Capabilities:`,
+        content: [
+          `Presenting multiple data changes in real time`,
+          `Each user idependently changes data on shared sheet`,
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Custom focuses`,
+          `Freezed column and row`,
+          `Area selection`,
+          `Custom cell templates`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
     className: 'multi-user-sample', 
     component: <MultiUserSample /> 
   },
   { 
     title: 'Rate cell', 
-    enabled: true,
+    enabled: false,
     description: 'Short description of demo content', 
     className: 'rate-cell-sample', 
     component: <RateCellSample /> 
@@ -66,20 +97,58 @@ const samplesData = [
   { 
     title: 'Resize columns', 
     enabled: true,
-    description: 'Short description of demo content', 
+    description: [
+      {
+        header: `Capabilities:`,
+        content: [
+          `Changing width of column`,
+          `Disabling this feature for each column`,
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Area selection`,
+          `Custom cell templates (rate and flag cell)`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
     className: 'resize-column-sample', 
     component: <ResizeColumnSample /> 
   },
   { 
     title: 'Row/columns reorder', 
     enabled: true,
-    description: 'Short description of demo content', 
+    description: [
+      {
+        header: `Usage:`,
+        content: [
+          `Press <code>alt</code> key and select columns/rows`,
+          `Drag column/rows do desired destination`,
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Column reorder`,
+          `Row reorder`,
+          `Area selection`,
+          `Custom cell templates (rate and flag cell)`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
     className: 'column-reorder-sample', 
     component: <ColumnReorderSample /> 
   },
 ];
 
-class DemoWrapper extends React.Component {
+class SamplesWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -124,7 +193,7 @@ class DemoWrapper extends React.Component {
               <Nav tabs>
                 {tabMenuItems}
                 <div className="space-50"></div>
-                <TabContent activeTab={this.state.activeTabIdx} className="w-100">
+                <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
                   {sampleTabs}
                 </TabContent>
               </Nav>
@@ -143,7 +212,23 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
         <Col xs="12" className={className}>
           <div className="py-5">
             <h1 className="h1 text-white">{title}</h1>
-            <p dangerouslySetInnerHTML={{__html: description}}></p>
+            {description.length === 2 ? 
+              <Row>
+                <Col md="5">
+                  <h3>{description[0].header}</h3>
+                  <ol class="pl-2">
+                    {description[0].content.map(item => <li className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
+                  </ol>
+                </Col>
+                <Col className="d-none d-md-block" md="2"></Col>
+                <Col md="5">
+                  <h3>{description[1].header}</h3>
+                  <ul class="list-unstyled">
+                    {description[1].content.map(item => <li className="pb-3"><i class="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
+                  </ul>
+                </Col>
+              </Row>
+            : <p dangerouslySetInnerHTML={{__html: description}}></p>}
           </div>
           {component}
         </Col>
@@ -152,4 +237,4 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
   )
 }
 
-export default DemoWrapper;
+export default SamplesWrapper;

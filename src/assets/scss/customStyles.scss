@@ -44,6 +44,12 @@ pre[class*="language-"] {
     background-color: rgba(255,255,255, 0.2);
 }
 
+.example-tabs-content {
+    code {
+        font-size: 110%;
+    }
+}
+
 .all-in-one-sample,
 .budget-planner-sample,
 .dropdown-number-cell-sample,
@@ -53,8 +59,22 @@ pre[class*="language-"] {
 .column-reorder-sample {
     color: rgba(255, 255, 255, 0.81);
 
+    // dropdown number
+    .rg-dropdown-number-cell {
+        .rg-dropdown-number-cell-dropdown {
+            background-color: #171941;
+            border-color: #00f2c3;
+        }
+        $track-color: #01aa88;
+        $thumb-color: #00f2c3;
+        $thumb-border-color: #01aa88 !default;
+        $track-border-color: #1f2258 !default;
+        @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
+    }
+
+    // reactgrid colors
     $primary-color:                     #00f2c3;
-    $bg-color:                          #ffffff;
+    $bg-color:                          #21836f;
     $frozens-bg-color:                  #ffffff;
     $shadow-color:                      #000000;
     $resize-line-color:                 #3ef5d0b7;
@@ -133,6 +153,14 @@ pre[class*="language-"] {
             background-color: #33c9ab;
             &:after { display: block }
         }
+    }
+
+    .rg-number-cell-template,
+    .rg-date-cell-template,
+    .rg-email-cell-template,
+    .rg-date-cell-template,
+    .rg-text-cell-template {
+        color: white;
     }
 }
 
