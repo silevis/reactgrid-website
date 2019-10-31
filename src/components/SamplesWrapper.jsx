@@ -217,14 +217,14 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
                 <Col md="5">
                   <h3>{description[0].header}</h3>
                   <ol class="pl-2">
-                    {description[0].content.map(item => <li className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
+                    {description[0].content.map((item, idx) => <li key={idx} className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
                   </ol>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
                   <h3>{description[1].header}</h3>
                   <ul class="list-unstyled">
-                    {description[1].content.map(item => <li className="pb-3"><i class="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
+                    {description[1].content.map((item, idx) => <li key={idx} className="pb-3"><i class="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
                   </ul>
                 </Col>
               </Row>
