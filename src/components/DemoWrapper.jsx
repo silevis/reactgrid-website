@@ -15,7 +15,7 @@ import {
   DropdownNumberCellSample, 
   MultiUserSample, 
   RateCellSample, 
-  ResizeCellSample,
+  ResizeColumnSample,
   AllInOneSample,
   ColumnReorderSample,
 } from '@silevis/reactgrid-samples';
@@ -23,7 +23,7 @@ import {
 const samplesData = [
   { 
     title: 'All-in-1', 
-    enabled: true,
+    enabled: false,
     description: 'This demo shouldn\'t be displayed, set "enabled: false" in DemoWrapper.jsx', 
     className: 'all-in-one-sample', 
     component: <AllInOneSample /> 
@@ -31,7 +31,12 @@ const samplesData = [
   { 
     title: 'Budget planner', 
     enabled: true,
-    description: 'Short description of demo content', 
+    description: `
+      Usage: <br/>
+      1. Press <code>space</code> key on first top row or column to expand/collapse<br/>
+      2. Double click on empty cell will open cell editor, type new numeric value and commit changes by pressing <code>Enter</code> key
+      Short description of demo content
+    `, 
     className: 'budget-planner-sample', 
     component: <BudgetPlannerSample /> 
   },
@@ -45,7 +50,9 @@ const samplesData = [
   { 
     title: 'Multi user', 
     enabled: true,
-    description: 'Short description of demo content', 
+    description: `
+      This demo shows how multiple users can cooperate on the same sheet due to custom focus feature
+    `, 
     className: 'multi-user-sample', 
     component: <MultiUserSample /> 
   },
@@ -60,14 +67,14 @@ const samplesData = [
     title: 'Resize columns', 
     enabled: true,
     description: 'Short description of demo content', 
-    className: 'resize-cell-sample', 
-    component: <ResizeCellSample /> 
+    className: 'resize-column-sample', 
+    component: <ResizeColumnSample /> 
   },
   { 
     title: 'Row/columns reorder', 
     enabled: true,
     description: 'Short description of demo content', 
-    className: 'resize-cell-sample', 
+    className: 'column-reorder-sample', 
     component: <ColumnReorderSample /> 
   },
 ];
@@ -136,7 +143,7 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
         <Col xs="12" className={className}>
           <div className="py-5">
             <h1 className="h1 text-white">{title}</h1>
-            <p>{description}</p>
+            <p dangerouslySetInnerHTML={{__html: description}}></p>
           </div>
           {component}
         </Col>

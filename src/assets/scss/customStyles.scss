@@ -45,11 +45,14 @@ pre[class*="language-"] {
 }
 
 .all-in-one-sample,
-.multi-user-sample,
 .budget-planner-sample,
-.rate-cell-sample, 
-.resize-cell-sample,
-.dropdown-number-cell-sample {
+.dropdown-number-cell-sample,
+.multi-user-sample,
+.rate-cell-sample,
+.resize-column-sample,
+.column-reorder-sample {
+    color: rgba(255, 255, 255, 0.81);
+
     $primary-color:                     #00f2c3;
     $bg-color:                          #ffffff;
     $frozens-bg-color:                  #ffffff;
