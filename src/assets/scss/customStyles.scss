@@ -66,6 +66,7 @@ pre[class*="language-"] {
 .multi-user-sample,
 .rate-cell-sample,
 .resize-column-sample,
+.frozens-sample,
 .column-reorder-sample {
     color: rgba(255, 255, 255, 0.81);
 
@@ -85,13 +86,14 @@ pre[class*="language-"] {
     // reactgrid colors
     $primary-color:                     #00f2c3;
     $bg-color:                          #21836f;
-    $frozens-bg-color:                  #ffffff;
+    $frozens-bg-color:                  #040835;
     $shadow-color:                      #000000;
     $resize-line-color:                 #3ef5d0b7;
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
     $fillhandle-action-border-color:    #00f2c3;
     @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    
     // SCROLLBARS
     .rg-viewport {
         overflow: scroll;

@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { 
   BudgetPlannerSample, 
-  DropdownNumberCellSample, 
+  FrozensSample, 
   MultiUserSample, 
   RateCellSample, 
   ResizeColumnSample,
@@ -30,7 +30,7 @@ const samplesData = [
   },
   { 
     title: 'Budget planner', 
-    enabled: true,
+    enabled: false,
     description: [
       {
         header: `Usage:`,
@@ -54,15 +54,15 @@ const samplesData = [
     component: <BudgetPlannerSample /> 
   },
   { 
-    title: 'Dropdown number cell', 
+    title: 'Frozens Sample', 
     enabled: false,
     description: 'Short description of demo content', 
-    className: 'dropdown-number-cell-sample', 
-    component: <DropdownNumberCellSample /> 
+    className: 'frozens-sample', 
+    component: <FrozensSample /> 
   },
   { 
     title: 'Multi user', 
-    enabled: true,
+    enabled: false,
     description: [
       {
         header: `Capabilities:`,
@@ -121,7 +121,7 @@ const samplesData = [
   },
   { 
     title: 'Row/columns reorder', 
-    enabled: true,
+    enabled: false,
     description: [
       {
         header: `Usage:`,
@@ -206,25 +206,29 @@ class SamplesWrapper extends React.Component {
 }
 
 const SampleTab = ({ tabId, title, description, component, className }) => {
+  const [column1, column2] = description;
   return (
     <TabPane tabId={tabId}>
       <Row>
         <Col xs="12" className={className}>
           <div className="py-5">
-            <h1 className="h1 text-white">{title}</h1>
+            <h1 className="h1 text-success">
+              <span style={{fontSize: '2.1em', position: 'absolute', top: '25px'}}>›</span>
+              <span style={{paddingLeft: '0.4em'}}>_{title}</span>
+            </h1>
             {description.length === 2 ? 
               <Row>
                 <Col md="5">
-                  <h3>{description[0].header}</h3>
-                  <ol class="pl-2">
-                    {description[0].content.map((item, idx) => <li key={idx} className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
+                  <h3>{column1.header}</h3>
+                  <ol className="pl-2">
+                    {column1.content.map((item, idx) => <li key={idx} className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
                   </ol>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
-                  <h3>{description[1].header}</h3>
-                  <ul class="list-unstyled">
-                    {description[1].content.map((item, idx) => <li key={idx} className="pb-3"><i class="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
+                  <h3>{column2.header}</h3>
+                  <ul className="list-unstyled">
+                    {column2.content.map((item, idx) => <li key={idx} className="pb-3"><i className="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
                   </ul>
                 </Col>
               </Row>
