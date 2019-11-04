@@ -10,15 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { 
-  BudgetPlannerSample, 
-  FrozensSample, 
-  MultiUserSample, 
-  RateCellSample, 
-  ResizeColumnSample,
-  AllInOneSample,
-  ColumnReorderSample,
-} from '@silevis/reactgrid-samples';
+import * as samples from '@silevis/reactgrid-samples';
 
 const samplesData = [
   { 
@@ -26,11 +18,11 @@ const samplesData = [
     enabled: false,
     description: 'This demo shouldn\'t be displayed, set "enabled: false" in SamplesWrapper.jsx', 
     className: 'all-in-one-sample', 
-    component: <AllInOneSample /> 
+    component: 'AllInOneSample' 
   },
   { 
     title: 'Budget planner', 
-    enabled: false,
+    enabled: true,
     description: [
       {
         header: `Usage:`,
@@ -51,18 +43,38 @@ const samplesData = [
       }
     ],
     className: 'budget-planner-sample', 
-    component: <BudgetPlannerSample /> 
+    component: 'BudgetPlannerSample' 
   },
   { 
     title: 'Frozens Sample', 
-    enabled: false,
-    description: 'Short description of demo content', 
+    enabled: true,
+    description: [
+      {
+        header: `Capabilities:`,
+        content: [
+          `Presenting multiple data changes in real time`,
+          `Each user idependently changes data on shared sheet`,
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Frozen panes`,
+          `Freezed column and row`,
+          `Area selection`,
+          `Custom cell templates`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
     className: 'frozens-sample', 
-    component: <FrozensSample /> 
+    component: 'FrozensSample' 
   },
   { 
     title: 'Multi user', 
-    enabled: false,
+    enabled: true,
     description: [
       {
         header: `Capabilities:`,
@@ -85,14 +97,14 @@ const samplesData = [
       }
     ],
     className: 'multi-user-sample', 
-    component: <MultiUserSample /> 
+    component: 'MultiUserSample'
   },
   { 
     title: 'Rate cell', 
     enabled: false,
     description: 'Short description of demo content', 
     className: 'rate-cell-sample', 
-    component: <RateCellSample /> 
+    component: 'RateCellSample' 
   },
   { 
     title: 'Resize columns', 
@@ -117,11 +129,11 @@ const samplesData = [
       }
     ],
     className: 'resize-column-sample', 
-    component: <ResizeColumnSample /> 
+    component: 'ResizeColumnSample' 
   },
   { 
     title: 'Row/columns reorder', 
-    enabled: false,
+    enabled: true,
     description: [
       {
         header: `Usage:`,
@@ -144,7 +156,7 @@ const samplesData = [
       }
     ],
     className: 'column-reorder-sample', 
-    component: <ColumnReorderSample /> 
+    component: 'ColumnReorderSample' 
   },
 ];
 
@@ -174,7 +186,8 @@ class SamplesWrapper extends React.Component {
       </NavItem>
     );
     
-    const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) => 
+  
+    const sampleTabs = samplesData.filter((sample, idx) => sample.enabled).map((sample, idx) => 
       <SampleTab 
         key={idx} 
         tabId={idx}
@@ -207,6 +220,7 @@ class SamplesWrapper extends React.Component {
 
 const SampleTab = ({ tabId, title, description, component, className }) => {
   const [column1, column2] = description;
+  const Sample = samples[component];
   return (
     <TabPane tabId={tabId}>
       <Row>
@@ -234,7 +248,7 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
               </Row>
             : <p dangerouslySetInnerHTML={{__html: description}}></p>}
           </div>
-          {component}
+          <Sample/>
         </Col>
       </Row>
     </TabPane>
