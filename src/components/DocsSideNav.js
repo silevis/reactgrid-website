@@ -31,7 +31,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
                   const itemId = innerItem.title ? innerItem.title.replace(/\s+/g, '').toLowerCase() : '#';
                   return (
                     <NavItem key={index} className="py-1">
-                      <a href={`#${itemId}`} className="text-danger">{innerItem.title}</a>
+                      <a href={`#${itemId}`} className="text-white">{innerItem.title}</a>
                     </NavItem>
                   );
                 });
@@ -49,7 +49,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
       })
       if (finalNavItems && finalNavItems.length) {
         return (
-          <div style={{top: 0}} className={navWrapperClasses}>
+          <div style={{top: 0, fontSize: '0.9em'}} className={navWrapperClasses}>
              <Nav vertical style={{paddingTop: isFloating ? '102px' : '0'}}>
                 <div style={{borderLeft: '1px solid rgba(255, 255, 255, 0.25)'}} className="pl-2">
                   <div className="h5 text-white">CONTENTS</div>

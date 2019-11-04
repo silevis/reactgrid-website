@@ -23,8 +23,8 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, ite
     'active': active
   });
   const calculatedTitleClassName = classNames({
-    'font-weight-bold': lvl < 3,
-    'font-weight-light': lvl >= 3,
+    'font-weight-md-bold': lvl < 3,
+    'font-weight-md-light': lvl >= 3,
   });
 
   return (
@@ -35,8 +35,8 @@ const TreeNode = ({className = '', setCollapsed, collapsed, url, lvl, title, ite
             {!isCollapsed ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-down"></i>}
           </span> */}
           <Link to={docsRoute + url} className="text-white d-inline-block">
-            <h4 className="mb-0 py-1">
-              <span className={calculatedTitleClassName} style={{fontSize: lvl >= 3 ? '0.9em' : '' }}>{title}</span>
+            <h4 className="mb-0">
+              <span className={calculatedTitleClassName} style={{fontSize: '0.75em'}}>{title}</span>
             </h4>
           </Link>
         </>

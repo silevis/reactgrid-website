@@ -18,9 +18,19 @@
 
 .nav-docs-item.active {
     color: #fb6340;
-    & a h4 {
+    & a h4,
+    & a h4 .font-weight-md-light {
         color: #fb6340;
+        font-weight: 500 !important;
     }
+}
+
+.font-weight-md-bold {
+    font-weight: 500 !important;
+}
+
+.font-weight-md-light {
+    font-weight: 300;
 }
 
 .bg-darker {
