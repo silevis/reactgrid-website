@@ -64,6 +64,7 @@ const samplesData = [
           `Freezed column and row`,
           `Area selection`,
           `Custom cell templates`,
+          `Disabled column selecting`,
           `Copy/cut/paste`,
           `Touch capability`,
           `SASS styling`,

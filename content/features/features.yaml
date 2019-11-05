@@ -1,15 +1,29 @@
 -   
-    imgSrc: demo.gif
+    imgSrc: multi-user.gif
     imgAlt: Animation for multi user capability feature
     title: Multi user capability
     description: 'Reactgrid supports multiple users operations on the same sheet simultaneously. '
     externalLinkText: Try out on codepen.io
     externalLink: https://codepen.io/
 -
-    imgSrc: demo.gif
+    imgSrc: fill-handle.gif
     imgAlt: ''
-    title: 'Cell content manipulations'
-    description: 'Users can update data with cell editing.a'
+    title: Fill handle
+    description: Clone cell data and it's properties with fill handle like in other spreadsheets 
+    externalLinkText: 'Try out on codepen.io'
+    externalLink: https://codepen.io/
+-
+    imgSrc: behaviour.gif
+    imgAlt: ''
+    title: Expected behaviour 
+    description: Interract with grid in well know way with keyboard
+    externalLinkText: 'Try out on codepen.io'
+    externalLink: https://codepen.io/
+-
+    imgSrc: select-area.gif
+    imgAlt: ''
+    title: Area selection/multiselection
+    description: Choose multiple areas of choice in any way you like
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
@@ -48,10 +62,10 @@
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
-    imgSrc: demo.gif
+    imgSrc: frozens.gif
     imgAlt: ''
-    title: 'Column Freeze'
-    description: 'The ability to lock specific columns so that they are always visible when scrolling, so that data is visible regardless of which part of the spreadsheet is currently displayed.'
+    title: 'Column freeze'
+    description: You're able to lock specific columns so that they are always visible when scrolling
     externalLinkText: 'Try out on codepen.io'
     externalLink: https://codepen.io/
 -
@@ -65,7 +79,7 @@
     imgSrc: demo.gif
     imgAlt: ''
     title: Pinned
-    description: 'Pinning any row or cell allows the user constant access to the most important information.'
+    description: 'Pinning any row or column allows the user constant access to the most important information.'
     externalLinkText: Try out on codepen.io
     externalLink: https://codepen.io/
 -
@@ -83,7 +97,7 @@
     externalLinkText: Try out on codepen.io
     externalLink: https://codepen.io/
 -
-    imgSrc: demo.gif
+    imgSrc: scss.gif
     imgAlt: Animation for optimized for Touch devices feature
     title: SASS styling support
     description: Feel free to customly style each element of grid using SASS styles preprocesor

@@ -84,14 +84,16 @@ pre[class*="language-"] {
     }
 
     // reactgrid colors
-    $primary-color:                     #00f2c3;
+    
+    $primary-color:                     rgb(0, 242, 195);
     $bg-color:                          #21836f;
     $frozens-bg-color:                  #040835;
     $shadow-color:                      #000000;
-    $resize-line-color:                 #3ef5d0b7;
+    $resize-line-color:                 rgba(62, 245, 208, 0.718);
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
-    $fillhandle-action-border-color:    #00f2c3;
+    $fillhandle-action-border-color:    rgb(0, 239, 191);
+
     @import '@silevis/reactgrid/dist/lib/assets/core.scss';
     
     // SCROLLBARS
