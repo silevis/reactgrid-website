@@ -60,7 +60,7 @@ const SingleFeature = ({imgSrc, imgAlt, title, description, externalLinkText, ex
 const FeatureImage = ({imgSrc, imgAlt}) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
-        <img alt={imgAlt} src={imgSrc}/>
+        <img alt={imgAlt} src={imgSrc}  style={{boxShadow: '0px 0px 8px rgb(0, 0, 0)'}}/>
     </div>
   )
 }

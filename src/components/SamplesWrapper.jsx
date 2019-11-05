@@ -27,16 +27,17 @@ const samplesData = [
       {
         header: `Usage:`,
         content: [
-          `Press <code>space</code> key on top row or left column to expand/collapse`,
-          `Double click on empty cell will open cell editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
+          `Press <code>space</code> key on top row or left column to expand/collapse category`,
+          `Double click on empty cell will open editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
         ]
       },
       {
         header: `Applied core features:`,
         content: [
           `Area selection`,
+          `Column row selection`,
           `Custom cell templates`,
-          `Copy/cut/paste`,
+          `Copy/cut/paste capability`,
           `Touch capability`,
           `SASS styling`,
         ]
@@ -89,7 +90,7 @@ const samplesData = [
           `Custom focuses`,
           `Freezed column and row`,
           `Area selection`,
-          `Custom cell templates`,
+          `Custom cell templates (rate and flag cell)`,
           `Copy/cut/paste`,
           `Touch capability`,
           `SASS styling`,
