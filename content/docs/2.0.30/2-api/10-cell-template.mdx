@@ -1,21 +1,18 @@
 ---
 posttype: "docs"
 title: CellTemplate
-metaTitle: "CellTemplate public API"
+metaTitle: "CellTemplate interface"
 metaDescription: "metaDescription"
 ---
 
-## CellTemplate  
-
-`CellTemplate` is used for the communication between ReactGrid and a cell
+`CellTemplate` is used for the communication between ReactGrid and a cell.
 
 
-
-| Property name  |  Property description  |
-|-----------    |  -------------------------|
-| `validate`  | [Id](link) of row |
-| `columnId` | [Id](link) of column  |
-| `columnId` | [Id](link) of column  |
-| `columnId` | [Id](link) of column  |
-| `columnId` | [Id](link) of column  |
-| `columnId` | [Id](link) of column  |
+| Name            | Type | Description |
+|-----------      | ---- | -------------|
+| `validate`      | `(cell: ` [`TCell`](link)`): ` [`CompatibleCell`](link)`<`[`TCell`](link)`>`| Validates passed data to cell based on type. If passed data are incorrect, it converts it to the target type and return cell with correct data. |
+| `isFocusable`   | `(cell: ` [`TCell`](link)`): boolean;` | Return `false` if you want that your cell shouldn't be focusable. |
+| `update`        | `(cell: ` [`TCell`](link)`, newCell: ` [`TCell`](link) ` | ` [`CompatibleCell`](link)`: ` [`TCell`](link)`;`| Updates current cell. If not implemented, cell will be read-only. |
+| `handleKeyDown` | `TODO` | Returns the cell data either affected by the event or not. |
+| `getStyle`      | `(cell: ` [`TCell`](link)`, isInEditMode: boolean): ` [`CellStyle`](link)`;`| Return styles of cell. |
+| `render`        | `(cell: ` [`TCell`](link)`, isInEditMode: boolean, onCellChanged: (cell: ` [`TCell`](link)`, commit: boolean) => void): React.ReactNode;`| Renders cell content.  |
