@@ -1,20 +1,18 @@
 ---
 posttype: "docs"
 title: Row
-metaTitle: "Row public API"
+metaTitle: "Row interface"
 metaDescription: "metaDescription"
 ---
-
-## Row  
 
 Row interface contains only two necessary properties: `rowId` and `cells`.
 It's essential to create any grid.
 
-Property name | Property description
------------- | -------------
-`rowId` | `Id` that is unique in all rows array
-`cells` | array of `Cell` objects
-`height`  | height of each grid row (defaultly set to 25px) 
-`reorderable`    | property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) 
-`canDrop` | callback called to check possibility to drop row on new position
-`onDrop` | event called when rows are dropped in new position
+| Property name     | Type          | Property description  | 
+| ------------      | ------------- | -------------         |
+| `rowId`           | [`Id`](link)                                                                  | Unique id in all rows array | 
+| `cells`           | [`Cell`](link)`[]`                                                            | Array of `Cell` objects | 
+| `height?`         | `number`                                                                      | Height of each grid row (defaultly set to 25px)  | 
+| `reorderable?`    | `boolean`                                                                     | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  
+| `canDrop?`        | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => boolean`   | Callback called to check possibility to drop row on new position | 
+| `onDrop?`         | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => void`      | Event called when rows are dropped in new position | 

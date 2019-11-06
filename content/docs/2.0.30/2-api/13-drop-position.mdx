@@ -1,22 +1,12 @@
 ---
 posttype: "docs"
-title: Id
-metaTitle: "Id "
+title: DropPosition
+metaTitle: "DropPosition type"
 metaDescription: "metaDescription"
 ---
 
-## Id 
-
-`Id` is a common type to identify many objects in grid like: 
-- [CellId](link)
-- [Focus](link),  
-- [CellChange](link), 
-- [CellChange](link),  
-- [Column](link), 
-- [Row](link)
-
-`Id` can be an `number` or `string`
+`DropPosition` is a common type used in [`Column`](link) and [`Row`](link) interfaces. Indicates where row/column was dropped.
 
 ```tsx
-type Id = number | string;
+type DropPosition = 'before' | 'on' | 'after';
 ```

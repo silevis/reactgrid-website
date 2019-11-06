@@ -1,20 +1,18 @@
 ---
 posttype: "docs"
 title: Column
-metaTitle: "Column public API"
+metaTitle: "Column interface"
 metaDescription: "metaDescription"
 ---
 
-## Column  
-
-Column interface contains only one necessary properties: `columnId`.
+Column interface contains only one necessary properties: `columnId`, it's representing column of data.
 It's essential to create any grid.
 
-Property name | Property description
------------- | -------------
-`columnId` | `Id` that is unique in all columns array
-`width`  | width of each grid column (defaultly set to 150px) 
-`reorderable` | property that allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side) 
-`canDrop` | callback called to check possibility to drop row on new position
-`onDrop` | event called when columns are dropped in new position
-`onResize` | event called when column resize column was called (if it's not implemented then resizing on this column is disabled)
+| Property name     | Type            | Property description | 
+| ------------      | -------------   | 
+| `columnId`        | [`Id`](link)                                                                  | Unique id in all columns array | 
+| `width?`          | `number`                                                                      | Width of each grid column (defaultly set to 150px)  | 
+| `reorderable?`    | `boolean`                                                                     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| `canDrop?`        | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => boolean`   | Callback called to check possibility to drop row on new position | 
+| `onDrop?`         | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => void`      | Event called when columns are dropped in new position | 
+| `onResize?`       | `(newWidth: number) => void`                                                  | Event called when column resize column was called (if it's not implemented then resizing on this column is disabled) | 

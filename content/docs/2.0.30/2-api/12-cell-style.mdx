@@ -1,15 +1,14 @@
 ---
 posttype: "docs"
-title: CellId
-metaTitle: "CellId public API"
+title: CellStyle
+metaTitle: "CellStyle interface"
 metaDescription: "metaDescription"
 ---
 
-## CellId  
+`CellStyle` interface prevents passing unwanted CSS properties that could broke grid rendering. Used in cell template.
 
-`CellId` interface is used to describe position of cell (typically focused) inside grid
-
-| Property name  |  Property description  |
-|-----------    |  -------------------------|
-| `rowId`  | [Id](link) of row  |
-| `columnId` | [Id](link) of column  |
+| Property name     | Type      |  Property description     |
+| -----------       | -------   | ------------------------- |
+| `color?`          | `string`  | CSS `color` property      |
+| `background?`     | `string`  | CSS `background` property |
+| `className?`      | `string`  | Applied CSS class name    |

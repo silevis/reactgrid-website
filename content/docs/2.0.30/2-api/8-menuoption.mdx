@@ -1,17 +1,14 @@
 ---
 posttype: "docs"
-title: Menu option
-metaTitle: "Menu option public API"
+title: MenuOption
+metaTitle: "MenuOption interface"
 metaDescription: "metaDescription"
----
+--- 
 
-## Menu option  
+Context menu is part of grid, each menu option must implement interface below.
 
-Context menu is part of grid, each menu option must implement interface below:
-
-
-| Property name     |  Property description |
-|-----------    |  -------------------------|
-| `id`        | text that identifies each menu option
-| `label`      | label of menu option     |
-| `handler`      | function that is called when option is clicked     |
+| Property name | Type          | Property description |
+| -----------   | ------        | ---------- |
+| `id`          | `string`      | Text that identifies each menu option |
+| `label`       | `string`      | Label of menu option |
+| `handler`     | `() => void`  | Function that is called when option is clicked |
