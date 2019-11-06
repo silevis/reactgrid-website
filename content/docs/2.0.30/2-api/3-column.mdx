@@ -1,8 +1,20 @@
 ---
 posttype: "docs"
 title: Column
-metaTitle: "metaTitle"
+metaTitle: "Column public API"
 metaDescription: "metaDescription"
 ---
 
 ## Column  
+
+Column interface contains only one necessary properties: `columnId`.
+It's essential to create any grid.
+
+Property name | Property description
+------------ | -------------
+`columnId` | `Id` that is unique in all columns array
+`width`  | width of each grid column (defaultly set to 150px) 
+`reorderable` | property that allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side) 
+`canDrop` | callback called to check possibility to drop row on new position
+`onDrop` | event called when columns are dropped in new position
+`onResize` | event called when column resize column was called (if it's not implemented then resizing on this column is disabled)
