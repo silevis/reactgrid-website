@@ -3,105 +3,96 @@
     imgAlt: Animation for multi user capability feature
     title: Multi user capability
     description: 'Reactgrid supports multiple users operations on the same sheet simultaneously. '
-    externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: fill-handle.gif
     imgAlt: ''
     title: Fill handle
     description: Clone cell data and it's properties with fill handle like in other spreadsheets 
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: behaviour.gif
     imgAlt: ''
     title: Expected behaviour 
-    description: Interract with grid in well know way with keyboard
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    description: Interract with grid in well know way with keyboard 
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: select-area.gif
     imgAlt: ''
     title: Area selection/multiselection
     description: Choose multiple areas of choice in any way you like
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
--
-    imgSrc: demo.gif
-    imgAlt: ''
-    title: 'Custom cell types'
-    description: 'Ability to add your own custom cell templates (custom cell behaviours, styles, data formatting and validating)'
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: 'https://codepen.io/'
--
-    imgSrc: demo.gif
-    imgAlt: ''
-    title: 'Tree data'
-    description: 'You can easily display data has parent / child relationships'
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: 'https://codepen.io/'
+    externalLinkText: ''
+    externalLink: ''
+# -
+#     imgSrc: demo.gif
+#     imgAlt: ''
+#     title: 'Custom cell types'
+#     description: 'Ability to add your own custom cell templates (custom cell behaviours, styles, data formatting and validating)'
+#     externalLinkText: ''
+#     externalLink: ''
+# -
+#     imgSrc: demo.gif
+#     imgAlt: ''
+#     title: 'Tree data'
+#     description: 'You can easily display data has parent / child relationships'
+#     externalLinkText: ''
+#     externalLink: ''
 -
     imgSrc: resize-column.gif
     imgAlt: ''
     title: 'Column Resize'
     description: Modificate width of each column with drag&drop capability
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: column-reorder.gif
     imgAlt: ''
     title: 'Column reordering'
     description: 'Select columns, drag them and drop at the desired destination'
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: row-reorder.gif
     imgAlt: ''
     title: 'Row reordering'
     description: 'Select rows, drag them and drop at the desired destination'
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: frozens.gif
     imgAlt: ''
     title: 'Column freeze'
     description: You're able to lock specific columns so that they are always visible when scrolling
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
 -
     imgSrc: copy-cut-paste.gif
     imgAlt: ''
     title: 'Copy, cut, paste'
     description: 'Let users to copy/cut/paste data inside grid and between other data sources'
-    externalLinkText: 'Try out on codepen.io'
-    externalLink: 'https://codepen.io/'
--
-    imgSrc: demo.gif
-    imgAlt: ''
-    title: Pinned
-    description: 'Pinning any row or column allows the user constant access to the most important information.'
-    externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
--
-    imgSrc: demo.gif
-    imgAlt: ''
-    title: Cross-browser
-    description: 'React-Grid performs great in all modern browsers and has backward compatibility.'
-    externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
+    externalLinkText: ''
+    externalLink: ''
+# -
+#     imgSrc: demo.gif
+#     imgAlt: ''
+#     title: Context menu
+#     description: Use our builtin context menu or replace it with third party component
+#     externalLinkText: 
+#     externalLink: ''
 -
     imgSrc: demo.gif
     imgAlt: Animation for optimized for Touch devices feature
     title: Optimized for Touch devices
     description: 'Reactgrid is adapted for use ontouch devices'
-    externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
--
-    imgSrc: scss.gif
-    imgAlt: Animation for optimized for Touch devices feature
-    title: SASS styling support
-    description: Feel free to customly style each element of grid using SASS styles preprocesor
-    externalLinkText: Try out on codepen.io
-    externalLink: https://codepen.io/
-
-  
+    externalLinkText: 
+    externalLink: ''
+# -
+#     imgSrc: scss.gif
+#     imgAlt: Animation for optimized for Touch devices feature
+#     title: SASS styling support
+#     description: Feel free to customly style each element of grid using SASS styles preprocesor
+#     externalLinkText: 
+#     externalLink: ''

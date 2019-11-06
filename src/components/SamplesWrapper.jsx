@@ -48,7 +48,7 @@ const samplesData = [
   },
   { 
     title: 'Frozens Sample', 
-    enabled: true,
+    enabled: false,
     description: [
       {
         header: `Capabilities:`,
@@ -228,10 +228,7 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
       <Row>
         <Col xs="12" className={className}>
           <div className="py-5">
-            <h1 className="h1 text-success">
-              <span style={{fontSize: '2.1em', position: 'absolute', top: '25px'}}>›</span>
-              <span style={{paddingLeft: '0.4em'}}>_{title}</span>
-            </h1>
+            <h1 className="h1 text-success">{title}</h1>
             {description.length === 2 ? 
               <Row>
                 <Col md="5">

@@ -25,6 +25,35 @@ class Features extends React.Component {
           <div className="space-50"></div>
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node}/>)}
+            <Row className=" py-lg-5">
+              <Col>
+                <div className="text-center">
+                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fas fa-align-left text-success"></i></span>
+                  <h3 className="mb-3">Tree data</h3>
+                  <p className="description pb-3">You can easily display data has parent / child relationships</p>
+                </div>
+              </Col>
+              <Col>
+                <div className="text-center">
+                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fab fa-sass text-success"></i></span>
+                  <h3 className="mb-3">SASS styling support</h3>
+                  <p className="description pb-3">Feel free to customly style each element of grid using SASS styles preprocesor</p>
+                </div>
+              </Col>
+              <Col>
+                <div className="text-center">
+                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fab fa-internet-explorer text-success"></i></span>
+
+                  {/* <span class="fa-layers fa-fw" style={{fontSize: '5em'}}>
+                    <i class="fab fa-internet-explorer"></i>
+                    <i class="fa-inverse fab fa-safari" data-fa-transform="shrink-10 up-2" style={{color: 'Tomato'}}></i>
+                  </span> */}
+
+                  <h3 className="mb-3">Cross-browser support</h3>
+                  <p className="description pb-3">Reactgrid performs great in all modern browsers and has backward compatibility</p>
+                </div>
+              </Col>
+            </Row>
           </Container>
         </div>
       </Layout>
@@ -46,9 +75,11 @@ const SingleFeature = ({imgSrc, imgAlt, title, description, externalLinkText, ex
           <div className="feature-description flex-column d-flex mt-4">
             <h3 className="profile-title text-left mb-3">{title}</h3>
             <p className="description pb-3">{description}</p>
-            <div>
-              <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href={externalLink}>{externalLinkText}</a>
-            </div>
+            {externalLink && externalLinkText &&
+              <div>
+                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href={externalLink}>{externalLinkText}</a>
+              </div>
+            }
           </div>
         </Col>
       </Row>
