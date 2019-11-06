@@ -1,8 +1,18 @@
 ---
 posttype: "docs"
 title: Column
-metaTitle: "metaTitle"
+metaTitle: "Column interface"
 metaDescription: "metaDescription"
 ---
 
-## Column  
+Column interface contains only one necessary properties: `columnId`, it's representing column of data.
+It's essential to create any grid.
+
+| Property name     | Type            | Property description | 
+| ------------      | -------------   | 
+| `columnId`        | [`Id`](link)                                                                  | Unique id in all columns array | 
+| `width?`          | `number`                                                                      | Width of each grid column (defaultly set to 150px)  | 
+| `reorderable?`    | `boolean`                                                                     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| `canDrop?`        | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => boolean`   | Callback called to check possibility to drop row on new position | 
+| `onDrop?`         | `(rowIds: `[`Id`](link)`[], position: `[`DropPosition`](link)`) => void`      | Event called when columns are dropped in new position | 
+| `onResize?`       | `(newWidth: number) => void`                                                  | Event called when column resize column was called (if it's not implemented then resizing on this column is disabled) | 

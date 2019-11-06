@@ -69,7 +69,6 @@ class DocsPostTemplate extends React.Component {
             <Row className="pt-4">
               <Col xs="auto" className="flex-fill">
                   {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                  <h1 className="mb"><span className="text-danger">{post.frontmatter.title}</span></h1>
               </Col>
               <Col xs="auto">
                 <UncontrolledDropdown className="pull-right">
@@ -87,10 +86,11 @@ class DocsPostTemplate extends React.Component {
         <div className="py-5">
           <Container>
             <Row>
-              <Col md="3" lg="3" xl="3">
+              <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder}/>
               </Col>
-              <Col md="9" lg="7" xl="7">
+              <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
+                <h1 className="mb"><span className="text-danger">{post.frontmatter.metaTitle}</span></h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
