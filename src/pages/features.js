@@ -28,24 +28,36 @@ class Features extends React.Component {
             <Row className=" py-lg-5">
               <Col>
                 <div className="text-center">
-                  <div style={{fontSize: '5em'}} className="mb-4"><i class="fas fa-align-left text-success"></i></div>
+                  <div style={{fontSize: '5em'}} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
                   <h3 className="pb-3">Tree data</h3>
-                  <p className="pb-3">You can easily display data has parent / child relationships</p>
+                  <p className="pb-3">You can easily display data that has parent/child relationships</p>
                 </div>
               </Col>
               <Col>
                 <div className="text-center">
-                  <div style={{fontSize: '5em'}} className="mb-4"><i class="fab fa-sass text-success"></i></div>
+                  <div style={{fontSize: '5em'}} className="mb-4"><i className="fab fa-sass text-success"></i></div>
                   <h3 className="pb-3">SASS styling support</h3>
-                  <p className="pb-3">Feel free to customly style each element of grid using SASS styles preprocesor</p>
+                  <p className="pb-3">Feel free to customly style each element of grid using SASS</p>
+                </div>
+              </Col>
+              
+              <Col>
+                <div className="text-center">
+                  <div style={{fontSize: '5em'}} className="mb-4">
+                    <i className="fas fa-border-all">
+                      <i className="fas fa-pencil-alt text-success"></i>
+                    </i>
+                  </div>
+                  <h3 className="pb-3">Custom cell types</h3>
+                  <p className="pb-3">Ability to add your own custom cell templates (custom cell behaviours, styles, data formatting and validating)</p>
                 </div>
               </Col>
               <Col>
                 <div className="text-center">
                   <div style={{fontSize: '5em'}} className="mb-4">
-                    <i class="fab fa-firefox text-success">
-                      <i class="fa-inverse fab fa-safari text-danger" style={{marginLeft: '-0.3em'}}>
-                        <i class="fa-inverse fab  fa-internet-explorer text-info" style={{marginLeft: '-0.3em'}}></i>
+                    <i className="fab fa-firefox text-success">
+                      <i className="fa-inverse fab fa-safari text-danger" style={{marginLeft: '-0.3em'}}>
+                        <i className="fa-inverse fab  fa-internet-explorer text-info" style={{marginLeft: '-0.3em'}}></i>
                       </i>
                     </i>
                   </div>
