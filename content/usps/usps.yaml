@@ -7,7 +7,7 @@
         - Control over each individual cell
         - Not limited to the way how other grids render data
         - Free yourself from / Don’t think in terms of fields and records
-    imgSrc: demo.gif
+    imgSrc: 1.svg
     imgAlt: ''
 -   
     number: '02'
@@ -15,7 +15,7 @@
     description: ''
     features: 
         - Reuse well known user experience
-    imgSrc: gr.svg
+    imgSrc: 1.svg
     imgAlt: ''
 -   
     number: '03'

@@ -99,7 +99,7 @@ a[href='link'] .language-text {
     $primary-color:                     rgb(0, 242, 195);
     $bg-color:                          #21836f;
     $frozens-bg-color:                  #040835;
-    $shadow-color:                      #000000;
+    $shadow-color:                      #00f2c3;
     $resize-line-color:                 rgba(62, 245, 208, 0.718);
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
@@ -184,7 +184,8 @@ a[href='link'] .language-text {
     .rg-date-cell-template,
     .rg-email-cell-template,
     .rg-date-cell-template,
-    .rg-text-cell-template {
+    .rg-text-cell-template,
+    .rg-flag-input {
         color: white;
     }
 }
@@ -217,3 +218,16 @@ span.anchor {
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {  }
+
+.table {
+    a code:hover {
+        color: #00f2c3;
+    }
+
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+    }
+}
