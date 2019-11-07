@@ -1,0 +1,20 @@
+---
+posttype: "docs"
+title: Custom Styling
+metaTitle: "Custom Styling"
+metaDescription: "metaDescription"
+---
+
+Reactgrid let you to style all key components using Sass variables. 
+
+To override default styles of Reactgrid you have to assign new values ([available variables](link)) and then import all necessary `.scss` after.
+If variable is not passed before imported before `core.scss` it will by not modified.
+
+Here's an example how to add custom focus style on your grid will have default value.
+
+```scss
+// Your custom color
+$primary-color: #3579f8;
+
+@import '@silevis/reactgrid/dist/lib/assets/core.scss';
+```
