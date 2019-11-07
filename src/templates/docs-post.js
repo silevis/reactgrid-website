@@ -90,7 +90,7 @@ class DocsPostTemplate extends React.Component {
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder}/>
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb"><span className="text-danger">{post.frontmatter.metaTitle}</span></h1>
+                <h1 className="mb"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
@@ -117,7 +117,7 @@ const DocsNavButton = ({post, title, docsPageRoute, children}) => {
   return (
     <>
       {post && 
-        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="danger">
+        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="success">
           <p className="">{title}</p>
           <span className="h4 text-white mb-0">{post.node.frontmatter.title}</span>
           {children}

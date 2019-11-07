@@ -227,7 +227,10 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
     <TabPane tabId={tabId}>
       <Row>
         <Col xs="12" className={className}>
-          <div className="py-5">
+          <div className="sample-wrapper">
+            <Sample/>
+          </div>
+          <div className="pt-5">
             <h1 className="h1 text-success">{title}</h1>
             {description.length === 2 ? 
               <Row>
@@ -247,7 +250,6 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
               </Row>
             : <p dangerouslySetInnerHTML={{__html: description}}></p>}
           </div>
-          <Sample/>
         </Col>
       </Row>
     </TabPane>

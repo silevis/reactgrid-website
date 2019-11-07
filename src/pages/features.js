@@ -28,29 +28,29 @@ class Features extends React.Component {
             <Row className=" py-lg-5">
               <Col>
                 <div className="text-center">
-                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fas fa-align-left text-success"></i></span>
-                  <h3 className="mb-3">Tree data</h3>
-                  <p className="description pb-3">You can easily display data has parent / child relationships</p>
+                  <div style={{fontSize: '5em'}} className="mb-4"><i class="fas fa-align-left text-success"></i></div>
+                  <h3 className="pb-3">Tree data</h3>
+                  <p className="pb-3">You can easily display data has parent / child relationships</p>
                 </div>
               </Col>
               <Col>
                 <div className="text-center">
-                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fab fa-sass text-success"></i></span>
-                  <h3 className="mb-3">SASS styling support</h3>
-                  <p className="description pb-3">Feel free to customly style each element of grid using SASS styles preprocesor</p>
+                  <div style={{fontSize: '5em'}} className="mb-4"><i class="fab fa-sass text-success"></i></div>
+                  <h3 className="pb-3">SASS styling support</h3>
+                  <p className="pb-3">Feel free to customly style each element of grid using SASS styles preprocesor</p>
                 </div>
               </Col>
               <Col>
                 <div className="text-center">
-                  <span style={{fontSize: '5em'}} className="pb-3"><i class="fab fa-internet-explorer text-success"></i></span>
-
-                  {/* <span class="fa-layers fa-fw" style={{fontSize: '5em'}}>
-                    <i class="fab fa-internet-explorer"></i>
-                    <i class="fa-inverse fab fa-safari" data-fa-transform="shrink-10 up-2" style={{color: 'Tomato'}}></i>
-                  </span> */}
-
-                  <h3 className="mb-3">Cross-browser support</h3>
-                  <p className="description pb-3">Reactgrid performs great in all modern browsers and has backward compatibility</p>
+                  <div style={{fontSize: '5em'}} className="mb-4">
+                    <i class="fab fa-firefox text-success">
+                      <i class="fa-inverse fab fa-safari text-danger" style={{marginLeft: '-0.3em'}}>
+                        <i class="fa-inverse fab  fa-internet-explorer text-info" style={{marginLeft: '-0.3em'}}></i>
+                      </i>
+                    </i>
+                  </div>
+                  <h3 className="pb-3">Cross-browser support</h3>
+                  <p className="pb-3">Reactgrid performs great in all modern browsers and has backward compatibility</p>
                 </div>
               </Col>
             </Row>

@@ -54,7 +54,7 @@ export default function CustomMDXComponents({ children }) {
           </>
         ),
         p:  props => <p {...props} style={{paddingBottom: '1em', lineHeight: '2em'}}>{props.children}</p>,
-        table: props => <Table {...props}>{props.children}</Table>,
+        table: props => <div style={{overflowX: 'auto'}}><Table {...props}>{props.children}</Table></div>,
         th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
         li: props => <li {...props}><p>{props.children}</p></li>,
       }}
