@@ -231,14 +231,16 @@ span.anchor {
     visibility: hidden;
 }
 
-.navbar {
-    &.navbar-transparent {
-        padding: {
-            top: 1.5rem;
-            bottom: 1.5rem;
-        }
-        
-        background-color: rgba(0, 0, 0, .5) !important;
+.navbar.navbar-transparent {
+    padding: {
+        top: 1.5rem;
+        bottom: 1.5rem;
+    }
+    
+    background-color: rgba(0, 0, 0, .5) !important;
+
+    .nav-link {
+        font-weight: normal !important;
     }
 }
 
