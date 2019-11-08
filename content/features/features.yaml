@@ -64,8 +64,8 @@
 -
     imgSrc: frozens.gif
     imgAlt: ''
-    title: 'Column freeze'
-    description: You're able to lock specific columns so that they are always visible when scrolling
+    title: 'Freezing of rows and columns'
+    description: You're able to lock specific rows or columns so that they are always visible when scrolling
     externalLinkText: ''
     externalLink: ''
 -
