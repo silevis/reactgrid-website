@@ -4,10 +4,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FAQ from "../components/FAQ"
 
-import { 
+import {
   Container,
   Row,
-  Col, 
+  Col,
   Card,
   CardBody,
   Button,
@@ -38,7 +38,6 @@ class Pricing extends React.Component {
                 <div className="section-space" />
               </Col>
             </Row> */}
-            <div className="space-50" />
             <Row>
               <Col md="4">
                 <Card className="card-pricing card-plain">
@@ -124,7 +123,7 @@ class Pricing extends React.Component {
             </Row>
             <Row>
               <Col>
-                <FAQ/>
+                <FAQ />
               </Col>
             </Row>
           </Container>

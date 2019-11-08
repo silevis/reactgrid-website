@@ -13,9 +13,9 @@ module.exports = {
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],
     footerNav: [
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
-      { id: 'team', title: `Team`, description: ``, route: `/team`, active: true },
-      { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: true },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
+      { id: 'team', title: `Team`, description: ``, route: `/team`, active: false },
+      { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: false },
       { id: 'cookie', title: `Cookie Policy`, description: ``, route: `/cookies`, active: true },
       { id: 'privacyPolicy', title: `Privacy Policy`, description: ``, route: `/privacy-policy`, active: true },
     ],

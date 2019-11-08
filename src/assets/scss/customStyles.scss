@@ -17,10 +17,20 @@
 }
 
 .nav-docs-item.active {
-    color: #fb6340;
-    & a h4 {
-        color: #fb6340;
+    color: rgb(0, 166, 133);
+    & a h4,
+    & a h4 .font-weight-md-light {
+        color: rgb(0, 166, 133);
+        font-weight: 500 !important;
     }
+}
+
+.font-weight-md-bold {
+    font-weight: 500 !important;
+}
+
+.font-weight-md-light {
+    font-weight: 300;
 }
 
 .bg-darker {
@@ -50,12 +60,58 @@ pre[class*="language-"] {
     }
 }
 
+.sample-wrapper {
+    border-radius: 0.5em;
+    background: rgb(29, 32, 82);
+    padding: 0.5em;
+}
+
+a[href='link'] .language-text {
+    // color: rgb(0, 166, 133);
+    text-decoration: underline;
+}
+
+.list-style-none {
+    list-style-type: none;
+}
+
+.em-xs {
+    font-size: 2em;
+}
+
+.em-sm {
+    font-size: 3em;
+}
+
+.em-md {
+    font-size: 4em;
+}
+
+.em-lg {
+    font-size: 8em;
+}
+
+.em-xl {
+    font-size: 10em;
+}
+
+.strokeme {
+    text-shadow: -5px -5px 0 #171941, 5px -5px 0 #171941, -5px 5px 0 #171941, 5px 5px 0 #171941;
+}
+
+.usp-icon {
+    font-size: 0.8em; 
+    bottom: -0.3em;
+    right: -0.3em
+}
+
 .all-in-one-sample,
 .budget-planner-sample,
 .dropdown-number-cell-sample,
 .multi-user-sample,
 .rate-cell-sample,
 .resize-column-sample,
+.frozens-sample,
 .column-reorder-sample {
     color: rgba(255, 255, 255, 0.81);
 
@@ -69,19 +125,22 @@ pre[class*="language-"] {
         $thumb-color: #00f2c3;
         $thumb-border-color: #01aa88 !default;
         $track-border-color: #1f2258 !default;
-        @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
+        // @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 
     // reactgrid colors
-    $primary-color:                     #00f2c3;
+    
+    $primary-color:                     rgb(0, 242, 195);
     $bg-color:                          #21836f;
-    $frozens-bg-color:                  #ffffff;
-    $shadow-color:                      #000000;
-    $resize-line-color:                 #3ef5d0b7;
+    $frozens-bg-color:                  #040835;
+    $shadow-color:                      #00f2c3;
+    $resize-line-color:                 rgba(62, 245, 208, 0.718);
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
-    $fillhandle-action-border-color:    #00f2c3;
+    $fillhandle-action-border-color:    rgb(0, 239, 191);
+
     @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    
     // SCROLLBARS
     .rg-viewport {
         overflow: scroll;
@@ -95,10 +154,10 @@ pre[class*="language-"] {
             border-radius: 7px;
         }
         &-thumb {
-            background: #33c9ab;
+            background: rgba(68, 255, 218, 0.522);
             transition: background-color 0.5s ease;
             border-radius: 7px;
-            &:hover {background: #299e87 }
+            &:hover {background: rgba(68, 255, 218, 0.432) }
         }
         &-corner { background: transparent }
     }
@@ -159,7 +218,8 @@ pre[class*="language-"] {
     .rg-date-cell-template,
     .rg-email-cell-template,
     .rg-date-cell-template,
-    .rg-text-cell-template {
+    .rg-text-cell-template,
+    .rg-flag-input {
         color: white;
     }
 }
@@ -169,6 +229,65 @@ span.anchor {
     position: relative;
     top: -90px;
     visibility: hidden;
+}
+
+.navbar.navbar-transparent {
+    padding: {
+        top: 1.5rem;
+        bottom: 1.5rem;
+    }
+    
+    background-color: rgba(0, 0, 0, .5) !important;
+
+    .nav-link {
+        font-weight: normal !important;
+    }
+}
+
+.docs-page {
+    .dropdown-version-wrapper {
+        margin-bottom: 12px;
+
+        .dropdown-toggle {
+            padding: 10px !important;
+
+            &:hover {
+                transform: none !important;
+            }
+
+            &:after {
+                margin-left: 10px !important;
+            }
+        }
+
+        .dropdown-menu {
+            left: 0 !important;
+            right: auto !important;
+            min-width: 0;
+            padding: 0;
+
+            &:before {
+                left: 10px !important;
+                right: auto;
+            }
+        }
+
+        .dropdown-item {
+            margin: 0;
+            padding: {
+                top: 5px;
+                bottom: 5px;
+            }
+
+            &:first-child {
+                padding-top: 10px;
+            }
+
+            &:last-child {
+                padding-bottom: 10px;
+            }
+        }
+    }
 }
 
 @media (min-width: 576px) { }
@@ -188,7 +307,26 @@ span.anchor {
             h3 { text-align: right }
         }
     }
+
+    .docs-page {
+        .dropdown-version-wrapper {
+            margin-bottom: 18px;
+        }
+    }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {  }
+
+.table {
+    a code:hover {
+        color: #00f2c3;
+    }
+
+    :not(pre) > code[class*="language-"],
+    pre[class*="language-"] {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+    }
+}

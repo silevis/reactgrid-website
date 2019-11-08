@@ -63,7 +63,7 @@ class Index extends React.Component {
           <Container>
             <Row className="align-items-center">
               <Col className="pb-5">
-                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
+                <h1 className="title text-center">Why is <span className="text-success">Reactgrid</span> unique?</h1>
               </Col>
             </Row>
             <Row className="align-items-center">
@@ -101,24 +101,23 @@ class Index extends React.Component {
 
 export default Index
 
-const USP = ({number, header, description, features, imgSrc, imgAlt}) => {
+const USP = ({number, header, description, features, graphics}) => {
   return (
     <Col md="12" className="py-md-5">
       <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center ">
-        <Col md="3" lg="2">
-          <h4 className="text-muted display-1 text-bold pb-4 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
+        <Col md="2" lg="2">
+          <h4 className="text-muted display-1 text-center text-md-right text-bold pb-4 mb-md-0 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
         </Col>
-        <Col>
-          {imgSrc && <div className="d-flex align-items-center justify-content-center pb-5 pb-md-0" >
-            <img alt={imgAlt} src={require(`./../../content/usps/${imgSrc.name+imgSrc.ext}`)} style={{maxHeight: '200px'}} />
+        <Col  md="3" lg="3">
+          {graphics && <div style={{fontSize: '1em'}} className="d-flex align-items-center justify-content-center pb-5 pb-md-0" dangerouslySetInnerHTML={{ __html: graphics }}>
           </div>}
         </Col>
         <Col>
-          <h4 className=""><span>{header}</span></h4>
-          {features && <ul className="text-left pl-3">
-            {features.map(item => <li key={item}>{item}</li> )}
-          </ul>}
+          <h3 className=""><span>{header}</span></h3>
           <p className="description">{description}</p>
+          {features && <ul className="list-style-none text-left pl-0 ">
+            {features.map(item => <li key={item} className="d-flex flex-row"><i className="tim-icons icon-check-2 text-success pr-2 pt-1"></i>{item}</li> )}
+          </ul>}
         </Col>
       </Row>
       <hr className="line-primary mx-auto d-md-none"/>
@@ -159,11 +158,7 @@ export const pageQuery = graphql`
           header
           features
           description
-          imgAlt
-          imgSrc {
-            ext
-            name
-          }
+          graphics
         }
       }
     }

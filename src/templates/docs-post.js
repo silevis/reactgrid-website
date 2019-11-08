@@ -35,9 +35,9 @@ class DocsPostTemplate extends React.Component {
   }
 
   handleScroll = () => {
-    if ( document.documentElement.scrollTop > 145 || document.body.scrollTop > 145 ) {
+    if (document.documentElement.scrollTop > 145 || document.body.scrollTop > 145) {
       this.setState({ isDocsNavFloating: true });
-    } else if (document.documentElement.scrollTop < 146 || document.body.scrollTop < 146 ) {
+    } else if (document.documentElement.scrollTop < 146 || document.body.scrollTop < 146) {
       this.setState({ isDocsNavFloating: false });
     }
   };
@@ -52,56 +52,46 @@ class DocsPostTemplate extends React.Component {
     const docsPage = pages.find(page => page.id === 'docs')
 
     const dropdownItemsList = docsVersions.map(version => {
-        return (
-          <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route+version.slug+version.index}/`}>
-            <h4 className="text-darker mb-0">{version.desc}</h4>
-          </DropdownItem>
-        );
+      return (
+        <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route + version.slug + version.index}/`}>
+          <h4 className="text-darker mb-0">{version.desc}</h4>
+        </DropdownItem>
+      );
     });
-    const currentPostIndex = posts.findIndex(item=> `${docsPage.route}${item.node.fields.slug}` === location.pathname)
-    const previousPost = posts[currentPostIndex-1];
-    const nextPost = posts[currentPostIndex+1];
+    const currentPostIndex = posts.findIndex(item => `${docsPage.route}${item.node.fields.slug}` === location.pathname)
+    const previousPost = posts[currentPostIndex - 1];
+    const nextPost = posts[currentPostIndex + 1];
     return (
       <Layout location={location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription }/>
-        <div style={{overflow: 'unset'}} className="page-header header-filter page-header-compact-min overlay">
+        <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription} />
+        <div className="docs-page section">
           <Container>
-            <Row className="pt-4">
-              <Col xs="auto" className="flex-fill">
-                  {/* <h1><span className="text-success">ReactGrid</span>Docs<span className="text-danger">::</span></h1><br/>{"  "}<br/> */}
-                  <h1 className="mb"><span className="text-danger">{post.frontmatter.title}</span></h1>
-              </Col>
-              <Col xs="auto">
-                <UncontrolledDropdown className="pull-right">
+            <div className="space-50"></div>
+            <Row>
+              <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
+                <UncontrolledDropdown className="dropdown-version-wrapper">
                   <DropdownToggle caret size="md" className="btn-success text-nowrap px-3">
-                    Select version{' '}({version})
+                    v{version}
                   </DropdownToggle>
                   <DropdownMenu right>
                     {dropdownItemsList}
                   </DropdownMenu>
                 </UncontrolledDropdown>
+                <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
               </Col>
-            </Row>
-          </Container>
-        </div>
-        <div className="py-5">
-          <Container>
-            <Row>
-              <Col md="3" lg="3" xl="3">
-                <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder}/>
-              </Col>
-              <Col md="9" lg="7" xl="7">
+              <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
+                <h1 className="mb"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
                 <div className="d-flex justify-content-between pt-5">
-                  <DocsNavButton post={previousPost} title="Prev:" docsPageRoute={docsPage.route}/>
+                  <DocsNavButton post={previousPost} title="Prev:" docsPageRoute={docsPage.route} />
                   <div className="mx-auto"></div>
-                  <DocsNavButton post={nextPost} title="Next:" docsPageRoute={docsPage.route}/>
+                  <DocsNavButton post={nextPost} title="Next:" docsPageRoute={docsPage.route} />
                 </div>
               </Col>
               <Col lg="2" xl="2" className="d-none d-lg-flex position-relative justify-content-start">
-                <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsPage.route} location={location}/>
+                <SidebarLayout isFloating={this.state.isDocsNavFloating} docsRoute={docsPage.route} location={location} />
               </Col>
             </Row>
           </Container>
@@ -113,11 +103,11 @@ class DocsPostTemplate extends React.Component {
 
 export default DocsPostTemplate
 
-const DocsNavButton = ({post, title, docsPageRoute, children}) => {
+const DocsNavButton = ({ post, title, docsPageRoute, children }) => {
   return (
     <>
-      {post && 
-        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="danger">
+      {post &&
+        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="success">
           <p className="">{title}</p>
           <span className="h4 text-white mb-0">{post.node.frontmatter.title}</span>
           {children}

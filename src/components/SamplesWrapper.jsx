@@ -10,15 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { 
-  BudgetPlannerSample, 
-  DropdownNumberCellSample, 
-  MultiUserSample, 
-  RateCellSample, 
-  ResizeColumnSample,
-  AllInOneSample,
-  ColumnReorderSample,
-} from '@silevis/reactgrid-samples';
+import * as samples from '@silevis/reactgrid-samples';
 
 const samplesData = [
   { 
@@ -26,7 +18,7 @@ const samplesData = [
     enabled: false,
     description: 'This demo shouldn\'t be displayed, set "enabled: false" in SamplesWrapper.jsx', 
     className: 'all-in-one-sample', 
-    component: <AllInOneSample /> 
+    component: 'AllInOneSample' 
   },
   { 
     title: 'Budget planner', 
@@ -35,30 +27,52 @@ const samplesData = [
       {
         header: `Usage:`,
         content: [
-          `Press <code>space</code> key on top row or left column to expand/collapse`,
-          `Double click on empty cell will open cell editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
+          `Press <code>space</code> key on top row or left column to expand/collapse category`,
+          `Double click on empty cell will open editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
         ]
       },
       {
         header: `Applied core features:`,
         content: [
           `Area selection`,
+          `Column row selection`,
           `Custom cell templates`,
-          `Copy/cut/paste`,
+          `Copy/cut/paste capability`,
           `Touch capability`,
           `SASS styling`,
         ]
       }
     ],
     className: 'budget-planner-sample', 
-    component: <BudgetPlannerSample /> 
+    component: 'BudgetPlannerSample' 
   },
   { 
-    title: 'Dropdown number cell', 
+    title: 'Frozens Sample', 
     enabled: false,
-    description: 'Short description of demo content', 
-    className: 'dropdown-number-cell-sample', 
-    component: <DropdownNumberCellSample /> 
+    description: [
+      {
+        header: `Capabilities:`,
+        content: [
+          `Presenting multiple data changes in real time`,
+          `Each user idependently changes data on shared sheet`,
+        ]
+      },
+      {
+        header: `Applied core features:`,
+        content: [
+          `Frozen panes`,
+          `Freezed column and row`,
+          `Area selection`,
+          `Custom cell templates`,
+          `Disabled column selecting`,
+          `Copy/cut/paste`,
+          `Touch capability`,
+          `SASS styling`,
+        ]
+      }
+    ],
+    className: 'frozens-sample', 
+    component: 'FrozensSample' 
   },
   { 
     title: 'Multi user', 
@@ -77,7 +91,7 @@ const samplesData = [
           `Custom focuses`,
           `Freezed column and row`,
           `Area selection`,
-          `Custom cell templates`,
+          `Custom cell templates (rate and flag cell)`,
           `Copy/cut/paste`,
           `Touch capability`,
           `SASS styling`,
@@ -85,14 +99,14 @@ const samplesData = [
       }
     ],
     className: 'multi-user-sample', 
-    component: <MultiUserSample /> 
+    component: 'MultiUserSample'
   },
   { 
     title: 'Rate cell', 
     enabled: false,
     description: 'Short description of demo content', 
     className: 'rate-cell-sample', 
-    component: <RateCellSample /> 
+    component: 'RateCellSample' 
   },
   { 
     title: 'Resize columns', 
@@ -117,7 +131,7 @@ const samplesData = [
       }
     ],
     className: 'resize-column-sample', 
-    component: <ResizeColumnSample /> 
+    component: 'ResizeColumnSample' 
   },
   { 
     title: 'Row/columns reorder', 
@@ -144,7 +158,7 @@ const samplesData = [
       }
     ],
     className: 'column-reorder-sample', 
-    component: <ColumnReorderSample /> 
+    component: 'ColumnReorderSample' 
   },
 ];
 
@@ -174,7 +188,8 @@ class SamplesWrapper extends React.Component {
       </NavItem>
     );
     
-    const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) => 
+  
+    const sampleTabs = samplesData.filter((sample, idx) => sample.enabled).map((sample, idx) => 
       <SampleTab 
         key={idx} 
         tabId={idx}
@@ -206,31 +221,35 @@ class SamplesWrapper extends React.Component {
 }
 
 const SampleTab = ({ tabId, title, description, component, className }) => {
+  const [column1, column2] = description;
+  const Sample = samples[component];
   return (
     <TabPane tabId={tabId}>
       <Row>
         <Col xs="12" className={className}>
-          <div className="py-5">
-            <h1 className="h1 text-white">{title}</h1>
+          <h1 className="h1 text-success my-3">{title}</h1>
+          <div className="sample-wrapper">
+            <Sample/>
+          </div>
+          <div className="pt-5">
             {description.length === 2 ? 
               <Row>
                 <Col md="5">
-                  <h3>{description[0].header}</h3>
-                  <ol class="pl-2">
-                    {description[0].content.map((item, idx) => <li key={idx} className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
+                  <h3>{column1.header}</h3>
+                  <ol className="pl-2">
+                    {column1.content.map((item, idx) => <li key={idx} className="pb-3" dangerouslySetInnerHTML={{__html: item}}></li>)}
                   </ol>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
-                  <h3>{description[1].header}</h3>
-                  <ul class="list-unstyled">
-                    {description[1].content.map((item, idx) => <li key={idx} className="pb-3"><i class="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
+                  <h3>{column2.header}</h3>
+                  <ul className="list-unstyled">
+                    {column2.content.map((item, idx) => <li key={idx} className="pb-3"><i className="tim-icons icon-check-2 text-success pr-1"></i> {item}</li>)}
                   </ul>
                 </Col>
               </Row>
             : <p dangerouslySetInnerHTML={{__html: description}}></p>}
           </div>
-          {component}
         </Col>
       </Row>
     </TabPane>
