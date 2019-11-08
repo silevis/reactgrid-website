@@ -26,20 +26,6 @@
     description: Choose multiple areas of choice in any way you like
     externalLinkText: ''
     externalLink: ''
-# -
-#     imgSrc: demo.gif
-#     imgAlt: ''
-#     title: 'Custom cell types'
-#     description: 'Ability to add your own custom cell templates (custom cell behaviours, styles, data formatting and validating)'
-#     externalLinkText: ''
-#     externalLink: ''
-# -
-#     imgSrc: demo.gif
-#     imgAlt: ''
-#     title: 'Tree data'
-#     description: 'You can easily display data has parent / child relationships'
-#     externalLinkText: ''
-#     externalLink: ''
 -
     imgSrc: resize-column.gif
     imgAlt: ''

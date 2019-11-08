@@ -71,6 +71,34 @@ a[href='link'] .language-text {
     text-decoration: underline;
 }
 
+.list-style-none {
+    list-style-type: none;
+}
+
+.em-xs {
+    font-size: 2em;
+}
+
+.em-sm {
+    font-size: 3em;
+}
+
+.em-md {
+    font-size: 4em;
+}
+
+.em-lg {
+    font-size: 8em;
+}
+
+.em-xl {
+    font-size: 10em;
+}
+
+.strokeme {
+    text-shadow: -5px -5px 0 #171941, 5px -5px 0 #171941, -5px 5px 0 #171941, 5px 5px 0 #171941;
+}
+
 .all-in-one-sample,
 .budget-planner-sample,
 .dropdown-number-cell-sample,

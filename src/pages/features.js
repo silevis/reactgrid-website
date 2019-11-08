@@ -35,7 +35,7 @@ class Features extends React.Component {
               <Col>
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fab fa-sass text-success"></i></div>
-                  <h3 className="pb-3">SASS styling support</h3>
+                  <h3 className="pb-3">SASS styling</h3>
                   <p className="pb-3">Feel free to customly style each element of grid using SASS</p>
                 </div>
               </Col>
@@ -47,8 +47,8 @@ class Features extends React.Component {
                       <i className="fas fa-pencil-alt text-success"></i>
                     </i>
                   </div>
-                  <h3 className="pb-3">Custom cell types</h3>
-                  <p className="pb-3">Ability to add your own custom cell templates (custom cell behaviours, styles, data formatting and validating)</p>
+                  <h3 className="pb-3">Custom cell templates</h3>
+                  <p className="pb-3">Add your own custom cell (custom cell behaviours, styles, data formatting and validating)</p>
                 </div>
               </Col>
               <Col>
