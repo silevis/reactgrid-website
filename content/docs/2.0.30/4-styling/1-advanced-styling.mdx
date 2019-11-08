@@ -1,11 +1,9 @@
 ---
 posttype: "docs"
-title: Custom Styling
+title: Advanced styling
 metaTitle: "Advanced styling"
 metaDescription: "metaDescription"
 ---
-
-## Advanced styling
 
 Reactgrid let you to style all key components using Sass variables. 
 
@@ -18,24 +16,26 @@ Here's an example how to add custom focus style on your grid will have default v
 // Your custom color
 $primary-color: #3579f8;
 
-@import '@silevis/reactgrid/dist/lib/assets/core.scss';
+@import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
 ```
 
 If you work with many grids at the same page make make your grid styles 'local'.
 
 ```scss
-// Your custom color
+// Independent Reactgrid clasess
 .reactgrid-red {
     $primary-color: red;
-    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    @import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
 }
 
 .reactgrid-blue {
     $primary-color: blue;
-    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    @import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
 }
 
 ```
+
+Wrap Reactgrid component into `div` with class name:
 
 ```tsx
 

@@ -106,7 +106,7 @@ const USP = ({number, header, description, features, graphics}) => {
     <Col md="12" className="py-md-5">
       <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center ">
         <Col md="2" lg="2">
-          <h4 className="text-muted display-1 text-right text-bold pb-4 mb-md-0 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
+          <h4 className="text-muted display-1 text-center text-md-right text-bold pb-4 mb-md-0 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
         </Col>
         <Col  md="3" lg="3">
           {graphics && <div style={{fontSize: '1em'}} className="d-flex align-items-center justify-content-center pb-5 pb-md-0" dangerouslySetInnerHTML={{ __html: graphics }}>
