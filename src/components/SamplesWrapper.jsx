@@ -60,6 +60,8 @@ const samplesData = [
       {
         header: `Applied core features:`,
         content: [
+          `Column resize`,
+          `Column and row reorder`,
           `Frozen panes`,
           `Freezed column and row`,
           `Area selection`,
@@ -117,6 +119,7 @@ const samplesData = [
         content: [
           `Changing width of column`,
           `Disabling this feature for each column`,
+          `Handling <code>onColumnResize()</code> event`,
         ]
       },
       {
@@ -140,7 +143,7 @@ const samplesData = [
       {
         header: `Usage:`,
         content: [
-          `Press <code>alt</code> key and select columns/rows`,
+          `Press <code>ctlr</code> key and select columns/rows`,
           `Drag column/rows do desired destination`,
         ]
       },

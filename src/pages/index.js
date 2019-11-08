@@ -104,16 +104,16 @@ export default Index
 const USP = ({number, header, description, features, graphics}) => {
   return (
     <Col md="12" className="py-md-5">
-      <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center ">
+      <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center">
         <Col md="2" lg="2">
           <h4 className="text-muted display-1 text-center text-md-right text-bold pb-4 mb-md-0 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
         </Col>
-        <Col  md="3" lg="3">
+        <Col md="4" lg="4">
           {graphics && <div style={{fontSize: '1em'}} className="d-flex align-items-center justify-content-center pb-5 pb-md-0" dangerouslySetInnerHTML={{ __html: graphics }}>
           </div>}
         </Col>
         <Col>
-          <h3 className=""><span>{header}</span></h3>
+          <h3>{header}</h3>
           <p className="description">{description}</p>
           {features && <ul className="list-style-none text-left pl-0 ">
             {features.map(item => <li key={item} className="d-flex flex-row"><i className="tim-icons icon-check-2 text-success pr-2 pt-1"></i>{item}</li> )}
