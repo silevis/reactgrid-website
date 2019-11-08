@@ -227,11 +227,11 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
     <TabPane tabId={tabId}>
       <Row>
         <Col xs="12" className={className}>
+          <h1 className="h1 text-success my-3">{title}</h1>
           <div className="sample-wrapper">
             <Sample/>
           </div>
           <div className="pt-5">
-            <h1 className="h1 text-success">{title}</h1>
             {description.length === 2 ? 
               <Row>
                 <Col md="5">
