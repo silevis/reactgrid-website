@@ -39,7 +39,6 @@ class Features extends React.Component {
                   <p className="pb-3">Feel free to customly style each element of grid using SASS</p>
                 </div>
               </Col>
-
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
