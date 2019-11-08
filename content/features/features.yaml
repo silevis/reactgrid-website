@@ -69,16 +69,9 @@
 #     externalLinkText: 
 #     externalLink: ''
 -
-    imgSrc: demo.gif
+    imgSrc: touch-device.gif
     imgAlt: Animation for optimized for Touch devices feature
     title: Optimized for Touch devices
     description: 'Reactgrid is adapted for use ontouch devices'
     externalLinkText: 
     externalLink: ''
-# -
-#     imgSrc: scss.gif
-#     imgAlt: Animation for optimized for Touch devices feature
-#     title: SASS styling support
-#     description: Feel free to customly style each element of grid using SASS styles preprocesor
-#     externalLinkText: 
-#     externalLink: ''

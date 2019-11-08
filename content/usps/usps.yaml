@@ -6,7 +6,7 @@
         - Build tables as you need them
         - Not limited to the way how other grids render data
     graphics: '
-            <span><i class="fas fa-pencil-ruler em-lg text-success position-relative">
+            <span class="usp-graphics"><i class="fas fa-pencil-ruler em-lg text-success position-relative">
                 <i class="fas fa-sliders-h position-absolute strokeme text-white usp-icon"></i>
             </i></span>'
 -   
@@ -17,7 +17,7 @@
         - Control over each individual cell
         - Free yourself from fields and records
     graphics: '
-            <span><i class="fas fa-border-all em-lg text-success position-relative">
+            <span class="usp-graphics"><i class="fas fa-border-all em-lg text-success position-relative">
                 <i class="far fa-square position-absolute strokeme text-white usp-icon" style="font-size: 0.4em; bottom: -0.2em;"></i>
             </i></span>'
 -   
@@ -27,7 +27,7 @@
     features: 
         - Reuse well known user experience
     graphics: '
-            <span><i class="fas strokeme fa-table em-lg text-success position-relative">
+            <span class="usp-graphics"><i class="fas strokeme fa-table em-lg text-success position-relative">
                 <i class="fas fa-eye position-absolute text-white usp-icon"></i>
             </i></span>'
 -   
@@ -36,6 +36,6 @@
     description: ''
     features: 
         - Thinking in React
-    graphics: ' <span><i class="fas fa-atom em-lg text-success position-relative">
+    graphics: ' <span class="usp-graphics"><i class="fab fa-react em-lg text-success position-relative">
                     <i class="far fa-lightbulb position-absolute strokeme text-white usp-icon"></i>
                 </i></span>'

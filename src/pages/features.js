@@ -25,14 +25,14 @@ class Features extends React.Component {
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}
             <Row className=" py-lg-5">
-              <Col>
+              <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
                   <h3 className="pb-3">Tree data</h3>
                   <p className="pb-3">You can easily display data that has parent/child relationships</p>
                 </div>
               </Col>
-              <Col>
+              <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fab fa-sass text-success"></i></div>
                   <h3 className="pb-3">SASS styling</h3>
@@ -40,10 +40,10 @@ class Features extends React.Component {
                 </div>
               </Col>
 
-              <Col>
+              <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
-                    <i className="fas fa-palette text-white">
+                    <i className="fas fa-palette text-primary">
                       <i className="fas fa-paint-brush text-success" style={{ marginLeft: '-0.6em' }}></i>
                     </i>
                   </div>
@@ -51,7 +51,7 @@ class Features extends React.Component {
                   <p className="pb-3">Add your own custom cell (custom cell behaviours, styles, data formatting and validating)</p>
                 </div>
               </Col>
-              <Col>
+              <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
                     <i className="fab fa-firefox text-success">
