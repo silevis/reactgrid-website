@@ -25,7 +25,7 @@ class Features extends React.Component {
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}
             <Row className=" py-lg-5">
-            <Col sm="6" lg="6">
+              <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
                   <h3 className="pb-3">Tree data</h3>
@@ -42,7 +42,7 @@ class Features extends React.Component {
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
-                    <i className="fas fa-palette text-white">
+                    <i className="fas fa-palette text-primary">
                       <i className="fas fa-paint-brush text-success" style={{ marginLeft: '-0.6em' }}></i>
                     </i>
                   </div>

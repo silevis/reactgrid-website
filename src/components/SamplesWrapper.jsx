@@ -125,6 +125,7 @@ const samplesData = [
       {
         header: `Applied core features:`,
         content: [
+          `Column resize`,
           `Area selection`,
           `Custom cell templates (rate and flag cell)`,
           `Copy/cut/paste`,
@@ -190,7 +191,6 @@ class SamplesWrapper extends React.Component {
         </NavLink>
       </NavItem>
     );
-    
   
     const sampleTabs = samplesData.filter((sample, idx) => sample.enabled).map((sample, idx) => 
       <SampleTab 

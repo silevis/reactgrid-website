@@ -1,0 +1,79 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:10.15.3
+
+version: 2
+jobs:
+
+  deploy-on-gh-pages: 
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Set configuration
+          command:  git config --global user.email "$GITHUB_AUTHOR_EMAIL" && 
+                    git config --global user.name "$GITHUB_AUTHOR_NAME"
+
+      - run: 
+          name: Install Dependencies
+          command: npm install
+
+      - run: 
+          name: Build static
+          command: npm run build
+
+      - run: 
+          name: Move build files to tmp
+          command:  
+                    mkdir /tmp/build && 
+                    mkdir /tmp/build/public && 
+                    mv public/* /tmp/build/public
+                    
+      - run: 
+          name: Checkout to deploy branch
+          command: git checkout $GITHUB_DEPLOY_BRANCH
+
+      - run: 
+          name: Move project contant files to tmp
+          command:  
+                    mv .gitignore /tmp/build &&
+                    mv CNAME /tmp/build
+
+      - run: 
+          name: Remove old files
+          command: rm -rf *
+
+
+      - run: 
+          name: List files in tmp
+          command: cd /tmp/build && ls -all && cd /home/circleci/project
+
+      - run: 
+          name: Move back files 
+          command:  mv /tmp/build/public/* /home/circleci/project &&
+                    mv /tmp/build/CNAME /home/circleci/project &&
+                    mv /tmp/build/.gitignore /home/circleci/project
+
+      - run:
+          name: Add changes
+          command: git add .
+
+      - run:
+          name: Commit deploy files
+          command: git commit -m "Version update [ci skip]"
+
+      - run:
+          name: Push deploy files
+          command: git push -f https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
+      
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - deploy-on-gh-pages:
+          filters:
+            branches:
+              only: gh-pages-stage
