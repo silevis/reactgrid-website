@@ -21,10 +21,10 @@ class Features extends React.Component {
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-        <div className="section">
+        <div className="section mt-5 mt-md-0">
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}
-            <Row className=" py-lg-5">
+            <Row className="py-lg-5">
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
@@ -43,7 +43,7 @@ class Features extends React.Component {
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
                     <i className="fas fa-palette text-primary">
-                      <i className="fas fa-paint-brush text-success" style={{ marginLeft: '-0.6em' }}></i>
+                      <i className="fas fa-paint-brush strokeme text-success" style={{ marginLeft: '-0.3em' }}></i>
                     </i>
                   </div>
                   <h3 className="pb-3">Custom cell templates</h3>
@@ -54,9 +54,7 @@ class Features extends React.Component {
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
                     <i className="fab fa-firefox text-success">
-                      <i className="fa-inverse fab fa-safari text-primary" style={{ marginLeft: '-0.3em' }}>
-                        <i className="fa-inverse fab  fa-internet-explorer text-info" style={{ marginLeft: '-0.3em' }}></i>
-                      </i>
+                      <i className="fa-inverse fab fa-internet-explorer text-info" style={{ marginLeft: '-0.3em' }}></i>
                     </i>
                   </div>
                   <h3 className="pb-3">Cross-browser support</h3>

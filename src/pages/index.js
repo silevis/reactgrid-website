@@ -37,9 +37,9 @@ class Index extends React.Component {
             <div className="space"></div>
             <Container>
               <Row>
-                <Col className="mr-auto text-left align-items-center" lg="5" md="7">
+                <Col className="mr-auto text-left align-items-center" lg="5" md="7" md="12">
                   <h1 className="title display-1 mb-3">
-                    Build <span className="text-success">WOW!</span><br/>-tables
+                  <span className="">Build <br/></span><span className="text-success">WOW!</span>-tables
                   </h1>
                   <h3 className="title">Create highly customizable spreadsheet-like grids</h3>
                   <br />
