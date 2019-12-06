@@ -27,13 +27,6 @@ class Features extends React.Component {
             <Row className="py-lg-5">
               <Col sm="6" lg="6">
                 <div className="text-center">
-                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
-                  <h3 className="pb-3">Tree data</h3>
-                  <p className="pb-3">You can easily display data that has parent/child relationships</p>
-                </div>
-              </Col>
-              <Col sm="6" lg="6">
-                <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4"><i className="fab fa-sass text-success"></i></div>
                   <h3 className="pb-3">SASS styling</h3>
                   <p className="pb-3">Feel free to customly style each element of grid using SASS</p>
@@ -59,6 +52,13 @@ class Features extends React.Component {
                   </div>
                   <h3 className="pb-3">Cross-browser support</h3>
                   <p className="pb-3">Reactgrid performs great in all modern browsers and has backward compatibility</p>
+                </div>
+              </Col>
+              <Col sm="6" lg="6">
+                <div className="text-center">
+                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
+                  <h3 className="pb-3">Tree data</h3>
+                  <p className="pb-3">You can easily display data that has parent/child relationships</p>
                 </div>
               </Col>
             </Row>
