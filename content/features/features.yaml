@@ -1,77 +1,66 @@
--   
-    imgSrc: multi-user.gif
-    imgAlt: Animation for multi user capability feature
-    title: Multi user capability
-    description: 'Reactgrid supports multiple users operations on the same sheet simultaneously. '
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: fill-handle.gif
-    imgAlt: ''
-    title: Fill handle
-    description: Clone cell data and it's properties with fill handle like in other spreadsheets 
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: behaviour.gif
-    imgAlt: ''
-    title: Spreadsheet-like behaviour
-    description: Interract with grid in well know way with keyboard 
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: select-area.gif
-    imgAlt: ''
-    title: Area selection/multiselection
-    description: Choose multiple areas of choice in any way you like
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: resize-column.gif
-    imgAlt: ''
-    title: 'Column Resize'
-    description: Modificate width of each column with drag&drop capability
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: column-reorder.gif
-    imgAlt: ''
-    title: 'Column reordering'
-    description: 'Select columns, drag them and drop at the desired destination'
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: row-reorder.gif
-    imgAlt: ''
-    title: 'Row reordering'
-    description: 'Select rows, drag them and drop at the desired destination'
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: frozens.gif
-    imgAlt: ''
-    title: 'Freezing of rows and columns'
-    description: You're able to lock specific rows or columns so that they are always visible when scrolling
-    externalLinkText: ''
-    externalLink: ''
--
-    imgSrc: copy-cut-paste.gif
-    imgAlt: ''
-    title: 'Copy, cut, paste'
-    description: 'Let users to copy/cut/paste data inside grid and between other data sources'
-    externalLinkText: ''
-    externalLink: ''
-# -
-#     imgSrc: demo.gif
-#     imgAlt: ''
-#     title: Context menu
-#     description: Use our builtin context menu or replace it with third party component
-#     externalLinkText: 
-#     externalLink: ''
--
-    imgSrc: touch-device.gif
-    imgAlt: Animation for optimized for Touch devices feature
-    title: Optimized for Touch devices
-    description: 'Reactgrid is adapted for use ontouch devices'
-    externalLinkText: 
-    externalLink: ''
+- imgSrc: multi-user.gif
+  imgAlt: Animation for multi user capability feature
+  title: Multi user capability
+  description: "Reactgrid supports multiple users operations on the same sheet simultaneously. "
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: fill-handle.gif
+  imgAlt: ""
+  title: Fill handle
+  description: Clone cell data and it's properties with fill handle like in other spreadsheets
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: behaviour.gif
+  imgAlt: ""
+  title: Spreadsheet-like behaviour
+  description: Interract with grid in well know way with keyboard
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: select-area.gif
+  imgAlt: ""
+  title: Area selection/multiselection
+  description: Choose multiple areas of choice in any way you like
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: resize-column.gif
+  imgAlt: ""
+  title: "Column Resize"
+  description: Modificate width of each column with drag&drop capability
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: column-reorder.gif
+  imgAlt: ""
+  title: "Column reordering"
+  description: "Select columns, drag them and drop at the desired destination"
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: row-reorder.gif
+  imgAlt: ""
+  title: "Row reordering"
+  description: "Select rows, drag them and drop at the desired destination"
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: frozens.gif
+  imgAlt: ""
+  title: "Freezing of rows and columns"
+  description: You're able to lock specific rows or columns so that they are always visible when scrolling
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: copy-cut-paste.gif
+  imgAlt: ""
+  title: "Copy, cut, paste"
+  description: "Let users to copy/cut/paste data inside grid and between other data sources"
+  externalLinkText: ""
+  externalLink: ""
+- imgSrc: context-menu.gif
+  imgAlt: ""
+  title: Context menu
+  description: Use our builtin context menu or replace it with third party component
+  externalLinkText:
+  externalLink: ""
+- imgSrc: touch-device.gif
+  imgAlt: Animation for optimized for Touch devices feature
+  title: Optimized for Touch devices
+  description: "Reactgrid is adapted for use ontouch devices"
+  externalLinkText:
+  externalLink: ""

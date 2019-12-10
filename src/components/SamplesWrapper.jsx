@@ -9,156 +9,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Button
 } from "reactstrap";
+import { samplesData } from './../../content/examples/samplesData';
 import * as samples from '@silevis/reactgrid-samples';
-
-const samplesData = [
-  {
-    title: 'Multi user',
-    enabled: true,
-    description: [
-      {
-        header: `Capabilities:`,
-        content: [
-          `Presenting multiple data changes in real time`,
-          `Each user idependently changes data on shared sheet`,
-        ]
-      },
-      {
-        header: `Applied core features:`,
-        content: [
-          `Custom focuses`,
-          `Freezed column and row`,
-          `Area selection`,
-          `Custom cell templates (rate and flag cell)`,
-          `Copy/cut/paste`,
-          `Touch capability`,
-          `SASS styling`,
-        ]
-      }
-    ],
-    className: 'multi-user-sample',
-    component: 'MultiUserSample'
-  },
-  // { 
-  //   title: 'Budget planner', 
-  //   enabled: true,
-  //   description: [
-  //     {
-  //       header: `Usage:`,
-  //       content: [
-  //         `Press <code>space</code> key on top row or left column to expand/collapse category`,
-  //         `Double click on empty cell will open editor that intersect lowest level in both axis (e.g. <code>LPG</code> + <code>Jan, 2018</code>), type new numeric value and commit changes by pressing <code>Enter</code> key`
-  //       ]
-  //     },
-  //     {
-  //       header: `Applied core features:`,
-  //       content: [
-  //         `Area selection`,
-  //         `Column row selection`,
-  //         `Custom cell templates`,
-  //         `Copy/cut/paste capability`,
-  //         `Touch capability`,
-  //         `SASS styling`,
-  //       ]
-  //     }
-  //   ],
-  //   className: 'budget-planner-sample', 
-  //   component: 'BudgetPlannerSample' 
-  // },
-  {
-    title: 'Frozens Sample',
-    enabled: false,
-    description: [
-      {
-        header: `Capabilities:`,
-        content: [
-          `Presenting multiple data changes in real time`,
-          `Each user idependently changes data on shared sheet`,
-        ]
-      },
-      {
-        header: `Applied core features:`,
-        content: [
-          `Column resize`,
-          `Column and row reorder`,
-          `Frozen panes`,
-          `Freezed column and row`,
-          `Area selection`,
-          `Custom cell templates`,
-          `Disabled column selecting`,
-          `Copy/cut/paste`,
-          `Touch capability`,
-          `SASS styling`,
-        ]
-      }
-    ],
-    className: 'frozens-sample',
-    component: 'FrozensSample'
-  },
-  {
-    title: 'Rate cell',
-    enabled: false,
-    description: 'Short description of demo content',
-    className: 'rate-cell-sample',
-    component: 'RateCellSample'
-  },
-  {
-    title: 'Resize columns',
-    enabled: true,
-    description: [
-      {
-        header: `Capabilities:`,
-        content: [
-          `Changing width of column`,
-          `Disabling this feature for each column`,
-          `Handling <code>onColumnResize()</code> event`,
-        ]
-      },
-      {
-        header: `Applied core features:`,
-        content: [
-          `Column resize`,
-          `Area selection`,
-          `Custom cell templates (rate and flag cell)`,
-          `Copy/cut/paste`,
-          `Touch capability`,
-          `SASS styling`,
-        ]
-      }
-    ],
-    className: 'resize-column-sample',
-    component: 'ResizeColumnSample'
-  },
-  {
-    title: 'Row/columns reorder',
-    enabled: true,
-    description: [
-      {
-        header: `Usage:`,
-        content: [
-          `Press <code>ctlr</code> key and select columns/rows`,
-          `Drag column/rows do desired destination`,
-        ]
-      },
-      {
-        header: `Applied core features:`,
-        content: [
-          `Column reorder`,
-          `Row reorder`,
-          `Area selection`,
-          `Custom cell templates (rate and flag cell)`,
-          `Copy/cut/paste`,
-          `Touch capability`,
-          `SASS styling`,
-        ]
-      }
-    ],
-    className: 'column-reorder-sample',
-    component: 'ColumnReorderSample'
-  },
-];
 
 class SamplesWrapper extends React.Component {
   constructor(props) {
@@ -166,7 +19,6 @@ class SamplesWrapper extends React.Component {
     this.state = {
       activeTabIdx: undefined,
       activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
-      a: localStorage.getItem('a') || false,
     };
   }
   setActiveTab = (idx) => {
@@ -178,22 +30,18 @@ class SamplesWrapper extends React.Component {
     }
   }
 
-  handleOnBtnClick = () => {
-    localStorage.setItem('a', 'true');
-    this.setState({ a: 'true' });
-  }
-
   render() {
     const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <NavItem key={idx} className="pb-3">
-        <NavLink className={classnames({ active: this.state.activeTabIdx === idx })} style={{ cursor: 'pointer' }}
+        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })} style={{ cursor: 'pointer' }}
           onClick={() => { this.setActiveTab(idx) }}>
-          {sample.title}
+          <i className={`${sample.icon} text-shadow mt-2`} />
+          <div className="mt-4 mb-1 text-shadow">{sample.title}</div>
         </NavLink>
       </NavItem>
     );
 
-    const sampleTabs = samplesData.filter((sample, idx) => sample.enabled).map((sample, idx) =>
+    const sampleTabs = samplesData.filter((sample) => sample.enabled).map((sample, idx) =>
       <SampleTab
         key={idx}
         tabId={idx}
@@ -211,23 +59,14 @@ class SamplesWrapper extends React.Component {
           <Row>
             <Col>
               <div className="space-50"></div>
-              {!isSampleSelected &&
-                <div className="d-flex flex-column align-items-center">
-                  <h1 className="text-center py-5">Try all features on our sample applications</h1>
-                  {this.state.a === false &&
-                    <Button color="success" onClick={() => this.handleOnBtnClick()} className=" btn-simple">Show available samples <i className="tim-icons icon-double-right" /></Button>
-                  }
-                </div>
-              }
-              {this.state.a === 'true' &&
-                <Nav tabs className="justify-content-center">
-                  {tabMenuItems}
-                  <div className="space-50"></div>
-                  <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
-                    {sampleTabs}
-                  </TabContent>
-                </Nav>
-              }
+              {!isSampleSelected && <h1 className="text-center py-5">Try all features on our sample applications</h1>}
+              <Nav pills className="justify-content-center nav-pills-success nav-pills-icons"  >
+                {tabMenuItems}
+                <div className="space-50"></div>
+                <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
+                  {sampleTabs}
+                </TabContent>
+              </Nav>
             </Col>
           </Row>
         </Container>
@@ -238,14 +77,14 @@ class SamplesWrapper extends React.Component {
 
 const SampleTab = ({ tabId, title, description, component, className }) => {
   const [column1, column2] = description;
-  // const Sample = samples[component];
+  const Sample = samples[component];
   return (
     <TabPane tabId={tabId}>
-      <Row>
+      <Row className="pt-4">
         <Col xs="12" className={className}>
-          <h1 className="h1 text-success my-3">{title}</h1>
+          {/* <h1 className="h1 text-success my-3">{title}</h1> */}
           <div className="sample-wrapper">
-            {/* <Sample/> */}
+            <Sample />
           </div>
           <div className="pt-5">
             {description.length === 2 ?
