@@ -12,58 +12,76 @@ import {
 #### Prerequisites
 The only requirement in order to make ReactGrid work is an installed ReactJS library.
 
-## 1. Add ReactGrid to your project
+## 1. Install ReactGrid from npm repository
 
 ```shell
 npm i @silevis/reactgrid
 ```
 
-## 2. Import ReactGrid 
+## 2. Import ReactGrid
 
 ```tsx
-import { ReactGrid } from '@silevis/reactgrid'
+import { ReactGrid } from "@silevis/reactgrid";
 ```
 
-## 3. Create a CellMatrix
+## 3. Import css styles
 
-A CellMatrix is the data source for ReactGrid. It contains all information about all rows, columns and cells.
+Import file from `node_modules` directory. This file is necessary to correctly displaying.
 
 ```tsx
-const PlayerTable = (props) => {
+import "./../node_modules/@silevis/reactgrid/dist/lib/assets/core.css";
+```
 
-  const cellMatrix = {
+## 4. Create a cell matrix
+
+Time to define our data. Data will be stored in React Hook. `useState` hook will be initialized with object that contains two keys - column and row. 
+Both of them are valid ReactGrid objects: [`Columns`](link)`[]` and [`Rows`](link)`[]`.
+
+```tsx
+function App() {
+  const [state, setState] = useState(() => ({
     columns: [
-      { id: 'player', reorderable: true, resizable: true, width: 200 },
-      { id: 'age',    reorderable: true, resizable: true, width: 50 },
-      { id: 'club',   reorderable: true, resizable: true, width: 200 },
+      { columnId: "Name", width: 100 },
+      { columnId: "Surname", width: 100 }
     ],
     rows: [
-      { 
-        id: 'header', 
-        height: 25, 
-        reorderable: true, 
+      {
+        rowId: 0,
         cells: [
-          { type: 'header', data: 'Player' },
-          { type: 'header', data: 'Age'},
-          { type: 'header', data: 'Club' },
+          { type: "header", text: "Name" },
+          { type: "header", text: "Surname" }
         ]
       },
-      { 
-        id: '1', 
-        height: 25, 
-        reorderable: true,  
+      {
+        rowId: 1,
         cells: [
-          { type: 'text', data: 'Lionel Messi' },
-          { type: 'number', data: 32},
-          { type: 'text', data: 'Barcelona' },
+          { type: "text", text: "Thomas" },
+          { type: "text", text: "Goldman" }
         ]
-      },
+      }
     ]
-  }
+  }));
 
-  return <ReactGrid cellMatrixProps={cellMatrix} license='non-commerical'> 
+  return (
+    <ReactGrid
+      rows={state.rows}
+      columns={state.columns}
+      license={"non-commercial"}
+    />
+  );
 }
 ```
+
+<iframe
+  src="https://codesandbox.io/embed/gifted-zhukovsky-mwiwi?fontsize=16&hidenavigation=1&theme=dark"
+  style="width:100%; height:200px; border:0; border-radius: 4px; overflow:hidden;"
+  title="reactgrid-getting-started"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
+
+## 4. Render your component
+
 
 That’s it. Now run the code and view the result:
 
