@@ -5,11 +5,22 @@ metaTitle: "Cell interface"
 metaDescription: "metaDescription"
 ---
 
-## Cell  
-
 `Cell` interface has only one necessary prop - `type`.
 
-| Properties     | Type                  | Properties description  |
-| -----------    | ---------             |  ---------- |
-| `type`         | `string`              | Name of cell type |
-| `style?`       | [`CellStyle`](link)   | Allowed styled contained in [`CellStyle`](link) interface |
+## Definition
+
+```tsx
+interface Cell {
+    type: string;
+    style?: CellStyle;
+    className?: string;
+}
+```
+
+## Properties
+
+| Properties     | Type                 | Properties description |
+| -----------    | ---------            | ---------- |
+| `type`         | `string`             | Name of cell type |
+| `style?`       | [`CellStyle`](link)  | Allowed style properties contained in [`CellStyle`](link) interface |
+| `className?`   | [`string`](link)     | Additional css classes |

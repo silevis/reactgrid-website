@@ -5,9 +5,20 @@ metaTitle: "CompatibleCell interface"
 metaDescription: "metaDescription"
 ---
 
-`CompatibleCell` type extends [`Cell`](link) interface by adding `text` and `value` props.
+`CompatibleCell` type is a way to recognize field that has our generic `Cell` interface.
+
+## Definition
+
+```tsx
+type Compatible<TCell extends Cell> = TCell & {
+    text: string;
+    value: number;
+}
+```
+
+## Properties
 
 | Property name     | Type     | Property description  |
 | -----------       | -------- | -------------------------|
 | `text`            | `string` | Text value of cell  |
-| `value?`          | `number` | Alternative value |
+| `value`           | `number` | Numeric value of cell, if there is no numeric value representation use `NaN` |

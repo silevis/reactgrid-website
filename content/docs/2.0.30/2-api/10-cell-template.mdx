@@ -7,12 +7,41 @@ metaDescription: "metaDescription"
 
 `CellTemplate` is used for the communication between ReactGrid and a cell.
 
+## Definition
+```tsx
+export interface CellTemplate<TCell extends Cell = Cell> {
+    // Validate and convert to compatible cell type
+    getCompatibleCell(uncertainCell: Uncertain<TCell>): Compatible<TCell>
+    // Returns true if the data in the cell is not replacable
+    // Default: _ => true
+    isFocusable?(cell: Compatible<TCell>): boolean;
+    // Update cell based on new props
+    // If not implemented, cell will be read-only
+    update?(cell: Compatible<TCell>, cellToMerge: UncertainCompatible<TCell>): Compatible<TCell>;
+    // The keyCode represents the key pressed on the keyboard, or 1 for a pointer event (double click).
+    // Returns the cell data either affected by the event or not.
+    // Default: cell => { cell, enableEditMode: false }
+    handleKeyDown?(cell: Compatible<TCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<TCell>; enableEditMode: boolean };
+    // Custom styles based on cell data applied to the cells div element
+    // Default: _ => cell.style | {}
+    getStyle?(cell: Compatible<TCell>, isInEditMode: boolean): CellStyle;
+    //
+    getClassName?(cell: Compatible<TCell>, isInEditMode: boolean): string;
+    // Render the cell content
+    render(cell: Compatible<TCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<TCell>, commit: boolean) => void): React.ReactNode;
+}
+```
 
-| Name             | Type | Description |
-|-----------       | ---- | -------------|
-| `validate`       | `(cell: ` [`TCell`](link)`): ` [`CompatibleCell`](link)`<`[`TCell`](link)`>`| Validates passed data to cell based on type. If passed data are incorrect, it converts it to the target type and return cell with correct data. |
-| `isFocusable?`   | `(cell: ` [`TCell`](link)`): boolean;` | Return `false` if you want that your cell shouldn't be focusable. |
-| `update?`        | `(cell: ` [`TCell`](link)`, newCell: ` [`TCell`](link) ` `\|` ` [`CompatibleCell`](link)`: ` [`TCell`](link)`;`| Updates current cell. If not implemented, cell will be read-only. |
-| `handleKeyDown?` | `TODO` | Returns the cell data either affected by the event or not. |
-| `getStyle?`      | `(cell: ` [`TCell`](link)`, isInEditMode: boolean): ` [`CellStyle`](link)`;`| Return styles of cell. |
-| `render`         | `(cell: ` [`TCell`](link)`, isInEditMode: boolean, onCellChanged: (cell: ` [`TCell`](link)`, commit: boolean) => void): React.ReactNode;`| Renders cell content.  |
+
+## Properties
+
+| Method                                                                                                                                                | Returns                                                                   | Description |
+| -----------                                                                                                                                           | -------                                                                   | ----------- |
+| `getCompatibleCell(uncertainCell: `[`Uncertain`](link)`<TCell>)`                                                                                      | [`CompatibleCell`](link)`<TCell>`                                         | Validates passed data to cell based on type. If passed data are incorrect, it converts it to the target type and return cell with correct data. |
+| `isFocusable?(cell: `[`Compatible`](link)`<TCell>)`                                                                                                   | `boolean`                                                                 | Return `false` if you want that your cell shouldn't be focusable. |
+| `update?(cell: `[`Compatible`](link)`<TCell>, cellToMerge: `[`UncertainCompatible`](link)`<TCell>)`                                                   | [`CompatibleCell`](link)`<TCell>`                                         | Updates current cell. If not implemented, cell will be read-only. |
+| `handleKeyDown?(cell: `[`Compatible`](link)`<TCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean)`                                   | `{ cell: `[`CompatibleCell`](link)`<TCell>; enableEditMode: boolean }`    | Returns the cell data either affected by the event or not. |
+| `getStyle?(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean)`                                                                               | [`CellStyle`](link)                                                       | Return styles |
+| `getClassName?(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean)`                                                                           | `string`                                                                  | Return CSS class name |
+| `render(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean, onCellChanged: (cell: `[`Compatible`](link)`<TCell>, commit: boolean) => void)`   | `React.ReactNode`                                                         | Renders cell content | 
+

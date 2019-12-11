@@ -1,0 +1,30 @@
+---
+posttype: "docs"
+title: CellChange
+metaTitle: "CellChange interface"
+metaDescription: "metaDescription"
+---
+
+`CellChange` interface is used by `onCellsChanged` callback in [`Reactgrid`](link) component. 
+
+## Definition
+
+```tsx
+interface CellChange<TCell extends Cell = Cell> {
+    readonly rowId: Id;
+    readonly columnId: Id;
+    readonly initialCell: TCell;
+    readonly newCell: TCell;
+}
+```
+
+TODO how to describe `TCell extends Cell = `[`Cell`](link)`
+
+## Properties
+
+| Property name     | Type                                      | Property description | 
+| ------------      | -------------                             | -------------------- |
+| `rowId`           | [`Id`](link)                              | Unique id in all columns array | 
+| `columnId`        | [`Id`](link)                              | Width of each grid column (defaultly set to 150px) | 
+| `initialCell`     | `TCell extends Cell = `[`Cell`](link)     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| `newCell`         | `TCell extends Cell = `[`Cell`](link)     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 

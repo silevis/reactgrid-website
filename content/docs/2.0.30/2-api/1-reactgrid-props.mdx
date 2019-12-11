@@ -1,36 +1,71 @@
 ---
 posttype: "docs"
-title: ReactGrid
+title: ReactGridProps
 metaTitle: "ReactGridProps interface"
 metaDescription: "metaDescription"
 ---
 
-ReactGrid has three essential properties which you must pass in props to render - `columns`, `rows` and `license`.
+Reactgrid has three essential properties which you must pass in props to render - `columns`, `rows` and `license`.
 
-### Properties
+## Definition
 
-Name                     | Type                        | Description
------------------------- | --------------------------- | -------------
-`columns`                | [`Columns`](link)`[]`       | Data of columns.
-`rows`                   | [`Rows`](link)`[]`          | Data of rows.
-`license`                | `'non-commercial' `\|` string` | Type of license - Visit [License](link).
-`customCellTemplates?`   | [`CellTemplates`](link)     | User is able to create cell template for his own needs.
-`primaryFocus?`          | [`CellId`](link)            | Initial position of primary focus.
-`additionalFocuses?`     | [`CellId`](link)`[]`        | Initial positions of additional focuses.
-`frozenTopRows?`         | `number`                    | Pass the `number` of rows which are frozen on the top.
-`frozenBottowmRows?`     | `number`                    | Pass the `number` of rows which are frozen on the bottom.
-`frozenLeftColumns?`     | `number`                    | Pass the `number` of columns which are frozen on the left side.
-`frozenRightColumns?`    | `number`                    | Pass the `number` of columns which are frozen on the right side.
-`enableFillHandle?`      | `boolean`                   | Set `true` to enable cell fill function.
-`enableRangeSelection?`  | `boolean`                   | Set `true` cell selection function.
-`enableRowSelection?`    | `boolean`                   | Set `true` to row selection function.
-`enableColumnSelection?` | `boolean`                   | Set `true` to column selection function.
+```tsx
+interface ReactGridProps {
+    readonly columns: Column[];
+    readonly rows: Row[];
+    readonly license: 'non-commercial' | string;
+    readonly customCellTemplates?: CellTemplates;
+    readonly focusLocation?: CellLocation;
+    readonly highlights?: Highlight[];
+    readonly frozenTopRows?: number;
+    readonly frozenBottomRows?: number;
+    readonly frozenLeftColumns?: number;
+    readonly frozenRightColumns?: number;
+    readonly disableFillHandle?: boolean;
+    readonly disableRangeSelection?: boolean;
+    readonly enableRowSelection?: boolean;
+    readonly enableColumnSelection?: boolean;
+    readonly onCellsChanged?: (cellChanges: CellChange<Cell>[]) => boolean;
+    readonly onFocusLocationChanged?: (location: CellLocation) => boolean;
+    readonly onColumnResized?: (columnId: Id, width: number) => void;
+    readonly canReorderRows?: (targetRowId: Id, rowIds: Id[], dropPosition: DropPosition) => boolean;
+    readonly onRowsReordered?: (targetRowId: Id, rowIds: Id[], dropPosition: DropPosition) => void;
+    readonly canReorderColumns?: (targetColumnId: Id, columnIds: Id[], dropPosition: DropPosition) => boolean;
+    readonly onColumnsReordered?: (targetColumnId: Id, columnIds: Id[], dropPosition: DropPosition) => void;
+    readonly onContextMenu?: (selectedRowIds: Id[], selectedColIds: Id[], selectionMode: SelectionMode, menuOptions: MenuOption[]) => MenuOption[];
+}
+```
 
-### Callbacks
+## Properties
 
-Name                     | Type  | Description
------------------------- | ----- | -------------
-`onCellsChanged?`        | `(cellChanges: `[`CellChange`](link)`<`[`Cell`](link)`>[]) => boolean `\|` void;`| Cells have been changed.
-`onCellFocused?`         | `(cellId: `[`CellId`](link)`) => boolean;`| Cell has been focused.
-`onContextMenu?`         | `(selectedRowIds: `[`Id`](link)`[], selectedColIds: `[`Id`](link)`[], selectionMode: `[`SelectionMode`](link)`, menuOptions: `[`MenuOption`](link)`[]) => `[`MenuOption`](link)`[];`| User is able to create own context menu options, use the default of ReactGrid (Copy/Cut/Paste) or combine your own with them.
+Name                     | Type                             | Description
+------------------------ | ---------------------------      | -------------
+`columns`                | [`Columns`](link)`[]`            | Column's data
+`rows`                   | [`Rows`](link)`[]`               | Row's data
+`license`                | `'non-commercial' `\|` string`   | Type of license - visit [License](link)
+`customCellTemplates?`   | [`CellTemplates`](link)          | User is able to create cell template for his own needs
+`focusLocation?`         | [`CellLocation`](link)           | Initial position of focus
+`highlights?`            | [`Highlight`](link)`[]`          | Array of highlight positions
+`frozenTopRows?`         | `number`                         | Amount of rows which are frozen on the top
+`frozenBottowmRows?`     | `number`                         | Amount of rows which are frozen on the bottom
+`frozenLeftColumns?`     | `number`                         | Amount of columns which are frozen on the left side
+`frozenRightColumns?`    | `number`                         | Amount of columns which are frozen on the right side
+`disableFillHandle?`     | `boolean`                        | Set `true` to disable cell fill function
+`disableRangeSelection?` | `boolean`                        | Set `true` to disable selection function
+`enableRowSelection?`    | `boolean`                        | Set `true` to enable row selection function
+`enableColumnSelection?` | `boolean`                        | Set `true` to enable column selection function
 
+## Callbacks
+
+todo describe how works
+
+Name                        | Type  | Description
+------------------------    | ----- | -------------
+`onCellsChanged?`           | `(cellChanges: `[`CellChange`](link)`<`[`Cell`](link)`>[]) => boolean;` | Cell/cells value has been changed
+`onFocusLocationChanged?`   | `(location: `[`CellLocation`](link)`) => boolean;` | Focus position has benn changed
+`onColumnResized?`          | `(columnId: `[`Id`](link)`, width: number) => void;` | Callback called when column resize action was ended 
+`canReorderRows?`           | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;` | Allow or not to change specyfic rows order
+`onRowsReordered?`          | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended 
+`canReorderColumns?`        | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;`| Allow or not to change specyfic columns order
+`onColumnsReordered?`       | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended 
+`onContextMenu?`            | `(selectedRowIds: `[`Id`](link)`[], selectedColIds: `[`Id`](link)`[], selectionMode: `[`SelectionMode`](link)` , menuOptions: `[`MenuOption`](link)`[]) => `[`MenuOption`](link)`[];` | User is able to create own context menu options, use the default of ReactGrid (Copy/Cut/Paste) or combine your own with them
