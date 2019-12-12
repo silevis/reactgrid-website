@@ -1,11 +1,11 @@
 ---
 posttype: "docs"
-title: CompatibleCell
-metaTitle: "CompatibleCell interface"
+title: Compatible
+metaTitle: "Compatible type"
 metaDescription: "metaDescription"
 ---
 
-`CompatibleCell` type is a way to recognize field that has our generic `Cell` interface.
+`CompatibleCell` is an extended and excangable cell (compatible between different types). 
 
 ## Definition
 
@@ -18,7 +18,7 @@ type Compatible<TCell extends Cell> = TCell & {
 
 ## Properties
 
-| Property name     | Type     | Property description  |
-| -----------       | -------- | -------------------------|
-| `text`            | `string` | Text value of cell  |
-| `value`           | `number` | Numeric value of cell, if there is no numeric value representation use `NaN` |
+| Property name     | Type                  | Property description  |
+| -----------       | --------              | -------------------------|
+| `text`            | `string`              | Text value of cell  |
+| `value`           | `number`              | Numeric value of cell, if there is no numeric value representation use `NaN` |

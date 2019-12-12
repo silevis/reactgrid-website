@@ -18,13 +18,13 @@ interface CellChange<TCell extends Cell = Cell> {
 }
 ```
 
-TODO how to describe `TCell extends Cell = `[`Cell`](link)`
+`TCell` is type that extends common [`Cell`](link) type. It can be one of [predefined cell types](link) or one of yours. Read more about creacting [custom cell templates](link).
 
 ## Properties
 
 | Property name     | Type                                      | Property description | 
 | ------------      | -------------                             | -------------------- |
-| `rowId`           | [`Id`](link)                              | Unique id in all columns array | 
-| `columnId`        | [`Id`](link)                              | Width of each grid column (defaultly set to 150px) | 
-| `initialCell`     | `TCell extends Cell = `[`Cell`](link)     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
-| `newCell`         | `TCell extends Cell = `[`Cell`](link)     | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| `rowId`           | [`Id`](link)                              | Row [`Id`](link) where change ocurred | 
+| `columnId`        | [`Id`](link)                              | Column [`Id`](link) where change ocurred | 
+| `initialCell`     | `TCell extends Cell = `[`Cell`](link)     | Old content of cell | 
+| `newCell`         | `TCell extends Cell = `[`Cell`](link)     | New content of cell | 

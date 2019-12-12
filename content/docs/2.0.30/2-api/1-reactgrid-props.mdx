@@ -50,22 +50,20 @@ Name                     | Type                             | Description
 `frozenBottowmRows?`     | `number`                         | Amount of rows which are frozen on the bottom
 `frozenLeftColumns?`     | `number`                         | Amount of columns which are frozen on the left side
 `frozenRightColumns?`    | `number`                         | Amount of columns which are frozen on the right side
-`disableFillHandle?`     | `boolean`                        | Set `true` to disable cell fill function
-`disableRangeSelection?` | `boolean`                        | Set `true` to disable selection function
-`enableRowSelection?`    | `boolean`                        | Set `true` to enable row selection function
-`enableColumnSelection?` | `boolean`                        | Set `true` to enable column selection function
+`disableFillHandle?`     | `boolean`                        | Set `true` to disable cell fill feature
+`disableRangeSelection?` | `boolean`                        | Set `true` to disable selection feature
+`enableRowSelection?`    | `boolean`                        | Set `true` to enable row selection feature
+`enableColumnSelection?` | `boolean`                        | Set `true` to enable column selection feature
 
 ## Callbacks
 
-todo describe how works
-
-Name                        | Type  | Description
-------------------------    | ----- | -------------
-`onCellsChanged?`           | `(cellChanges: `[`CellChange`](link)`<`[`Cell`](link)`>[]) => boolean;` | Cell/cells value has been changed
-`onFocusLocationChanged?`   | `(location: `[`CellLocation`](link)`) => boolean;` | Focus position has benn changed
-`onColumnResized?`          | `(columnId: `[`Id`](link)`, width: number) => void;` | Callback called when column resize action was ended 
-`canReorderRows?`           | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;` | Allow or not to change specyfic rows order
-`onRowsReordered?`          | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended 
-`canReorderColumns?`        | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;`| Allow or not to change specyfic columns order
-`onColumnsReordered?`       | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended 
-`onContextMenu?`            | `(selectedRowIds: `[`Id`](link)`[], selectedColIds: `[`Id`](link)`[], selectionMode: `[`SelectionMode`](link)` , menuOptions: `[`MenuOption`](link)`[]) => `[`MenuOption`](link)`[];` | User is able to create own context menu options, use the default of ReactGrid (Copy/Cut/Paste) or combine your own with them
+Name                        | Type  | Description  |
+------------------------    | ----- | ------------ |
+`onCellsChanged?`           | `(cellChanges: `[`CellChange`](link)`<`[`Cell`](link)`>[]) => boolean;` | Called when cell property (e.g. value) was changed. See example [implementation](link). |
+`onFocusLocationChanged?`   | `(location: `[`CellLocation`](link)`) => boolean;` | Focus position has been changed. See example [implementation](link). |
+`onColumnResized?`          | `(columnId: `[`Id`](link)`, width: number) => void;` | Callback called when column resize action was ended. See example [implementation](link). |
+`canReorderRows?`           | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;` | Allow or not to change specyfic rows order. See example [implementation](link). | 
+`onRowsReordered?`          | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended. See example [implementation](link). |
+`canReorderColumns?`        | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;`| Allow or not to change specyfic columns order. See example [implementation](link). |
+`onColumnsReordered?`       | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended. See example [implementation](link). |
+`onContextMenu?`            | `(selectedRowIds: `[`Id`](link)`[], selectedColIds: `[`Id`](link)`[], selectionMode: `[`SelectionMode`](link)` , menuOptions: `[`MenuOption`](link)`[]) => `[`MenuOption`](link)`[];` | Called when user opens context menu inside grid, used to compose own menu options. See example [implementation](link). |

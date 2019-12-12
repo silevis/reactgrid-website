@@ -6,7 +6,6 @@ metaDescription: "metaDescription"
 ---
 
 Row interface contains two necessary properties: `rowId` and `cells`.
-It's essential to create any grid. 
 
 ## Definition
 
@@ -14,9 +13,7 @@ It's essential to create any grid.
 interface Row {
     readonly rowId: Id;
     readonly cells: Cell[];
-    // default: 25
     readonly height?: number;
-    // default: false
     readonly reorderable?: boolean;
 }
 ```
@@ -25,7 +22,7 @@ interface Row {
 
 | Property name     | Type                      | Property description  | 
 | ------------      | -------------             | -------------         |
-| `rowId`           | [`Id`](link)              | Unique id in all rows array | 
+| `rowId`           | [`Id`](link)              | Unique [`Id`](link) in all rows array | 
 | `cells`           | [`Cell`](link)`[]`        | Array of `Cell` objects | 
-| `height?`         | `number`, default: 25     | Height of each grid row (defaultly set to 25px)  | 
-| `reorderable?`    | `boolean`, default: false | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  
+| `height?`         | `number`                  | Height of each grid row (defaultly set to 25px)  | 
+| `reorderable?`    | `boolean`                 | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  

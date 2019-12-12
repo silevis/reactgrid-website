@@ -5,7 +5,7 @@ metaTitle: "Cell interface"
 metaDescription: "metaDescription"
 ---
 
-`Cell` interface has only one necessary prop - `type`.
+`Cell` interface is a basis for built-in cell templates and your own, it has only one necessary prop - `type`.
 
 ## Definition
 
@@ -21,6 +21,6 @@ interface Cell {
 
 | Properties     | Type                 | Properties description |
 | -----------    | ---------            | ---------- |
-| `type`         | `string`             | Name of cell type |
+| `type`         | `string`             | Name of cell type, must be unique |
 | `style?`       | [`CellStyle`](link)  | Allowed style properties contained in [`CellStyle`](link) interface |
-| `className?`   | [`string`](link)     | Additional css classes |
+| `className?`   | [`string`](link)     | Additional CSS classes |

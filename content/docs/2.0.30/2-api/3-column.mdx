@@ -5,28 +5,24 @@ metaTitle: "Column interface"
 metaDescription: "metaDescription"
 ---
 
-This interface represents column in Grid. Column interface contains only one necessary property: `columnId`.
-It's essential to create any grid.
+This interface represents column in grid. `Column` interface contains only one necessary property: `columnId`.
 
 ## Definition
 
 ```tsx
 interface Column {
     readonly columnId: Id;
-    // default: 150
     readonly width?: number;
-    // default: false
     readonly reorderable?: boolean;
-    // default: false
     readonly resizable?: boolean;
 }
 ```
 
 ## Properties
 
-| Property name     | Type                          | Property description | 
-| ------------      | -------------                 | -------------------- |
-| `columnId`        | [`Id`](link)                  | Unique id in all columns array | 
-| `width?`          | `number`, default: `150px`    | Width of each grid column (defaultly set to 150px) | 
-| `reorderable?`    | `boolean`, default: `false`   | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
-| `resizable?`      | `boolean`, default: `false`   | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| Property name     | Type              | Property description | 
+| ------------      | -------------     | -------------------- |
+| `columnId`        | [`Id`](link)      | Unique [`Id`](link) in all columns array | 
+| `width?`          | `number`          | Width of each grid column (defaultly set to 150px) | 
+| `reorderable?`    | `boolean`         | Allow column to change it's position in grid, default: `false` (row reorder implementation is on the developer side)  | 
+| `resizable?`      | `boolean`         | Allow column to change it's width in grid, default: `false` (row resize implementation is on the developer side)  | 
