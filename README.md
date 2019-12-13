@@ -5,7 +5,7 @@
   </a>
 </p>
 <h1 align="center">
-  Reactgrid website & docs
+  ReactGrid website & docs
 </h1>
 
 

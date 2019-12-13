@@ -63,7 +63,7 @@ class Index extends React.Component {
           <Container>
             <Row className="align-items-center">
               <Col className="pb-5">
-                <h1 className="title text-center">Why is <span className="text-success">Reactgrid</span> unique?</h1>
+                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
               </Col>
             </Row>
             <Row className="align-items-center">

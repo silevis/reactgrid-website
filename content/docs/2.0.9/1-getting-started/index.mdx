@@ -5,10 +5,6 @@ metaTitle: "Getting Started"
 metaDescription: "metaDescription"
 ---
 
-import {
-  Button
-} from "reactstrap";
-
 #### Prerequisites
 The only requirement in order to make ReactGrid work is an installed ReactJS library.
 
@@ -17,6 +13,10 @@ The only requirement in order to make ReactGrid work is an installed ReactJS lib
 ```shell
 npm i @silevis/reactgrid
 ```
+
+Before run you need to have globally installed:
+- "react": "^16.8.6"
+- "react-dom": "^16.8.6"
 
 ## 2. Import ReactGrid component
 
@@ -87,10 +87,6 @@ function App() {
     />
   );
 }
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
-
 ```
 
 ## 4. Render your component

@@ -1,7 +1,7 @@
 - imgSrc: multi-user.gif
   imgAlt: Animation for multi user capability feature
   title: Multi user capability
-  description: "Reactgrid supports multiple users operations on the same sheet simultaneously. "
+  description: "ReactGrid supports multiple users operations on the same sheet simultaneously. "
   externalLinkText: ""
   externalLink: ""
 - imgSrc: fill-handle.gif
@@ -61,6 +61,6 @@
 - imgSrc: touch-device.gif
   imgAlt: Animation for optimized for Touch devices feature
   title: Optimized for Touch devices
-  description: "Reactgrid is adapted for use ontouch devices"
+  description: "ReactGrid is adapted for use ontouch devices"
   externalLinkText:
   externalLink: ""

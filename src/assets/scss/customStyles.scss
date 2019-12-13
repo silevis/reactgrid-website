@@ -229,11 +229,12 @@ span.anchor {
         }
     }
 
+    a code:hover {
+        color: #00f2c3;
+    }
+
     .table {
-        a code:hover {
-            color: #00f2c3;
-        }
-    
+        
         :not(pre) > code[class*="language-"],
         pre[class*="language-"] {
             padding: 0;
