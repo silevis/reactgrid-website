@@ -39,6 +39,11 @@ Time to define our data. It will be stored in [React Hook](https://reactjs.org/d
 Both of them must be valid ReactGrid objects: [`Columns`](link) and [`Rows`](link).
 
 ```tsx
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { ReactGrid } from "@silevis/reactgrid";
+import "./../node_modules/@silevis/reactgrid/dist/lib/assets/core.css";
+
 function App() {
   const [state, setState] = useState(() => ({
     columns: [
@@ -59,9 +64,21 @@ function App() {
           { type: "text", text: "Thomas" },
           { type: "text", text: "Goldman" }
         ]
+      },
+      {
+        rowId: 2,
+        cells: [
+          { type: "text", text: "Susie" },
+          { type: "text", text: "Spencer" }
+        ]
+      },
+      {
+        rowId: 2,
+        cells: [{ type: "text", text: "" }, { type: "text", text: "" }]
       }
     ]
   }));
+
   return (
     <ReactGrid
       rows={state.rows}
@@ -70,6 +87,10 @@ function App() {
     />
   );
 }
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
 ```
 
 ## 4. Render your component
@@ -82,11 +103,11 @@ ReactDOM.render(<App />, rootElement);
 That’s it. Let's see results:
 
 <iframe
-  src="https://codesandbox.io/embed/gifted-zhukovsky-mwiwi?fontsize=16&hidenavigation=1&theme=dark"
-  style="width:100%; height:150px; border:0; border-radius: 4px; overflow:hidden;"
-  title="reactgrid-getting-started"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+     src="https://codesandbox.io/embed/reactgrid-getting-started-0754c?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
+     title="reactgrid-getting-started"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
 
 In next step you will know how to handle all of actions that can be performed in ReactGrid.
