@@ -3,10 +3,10 @@ import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
-import { 
+import {
   Container,
   Row,
-  Col, 
+  Col,
   Button
 } from "reactstrap";
 import demoGIF from "../assets/img/demo.gif";
@@ -27,7 +27,7 @@ class Index extends React.Component {
     // const featuresPage = pages.find(page => page.id === 'features')
     const docsPage = pages.find(page => page.id === 'docs')
     const githubSocial = social.find(social => social.title === 'Github')
-    
+
     const usps = data.allUspsYaml.edges;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
@@ -37,21 +37,21 @@ class Index extends React.Component {
             <div className="space"></div>
             <Container>
               <Row>
-                <Col className="mr-auto text-left align-items-center" lg="5" md="7">
+                <Col className="mr-auto text-left align-items-center" md="12" lg="5" >
                   <h1 className="title display-1 mb-3">
-                    Build <span className="text-success">WOW!</span><br/>-tables
+                    <span className="">Build <br /></span><span className="text-success">WOW!</span>-tables
                   </h1>
                   <h3 className="title">Create highly customizable spreadsheet-like grids</h3>
                   <br />
                   <div className="buttons">
                     <Button className="mr-3 px-3 " color="warning" tag={Link} to={demoPage.route} size="lg">
-                      Check examples {' '}<i className="tim-icons icon-double-right"/>
+                      Check examples {' '}<i className="tim-icons icon-double-right" />
                     </Button>
                   </div>
                 </Col>
                 <Col className="ml-auto mt-5 d-flex align-items-center" lg="7" md="12">
                   <div className="iframe-container ">
-                    <img alt="Demo animation" src={demoGIF}/>
+                    <img alt="Demo animation" src={demoGIF} />
                   </div>
                 </Col>
               </Row>
@@ -63,14 +63,13 @@ class Index extends React.Component {
           <Container>
             <Row className="align-items-center">
               <Col className="pb-5">
-                <h1 className="title text-center">Why is <span className="text-success">Reactgrid</span> unique?</h1>
+                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
               </Col>
             </Row>
             <Row className="align-items-center">
               <Col>
                 <Row>
-                  {/* {usps.map(item => <USP key={item.number} {...item}></USP> )} */}
-                  {usps.map(item => <USP key={item.node.number} {...item.node}/>)}
+                  {usps.map(item => <USP key={item.node.number} {...item.node} />)}
                 </Row>
               </Col>
             </Row>
@@ -85,15 +84,15 @@ class Index extends React.Component {
                   Dive in setup tutorial right now and develop your first ReactGrid application!
                 </h4>
                 <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
-                  Get started{' '}<i className="tim-icons icon-double-right"/>
+                  Get started{' '}<i className="tim-icons icon-double-right" />
                 </Button>
                 <a className="btn btn-lg mx-2 btn-success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
-                  View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`}/>
+                  View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`} />
                 </a>
               </Col>
             </Row>
           </Container>
-        </div>      
+        </div>
       </Layout>
     )
   }
@@ -101,26 +100,26 @@ class Index extends React.Component {
 
 export default Index
 
-const USP = ({number, header, description, features, graphics}) => {
+const USP = ({ number, header, description, features, graphics }) => {
   return (
     <Col md="12" className="py-md-5">
       <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center">
         <Col md="2" lg="2">
-          <h4 className="text-muted display-1 text-center text-md-right text-bold pb-4 mb-md-0 pb-md-0" style={{fontSize: '6em'}}>{number}</h4>
+          <h4 className="text-muted display-1 text-center text-md-right text-bold pb-4 mb-md-0 pb-md-0" style={{ fontSize: '6em' }}>{number}</h4>
         </Col>
         <Col md="4" lg="4">
-          {graphics && <div style={{fontSize: '1em'}} className="d-flex align-items-center justify-content-center pb-5 pb-md-0" dangerouslySetInnerHTML={{ __html: graphics }}>
+          {graphics && <div style={{ fontSize: '1em' }} className="d-flex align-items-center justify-content-center pb-5 pb-md-0" dangerouslySetInnerHTML={{ __html: graphics }}>
           </div>}
         </Col>
         <Col>
           <h3>{header}</h3>
           <p className="description">{description}</p>
           {features && <ul className="list-style-none text-left pl-0 ">
-            {features.map(item => <li key={item} className="d-flex flex-row"><i className="tim-icons icon-check-2 text-success pr-2 pt-1"></i>{item}</li> )}
+            {features.map(item => <li key={item} className="d-flex flex-row"><i className="tim-icons icon-check-2 text-success pr-2 pt-1"></i>{item}</li>)}
           </ul>}
         </Col>
       </Row>
-      <hr className="line-primary mx-auto d-md-none"/>
+      <hr className="line-primary mx-auto d-md-none" />
     </Col>
   )
 }

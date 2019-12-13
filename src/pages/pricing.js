@@ -52,7 +52,7 @@ class Pricing extends React.Component {
                       <li>All features</li>
                       <li>Source available</li>
                     </ul>
-                    <Button className="btn-round" color="success" href="#pablo" onClick={e => e.preventDefault()} >
+                    <Button className="btn btn-simple btn-success" color="success" href="#pablo" onClick={e => e.preventDefault()} >
                       Contact Us
                     </Button>
                   </CardBody>
@@ -75,7 +75,7 @@ class Pricing extends React.Component {
                       <li>12 product updates</li>
                       <li>Source available</li>
                     </ul>
-                    <Button className="btn-round" color="success" href="#pablo" onClick={e => e.preventDefault()} >
+                    <Button className="btn btn-simple btn-success" color="success" href="#pablo" onClick={e => e.preventDefault()} >
                       Contact Us
                     </Button>
                   </CardBody>
@@ -92,7 +92,7 @@ class Pricing extends React.Component {
                     <ul>
                       <li>Distribute ReactGrid in one external facing application (SaaS, on premise)</li>
                     </ul>
-                    <Button className="btn-round" color="success" href="#pablo" onClick={e => e.preventDefault()} >
+                    <Button className="btn btn-simple btn-success" color="success" href="#pablo" onClick={e => e.preventDefault()} >
                       Contact Us
                     </Button>
                   </CardBody>

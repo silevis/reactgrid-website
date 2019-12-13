@@ -16,15 +16,6 @@
     padding-left: 0 !important;
 }
 
-.nav-docs-item.active {
-    color: rgb(0, 166, 133);
-    & a h4,
-    & a h4 .font-weight-md-light {
-        color: rgb(0, 166, 133);
-        font-weight: 500 !important;
-    }
-}
-
 .font-weight-md-bold {
     font-weight: 500 !important;
 }
@@ -41,13 +32,6 @@
     padding-bottom: 1em;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: #222a42;
-    border-radius: 5px;
-    box-shadow: 0.2em 0.2em 0.1em #0f102c;
-}
-
 .gatsby-highlight-code-line {
     display: block;
     width: 100%;
@@ -61,6 +45,7 @@ pre[class*="language-"] {
 }
 
 .sample-wrapper {
+    height: 415px;
     border-radius: 0.5em;
     background: rgb(29, 32, 82);
     padding: 0.5em;
@@ -109,19 +94,25 @@ a[href='link'] .language-text {
     right: -0.3em
 }
 
-.all-in-one-sample,
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0,0,0,.5);
+}
+
 .budget-planner-sample,
 .dropdown-number-cell-sample,
-.multi-user-sample,
 .rate-cell-sample,
+.cryptocurrency-market-sample,
+.context-menu-sample,
+.group-cell-sample,
+.datagrid-sample,
 .resize-column-sample,
 .frozens-sample,
 .column-reorder-sample {
     color: rgba(255, 255, 255, 0.81);
 
     // dropdown number
-    .rg-dropdown-number-cell {
-        .rg-dropdown-number-cell-dropdown {
+    .rg-dropdownNumber-cell {
+        .dropdown {
             background-color: #171941;
             border-color: #00f2c3;
         }
@@ -129,11 +120,10 @@ a[href='link'] .language-text {
         $thumb-color: #00f2c3;
         $thumb-border-color: #01aa88 !default;
         $track-border-color: #1f2258 !default;
-        // @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
+        @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 
     // reactgrid colors
-    
     $primary-color:                     rgb(0, 242, 195);
     $bg-color:                          #21836f;
     $frozens-bg-color:                  #040835;
@@ -142,9 +132,15 @@ a[href='link'] .language-text {
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
     $fillhandle-action-border-color:    rgb(0, 239, 191);
-
-    @import '@silevis/reactgrid/dist/lib/assets/core.scss';
+    $cell-editor-bg-color:              white;
+    @import 'node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
     
+    // TODO FIX
+    .rg-content {
+        $base-decrease: gold !important; // overrgind variables not working
+        @import './../../../node_modules/@silevis/reactgrid-samples/dist/cell-templates/cssClassCellTemplate/css-class-style.scss';
+    }
+
     // SCROLLBARS
     .rg-viewport {
         overflow: scroll;
@@ -166,66 +162,40 @@ a[href='link'] .language-text {
         &-corner { background: transparent }
     }
 
-    // CHECKBOX
-    .rg-checkbox-container {
-        display: block;
-        position: relative;
-        height: 20px;
-        width: 20px;
-        margin: 0 auto;
-        cursor: pointer;
-        font-size: 22px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 0;
-            width: 0;
-        }
-        &:hover input ~ .rg-checkbox-checkmark {
-            background-color: #ffffffd3
-        }
-        .rg-checkbox-checkmark {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 20px;
-            width: 20px;
-            background-color: #fffffff1;
-            border-radius: 50%;
-            &:after {
-                content: "";
-                position: absolute;
-                display: none;
-                left: 7px;
-                top: 4px;
-                width: 6px;
-                height: 11px;
-                border: solid white;
-                border-width: 0 3px 3px 0;
-                -webkit-transform: rotate(45deg);
-                -ms-transform: rotate(45deg);
-                transform: rotate(45deg);
-            }
-        }
-        input:checked ~ .rg-checkbox-checkmark {
-            background-color: #33c9ab;
-            &:after { display: block }
-        }
-    }
+    // TODO FIX checkbox
+    // .rg-checkbox-cell {
+    //     justify-content: center;
+    //     user-select: none;
+    //     input {
+    //         display: none;
+    //     }
+    //     input ~ span {
+    //         background-color: #ffffffd3
+    //     }
+    //     span {
+    //         height: 20px;
+    //         width: 20px;
+    //         background-color: #fffffff1;
+    //         border-radius: 50%;
+    //         &:after {
+    //             content: "";
+    //             display: none;
+    //             margin-top: 3px;
+    //             margin-left: 6px;
+    //             width: 6px;
+    //             height: 11px;
+    //             border: solid white;
+    //             border-width: 0 3px 3px 0;
+    //             -webkit-transform: rotate(45deg);
+    //             transform: rotate(45deg);
+    //         }
+    //     }
+    //     input:checked ~ span {
+    //         background-color: #33c9ab;
+    //         &:after { display: block }
+    //     }
+    // }
 
-    .rg-number-cell-template,
-    .rg-date-cell-template,
-    .rg-email-cell-template,
-    .rg-date-cell-template,
-    .rg-text-cell-template,
-    .rg-flag-input {
-        color: white;
-    }
 }
 
 span.anchor {
@@ -249,6 +219,31 @@ span.anchor {
 }
 
 .docs-page {
+
+    .nav-docs-item.active {
+        color: rgb(0, 166, 133);
+        & a h4,
+        & a h4 .font-weight-md-light {
+            color: rgb(0, 166, 133);
+            font-weight: 500 !important;
+        }
+    }
+
+    a code:hover {
+        color: #00f2c3;
+    }
+
+    .table {
+        
+        :not(pre) > code[class*="language-"],
+        pre[class*="language-"] {
+            padding: 0;
+            font-size: 12.5px;
+            background: none;
+            box-shadow: none;
+        }
+    }
+
     .dropdown-version-wrapper {
         margin-bottom: 12px;
 
@@ -322,15 +317,3 @@ span.anchor {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {  }
 
-.table {
-    a code:hover {
-        color: #00f2c3;
-    }
-
-    :not(pre) > code[class*="language-"],
-    pre[class*="language-"] {
-        padding: 0;
-        background: none;
-        box-shadow: none;
-    }
-}

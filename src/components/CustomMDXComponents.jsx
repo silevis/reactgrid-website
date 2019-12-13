@@ -8,7 +8,7 @@ export default function CustomMDXComponents({ children }) {
         h1: props => (
           <>
             <span className="anchor" id={props.children && props.children.toString().replace(/ /g,"").toLowerCase()}></span>
-            <h1 {...props} style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.5em'}}>
+            <h1 {...props} className="pt-4 mb-2" style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.5em'}}>
               {props.children}
             </h1>
           </>
@@ -16,7 +16,7 @@ export default function CustomMDXComponents({ children }) {
         h2: props => (
           <>
             <span className="anchor" id={props.children && props.children.toString().replace(/ /g,"").toLowerCase()}></span>
-            <h2 {...props} style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em'}}>
+            <h2 {...props} className="pt-4 mb-2" style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em'}}>
               {props.children}
             </h2>
           </>
@@ -24,7 +24,7 @@ export default function CustomMDXComponents({ children }) {
         h3: props => (
           <>
             <span className="anchor" id={props.children && props.children.toString().replace(/ /g,"").toLowerCase()}></span>
-            <h3 {...props} style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em'}}>
+            <h3 {...props} className="pt-4 mb-2" style={{borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em'}}>
               {props.children}
             </h3>
           </>

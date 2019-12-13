@@ -18,7 +18,7 @@
         - Free yourself from fields and records
     graphics: '
             <span class="usp-graphics"><i class="fas fa-border-all em-lg text-success position-relative">
-                <i class="far fa-square position-absolute strokeme text-white usp-icon" style="font-size: 0.4em; bottom: -0.2em;"></i>
+                <i class="fas fa-square position-absolute strokeme text-white usp-icon" style="font-size: 0.4em; bottom: -0.2em;"></i>
             </i></span>'
 -   
     number: '03'
