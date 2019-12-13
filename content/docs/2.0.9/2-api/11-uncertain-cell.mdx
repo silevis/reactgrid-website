@@ -11,5 +11,5 @@ Cell of this type will have only one essential field provided by `Cell` interfac
 ## Definition
 
 ```tsx
-export type Uncertain<TCell extends Cell> = Partial<TCell> & Cell;
+type Uncertain<TCell extends Cell> = Partial<TCell> & Cell;
 ```
