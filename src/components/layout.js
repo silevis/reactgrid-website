@@ -7,19 +7,29 @@ import "../assets/css/all.css";
 import "../assets/scss/customStyles.scss";
 import Footer from "./Footer";
 import MainNavbar from "./MainNavbar";
+import CookieConsent, { Cookies } from "react-cookie-consent";
+import { Link } from 'gatsby';
 
 class Layout extends React.Component {
   render() {
-    const { title, social, pages, description, children} = this.props
+    const { title, social, pages, description, children } = this.props;
     return (
       <div>
         <header>
-          <MainNavbar pages={pages} title={title} social={social} description={description}/>
+          <MainNavbar pages={pages} title={title} social={social} description={description} />
         </header>
         <main className="layout-main-wrapper">{children}</main>
         <footer>
-          <Footer pages={pages} social={social} title={title} description={description}/>
+          <Footer pages={pages} social={social} title={title} description={description} />
         </footer>
+        <CookieConsent
+          location="bottom"
+          buttonText="Allow cookies"
+          style={{ background: "rgb(44, 48, 107)" }}
+          buttonStyle={{ color: "#4e503b", fontSize: "14px", backgroundColor: '#00f2c3' }}
+        >
+          This website uses cookies to ensure you get the best experience on our website.
+        </CookieConsent>
       </div>
     )
   }
