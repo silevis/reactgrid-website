@@ -13,7 +13,7 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, it
   //   setCollapsed(url);
   // }
 
-  const hasChildren = items.length > 0;
+  // const hasChildren = items.length > 0;
 
   const active = location && location.pathname === (docsRoute + url);
   const calculatedClassName = classNames({

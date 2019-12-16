@@ -7,8 +7,7 @@ import "../assets/css/all.css";
 import "../assets/scss/customStyles.scss";
 import Footer from "./Footer";
 import MainNavbar from "./MainNavbar";
-import CookieConsent, { Cookies } from "react-cookie-consent";
-import { Link } from 'gatsby';
+import CookieConsent from "react-cookie-consent";
 
 class Layout extends React.Component {
   render() {
