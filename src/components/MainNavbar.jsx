@@ -89,18 +89,16 @@ class MainNavbar extends React.Component {
                     // const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
                     return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
                   })
-                  const getStarted = <li key={'getStartedLink'} className="align-items-center d-flex">
+                  const getStarted = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
                     <NavLink to={`${docsPage.route}${docsVersions.slug}${docsVersions.index}/`} tag={Link}>
-                      <button type="button" className="btn btn-success btn-simple btn-sm">Get started</button>
+                      <button type="button" className="btn btn-success btn-simple btn-sm px-2">Get started</button>
                     </NavLink>
                   </li>
-
                   const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
-                    <Button className="btn-sm btn-simple m-0 align-items-center d-flex" color="github" href={githubSocial.url} target="_blank">
+                    <Button className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
                       Github{' '}<i className={`${githubSocial.fontAwesomeIcon} pl-1`} />
                     </Button>
                   </li>
-
                   return [...navbarLinks, getStarted, github]
                 }}
               />

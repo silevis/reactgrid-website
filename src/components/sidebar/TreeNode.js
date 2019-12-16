@@ -9,11 +9,11 @@ import {
 const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, items, location, docsRoute, ...rest }) => {
   const isCollapsed = Object.keys(collapsed).includes(url) && collapsed[url];
 
-  const collapse = () => {
-    setCollapsed(url);
-  }
+  // const collapse = () => {
+  //   setCollapsed(url);
+  // }
 
-  const hasChildren = items.length > 0;
+  // const hasChildren = items.length > 0;
 
   const active = location && location.pathname === (docsRoute + url);
   const calculatedClassName = classNames({
@@ -30,11 +30,11 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, it
     <NavItem className={calculatedClassName}>
       {title && (
         <>
-          {
-            // <span onClick={collapse} className='collapser pr-1 float-left'>
-            //   {!isCollapsed ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-down"></i>}
-            // </span>
-          }
+          {/* {
+            <span onClick={collapse} className='collapser pr-1 float-left'>
+              {!isCollapsed ? <i className="fas fa-chevron-right"></i> : <i className="fas fa-chevron-down"></i>}
+            </span>
+          } */}
           <Link to={docsRoute + url} className="text-white d-inline-block">
             <h4 className="mb-0">
               <span className={calculatedTitleClassName} style={{ fontSize: '0.75em' }}>{title}</span>
