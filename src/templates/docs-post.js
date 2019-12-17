@@ -80,7 +80,7 @@ class DocsPostTemplate extends React.Component {
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
+                <h1 className="mb" id="docs-header"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>

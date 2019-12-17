@@ -95,7 +95,7 @@ class MainNavbar extends React.Component {
                     </NavLink>
                   </li>
                   const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
-                    <Button className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
+                    <Button rel="noopener noreferrer" className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
                       Github{' '}<i className={`${githubSocial.fontAwesomeIcon} pl-1`} />
                     </Button>
                   </li>
