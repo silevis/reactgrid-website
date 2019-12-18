@@ -51,7 +51,7 @@ class DocsPostTemplate extends React.Component {
     const version = slug[2];
     const docsPage = pages.find(page => page.id === 'docs')
 
-    const dropdownItemsList = docsVersions.map(version => {
+    const dropdownItemsList = docsVersions.filter(version => version.active).map(version => {
       return (
         <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route + version.slug + version.index}/`}>
           <h4 className="text-darker mb-0">{version.desc}</h4>
@@ -140,6 +140,7 @@ export const pageQuery = graphql`
           slug
           desc
           index
+          active
         }
         docsPagesOrder
       }

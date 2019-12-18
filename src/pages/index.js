@@ -22,7 +22,7 @@ class Index extends React.Component {
   render() {
     const { data } = this.props
     const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
-    const docsVersion = docsVersions[0];
+    const docsVersion = docsVersions.find(version => version.active);;
     const demoPage = pages.find(page => page.id === 'examples')
     // const featuresPage = pages.find(page => page.id === 'features')
     const docsPage = pages.find(page => page.id === 'docs')
@@ -141,6 +141,7 @@ export const pageQuery = graphql`
           slug
           desc
           index
+          active
         }
         social {
           description
