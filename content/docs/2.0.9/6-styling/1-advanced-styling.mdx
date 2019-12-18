@@ -7,8 +7,8 @@ metaDescription: "metaDescription"
 
 ReactGrid let you to style all key components using Sass variables. 
 
-To override default styles of ReactGrid you have to assign new values ([available variables](link)) and then import all necessary `.scss`.
-If variable is not passed before imported `core.scss` it will by not modified.
+To override default styles of ReactGrid you have to assign new values ([available variables](link)) and then import all 
+necessary `.scss`. If variable is not passed before imported `core.scss` it will by not modified.
 
 Here's an example how to add custom focus style on your grid will have default value.
 
@@ -42,7 +42,6 @@ If you use multiple grids on the same page, make sure your grid styles are 'loca
     $primary-color: blue;
     @import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
 }
-
 ```
 
 Wrap ReactGrid component into `div` element with class name:
@@ -55,5 +54,4 @@ Wrap ReactGrid component into `div` element with class name:
 <div className="reactgrid-blue">
     <ReactGrid {...props}/>
 </div>
-
 ```

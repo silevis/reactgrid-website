@@ -8,7 +8,7 @@ metaDescription: "metaDescription"
 ## Introduction 
 
 Creating cell template is best way to customize data visualization and behaviour in ReactGrid.
-You can define your own and then uset it as other builtin cell types. 
+You can define your own and then use it as other built-in cell types. 
 
 In this example we will completly discuss how to make it.
 
@@ -16,9 +16,8 @@ Let's imagine that you need to implement a brand new cell for displaying country
 
 Expected functionality:
 
-1. Cell content will be correctly interpreted as text in ISO 3166-1 standard
-2. In edit mode cell allows to type text without any constraints
-3. When cell is just display should show country flag
+1. In edit mode cell allows to type text without any constraints
+2. When cell is just display should show country flag based on cell text
 
 Let's get started!
 
@@ -52,9 +51,10 @@ const [state, setState] = React.useState(() => ({
 }));
 ```
 
-## 2. Implement FlagCellTemplate interface
+## 2. Creating necessary files
 
-Create new file named `FlagCellTemplate.tsx` and `flag-cell-style.scss` (don't forget to import it in your project's file).
+Create new file named `FlagCellTemplate.tsx`, add the same imports like on listing below and `flag-cell-style.css`  that
+will contains some CSS styles (don't forget to import it in your project's file).
 
 ```tsx 
 // FlagCellTemplate.tsx
@@ -70,13 +70,13 @@ import {
   isAlphaNumericKey,
   keyCodes
 } from "@silevis/reactgrid";
-import "./flag-cell-style.scss";
+import "./flag-cell-style.css";
 ```
 
 ## 3. Define cell data interface
 
-`type` attribute is necessary in any cell template, in our sample we well refer to this cell template by `flag`.
-`text` attribute will storage our country ISO code and it's also necessary. 
+`type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
+`text` attribute will storage our text and it's also necessary. 
 
 ```tsx
 export interface FlagCell extends Cell {
@@ -89,7 +89,6 @@ export interface FlagCell extends Cell {
 
 All of definded methods below are necessary to correct displaying and interfacing with internal ReactGrid model.
 
-
 * `getCompatibleCell` as a parameter gets incoming cell and returns a compatible cell (with `text` and `value`
   attribute required by [`Compatible`](link) type).
 
@@ -101,8 +100,8 @@ getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
 }
 ```
 
-* `handleKeyDown` method handles `keyDown` event on this cell template, returns unchanged cell and enables edit 
-  mode when user performed click or pressed <kbr>enter</kbr>,
+* `handleKeyDown` method handles `keyDown` event on this cell template. Here just returns unchanged cell and enables 
+  edit  mode when user performed click or pressed <kbr>enter</kbr> key.
 
 ```tsx
 handleKeyDown(
@@ -134,8 +133,8 @@ update(
 }
 ```
 
-* `render` - renders content of cell. In edit mode we will display HTML `input`. Change taking place in the cell
-  is propagated outside ReactGrid by `onCellChanged` function.
+* `render` - return content of cell. In edit mode we will display HTML `input` element. Change that taking place in the 
+  cell `input` is propagated outside ReactGrid by `onCellChanged` function.
 
 ```tsx
 render(
@@ -149,8 +148,8 @@ render(
         const alternativeURL = `https://upload.wikimedia.org/wikipedia/commons/0/04/Nuvola_unknown_flag.svg`;
         return (
             <div
-            className="rg-flag-wrapper"
-            style={{ backgroundImage: `url(${flagURL}), url(${alternativeURL})` }}
+                className="rg-flag-wrapper"
+                style={{ backgroundImage: `url(${flagURL}), url(${alternativeURL})` }}
             />
         );
     }
@@ -187,22 +186,22 @@ Due to `rg-cell` is flex element we centering it's content by `justify-content: 
 
 ```css
 .rg-flag-cell {
-    justify-content: center;
+  justify-content: center;
 }
 
 .rg-flag-wrapper {
-    width: calc(50%);
-    height: 80%;
-    background-size: cover;
-    border: 1px solid #cccccc;
-    background-position: center center;
-    background-repeat: no-repeat;
+  width: 50%;
+  height: 80%;
+  background-size: cover;
+  border: 1px solid #cccccc;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 ```
 
 ## 6. Finishing
 
-Go back to `index.tsx` and `customCellTemplates` 
+Go back to `index.tsx` file and add `customCellTemplates` prop as shown below:
 
 ```tsx
 return (

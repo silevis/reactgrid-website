@@ -7,8 +7,9 @@ metaDescription: "metaDescription"
 
 ## Idea of handling data changes 
 
-1. User try to change data inside cell in one of few ways (typing ne value, fill handle, copy and paste, click toggle icon)
-2. ReactGrid event (`onCellsChanged`) is invoked
+1. User try to change data inside cell in one of few ways (typing new value, fill handle, copy and paste, click toggle 
+  icon)
+2. ReactGrid event (`onCellsChanged`) is called
 3. Your hadler function handles event and updates state of application
 4. `ReactGrid` component is rerendered with new data
 
@@ -31,7 +32,7 @@ const handleChanges = (changes: CellChange[]) => {
 }
 ```
 
-...then add our handle function to `ReactGrid` props:
+...then add our handler function to `ReactGrid` component props:
 
 ```tsx
 return (
@@ -44,7 +45,7 @@ return (
 );
 ```
 
-## Result
+### Result
 
 <iframe
     src="https://codesandbox.io/embed/dark-meadow-crzfx?fontsize=14&hidenavigation=1&theme=dark"

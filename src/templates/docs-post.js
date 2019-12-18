@@ -20,18 +20,18 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class DocsPostTemplate extends React.Component {
   state = {
-    isDocsNavFloating: false,
+    isDocsNavFloating: true,
   };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     document.body.classList.add("blog-post");
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
     document.body.classList.remove("blog-post");
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = () => {
