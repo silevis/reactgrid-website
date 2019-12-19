@@ -12,10 +12,6 @@
     min-height: 100px;
 }
 
-.firstLevel > ul {
-    padding-left: 0 !important;
-}
-
 .font-weight-md-bold {
     font-weight: 500 !important;
 }
@@ -49,11 +45,6 @@
     border-radius: 0.5em;
     background: rgb(29, 32, 82);
     padding: 0.5em;
-}
-
-a[href='link'] .language-text {
-    // color: rgb(0, 166, 133);
-    text-decoration: underline;
 }
 
 .list-style-none {
@@ -220,6 +211,15 @@ span.anchor {
 
 .docs-page {
 
+    a[href='link'] .language-text {
+        // color: rgb(0, 166, 133);
+        // text-decoration: underline;
+    }
+
+    .firstLevel > ul {
+        padding-left: 0 !important;
+    }
+
     .nav-docs-item.active {
         color: rgb(0, 166, 133);
         & a h4,
@@ -234,7 +234,6 @@ span.anchor {
     }
 
     .table {
-        
         :not(pre) > code[class*="language-"],
         pre[class*="language-"] {
             padding: 0;
@@ -246,14 +245,11 @@ span.anchor {
 
     .dropdown-version-wrapper {
         margin-bottom: 12px;
-
         .dropdown-toggle {
             padding: 10px !important;
-
             &:hover {
                 transform: none !important;
             }
-
             &:after {
                 margin-left: 10px !important;
             }
@@ -264,7 +260,6 @@ span.anchor {
             right: auto !important;
             min-width: 0;
             padding: 0;
-
             &:before {
                 left: 10px !important;
                 right: auto;
@@ -277,11 +272,9 @@ span.anchor {
                 top: 5px;
                 bottom: 5px;
             }
-
             &:first-child {
                 padding-top: 10px;
             }
-
             &:last-child {
                 padding-bottom: 10px;
             }

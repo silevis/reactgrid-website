@@ -5,20 +5,19 @@ metaTitle: "Column and row reordering"
 metaDescription: "metaDescription"
 ---
 
+## How to implement column and row reordering?
+
 This lesson is based on [getting started](link).
 
-## How to implement column and row reordering
-
-
-1. Firstly lets update imports by ading `Id`, `DropPosition`, `Column`, `Row`, `Cell`
+1. Firstly lets update imports by ading [`Id`](link), [`DropPosition`](link), [`Column`](link), [`Row`](link), [`Cell`](link)
 
 ```tsx
 import { ReactGrid, Id, DropPosition, Column, Row, Cell } from "@silevis/reactgrid";
 ```
 
-2. Prepare out state to allow row and column reorder:
+2. Prepare our app state to allow row and column reorder:
 
-Mark column as reorderable by adding `reorderable` attribute and set it to `true`
+Mark column as reorderable by adding `reorderable` attribute and set it to `true`.
 
 ```tsx
 columns: [
@@ -115,7 +114,7 @@ return (
 );
 ```
 
-6. Results
+## Result
 
 <iframe
 	src="https://codesandbox.io/embed/reactgrid-getting-started-4x3xc?fontsize=14&hidenavigation=1&theme=dark"

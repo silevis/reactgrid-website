@@ -20,18 +20,18 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class DocsPostTemplate extends React.Component {
   state = {
-    isDocsNavFloating: false,
+    isDocsNavFloating: true,
   };
   componentDidMount() {
     document.documentElement.scrollTop = 0;
     document.scrollingElement.scrollTop = 0;
     document.body.classList.add("blog-post");
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
     document.body.classList.remove("blog-post");
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = () => {
@@ -51,7 +51,7 @@ class DocsPostTemplate extends React.Component {
     const version = slug[2];
     const docsPage = pages.find(page => page.id === 'docs')
 
-    const dropdownItemsList = docsVersions.map(version => {
+    const dropdownItemsList = docsVersions.filter(version => version.active).map(version => {
       return (
         <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route + version.slug + version.index}/`}>
           <h4 className="text-darker mb-0">{version.desc}</h4>
@@ -80,7 +80,7 @@ class DocsPostTemplate extends React.Component {
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
+                <h1 className="mb" id="docs-header"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
@@ -140,6 +140,7 @@ export const pageQuery = graphql`
           slug
           desc
           index
+          active
         }
         docsPagesOrder
       }

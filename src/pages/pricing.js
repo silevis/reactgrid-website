@@ -152,6 +152,7 @@ export const pageQuery = graphql`
           slug
           desc
           index
+          active
         }
         social {
           description

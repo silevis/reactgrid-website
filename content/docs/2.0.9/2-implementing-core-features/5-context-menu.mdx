@@ -7,8 +7,7 @@ metaDescription: "metaDescription"
 
 ## Context menu
 
-ReactGrid contains builtin custom context menu. 
-Defaultly it will be contains only three options - copy, cut, paste. You also can create your custom actions.
+ReactGrid contains builtin custom context menu with is defaultly disabled. You also can create your custom actions.
 
 ## Enabling simple context menu
 
@@ -22,6 +21,9 @@ import { ReactGrid, Id, MenuOption } from "@silevis/reactgrid";
 
 2. Define event callback function
 
+`menuOptions` argument of `simpleHandleContextMenu` contains default list of predefined options - copy, cut, paste. 
+At this moment we will just return it.
+
 ```tsx
 const simpleHandleContextMenu = (
     selectedRowIds: Id[],
@@ -32,9 +34,6 @@ const simpleHandleContextMenu = (
     return menuOptions;
   };
 ```
-
-`menuOptions` argument of `simpleHandleContextMenu` contains default list of predefined options. 
-At this moment we will just return it.
 
 Let's check result by right clicking on any cell:
 
@@ -48,7 +47,6 @@ Let's check result by right clicking on any cell:
 
 ## Advanced usage - removing columns and rows
 
-This lesson is based on [simple handling context menu](link).
 Our task will be handling `onContextMenu` callback, then detect current [`SelectionMode`](link). 
 After that we will be able to append custom menu option that removes selected column or row.
 
@@ -61,35 +59,58 @@ import { ReactGrid, Id, MenuOption, Column, Row, Cell } from "@silevis/reactgrid
 2. Implement callback handler function
 
 ```tsx
-const handleContextMenu = (selectedRowIds: Id[], selectedColIds: Id[], selectionMode: SelectionMode, menuOptions: MenuOption[]): MenuOption[] => {
-    if (selectionMode === 'row') {
+const handleContextMenu = (
+    selectedRowIds: Id[],
+    selectedColIds: Id[],
+    selectionMode: SelectionMode,
+    menuOptions: MenuOption[]
+  ): MenuOption[] => {
+    if (selectionMode === "row") {
       menuOptions = [
         ...menuOptions,
         {
-          id: 'removeRow', label: 'Remove row', handler: () => {
-            setState({ ...state, rows: state.rows.filter((row: Row) => !selectedRowIds.includes(row.rowId)) });
+          id: "removeRow",
+          label: "Remove row",
+          handler: () => {
+            setState({
+              ...state,
+              rows: state.rows.filter(
+                (row: Row) => !selectedRowIds.includes(row.rowId)
+              )
+            });
           }
-        },
-      ]
+        }
+      ];
     }
-    if (selectionMode === 'column') {
+    if (selectionMode === "column") {
       menuOptions = [
         ...menuOptions,
         {
-          id: 'removeColumn', label: 'Remove column', handler: () => {
-            const columns: Column[] = state.columns.filter((column: Column) => !selectedColIds.includes(column.columnId));
-            const columnsIdxs = state.columns.map((column: Column, idx: number) => {
-              if (!columns.includes(column)) return idx;
-              return undefined;
-            }).filter(idx => idx !== undefined);
-            const rows = state.rows.map((row: Row) => ({ ...row, cells: row.cells.filter((_: Cell, idx: number) => !columnsIdxs.includes(idx)) }));
+          id: "removeColumn",
+          label: "Remove column",
+          handler: () => {
+            const columns: Column[] = state.columns.filter(
+              (column: Column) => !selectedColIds.includes(column.columnId)
+            );
+            const columnsIdxs = state.columns
+              .map((column: Column, idx: number) => {
+                if (!columns.includes(column)) return idx;
+                return undefined;
+              })
+              .filter(idx => idx !== undefined);
+            const rows = state.rows.map((row: Row) => ({
+              ...row,
+              cells: row.cells.filter(
+                (_: Cell, idx: number) => !columnsIdxs.includes(idx)
+              )
+            }));
             setState({ ...state, columns, rows });
           }
-        },
-      ]
+        }
+      ];
     }
     return menuOptions;
-}
+  };
 ```
 
 3. Update `ReactGrid` component props. Note that columns and rows must be selectable.
@@ -115,3 +136,7 @@ return (
 	allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
 	sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
+
+3. Test it
+
+Select column or row by click on first left or top cell, then right-click and remove selected row or column.

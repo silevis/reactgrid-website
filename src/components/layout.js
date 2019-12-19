@@ -13,7 +13,7 @@ class Layout extends React.Component {
   render() {
     const { title, social, pages, description, children } = this.props;
     return (
-      <div>
+      <>
         <header>
           <MainNavbar pages={pages} title={title} social={social} description={description} />
         </header>
@@ -29,7 +29,7 @@ class Layout extends React.Component {
         >
           This website uses cookies to ensure you get the best experience on our website.
         </CookieConsent>
-      </div>
+      </>
     )
   }
 }

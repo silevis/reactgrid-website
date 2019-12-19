@@ -5,15 +5,15 @@ metaTitle: " Freezing panes"
 metaDescription: "metaDescription"
 ---
 
-## Some about frozens
+## Some informations about frozens
 
 ReactGrid allows you to freeze rows to top and bottom, also column to left or right.
 
-It's possible by adding dedicated props:
-- `frozenLeftColumns`
-- `frozenRightColumns`
+It's possible by adding dedicated `ReactGrid` component props:
 - `frozenTopRows`
 - `frozenBottomRows`
+- `frozenLeftColumns`
+- `frozenRightColumns`
 
 All of these properties include the number of columns or rows to freeze at the grid's edges.
 
@@ -25,6 +25,7 @@ This lesson is based on [getting started](link).
 1. Let's add some more data 
 
 ```tsx
+// ...
 columns: [
 	{ columnId: "Name", width: 150 },
 	{ columnId: "Surname", width: 100 },
@@ -90,22 +91,25 @@ rows: [
 		]
 	}
 ]
+// ...
 ```
 
 2. In this example we will add one freeze on each grid edge
 
 ```tsx
+// ...
 return (
 	<ReactGrid
 		rows={state.rows}
 		columns={state.columns}
 		license={"non-commercial"}
-		frozenLeftColumns={1}
-		frozenRightColumns={1}
-		frozenTopRows={1}
-		frozenBottomRows={1}
+		frozenLeftColumns={1} // highlight-line
+		frozenRightColumns={1} // highlight-line
+		frozenTopRows={1} // highlight-line
+		frozenBottomRows={1} // highlight-line
 	/>
 );
+// ...
 ```
 
 ## Result

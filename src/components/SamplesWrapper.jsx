@@ -31,12 +31,19 @@ class SamplesWrapper extends React.Component {
   }
 
   render() {
+
+    console.log(this.state.activeTabIdx);
+
+    const isAnySelected = this.state.activeTabIdx !== undefined;
+
     const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <NavItem key={idx} className="pb-3">
         <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })} style={{ cursor: 'pointer' }}
           onClick={() => { this.setActiveTab(idx) }}>
-          <i className={`${sample.icon} text-shadow mt-2`} />
-          <div className="mt-4 mb-1 text-shadow">{sample.title}</div>
+          {!isAnySelected &&
+            <i className={`${sample.icon} text-shadow mt-2 mb-4`} />
+          }
+          <div className="text-shadow">{sample.title}</div>
         </NavLink>
       </NavItem>
     );
@@ -60,7 +67,7 @@ class SamplesWrapper extends React.Component {
             <Col>
               <div className="space-50"></div>
               {!isSampleSelected && <h1 className="text-center py-5">Try all features on our sample applications</h1>}
-              <Nav pills className="justify-content-center nav-pills-success nav-pills-icons"  >
+              <Nav pills={!isSampleSelected} tabs={isSampleSelected} className={`justify-content-center nav-pills-icons ${!isSampleSelected ? 'nav-pills-success' : ''}`}  >
                 {tabMenuItems}
                 <div className="space-50"></div>
                 <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
@@ -80,7 +87,7 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
   const Sample = samples[component];
   return (
     <TabPane tabId={tabId}>
-      <Row className="pt-4">
+      <Row>
         <Col xs="12" className={className}>
           {/* <h1 className="h1 text-success my-3">{title}</h1> */}
           <div className="sample-wrapper">

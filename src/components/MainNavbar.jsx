@@ -75,13 +75,14 @@ class MainNavbar extends React.Component {
                             slug
                             desc
                             index
+                            active
                           }
                         }
                       }
                     }
                   `}
                 render={data => {
-                  const docsVersions = data.site.siteMetadata.docsVersions[0];
+                  const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
                   const docsPage = pages.find(page => page.id === 'docs')
                   const githubSocial = social.find(social => social.title === 'Github')
                   const navbarLinks = pages.filter(page => page.active && page.active === true).map(page => {
@@ -95,7 +96,7 @@ class MainNavbar extends React.Component {
                     </NavLink>
                   </li>
                   const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
-                    <Button className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
+                    <Button rel="noopener noreferrer" className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
                       Github{' '}<i className={`${githubSocial.fontAwesomeIcon} pl-1`} />
                     </Button>
                   </li>

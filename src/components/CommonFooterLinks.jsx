@@ -2,7 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby";
 import FooterLink from "../components/FooterLink"
 
-const CommonFooterLinks = ({pages}) => {
+const CommonFooterLinks = ({ pages }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -13,15 +13,16 @@ const CommonFooterLinks = ({pages}) => {
                 slug
                 desc
                 index
+                active
               }
             }
           }
         }
       `}
       render={data => {
-        const docsVersions = data.site.siteMetadata.docsVersions[0];
-        return pages.filter(page => page.active).map(page => 
-            <FooterLink key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title}/> 
+        const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
+        return pages.filter(page => page.active).map(page =>
+          <FooterLink key={page.id} route={page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route} title={page.title} />
         )
       }}
     />

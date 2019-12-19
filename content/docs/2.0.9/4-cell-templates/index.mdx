@@ -13,7 +13,8 @@ Each cell template has own unique behavior, content formating, styling.
 
 Nothing prevents you for creating your custom cell - read about [creating your own cell template](link). 
 
-In listing below we declared two cell of `header` type, and it's related to interface of [`HeaderCell`](link) template.
+In listing below we declared two cell of `header` type, and they are related to interface of [`HeaderCell`](link) 
+template.
 
 ```tsx
 cells: [
@@ -22,16 +23,9 @@ cells: [
 ]
 ```
 
-```tsx
-cells: [
-    { type: "text", text: "Thomas" },
-    { type: "text", text: "Goldman" }
-]
-```
+Every cell object must contain `type` attribute, other keys depends on exact type of cell.
 
-TODO !!!
-
-## ReactGrid contains few predefined cell templates:
+## Buildin cell templates
 
 * [CheckboxCell](link)
 * [DateCell](link)
