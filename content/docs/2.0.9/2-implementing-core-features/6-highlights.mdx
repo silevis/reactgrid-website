@@ -5,17 +5,18 @@ metaTitle: "Adding highlights"
 metaDescription: "metaDescription"
 ---
 
-This lesson is based on [getting started](link).
+This guide is based on [getting started](link).
 
-Highlights allow you to add custom CSS classes or border around. 
+Highlights allow you to alter arbitrary cells in the DataGrid
+by applying custom CSS classes to them or by setting their border colors.
 
-1. Import [`Highlight`](link) interface
+1. Import the [`Highlight`](link) interface
 
 ```tsx
 import { ReactGrid, Highlight } from "@silevis/reactgrid";
 ```
 
-2. Define array of [`Highlight`](link)
+2. Define an array of [`Highlight`](link) objects
 
 ```tsx
 const highlights: Highlight[] = [
@@ -25,7 +26,7 @@ const highlights: Highlight[] = [
 ];
 ```
 
-3. Set `highlights` property to lastly declared variable
+3. Pass the `highlights` array to your DataGrid component
 
 ```tsx
 return (

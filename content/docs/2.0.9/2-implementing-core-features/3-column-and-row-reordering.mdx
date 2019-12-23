@@ -7,28 +7,28 @@ metaDescription: "metaDescription"
 
 ## How to implement column and row reordering?
 
-This lesson is based on [getting started](link).
+This guide is based on [getting started](link).
 
-1. Firstly lets update imports by ading [`Id`](link), [`DropPosition`](link), [`Column`](link), [`Row`](link), [`Cell`](link)
+1. Add some new imports which we'll use going forward
+We'll need [`Id`](link), [`DropPosition`](link), [`Column`](link), [`Row`](link), and [`Cell`](link).
 
 ```tsx
 import { ReactGrid, Id, DropPosition, Column, Row, Cell } from "@silevis/reactgrid";
 ```
 
-2. Prepare our app state to allow row and column reorder:
+2. Modify the rows and columns to enable reordering
 
-Mark column as reorderable by adding `reorderable` attribute and set it to `true`.
+This is done by adding the `reorderable` property to a column or row and setting its value to `true`.
 
 ```tsx
 columns: [
-	// columns now are able to reorder
+	// columns can now be reordered
 	{ columnId: "Name", width: 100, reorderable: true }, //highlight-line
 	{ columnId: "Surname", width: 100, reorderable: true } //highlight-line
 ],
 ```
 
-Mark rows as reorderable by adding `reorderable` attribute and set it to `true`. 
-Notice that first object on `rows` array will stay unorderable because it's data header.
+Notice that we don't want the first row to be reorderable because that's our grid's header.
 
 ```tsx
 rows: [
@@ -66,9 +66,18 @@ rows: [
 ]
 ```
 
-3. Column and rows handlers implementation
+3. Implement the handler functions
 
 ```tsx
+// a helper function used to reorder arbitrary arrays
+const reorderArray = <T extends {}>(arr: T[], idxs: number[], to: number) => {
+	const movedElements: T[] = arr.filter((_: T, idx: number) => idxs.includes(idx));
+	to = Math.min(...idxs) < to ? to += 1 : to -= idxs.filter(idx => idx < to).length;
+	const leftSide: T[] = arr.filter((_: T, idx: number) => idx < to && !idxs.includes(idx));
+	const rightSide: T[] = arr.filter((_: T, idx: number) => idx >= to && !idxs.includes(idx));
+	return [...leftSide, ...movedElements, ...rightSide];
+}
+
 const handleColumnsReordered = (targetColumnId: Id, columnIds: Id[], dropPosition: DropPosition) => {
 	const to = state.columns.findIndex((column: Column) => column.columnId === targetColumnId);
 	const columnIdxs = columnIds.map((id: Id, idx: number) => state.columns.findIndex((c: Column) => c.columnId === id));
@@ -86,19 +95,8 @@ const handleRowsReordered = (targetRowId: Id, rowIds: Id[], dropPosition: DropPo
 }
 ```
 
-4. Add helper function that helps change order of elements in array
-
-```tsx
-const reorderArray = <T extends {}>(arr: T[], idxs: number[], to: number) => {
-	const movedElements: T[] = arr.filter((_: T, idx: number) => idxs.includes(idx));
-	to = Math.min(...idxs) < to ? to += 1 : to -= idxs.filter(idx => idx < to).length;
-	const leftSide: T[] = arr.filter((_: T, idx: number) => idx < to && !idxs.includes(idx));
-	const rightSide: T[] = arr.filter((_: T, idx: number) => idx >= to && !idxs.includes(idx));
-	return [...leftSide, ...movedElements, ...rightSide];
-}
-```
-
-5. Update `ReactGrid` component by adding appropriate. You also have to enable column and row selection.
+4. Pass the handler functions to your `ReactGrid` component
+Notice: column and row selection must be enabled for reordering to work
 
 ```tsx
 return (
