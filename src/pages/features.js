@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
+import { isBrowserIE } from "../components/isBrowserIE"
 import {
   Container,
   Row,
@@ -11,8 +11,10 @@ import {
 
 class Features extends React.Component {
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
+    if (!isBrowserIE()) {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+    }
   }
   render() {
     const { data } = this.props
@@ -80,14 +82,16 @@ const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, e
         </Col>
         <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
-          <div className="feature-description flex-column d-flex mt-4">
-            <h2 className="profile-title text-left mb-4">{title}</h2>
-            <p className="description pb-3">{description}</p>
-            {externalLink && externalLinkText &&
-              <div>
-                <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href={externalLink}>{externalLinkText}</a>
-              </div>
-            }
+          <div className="feature-description flex-column d-flex mt-4 w-100">
+            <div className="w-100">
+              <h2 className="profile-title text-left mb-4">{title}</h2>
+              <p className="description pb-3">{description}</p>
+              {externalLink && externalLinkText &&
+                <div>
+                  <a className="btn-info btn-link pl-0" target="_blank" rel="noopener noreferrer" href={externalLink}>{externalLinkText}</a>
+                </div>
+              }
+            </div>
           </div>
         </Col>
       </Row>
@@ -99,7 +103,9 @@ const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, e
 const FeatureImage = ({ imgSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
-      <img alt={imgAlt} src={imgSrc} style={{ boxShadow: '0px 0px 8px rgb(0, 0, 0)' }} />
+      <div className="w-100">
+        <img alt={imgAlt} src={imgSrc} style={{ boxShadow: '0px 0px 8px rgb(0, 0, 0)' }} />
+      </div>
     </div>
   )
 }

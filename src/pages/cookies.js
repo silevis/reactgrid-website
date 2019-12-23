@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
+import { isBrowserIE } from "../components/isBrowserIE"
 import {
   Container,
   Row,
@@ -19,8 +19,10 @@ import {
 
 class Cookies extends React.Component {
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
+    if (!isBrowserIE()) {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+    }
     document.body.classList.add("reset-page");
   }
   componentWillUnmount() {

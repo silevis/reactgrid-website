@@ -15,7 +15,7 @@ import {
 import Tree from "../components/sidebar/Tree";
 import SidebarLayout from "../components/DocsSideNav";
 import CustomMDXComponents from "../components/CustomMDXComponents";
-
+import { isBrowserIE } from "../components/isBrowserIE"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 class DocsPostTemplate extends React.Component {
@@ -23,8 +23,10 @@ class DocsPostTemplate extends React.Component {
     isDocsNavFloating: true,
   };
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
+    if (!isBrowserIE()) {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+    }
     document.body.classList.add("blog-post");
     // window.addEventListener("scroll", this.handleScroll);
   }
