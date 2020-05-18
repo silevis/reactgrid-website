@@ -1,0 +1,220 @@
+---
+posttype: "docs"
+title: Getting Started
+metaTitle: "Getting Started"
+metaDescription: "metaDescription"
+---
+
+#### Introduction
+
+In this guide, we're going to build a very simple React App, which will make use of ReactGrid.
+
+## 1. Initialize a React App with ReactGrid
+
+Let's create the basis for our App first:
+```shell
+npx create-react-app reactgrid-getting-started --typescript
+cd reactgrid-getting-started
+```
+
+The only thing that's missing from our project now is ReactGrid itself.
+To add it to the mix, simply run:
+```shell
+npm install @silevis/reactgrid
+```
+
+## 2. Integrate ReactGrid into the App
+
+Once ReactGrid is installed and ready, we can import it like so:
+```jsx
+// App.js
+import { ReactGrid } from "@silevis/reactgrid";
+import "@silevis/reactgrid/dist/lib/assets/core.css";
+```
+
+## 3. Define some data to display in the grid
+
+Although we could create an empty ReactGrid, it arguably wouldn't make much sense.
+So let's define some data first, and then feed it into ReactGrid for display.
+We're going to need two arrays. One for [`columns`](link), and the other for [`rows`](link).
+For now, you shouldn't worry about all of the properties of column and row objects -
+we'll cover them later on. 
+
+```jsx
+const columns = [
+  { columnId: "Name", width: 100 },
+  { columnId: "Surname", width: 100 }
+];
+
+const rows = [
+  {
+    rowId: 0,
+    cells: [
+      { type: "header", text: "Name" },
+      { type: "header", text: "Surname" },
+    ],
+  },
+  {
+    rowId: 1,
+    cells: [
+      { type: "text", text: "Thomas" },
+      { type: "text", text: "Goldman" },
+    ],
+  },
+  {
+    rowId: 2,
+    cells: [
+      { type: "text", text: "Susie" },
+      { type: "text", text: "Spencer" },
+    ],
+  },
+  {
+    rowId: 3,
+    cells: [
+      { type: "text", text: "" },
+      { type: "text", text: "" },
+    ],
+  }
+];
+```
+
+## 4. Pass the data to ReactGrid
+
+We've got everything we need to see ReactGrid in action.
+It's finally time to use the ReactGrid component we imported earlier, and give it the data
+we defined in the previous step. This is easy, and can be done like so:
+
+``` jsx
+<ReactGrid
+  rows={rows}
+  columns={columns}
+  license={"non-commercial"}
+/>
+```
+
+## 5. Introduce state
+
+The data we've defined so far is static. There's nothing wrong with that
+for the purposes of this tutorial, but in a real application you'll probably want
+to be able to handle dynamic data updates.
+Let's wrap our rows and columns inside the `useState` hook, so that we can easily update them
+in the future:
+
+```jsx
+function App() {
+  const [state, setState] = useState(() => ({
+    columns: [
+      { columnId: "Name", width: 100 },
+      { columnId: "Surname", width: 100 },
+    ],
+    rows: [
+      {
+        rowId: 0,
+        cells: [
+          { type: "header", text: "Name" },
+          { type: "header", text: "Surname" },
+        ],
+      },
+      {
+        rowId: 1,
+        cells: [
+          { type: "text", text: "Thomas" },
+          { type: "text", text: "Goldman" },
+        ],
+      },
+      {
+        rowId: 2,
+        cells: [
+          { type: "text", text: "Susie" },
+          { type: "text", text: "Spencer" },
+        ],
+      },
+      {
+        rowId: 3,
+        cells: [
+          { type: "text", text: "" },
+          { type: "text", text: "" },
+        ],
+      },
+    ],
+  }));
+  // [...]
+}
+
+```
+
+## 6. Putting it all together
+
+After having followed this guide, your `App.js` file should look more or less like this:
+```jsx
+import React, { useState } from 'react';
+import { ReactGrid } from "@silevis/reactgrid";
+import "@silevis/reactgrid/dist/lib/assets/core.css";
+
+function App() {
+  const [state, setState] = useState(() => ({
+    columns: [
+      { columnId: "Name", width: 100 },
+      { columnId: "Surname", width: 100 },
+    ],
+    rows: [
+      {
+        rowId: 0,
+        cells: [
+          { type: "header", text: "Name" },
+          { type: "header", text: "Surname" },
+        ],
+      },
+      {
+        rowId: 1,
+        cells: [
+          { type: "text", text: "Thomas" },
+          { type: "text", text: "Goldman" },
+        ],
+      },
+      {
+        rowId: 2,
+        cells: [
+          { type: "text", text: "Susie" },
+          { type: "text", text: "Spencer" },
+        ],
+      },
+      {
+        rowId: 3,
+        cells: [
+          { type: "text", text: "" },
+          { type: "text", text: "" },
+        ],
+      },
+    ],
+  }));
+
+  return (
+    <ReactGrid
+      rows={state.rows}
+      columns={state.columns}
+      license={"non-commercial"}
+    />
+  );
+}
+
+export default App;
+```
+
+You can now start the App locally with:
+```shell
+npm start
+```
+Or simply play around with the interactive demo below:
+
+<iframe
+  src="https://codesandbox.io/embed/reactgrid-getting-started-0754c?fontsize=14&hidenavigation=1&theme=dark"
+  style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
+  title="reactgrid-getting-started"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
+
+## 7. Summary
+You should now have a basic understanding of what ReactGrid is and how it can be used.
+Continue to the next page for more advanced usage examples.

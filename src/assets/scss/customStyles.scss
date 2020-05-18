@@ -124,7 +124,7 @@
     $col-line-color:                    rgba(255, 255, 255, 0.3);
     $fillhandle-action-border-color:    rgb(0, 239, 191);
     $cell-editor-bg-color:              white;
-    @import 'node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
+    @import '@silevis/reactgrid/lib/assets/core.scss';
     
     // TODO FIX
     .rg-content {
