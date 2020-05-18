@@ -5,24 +5,24 @@ metaTitle: " Freezing panes"
 metaDescription: "metaDescription"
 ---
 
-## Some informations about frozens
+## Introduction
 
-ReactGrid allows you to freeze rows to top and bottom, also column to left or right.
+ReactGrid allows you to "freeze" chosen rows and columns at the top or bottom and to the left or right sides
+of the ReactGrid viewport. A frozen row or column will be visible at all times, no matter the scroll position.
 
-It's possible by adding dedicated `ReactGrid` component props:
+Frozen rows and columns can be enabled by adding dedicated `ReactGrid` component props:
 - `frozenTopRows`
 - `frozenBottomRows`
 - `frozenLeftColumns`
 - `frozenRightColumns`
 
-All of these properties include the number of columns or rows to freeze at the grid's edges.
+All of these properties are numeric and determine the number of columns or rows frozen next to the grid's edges.
 
+## How to freeze columns and rows?
 
-## How to freeze column and rows ?
+This guide is based on [getting started](link).
 
-This lesson is based on [getting started](link).
-
-1. Let's add some more data 
+1. Add some more data to the table, so that it's more likely for a scrollbar to appear
 
 ```tsx
 // ...
@@ -94,7 +94,7 @@ rows: [
 // ...
 ```
 
-2. In this example we will add one freeze on each grid edge
+2. Use the properties mentioned in the introduction to set the number of frozen panes at each edge
 
 ```tsx
 // ...
@@ -113,6 +113,7 @@ return (
 ```
 
 ## Result
+Here's how frozen rows and columns look in action:
 
 <iframe
 	src="https://codesandbox.io/embed/reactgrid-getting-started-oikll?fontsize=14&hidenavigation=1&theme=dark"

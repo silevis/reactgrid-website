@@ -7,36 +7,44 @@ metaDescription: "metaDescription"
 
 ## Idea of handling data changes
 
-1. User try to change data inside cell in one of few ways (typing new value, fill handle, copy and paste, click toggle
-   icon)
-2. ReactGrid event (`onCellsChanged`) is called
-3. Your handler function handles event and updates state of application
-4. `ReactGrid` component is rerendered with new data
+1. A user changes the value of a cell. Among others, it could mean that the user has:
+   - typed a new value into the cell
+   - used a fill handle
+   - pasted some data into the cell
+   - interacted with a clickable cell
+2. ReactGrid fires the (`onCellsChanged`) event
+3. Your handler function processes the event and updates the application state
+4. The `ReactGrid` component receives new data and gets rerendered
 
-Keep in mind that if you don't handle `onCellsChanged` event, your grid is readonly.
+By default, the data grid will behave as if it was in a "read only" mode.
+To support dynamic data editing, you will have to handle the `onCellsChanged` event yourself.
 
-## Sample handling function
+## Sample handler function
 
-Let's declare our handling function:
+We can declare a basic handler function like this:
 
 ```tsx
 const handleChanges = (changes: CellChange[]) => {
-  let newState = { ...state }
-  changes.forEach((change: CellChange) => {
-    const changeRowIdx = newState.rows.findIndex(
-      el => el.rowId === change.rowId
-    )
-    const changeColumnIdx = newState.columns.findIndex(
-      el => el.columnId === change.columnId
-    )
-    newState.rows[changeRowIdx].cells[changeColumnIdx] = change.newCell
-  })
-  setState(newState)
-  return true
+  const newState = { ...state };
+  changes.forEach((change) => {
+    const changedRow = newState.rows.find(
+      row => row.rowId === change.rowId
+    );
+    const changedColumnIdx = newState.columns.findIndex(
+      column => column.columnId === change.columnId
+    );
+    changedRow.cells[changedColumnIdx] = change.newCell;
+  });
+  setState(newState);
+  return true;
 }
 ```
 
-... then add our handler function to `ReactGrid` component props:
+The function receives an array describing all of the changes made to the data grid's cells.
+Given that information, we find the row and column touched by each change,
+and then replace the appropriate cell object with a new one.
+
+Let's pass the handler function to our ReactGrid component:
 
 ```tsx
 return (
@@ -49,7 +57,10 @@ return (
 )
 ```
 
-### Result
+### The result
+And here's an interactive demo showing the event handler in action.
+Notice how it is now possible to edit the data not only by typing new values into the cells,
+but also by using the fill handle or by pasting data from the clipboard.
 
 <iframe
   src="https://codesandbox.io/embed/dark-meadow-crzfx?fontsize=14&hidenavigation=1&theme=dark"

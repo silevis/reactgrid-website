@@ -7,22 +7,26 @@ metaDescription: "metaDescription"
 
 ## Context menu
 
-ReactGrid contains built-in custom context menu with is disabled by default. You also can create your custom actions.
+ReactGrid comes with a custom context menu feature. Custom menu entries can be easily created,
+allowing for personalized experiences.
+By default, the context menu is disabled. You can enable it by providing a handler function
+to your ReactGrid using the `onContextMenu` property.
 
 ## Enabling simple context menu
 
-This lesson is based on [handling changes](link).
+This guide is based on [handling data changes](link).
 
-1. Update imports by adding [`Id`](link), [`SelectionMode`](link) and [`MenuOption`](link) interface
+1. Update imports by adding [`Id`](link), [`SelectionMode`](link) and [`MenuOption`](link) interfaces
 
 ```tsx
-import { ReactGrid, Id, MenuOption } from "@silevis/reactgrid"
+import { ReactGrid, Id, SelectionMode, MenuOption } from "@silevis/reactgrid"
 ```
 
-2. Define event callback function
+2. Implement the context menu handler function
 
-`menuOptions` argument of `simpleHandleContextMenu` contains default list of predefined options - copy, cut, paste.
-At this moment we will just return it.
+The `menuOptions` argument of `simpleHandleContextMenu` contains a list of default menu entries
+provided by DataGrid - copy, cut and paste.
+For now, we'll simply return that, enabling the default ReactGrid context menu.
 
 ```tsx
 const simpleHandleContextMenu = (
@@ -33,9 +37,18 @@ const simpleHandleContextMenu = (
 ): MenuOption[] => {
   return menuOptions
 }
+// ...
+return <ReactGrid
+  rows={state.rows}
+  columns={state.columns}
+  license={"non-commercial"}
+  onCellsChanged={handleChanges}
+  onContextMenu={simpleHandleContextMenu} // highlight-line
+/>
+// ...
 ```
 
-Let's check result by right clicking on any cell:
+Here's the result. Right click anywhere in the grid to see the context menu.
 
 <iframe
   src="https://codesandbox.io/embed/reactgrid-getting-started-kfwpe?fontsize=14&hidenavigation=1&theme=dark"
@@ -47,23 +60,24 @@ Let's check result by right clicking on any cell:
 
 ## Advanced usage - removing columns and rows
 
-Our task will be handling `onContextMenu` callback, then detect current [`SelectionMode`](link).
-After that we will be able to append custom menu option that removes selected column or row.
+The default menu, while pretty, may seem a bit lackluster when it comes to the functionality it provides.
+Let's try and extend it a bit - we'll make it possible to remove columns and rows using the context menu.
 
-1. Update imports
+1. Add some more imports
 
 ```tsx
 import {
   ReactGrid,
   Id,
+  SelectionMode,
   MenuOption,
-  Column,
-  Row,
-  Cell,
+  Column, // highlight-line
+  Row, // highlight-line
+  Cell, // highlight-line
 } from "@silevis/reactgrid"
 ```
 
-2. Implement callback handler function
+2. Implement a more advanced context menu handler function
 
 ```tsx
 const handleContextMenu = (
@@ -120,7 +134,8 @@ const handleContextMenu = (
 }
 ```
 
-3. Update `ReactGrid` component props. Note that columns and rows must be selectable.
+3. Update the `ReactGrid` component's props. Note that columns and rows must be selectable for our feature to work.
+After all, we will be removing the *currently selected* row or column.
 
 ```tsx
 return (
@@ -136,6 +151,12 @@ return (
 )
 ```
 
+4. The results
+
+You can see the effect of the changes we've just introduced in the demo below.
+To test the new feature, simply select a column or a row by clicking a header cell or one of the leftmost cells,
+then right-click anywhere and use the new menu entry.
+
 <iframe
   src="https://codesandbox.io/embed/reactgrid-simple-context-menu-handling-2ic2h?fontsize=14&hidenavigation=1&theme=dark"
   style="width:100%; height:250px; border:0; border-radius: 4px; overflow:hidden;"
@@ -143,7 +164,3 @@ return (
   allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
-
-3. Test it
-
-Select column or row by click on first left or top cell, then right-click and remove selected row or column.

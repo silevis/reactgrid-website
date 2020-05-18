@@ -5,34 +5,42 @@ metaTitle: "Column resizing"
 metaDescription: "metaDescription"
 ---
 
-## How to implement basis column resizing?
+## How to implement column resizing?
 
-1. Add `resizable` attribute to array of columns and set it value to `true`. At this moment if you hover on line between two column you will see resize column handler.
+1. For each column which should be resizable, add the `resizable` property
+to the corresponding column object and set its value to `true`.
 
 ```tsx
 // ...
 columns: [
-    // columns now are able to resize
+    // columns can now be resized
     { columnId: "Name", resizable: true, width: 100 }, //highlight-line
     { columnId: "Surname", resizable: true, width: 100 } //highlight-line
 ],
 // ...
 ```
 
-2. Next step will be implementing our event handler function
+If you hover over the vertical border line between column headers now,
+you will see your mouse pointer change to indicate that a column can be resized.
+But you'll quickly notice that the column resizing functionality doesn't work.
+Why is that? We still need to handle the events fired by ReactGrid when a column is resized.
+Similar to how we handled data changes in [Handling data changes](link), we can also
+define a handler function for that and pass it to our ReactGrid component.
+
+2. Implement the event handler function
 
 ```tsx
-const handleColumnResize = (ci: Id, width: number) => {
-  let newState = { ...state }
-  const columnIndex = newState.columns.findIndex(el => el.columnId === ci)
-  const resizedColumn: Column = newState.columns[columnIndex]
-  const updateColumn: Column = { ...resizedColumn, width }
-  newState.columns[columnIndex] = updateColumn
-  setState(newState)
+const handleColumnResize = (ci: Id, newWidth: number) => {
+  const newState = { ...state };
+  const resizedColumn = newState.columns.find(
+    column => column.columnId === ci
+  );
+  resizedColumn.width = newWidth;
+  setState(newState);
 }
 ```
 
-3. Finally add lastly created handler function to `ReactGrid`
+3. Pass the handler function to your `ReactGrid`
 
 ```tsx
 return (
@@ -45,7 +53,7 @@ return (
 )
 ```
 
-Let's check results:
+Let's check the results:
 
 <iframe
   src="https://codesandbox.io/embed/reactgrid-getting-started-f38v0?fontsize=14&hidenavigation=1&theme=dark"
