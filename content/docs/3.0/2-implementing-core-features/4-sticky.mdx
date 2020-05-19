@@ -1,28 +1,38 @@
 ---
 posttype: "docs"
-title: Freezing panes
-metaTitle: " Freezing panes"
+title: Sticky
+metaTitle: "Sticky"
 metaDescription: "metaDescription"
 ---
+import {
+  Alert
+} from "reactstrap";
+
 
 ## Introduction
 
-ReactGrid allows you to "freeze" chosen rows and columns at the top or bottom and to the left or right sides
-of the ReactGrid viewport. A frozen row or column will be visible at all times, no matter the scroll position.
+ReactGrid allows you to stick chosen rows and columns at the top or left side and additionally on right and bottom 
+of the ReactGrid viewport only in Pro version. Sticky rows or columns will be visible at all times, no matter the scroll position.
+ 
+<Alert color="warning">
+	<i className="tim-icons icon-alert-circle-exc pr-3"></i>
+	Right and bottom sticky is only available in Pro version
+</Alert>
 
-Frozen rows and columns can be enabled by adding dedicated `ReactGrid` component props:
-- `frozenTopRows`
-- `frozenBottomRows`
-- `frozenLeftColumns`
-- `frozenRightColumns`
+Sticky rows and columns can be enabled by adding dedicated `ReactGrid` component props:
+- `stickyTopRows`
+- `stickyBottomRows`
+- `stickyLeftColumns`
+- `stickyRightColumns`
 
-All of these properties are numeric and determine the number of columns or rows frozen next to the grid's edges.
+All of these properties are numeric and determine the number of columns or rows sticky next to the grid's edges.
 
 ## How to freeze columns and rows?
 
 This guide is based on [getting started](link).
 
 1. Add some more data to the table, so that it's more likely for a scrollbar to appear
+or reduce height of grids container
 
 ```tsx
 // ...
@@ -94,7 +104,7 @@ rows: [
 // ...
 ```
 
-2. Use the properties mentioned in the introduction to set the number of frozen panes at each edge
+2. Use the properties mentioned in the introduction to set the number of sticky panes at each edge
 
 ```tsx
 // ...
@@ -102,23 +112,17 @@ return (
 	<ReactGrid
 		rows={state.rows}
 		columns={state.columns}
-		license={"non-commercial"}
-		frozenLeftColumns={1} // highlight-line
-		frozenRightColumns={1} // highlight-line
-		frozenTopRows={1} // highlight-line
-		frozenBottomRows={1} // highlight-line
+		stickyLeftColumns={1} // highlight-line
+		stickyRightColumns={1} // highlight-line
+		stickyTopRows={1} // highlight-line
+		stickyBottomRows={1} // highlight-line
 	/>
 );
 // ...
 ```
 
 ## Result
+
 Here's how frozen rows and columns look in action:
 
-<iframe
-	src="https://codesandbox.io/embed/reactgrid-getting-started-oikll?fontsize=14&hidenavigation=1&theme=dark"
-	style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactgrid-freezing-panes"
-	allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-	sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+## TODO add example

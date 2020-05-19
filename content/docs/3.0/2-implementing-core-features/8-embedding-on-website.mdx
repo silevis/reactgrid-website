@@ -1,0 +1,40 @@
+---
+posttype: "docs"
+title: Embedding on website
+metaTitle: "Embedding on website"
+metaDescription: "metaDescription"
+---
+
+## About ReactGrig embedding, virtual scrolling and sticky panes pinning
+
+ReactGrid isn't limited by height and width so it's behavior can change a little bit depending on his scrollable parent element.
+
+ReactGrid appends scroll event to his first scrollable parent and lets himself to expand to full height/width with 
+continous observing available viewport to render content of scrollable range and stickies. 
+
+Appeding to `ReactGrid` parent's component css class listed below will change behavior of pinned sticky panes.
+
+Multiple scollable elements nesting can cause unexpected experience like uncerrect cell editor position 
+(keep in mind that sum of all height row must highter than scrollable element height).
+
+```css
+.reactgrid-wrapper {
+    height: 100px;
+    overflow: scroll;
+}
+```
+
+### Example: ReactGrid component limited by height of his parent
+
+TODO Example with content inside scrollable and top sticky pane
+
+In this case not all of passed rows can be rendered, so scrollbar is visible and sticky pane is pinned to top of
+`wrapper` class containing element. 
+
+### Example: ReactGrid component NOT limited by height of his parent
+
+TODO Example with content inside scrollable and top sticky pane
+
+ReactGrid renders all of passed rows and columns, if sticky panes are passed - they are pinned directly to the egde 
+of `body` element. If all of rows/column cant be rendered in viewport - virtual scrolling still works great. 
+

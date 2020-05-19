@@ -7,16 +7,17 @@ metaDescription: "metaDescription"
 
 ## How to implement column and row reordering?
 
+This feature is only available in Pro version. 
 This guide is based on [getting started](link).
 
-1. Add some new imports which we'll use going forward
+#### 1. Add some new imports which we'll use going forward.
 We'll need [`Id`](link), [`DropPosition`](link), [`Column`](link), [`Row`](link), and [`Cell`](link).
 
 ```tsx
 import { ReactGrid, Id, DropPosition, Column, Row, Cell } from "@silevis/reactgrid";
 ```
 
-2. Modify the rows and columns to enable reordering
+#### 2. Modify the rows and columns to enable reordering
 
 This is done by adding the `reorderable` property to a column or row and setting its value to `true`.
 
@@ -28,7 +29,8 @@ columns: [
 ],
 ```
 
-Notice that we don't want the first row to be reorderable because that's our grid's header.
+Notice that we don't want the first row to be reorderable because that's our grid's header so `reorderable` 
+property will by just `undefined` in contrast to other rows.
 
 ```tsx
 rows: [
@@ -66,7 +68,9 @@ rows: [
 ]
 ```
 
-3. Implement the handler functions
+#### 3. Implement the handler functions
+
+`reorderArray` function is used for correct order columns or rows. 
 
 ```tsx
 // a helper function used to reorder arbitrary arrays
@@ -95,29 +99,20 @@ const handleRowsReordered = (targetRowId: Id, rowIds: Id[], dropPosition: DropPo
 }
 ```
 
-4. Pass the handler functions to your `ReactGrid` component
-Notice: column and row selection must be enabled for reordering to work
+4. Pass the handler functions to your `ReactGrid` component and add `enableRowSelection` and `enableColumnSelection` props for 
+enabling this type of events handling.
 
 ```tsx
-return (
-	<ReactGrid
-		rows={state.rows}
-		columns={state.columns}
-		license={"non-commercial"}
-		onColumnsReordered={handleColumnsReordered} // highlight-line
-		onRowsReordered={handleRowsReordered} // highlight-line
-		enableRowSelection // highlight-line
-      	enableColumnSelection // highlight-line
-	/>
-);
+<ReactGrid
+	rows={state.rows}
+	columns={state.columns}
+	onColumnsReordered={handleColumnsReordered} // highlight-line
+	onRowsReordered={handleRowsReordered} // highlight-line
+	enableRowSelection // highlight-line
+	enableColumnSelection // highlight-line
+/>
 ```
 
 ## Result
 
-<iframe
-	src="https://codesandbox.io/embed/reactgrid-getting-started-4x3xc?fontsize=14&hidenavigation=1&theme=dark"
-	style="width:100%; height:250px; border:0; border-radius: 4px; overflow:hidden;"
-	title="reactgrid-columns-and-rows-reorder"
-	allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-	sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+## TODO ADD sample

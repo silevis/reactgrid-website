@@ -5,9 +5,11 @@ metaTitle: "Column resizing"
 metaDescription: "metaDescription"
 ---
 
-## How to implement column resizing?
+## How to implement column resize?
 
-1. For each column which should be resizable, add the `resizable` property
+### Allow column to be resized
+
+For each column which should be resizable, add the `resizable` property
 to the corresponding column object and set its value to `true`.
 
 ```tsx
@@ -20,45 +22,36 @@ columns: [
 // ...
 ```
 
-If you hover over the vertical border line between column headers now,
+If you hover over the vertical border line between column headers now
 you will see your mouse pointer change to indicate that a column can be resized.
 But you'll quickly notice that the column resizing functionality doesn't work.
 Why is that? We still need to handle the events fired by ReactGrid when a column is resized.
 Similar to how we handled data changes in [Handling data changes](link), we can also
 define a handler function for that and pass it to our ReactGrid component.
 
-2. Implement the event handler function
+### 2. Implement the event handler function
 
 ```tsx
-const handleColumnResize = (ci: Id, newWidth: number) => {
-  const newState = { ...state };
-  const resizedColumn = newState.columns.find(
-    column => column.columnId === ci
-  );
-  resizedColumn.width = newWidth;
+const handleColumnResize = (ci: Id, width: number) => {
+  let newState = { ...state };
+  const columnIndex = newState.columns.findIndex((el: Column) => el.columnId === ci);
+  const resizedColumn: Column = newState.columns[columnIndex];
+  const updateColumn: Column = { ...resizedColumn, width };
+  newState.columns[columnIndex] = updateColumn;
   setState(newState);
 }
 ```
 
-3. Pass the handler function to your `ReactGrid`
+### 3. Pass the handler function
 
 ```tsx
-return (
-  <ReactGrid
-    rows={state.rows}
-    columns={state.columns}
-    license={"non-commercial"}
-    onColumnResized={handleColumnResize} //highlight-line
-  />
-)
+<ReactGrid 
+  rows={state.rows}
+  columns={state.columns}
+  onColumnResized={handleColumnResize} //highlight-line
+/>
 ```
 
 Let's check the results:
 
-<iframe
-  src="https://codesandbox.io/embed/reactgrid-getting-started-f38v0?fontsize=14&hidenavigation=1&theme=dark"
-  style="width:100%; height:250px; border:0; border-radius: 4px; overflow:hidden;"
-  title="reactgrid-column-resizing"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+// TODO add sample

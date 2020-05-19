@@ -8,11 +8,11 @@ metaDescription: "metaDescription"
 ## Idea of handling data changes
 
 1. A user changes the value of a cell. Among others, it could mean that the user has:
-   - typed a new value into the cell
-   - used a fill handle
-   - pasted some data into the cell
-   - interacted with a clickable cell
-2. ReactGrid fires the (`onCellsChanged`) event
+   - typed a new value into the cell by cell editor
+   - used a fill handle 
+   - pasted some data into the cell matrix
+   - interacted with a clickable cell (e. g. expanded group cell)
+2. ReactGrid fires the `onCellsChanged` event
 3. Your handler function processes the event and updates the application state
 4. The `ReactGrid` component receives new data and gets rerendered
 
@@ -26,18 +26,14 @@ We can declare a basic handler function like this:
 ```tsx
 const handleChanges = (changes: CellChange[]) => {
   const newState = { ...state };
-  changes.forEach((change) => {
-    const changedRow = newState.rows.find(
-      row => row.rowId === change.rowId
-    );
-    const changedColumnIdx = newState.columns.findIndex(
-      column => column.columnId === change.columnId
-    );
-    changedRow.cells[changedColumnIdx] = change.newCell;
+  changes.forEach(change => {
+    const changeRowIdx = newState.rows.findIndex(el => el.rowId === change.rowId);
+    const changeColumnIdx = newState.columns.findIndex(el => el.columnId === change.columnId);
+    newState.rows[changeRowIdx].cells[changeColumnIdx] = change.newCell;
   });
   setState(newState);
   return true;
-}
+};
 ```
 
 The function receives an array describing all of the changes made to the data grid's cells.
@@ -51,16 +47,15 @@ return (
   <ReactGrid
     rows={state.rows}
     columns={state.columns}
-    license={"non-commercial"}
     onCellsChanged={handleChanges} // highlight-line
   />
 )
 ```
 
-### The result
+## Results
 And here's an interactive demo showing the event handler in action.
 Notice how it is now possible to edit the data not only by typing new values into the cells,
-but also by using the fill handle or by pasting data from the clipboard.
+but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
 <iframe
   src="https://codesandbox.io/embed/dark-meadow-crzfx?fontsize=14&hidenavigation=1&theme=dark"

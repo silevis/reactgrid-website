@@ -216,6 +216,11 @@ span.anchor {
         // text-decoration: underline;
     }
 
+    :not(pre) > code[class*="language-text"] {
+        padding: 0.2em 0.4em;
+        background: rgba(52, 70, 117, 0.78);
+    }
+
     .firstLevel > ul {
         padding-left: 0 !important;
     }
