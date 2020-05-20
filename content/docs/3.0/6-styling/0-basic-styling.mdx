@@ -7,8 +7,8 @@ metaDescription: "metaDescription"
 
 ## Introduction
 
-For the correct display of the component it's required to import the basic styles contained in the `/dist` directory of  
-`@silevis/reactgrid` package.
+For the correct display of the component it's required to import the basic styles contained in the `/lib/assets` 
+directory of `@silevis/reactgrid` package.
 
 ## Importing
 
@@ -17,7 +17,7 @@ Styles are necessary part of ReactGrid. For correct display you have to import R
 ```css
 /* your-styles.css */
 
-@import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.css';
+@import '@silevis/reactgrid/lib/assets/core.css';
 ```
 
 or if you use Sass preprocessor:
@@ -25,7 +25,7 @@ or if you use Sass preprocessor:
 ```scss
 /* your-styles.scss */
 
-@import '/node_modules/@silevis/reactgrid/dist/lib/assets/core.scss';
+@import '@silevis/reactgrid/lib/assets/core.scss';
 ```
 
 You can import only needed files and then override variables yourself:
