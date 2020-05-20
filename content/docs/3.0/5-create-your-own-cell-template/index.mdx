@@ -58,6 +58,7 @@ will contains some CSS styles (don't forget to import it in your project's file)
 
 ```tsx 
 // FlagCellTemplate.tsx
+
 import * as React from "react";
 import {
   CellTemplate,
@@ -80,8 +81,8 @@ import "./flag-cell-style.css";
 
 ```tsx
 export interface FlagCell extends Cell {
-  type: "flag";
-  text: string;
+    type: 'flag';
+    text: string;
 }
 ```
 
@@ -90,18 +91,19 @@ export interface FlagCell extends Cell {
 All of definded methods below are necessary to correct displaying and interfacing with internal ReactGrid model.
 
 * `getCompatibleCell` as a parameter gets incoming cell and returns a compatible cell (with `text` and `value`
-  attribute required by [`Compatible`](link) type).
+  attribute required by [`Compatible`](link) type). In more complex examples `getCellProperty` can throw an
+  exception if required cell field is `undefined`.
 
 ```tsx
 getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
-    const text = getCellProperty(uncertainCell, "text", "string");
+    const text = getCellProperty(uncertainCell, 'text', 'string');
     const value = parseFloat(text);
     return { ...uncertainCell, text, value };
 }
 ```
 
 * `handleKeyDown` method handles `keyDown` event on this cell template. Here just returns unchanged cell and enables 
-  edit  mode when user performed click or pressed <kbr>enter</kbr> key.
+  edit mode when user performed click or pressed <kbr>ENTER</kbr> key.
 
 ```tsx
 handleKeyDown(
@@ -125,15 +127,12 @@ handleKeyDown(
   other attributes like `date` from `DateCell`). In our case we just copy `cell` and replace `text` value.
 
 ```tsx
-update(
-    cell: Compatible<FlagCell>,
-    cellToMerge: UncertainCompatible<FlagCell>
-): Compatible<FlagCell> {
+update(cell: Compatible<FlagCell>, cellToMerge: UncertainCompatible<FlagCell>): Compatible<FlagCell> {
     return this.getCompatibleCell({ ...cell, text: cellToMerge.text });
 }
 ```
 
-* `render` - return content of cell. In edit mode we will display HTML `input` element. Change that taking place in the 
+* `render` method returns content of cell. In edit mode we will display `input` element. Change that taking place in the 
   cell `input` is propagated outside ReactGrid by `onCellChanged` function.
 
 ```tsx
@@ -180,7 +179,7 @@ render(
 
 ## 5. Styling
 
-To adjust flag as background that covers div element we made `rg-flag-wrapper` class. 
+To adjust flag as background that covers div element we made CSS `rg-flag-wrapper` class. 
 All of cell has class name created based on cell `type` attribute. In our case cell class name will be `rg-flag-cell`. 
 Due to `rg-cell` is flex element we centering it's content by `justify-content: center;` attrubute.
 
@@ -201,14 +200,36 @@ Due to `rg-cell` is flex element we centering it's content by `justify-content: 
 
 ## 6. Finishing
 
-Go back to `index.tsx` file and add `customCellTemplates` prop as shown below:
+Go back to `index.tsx` file and add `customCellTemplates` prop as shown below and also change `type: "text"` to `type: "flag"`:
 
 ```tsx
+const [state, setState] = React.useState(() => ({
+    columns: [{ columnId: 0, width: 100 }],
+    rows: [
+        {
+            rowId: 0,
+            cells: [{ type: "header", text: "Flag" }] 
+        },
+        {
+            rowId: 1,
+            cells: [{ type: "flag", text: "ger" }] //highlight-line
+        },
+        {
+            rowId: 2,
+            cells: [{ type: "flag", text: "usa" }] //highlight-line
+        },
+        {
+            rowId: 3,
+            cells: [{ type: "flag", text: "" }] //highlight-line
+        }
+    ]
+}));
+// ...
+
 return (
     <ReactGrid
       rows={state.rows}
       columns={state.columns}
-      license={"non-commercial"}
       onCellsChanged={handleChanges}
       customCellTemplates={{ flag: new FlagCellTemplate() }}  //highlight-line
     />
@@ -218,8 +239,8 @@ return (
 ## Result
 
 <iframe
-    src="https://codesandbox.io/embed/reactgrid-creating-new-cell-template-pdiux?fontsize=14&hidenavigation=1&theme=dark"
-    style="width:100%; height:250px; border:0; border-radius: 4px; overflow:hidden;"
+    src="https://stackblitz.com/edit/reactgrid-creating-new-cell-template?embed=1&file=package.json&hideExplorer=1"
+    style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
     title="reactgrid-creating-new-cell-template"
     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"

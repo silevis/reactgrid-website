@@ -29,7 +29,7 @@ interface EmailCell extends Cell {
 ## `EmailCellTemplate` class implementation
 
 ```tsx
-class class EmailCellTemplate implements CellTemplate<EmailCell> {
+class EmailCellTemplate implements CellTemplate<EmailCell> {
 
     getCompatibleCell(uncertainCell: Uncertain<EmailCell>): Compatible<EmailCell> {
         const text = getCellProperty(uncertainCell, 'text', 'string');
@@ -38,8 +38,8 @@ class class EmailCellTemplate implements CellTemplate<EmailCell> {
     }
 
     handleKeyDown(cell: Compatible<EmailCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<EmailCell>, enableEditMode: boolean } {
-        const char = String.fromCharCode(keyCode);
-        if (!ctrl && !alt && isAlphaNumericKey(keyCode))
+        const char = getCharFromKeyCode(keyCode, shift);
+        if (!ctrl && !alt && isAlphaNumericKey(keyCode) && !(shift && keyCode === keyCodes.SPACE))
             return { cell: { ...cell, text: !shift ? char.toLowerCase() : char }, enableEditMode: true }
         return { cell, enableEditMode: keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER }
     }
@@ -74,3 +74,4 @@ class class EmailCellTemplate implements CellTemplate<EmailCell> {
         />
     }
 }
+```

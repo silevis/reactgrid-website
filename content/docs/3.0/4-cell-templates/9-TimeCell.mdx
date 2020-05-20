@@ -31,7 +31,7 @@ interface TimeCell extends Cell {
 class TimeCellTemplate implements CellTemplate<TimeCell> {
 
     static dayInMillis: number = 86400000;
-    static defaultDate: string = '01-01-1970';
+    static defaultDate: string = getDefaultDate();
 
     getCompatibleCell(uncertainCell: Uncertain<TimeCell>): Compatible<TimeCell> {
         const time = uncertainCell.time ? getCellProperty(uncertainCell, 'time', 'object') : new Date(NaN);
@@ -42,7 +42,7 @@ class TimeCellTemplate implements CellTemplate<TimeCell> {
     }
 
     handleKeyDown(cell: Compatible<TimeCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<TimeCell>, enableEditMode: boolean } {
-        if (!ctrl && !alt && isAlphaNumericKey(keyCode))
+        if (!ctrl && !alt && !shift && isAlphaNumericKey(keyCode))
             return { cell: this.getCompatibleCell({ ...cell }), enableEditMode: true }
         return { cell, enableEditMode: keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER }
     }
@@ -74,11 +74,11 @@ class TimeCellTemplate implements CellTemplate<TimeCell> {
             defaultValue={`${hours}:${minutes}`}
             onChange={e => {
                 const timestamp = getTimestamp(e.currentTarget.value);
-                if (!Number.isNaN(timestamp)) onCellChanged(this.getCompatibleCell({ ...cell, time: new Date(timestamp) }), false)
+                if (!Number.isNaN(timestamp)) onCellChanged(this.getCompatibleCell({ ...cell, time: new Date(timestamp) }), false);
             }}
             onBlur={e => {
                 const timestamp = getTimestamp(e.currentTarget.value);
-                if (!Number.isNaN(timestamp)) onCellChanged(this.getCompatibleCell({ ...cell, time: new Date(timestamp) }), true)
+                if (!Number.isNaN(timestamp)) onCellChanged(this.getCompatibleCell({ ...cell, time: new Date(timestamp) }), true);
             }}
             onKeyDown={e => {
                 if (inNumericKey(e.keyCode) || isNavigationKey(e.keyCode) || (e.keyCode === keyCodes.COMMA || e.keyCode === keyCodes.PERIOD)) e.stopPropagation();
