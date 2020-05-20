@@ -15,32 +15,26 @@ Used in creating custom cell templates. Checks if `keycode` is alfanumeric.
 ```tsx
 inNumericKey(keyCode: number): boolean
 ```
-
 Used in creating custom cell templates. Checks if `keycode` is between 0 and 9 (also on numpad).
 
 ```tsx
 isNumpadNumericKey(keyCode: number): boolean
 ```
-
 Used in creating custom cell templates. Checks if `keycode` is between 0 and 9 on numpad.
 
 ```tsx
 isAllowedOnNumberTypingKey(keyCode: number): boolean
 ```
-
 Used in creating custom cell templates. Checks if `keycode` is allowed on while typing 
 numbers (for chars like comma, dash, period).
 
 ```tsx
 isNavigationKey(keyCode: number): boolean
 ```
-
 Used in creating custom cell templates. Checks if `keycode` is allowed for navigation 
 (arrows, end, home, backspace, delete keys).
 
-Helpers:
-
-Returns cell property value. Used to create compatible cell.
+## Helpers:
 
 ```tsx
 getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
@@ -49,6 +43,7 @@ getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
     expectedType: 'string' | 'number' | 'boolean' | 'undefined' | 'function' | 'object' | string
 )
 ```
+Returns cell property value. Used to create compatible cell.
 
 ## Enums
 

@@ -5,7 +5,7 @@ metaTitle: "ReactGridProps interface"
 metaDescription: "metaDescription"
 ---
 
-ReactGrid component has three essential properties which you must pass in props to render - `columns`, `rows` and `license`.
+ReactGrid component has two essential properties which you must pass in props to render - `columns`, `rows`.
 
 ## Definition
 
@@ -13,18 +13,19 @@ ReactGrid component has three essential properties which you must pass in props 
 interface ReactGridProps {
     readonly columns: Column[];
     readonly rows: Row[];
-    readonly license: 'non-commercial' | string;
     readonly customCellTemplates?: CellTemplates;
     readonly focusLocation?: CellLocation;
     readonly highlights?: Highlight[];
-    readonly frozenTopRows?: number;
-    readonly frozenBottomRows?: number;
-    readonly frozenLeftColumns?: number;
-    readonly frozenRightColumns?: number;
+    readonly stickyTopRows?: number;
+    readonly stickyBottomRows?: number;
+    readonly stickyLeftColumns?: number;
+    readonly stickyRightColumns?: number;
     readonly disableFillHandle?: boolean;
     readonly disableRangeSelection?: boolean;
     readonly enableRowSelection?: boolean;
     readonly enableColumnSelection?: boolean;
+    readonly disableFloatingCellEditor?: boolean;
+
     readonly onCellsChanged?: (cellChanges: CellChange<Cell>[]) => boolean;
     readonly onFocusLocationChanged?: (location: CellLocation) => boolean;
     readonly onColumnResized?: (columnId: Id, width: number) => void;
@@ -38,22 +39,22 @@ interface ReactGridProps {
 
 ## Properties
 
-Name                     | Type                             | Description
------------------------- | ---------------------------      | -------------
-`columns`                | [`Columns`](link)`[]`            | Column's data
-`rows`                   | [`Rows`](link)`[]`               | Row's data
-`license`                | `'non-commercial' `\|` string`   | Type of license - visit [License](link)
-`customCellTemplates?`   | [`CellTemplates`](link)          | User is able to create cell template for his own needs
-`focusLocation?`         | [`CellLocation`](link)           | Initial position of focus
-`highlights?`            | [`Highlight`](link)`[]`          | Array of highlight positions
-`frozenTopRows?`         | `number`                         | Amount of rows which are frozen on the top
-`frozenBottowmRows?`     | `number`                         | Amount of rows which are frozen on the bottom
-`frozenLeftColumns?`     | `number`                         | Amount of columns which are frozen on the left side
-`frozenRightColumns?`    | `number`                         | Amount of columns which are frozen on the right side
-`disableFillHandle?`     | `boolean`                        | Set `true` to disable cell fill feature
-`disableRangeSelection?` | `boolean`                        | Set `true` to disable selection feature
-`enableRowSelection?`    | `boolean`                        | Set `true` to enable row selection feature
-`enableColumnSelection?` | `boolean`                        | Set `true` to enable column selection feature
+Name                            | Type                             | Description
+------------------------        | ---------------------------      | -------------
+`columns`                       | [`Columns`](link)`[]`            | Column's data
+`rows`                          | [`Rows`](link)`[]`               | Row's data
+`customCellTemplates?`          | [`CellTemplates`](link)          | User is able to create cell template for his own needs
+`focusLocation?`                | [`CellLocation`](link)           | Initial position of focus
+`highlights?`                   | [`Highlight`](link)`[]`          | Array of highlight positions
+`stickyTopRows?`                | `number`                         | Amount of rows which are frozen on the top
+`stickyBottomRows?`             | `number`                         | Amount of rows which are frozen on the bottom
+`stickyLeftColumns?`            | `number`                         | Amount of columns which are frozen on the left side
+`stickyRightColumns?`           | `number`                         | Amount of columns which are frozen on the right side
+`disableFillHandle?`            | `boolean`                        | Set `true` to disable cell fill feature (defaultly `false`)
+`disableRangeSelection?`        | `boolean`                        | Set `true` to disable selection feature (defaultly `false`)
+`enableRowSelection?`           | `boolean`                        | Set `true` to enable row selection feature (defaultly `false`)
+`enableColumnSelection?`        | `boolean`                        | Set `true` to enable column selection feature (defaultly `false`)
+`disableFloatingCellEditor?`    | `boolean`                        | Set `true` to disable fixed position of cell editor (defaultly `false`)
 
 ## Callbacks
 
