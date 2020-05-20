@@ -6,7 +6,7 @@ import {
   NavItem,
 } from "reactstrap";
 
-const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, items, location, docsRoute, ...rest }) => {
+const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, proMark, items, location, docsRoute }) => {
   const isCollapsed = Object.keys(collapsed).includes(url) && collapsed[url];
 
   // const collapse = () => {
@@ -37,7 +37,10 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, it
           } */}
           <Link to={docsRoute + url} className="text-white d-inline-block">
             <h4 className="mb-0">
-              <span className={calculatedTitleClassName} style={{ fontSize: '0.75em' }}>{title}</span>
+              <span className={calculatedTitleClassName} style={{ fontSize: '0.75em' }}>
+                {title}
+                {proMark && <i class="fas fa-tachometer-alt pl-2"></i>}
+              </span>
             </h4>
           </Link>
         </>
