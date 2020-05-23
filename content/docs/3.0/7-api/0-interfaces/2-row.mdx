@@ -5,17 +5,50 @@ metaTitle: "Row interface"
 metaDescription: "metaDescription"
 ---
 
-Row interface contains two necessary properties: `rowId` and `cells`.
+Row interface contains two necessary properties: `rowId` and `cells`. It constains essential informations about grid row.
+`cells` field allow you to declare array of objects thats extends [`Cell`](link)`[]` interface.
+If you want to use your custom cell templates in your code use it in this way: `Row<MyCustomCell | OtherCustomCell>`.
+
+## Example 
+
+```ts
+const rows: Row[] = [
+    {
+        rowId: 0,
+        cells: [
+            { type: "text", text: 'John' },
+            { type: "text", text: "Doe" },
+        ]
+    }
+]
+
+interface FlagCell extends Cell {
+    type: 'flag';
+    text: string;
+}
+
+export const rowz: Row<FlagCell>[] = [ // passing `FlagCell`
+    {
+        rowId: 0,
+        cells: [
+            { type: "text", text: 'John' },
+            { type: "text", text: "Doe" },
+            // `flag type is now allowed for usage
+            { type: 'flag', text: 'ger' }, //highlight-line
+        ]
+    }
+]
+```
 
 ## Definition
 
 ```tsx
-interface Row {
+interface Row<TCell = DefaultCellTypes> {
     readonly rowId: Id;
-    readonly cells: Cell[];
+    readonly cells: Filter<DefaultCellTypes | TCell>[];
     readonly height?: number;
     readonly reorderable?: boolean;
-}
+};
 ```
 
 ## Properties
