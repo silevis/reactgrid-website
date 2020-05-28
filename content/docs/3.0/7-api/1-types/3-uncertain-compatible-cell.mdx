@@ -10,7 +10,7 @@ but they can be intances of various types (e.g. `DataCell` and `TimeCell`).
 
 ## Definition
 
-```tsx
+```ts
 type UncertainCompatible<TCell extends Cell> = Uncertain<TCell> & {
     text: string;
     value: number;

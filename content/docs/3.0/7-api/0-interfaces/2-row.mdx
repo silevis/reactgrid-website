@@ -6,12 +6,13 @@ metaDescription: "metaDescription"
 ---
 
 Row interface contains two necessary properties: `rowId` and `cells`. It constains essential informations about grid row.
-`cells` field allow you to declare array of objects thats extends [`Cell`](link)`[]` interface.
-If you want to use your custom cell templates in your code use it in this way: `Row<MyCustomCell | OtherCustomCell>`.
+`cells` field allow you to declare array of objects thats extends [`Cell`](link)`[]` base interface .
+
 
 ## Example 
 
 ```ts
+
 const rows: Row[] = [
     {
         rowId: 0,
@@ -21,13 +22,17 @@ const rows: Row[] = [
         ]
     }
 ]
+```
+If you want to use your custom cell templates in your code use it in this way: `Row<DefaultCellTypes | MyCustomCell>`. 
 
+
+```ts
 interface FlagCell extends Cell {
     type: 'flag';
     text: string;
 }
 
-export const rowz: Row<FlagCell>[] = [ // passing `FlagCell`
+export const rows: Row<DefaultCellTypes | FlagCell>[] = [ // union of all  available cells
     {
         rowId: 0,
         cells: [
@@ -42,10 +47,10 @@ export const rowz: Row<FlagCell>[] = [ // passing `FlagCell`
 
 ## Definition
 
-```tsx
-interface Row<TCell = DefaultCellTypes> {
+```ts
+export interface Row<TCell extends Cell = DefaultCellTypes> {
     readonly rowId: Id;
-    readonly cells: Filter<DefaultCellTypes | TCell>[];
+    readonly cells: TCell[];
     readonly height?: number;
     readonly reorderable?: boolean;
 };
@@ -53,9 +58,9 @@ interface Row<TCell = DefaultCellTypes> {
 
 ## Properties
 
-| Property name     | Type                      | Property description  | 
-| ------------      | -------------             | -------------         |
-| `rowId`           | [`Id`](link)              | Unique [`Id`](link) in all rows array | 
-| `cells`           | [`Cell`](link)`[]`        | Array of `Cell` objects | 
-| `height?`         | `number`                  | Height of each grid row (in default set to `25px`)  | 
-| `reorderable?`    | `boolean`                 | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  
+| Property name     | Type                                  | Property description  | 
+| ------------      | -------------                         | -------------         |
+| `rowId`           | [`Id`](link)                          | Unique [`Id`](link) in all rows array | 
+| `cells`           | `TCell extends` [`Cell`](link)`[]`    | Array of [`Cell`](link) objects. | 
+| `height?`         | `number`                              | Height of each grid row (in default set to `25px`)  | 
+| `reorderable?`    | `boolean`                             | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  

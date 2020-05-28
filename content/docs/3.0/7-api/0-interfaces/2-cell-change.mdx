@@ -5,14 +5,56 @@ metaTitle: "CellChange interface"
 metaDescription: "metaDescription"
 ---
 
-`CellChange` interface is used by `onCellsChanged` callback in [`ReactGrid`](link) component. 
+`CellChange` interface is used by `onCellsChanged` callback in [`ReactGrid`](link) component. `CellChange` represents 
+mutually exclusive changes  on single.
+
+`CellTypes` utility type extracts all possible cells types based on [`Cell`](link) interface.
+
+## Example
+
+```ts
+const handleChangesOnDefaults = (changes: CellChange[]) => { // evaluates as `Change<TextCell> | Change<Datecell> | ...`
+    changes.forEach(change => {
+        if (change.type === 'checkbox') {
+            console.log(change.newCell.checked);
+            console.log(change.initialCell.checked);
+        }
+    });
+};
+
+const handleChangesOnDefaultsAndFlagCell = (changes: CellChange<DefaultCellTypes | FlagCell>[]) => { // evaluates as `Change<TextCell> | Change<Datecell> | ... | Change<FlagCell>`
+    changes.forEach(change => {
+        if (change.type === 'flag') {
+            // `FlagCell` specyfic fields are now available
+            console.log(change.newCell.text);
+            console.log(change.initialCell.text);
+        }
+    });
+};
+
+const handleChangesOnlyOnDateCell = (changes: CellChange<DateCell>[]) => { // evaluates as `Change<DateCell>`
+    changes.forEach(change => {
+        // only available type is now `date`
+        if (change.type === 'date') {
+            console.log(change.newCell.date);
+            console.log(change.initialCell.date);
+        }
+    });
+};
+```
 
 ## Definition
 
-```tsx
-interface CellChange<TCell extends Cell = Cell> {
+```ts
+ type DefaultCellTypes = CheckboxCell | DateCell | EmailCell | GroupCell | HeaderCell | NumberCell | TextCell | TimeCell;
+
+type CellChange<TCell extends Cell = DefaultCellTypes & Cell> = TCell extends Cell ? Change<TCell> : never;
+
+// ASK ARCHITECT BEFORE INTRODUCING ANY CHANGE!
+interface Change<TCell extends Cell = DefaultCellTypes> {
     readonly rowId: Id;
     readonly columnId: Id;
+    readonly type: TCell['type'];
     readonly initialCell: TCell;
     readonly newCell: TCell;
 }
@@ -27,5 +69,6 @@ Read more about creacting [custom cell templates](link).
 | ------------      | -------------                             | -------------------- |
 | `rowId`           | [`Id`](link)                              | Row [`Id`](link) where change ocurred | 
 | `columnId`        | [`Id`](link)                              | Column [`Id`](link) where change ocurred | 
+| `type`            | `CellTypes<TCell>`                        | Extracted cell type of `TCell` e.g. `text`, `group` | 
 | `initialCell`     | `TCell extends Cell = `[`Cell`](link)     | Old content of cell | 
 | `newCell`         | `TCell extends Cell = `[`Cell`](link)     | New content of cell | 

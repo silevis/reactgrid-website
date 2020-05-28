@@ -5,16 +5,17 @@ metaTitle: "ReactGridProps interface"
 metaDescription: "metaDescription"
 ---
 
-ReactGrid component has two essential properties which you must pass in props to render - `columns`, `rows`.
+ReactGrid component has two essential properties which you must pass in props to render - `columns` and `rows`.
 
 ## Definition
 
 ```tsx
 interface ReactGridProps {
     readonly columns: Column[];
-    readonly rows: Row[];
+    readonly rows: Row<Cell>[];
     readonly customCellTemplates?: CellTemplates;
     readonly focusLocation?: CellLocation;
+    readonly initialFocusLocation?: CellLocation;
     readonly highlights?: Highlight[];
     readonly stickyTopRows?: number;
     readonly stickyBottomRows?: number;
@@ -26,8 +27,9 @@ interface ReactGridProps {
     readonly enableColumnSelection?: boolean;
     readonly disableFloatingCellEditor?: boolean;
 
-    readonly onCellsChanged?: (cellChanges: CellChange<Cell>[]) => void;
-    readonly onFocusLocationChanged?: (location: CellLocation) => boolean;
+    readonly onCellsChanged?: (cellChanges: CellChange[]) => void;
+    readonly onFocusLocationChanging?: (location: CellLocation) => boolean;
+    readonly onFocusLocationChanged?: (location: CellLocation) => void;
     readonly onColumnResized?: (columnId: Id, width: number) => void;
     readonly canReorderRows?: (targetRowId: Id, rowIds: Id[], dropPosition: DropPosition) => boolean;
     readonly canReorderColumns?: (targetColumnId: Id, columnIds: Id[], dropPosition: DropPosition) => boolean;
@@ -42,9 +44,10 @@ interface ReactGridProps {
 Name                            | Type                             | Description
 ------------------------        | ---------------------------      | -------------
 `columns`                       | [`Columns`](link)`[]`            | Column's data
-`rows`                          | [`Rows`](link)`[]`               | Row's data
+`rows`                          | [`Rows<Cell>`](link)`[]`         | Row's data
 `customCellTemplates?`          | [`CellTemplates`](link)          | User is able to create cell template for his own needs
-`focusLocation?`                | [`CellLocation`](link)           | Initial position of focus
+`focusLocation?`                | [`CellLocation`](link)           | Focus position (managed constantly by outer app)
+`initialFocusLocation?`         | [`CellLocation`](link)           | Initial position of focus
 `highlights?`                   | [`Highlight`](link)`[]`          | Array of highlight positions
 `stickyTopRows?`                | `number`                         | Amount of rows which are frozen on the top
 `stickyBottomRows?`             | `number`                         | Amount of rows which are frozen on the bottom
@@ -60,9 +63,12 @@ Name                            | Type                             | Description
 
 Name                        | Type  | Description  |
 ------------------------    | ----- | ------------ |
-`onCellsChanged?`           | `(cellChanges: `[`CellChange`](link)`<`[`Cell`](link)`>[]) => void;` | Called when cell property (e.g. value) was changed. See example [implementation](link). |
-`onFocusLocationChanged?`   | `(location: `[`CellLocation`](link)`) => boolean;` | Focus position has been changed. See example [implementation](link). |
+`onCellsChanged?`           | `(cellChanges: `[`CellChange`](link)`[]) => void;` | Called when cell property (e.g. value) was changed. See example [implementation](link). |
+`onFocusLocationChanging?`  | `(location: `[`CellLocation`](link)`) => boolean;` | Called when trying to change focus location. Return `false` to prevent position changing. See example [implementation](link). |
+`onFocusLocationChanged?`   | `(location: `[`CellLocation`](link)`) => void;` | Focus position has been changed. See example [implementation](link). |
 `onColumnResized?`          | `(columnId: `[`Id`](link)`, width: number) => void;` | Callback called when column resize action was ended. See example [implementation](link). |
+`canReorderRows?`           | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;` | Allow or not to change specyfic rows order. See example [implementation](link). | 
+`canReorderColumns?`        | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => boolean;`| Allow or not to change specific columns order. See example [implementation](link). |
 `onRowsReordered?`          | `(targetRowId: `[`Id`](link)`, rowIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended. See example [implementation](link). |
 `onColumnsReordered?`       | `(targetColumnId: `[`Id`](link)`, columnIds: `[`Id`](link)`[], dropPosition: `[`DropPosition`](link)`) => void;`| Callback called when column row reorder action was ended. See example [implementation](link). |
 `onContextMenu?`            | `(selectedRowIds: `[`Id`](link)`[], selectedColIds: `[`Id`](link)`[], selectionMode: `[`SelectionMode`](link)` , menuOptions: `[`MenuOption`](link)`[]) => `[`MenuOption`](link)`[];` | Called when user opens context menu inside grid, used to compose own menu options. See example [implementation](link). |

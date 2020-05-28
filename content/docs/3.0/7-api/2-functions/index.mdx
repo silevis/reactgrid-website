@@ -7,28 +7,28 @@ metaDescription: "metaDescription"
 
 ## Keycodes:
 
-```tsx
+```ts
 isAlphaNumericKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is alfanumeric.
 
-```tsx
+```ts
 inNumericKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is between 0 and 9 (also on numpad).
 
-```tsx
+```ts
 isNumpadNumericKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is between 0 and 9 on numpad.
 
-```tsx
+```ts
 isAllowedOnNumberTypingKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is allowed on while typing 
 numbers (for chars like comma, dash, period).
 
-```tsx
+```ts
 isNavigationKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is allowed for navigation 
@@ -36,7 +36,7 @@ Used in creating custom cell templates. Checks if `keycode` is allowed for navig
 
 ## Helpers:
 
-```tsx
+```ts
 getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
     uncertainCell: Uncertain<TCell>,
     propName: TKey,
