@@ -42,9 +42,10 @@
 
 .sample-wrapper {
     height: 415px;
-    border-radius: 0.5em;
+    // border-radius: 0.5em;
     background: rgb(29, 32, 82);
-    padding: 0.5em;
+    margin: 0.5em;
+    overflow: scroll;
 }
 
 .list-style-none {
@@ -111,25 +112,30 @@
         $thumb-color: #00f2c3;
         $thumb-border-color: #01aa88 !default;
         $track-border-color: #1f2258 !default;
-        @import 'node_modules/@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
+        @import '@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 
     // reactgrid colors
     $primary-color:                     rgb(0, 242, 195);
     $bg-color:                          #21836f;
-    $frozens-bg-color:                  #040835;
     $shadow-color:                      #00f2c3;
     $resize-line-color:                 rgba(62, 245, 208, 0.718);
     $row-line-color:                    rgba(255, 255, 255, 0.3);
     $col-line-color:                    rgba(255, 255, 255, 0.3);
     $fillhandle-action-border-color:    rgb(0, 239, 191);
     $cell-editor-bg-color:              white;
+
+    $sticky-bg-color:                   #040835;
+    $shadow-color:                      #11185e;
+    $resize-line-color:                 #74b9ff;
+    $cell-editor-bg-color:              #ffffff;
+
     @import '@silevis/reactgrid/lib/assets/core.scss';
     
     // TODO FIX
     .rg-content {
         $base-decrease: gold !important; // overrgind variables not working
-        @import './../../../node_modules/@silevis/reactgrid-samples/dist/cell-templates/cssClassCellTemplate/css-class-style.scss';
+        @import '@silevis/reactgrid-samples/dist/cell-templates/cssClassCellTemplate/css-class-style.scss';
     }
 
     // SCROLLBARS
@@ -152,40 +158,6 @@
         }
         &-corner { background: transparent }
     }
-
-    // TODO FIX checkbox
-    // .rg-checkbox-cell {
-    //     justify-content: center;
-    //     user-select: none;
-    //     input {
-    //         display: none;
-    //     }
-    //     input ~ span {
-    //         background-color: #ffffffd3
-    //     }
-    //     span {
-    //         height: 20px;
-    //         width: 20px;
-    //         background-color: #fffffff1;
-    //         border-radius: 50%;
-    //         &:after {
-    //             content: "";
-    //             display: none;
-    //             margin-top: 3px;
-    //             margin-left: 6px;
-    //             width: 6px;
-    //             height: 11px;
-    //             border: solid white;
-    //             border-width: 0 3px 3px 0;
-    //             -webkit-transform: rotate(45deg);
-    //             transform: rotate(45deg);
-    //         }
-    //     }
-    //     input:checked ~ span {
-    //         background-color: #33c9ab;
-    //         &:after { display: block }
-    //     }
-    // }
 
 }
 
