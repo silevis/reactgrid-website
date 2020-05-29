@@ -61,7 +61,9 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script src="https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js"></script>
+    </Helmet>
   )
 }
 

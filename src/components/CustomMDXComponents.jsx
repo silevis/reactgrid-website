@@ -1,10 +1,16 @@
 import { MDXProvider } from "@mdx-js/react";
 import React from 'react';
-import { Table } from 'reactstrap';
+import {
+  Table,
+  Alert,
+} from 'reactstrap';
+import { LiveCode } from './LiveCode';
 export default function CustomMDXComponents({ children }) {
   return (
     <MDXProvider
       components={{
+        Alert,
+        LiveCode,
         h1: props => (
           <>
             <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>

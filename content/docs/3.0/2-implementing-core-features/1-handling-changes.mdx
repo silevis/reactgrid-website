@@ -19,7 +19,13 @@ metaDescription: "metaDescription"
 By default, the data grid will behave as if it was in a "read only" mode.
 To support dynamic data editing, you will have to handle the `onCellsChanged` event yourself.
 
-## Sample handler function
+#### When my handler function is called?
+
+1. Commiting changes after cell editing
+2. Pasting by shortcut or context menu
+3. Fill handle action
+
+## Sample change handler function
 
 We can declare a basic handler function like this:
 
@@ -32,7 +38,6 @@ const handleChanges = (changes: CellChange[]) => {
     newState.rows[changeRowIdx].cells[changeColumnIdx] = change.newCell;
   });
   setState(newState);
-  return true;
 };
 ```
 
@@ -52,13 +57,13 @@ return (
 )
 ```
 
-## Results
+## Result
 And here's an interactive demo showing the event handler in action.
 Notice how it is now possible to edit the data not only by typing new values into the cells,
 but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
 <iframe
-  src="https://codesandbox.io/embed/dark-meadow-crzfx?fontsize=14&hidenavigation=1&theme=dark"
+  src="https://stackblitz.com/edit/reactgrid-handling-changes?ctl=1&embed=1&file=index.tsx&hideExplorer=1"
   style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
   title="reactgrid-handling-changes"
   allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"

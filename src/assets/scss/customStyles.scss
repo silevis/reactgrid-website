@@ -124,10 +124,8 @@
     $col-line-color:                    rgba(255, 255, 255, 0.3);
     $fillhandle-action-border-color:    rgb(0, 239, 191);
     $cell-editor-bg-color:              white;
-
     $sticky-bg-color:                   #040835;
     $shadow-color:                      #11185e;
-    $resize-line-color:                 #74b9ff;
     $cell-editor-bg-color:              #ffffff;
 
     @import '@silevis/reactgrid/lib/assets/core.scss';
@@ -187,6 +185,23 @@ span.anchor {
         // color: rgb(0, 166, 133);
         // text-decoration: underline;
     }
+    .reactgrid {
+        color: rgba(255, 255, 255, 0.81);
+    }
+    // reactgrid colors
+    $primary-color:                     rgb(0, 242, 195);
+    $bg-color:                          #21836f;
+    $shadow-color:                      #00f2c3;
+    $resize-line-color:                 rgba(62, 245, 208, 0.718);
+    $row-line-color:                    rgba(255, 255, 255, 0.3);
+    $col-line-color:                    rgba(255, 255, 255, 0.3);
+    $fillhandle-action-border-color:    rgb(0, 239, 191);
+    $cell-editor-bg-color:              white;
+    $sticky-bg-color:                   #040835;
+    $shadow-color:                      #11185e;
+    $cell-editor-bg-color:              #ffffff;
+
+    @import '@silevis/reactgrid/lib/assets/core.scss';
 
     :not(pre) > code[class*="language-text"] {
         padding: 0.2em 0.4em;
