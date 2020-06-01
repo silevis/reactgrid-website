@@ -29,10 +29,10 @@ export const LiveCode = ({ code, title }) => {
 
   return (
     <>
-      <Container style={{ borderRadius: '5px', backgroundColor: '#0f102c', padding: '10px' }}>
+      <Container style={{ borderRadius: '5px', backgroundColor: '#0f102c' }} className='p-3 pb-5'>
         <BootRow className={'pb-3'}>
           <Col className={'d-flex align-items-center'} sm={'7'}>
-            <h5 className='p-0 m-0'>{title}</h5>
+            <h6 className='p-0 m-0'>{title}</h6>
           </Col>
           <Col className={'d-flex justify-content-end'} sm={'5'}>
             <Button onClick={toggle} size="sm" color="success">
@@ -51,13 +51,13 @@ export const LiveCode = ({ code, title }) => {
 
 const CodeModal = ({ modal, title, toggle, liveComponent, children }) => (
   <Modal isOpen={modal} toggle={toggle} size="full-screen" modalClassName="modal-black">
-    <div className="modal-header">
+    <div className="modal-header align-items-stretch">
       <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={toggle}>
         <i className="tim-icons icon-simple-remove"></i>
       </button>
-      <h6 className="modal-title">{title}</h6>
+      <h3 className="modal-title pt-2">{title}</h3>
     </div>
-    <ModalBody>
+    <ModalBody style={{ height: 0 }}>
       {liveComponent}
       {children}
     </ModalBody>
@@ -83,26 +83,22 @@ const MyLiveProvider = ({ mode, code, scope, setMode }) => {
           <Button color={'warning'} className="animation-on-hover" onClick={() => setMode('both')}>Show live preview</Button>
         </div>
         : <>
-          <BootRow style={{ height: '100%' }}>
-            {mode !== 'preview' && <Col sm={mode === 'both' ? '7' : '12'} style={{ overflowY: 'auto', height: '100%' }}>
+          <BootRow className='h-100 live-editor-row'>
+            {mode !== 'preview' && <Col sm={mode === 'both' ? '7' : '12'} className='h-100 overflow-y-auto'>
               <LiveEditor language={'tsx'} />
             </Col>}
             {mode !== 'code' && <Col sm={mode === 'both' ? '5' : '12'}>
               <LivePreview language={'tsx'} />
+              <LiveError language={'tsx'} />
             </Col>}
           </BootRow>
-          <BootRow>
-            <Col className="pt-3">
-              <LiveError language={'tsx'} />
-            </Col>
-          </BootRow>
-          <div className="d-flex justify-content-center">
+          <BootRow className="justify-content-center">
             <Button color={mode === 'code' && 'info'} className="animation-on-hover" onClick={() => setMode('code')}>Code</Button>
             <Button color={mode === 'both' && 'info'} className="animation-on-hover mx-2" onClick={() => setMode('both')}>Both</Button>
             <Button color={mode === 'preview' && 'info'} className="animation-on-hover" onClick={() => setMode('preview')}>Preview</Button>
-          </div>
+          </BootRow>
         </>
       }
-    </LiveProvider>
+    </LiveProvider >
   )
 }

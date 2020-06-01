@@ -24,6 +24,10 @@
     background-color: #0f102c !important;
 }
 
+.overflow-y-auto {
+    overflow-y: scroll;
+}
+
 @media (min-width: 576px) {
     .modal-open {
         .modal-dialog {
@@ -41,6 +45,14 @@
     .modal.show {
         .modal-dialog {
             transform: unset;
+            .modal-content {
+                height: 100vh;
+                .modal-body {
+                    .live-editor-row {
+                        height: calc(100% - 50px) !important;
+                    }
+                }
+            }
         }
     }
     .modal-backdrop {
@@ -119,6 +131,7 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,.5);
 }
 
+.live-editor-row,
 .budget-planner-sample,
 .dropdown-number-cell-sample,
 .rate-cell-sample,
