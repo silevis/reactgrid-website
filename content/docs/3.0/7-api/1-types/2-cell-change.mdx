@@ -1,16 +1,16 @@
 ---
 posttype: "docs"
 title: CellChange
-metaTitle: "CellChange interface"
+metaTitle: "CellChange type"
 metaDescription: "metaDescription"
 ---
 
-`CellChange` interface is used by `onCellsChanged` callback in [`ReactGrid`](link) component. `CellChange` represents 
-mutually exclusive changes  on single.
+`CellChange` type is used by `onCellsChanged` callback in [`ReactGrid`](link) component. `CellChange` represents 
+mutually exclusive changes  on single cell.
 
 `CellTypes` utility type extracts all possible cells types based on [`Cell`](link) interface.
 
-## Example
+## Basic usage cases
 
 ```ts
 const handleChangesOnDefaults = (changes: CellChange[]) => { // evaluates as `Change<TextCell> | Change<Datecell> | ...`
@@ -46,11 +46,8 @@ const handleChangesOnlyOnDateCell = (changes: CellChange<DateCell>[]) => { // ev
 ## Definition
 
 ```ts
- type DefaultCellTypes = CheckboxCell | DateCell | EmailCell | GroupCell | HeaderCell | NumberCell | TextCell | TimeCell;
-
 type CellChange<TCell extends Cell = DefaultCellTypes & Cell> = TCell extends Cell ? Change<TCell> : never;
 
-// ASK ARCHITECT BEFORE INTRODUCING ANY CHANGE!
 interface Change<TCell extends Cell = DefaultCellTypes> {
     readonly rowId: Id;
     readonly columnId: Id;

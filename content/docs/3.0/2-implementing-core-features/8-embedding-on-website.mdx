@@ -4,6 +4,8 @@ title: Embedding on website
 metaTitle: "Embedding on website"
 metaDescription: "metaDescription"
 ---
+import {LimitedHeightByParentSample, NotLimitedHeightByParentSample} from '@silevis/reactgrid-samples';
+
 
 ## About ReactGrig embedding, virtual scrolling and sticky panes pinning
 
@@ -29,16 +31,20 @@ Multiple nested scrollable elements can cause unexpected experience like uncorre
 	If all of rows/column can't be rendered in viewport - virtual scrolling still works great.
 </Alert>
 
-#### Example: ReactGrid component limited by height of his parent
+## Example: ReactGrid component limited by height of his parent
 
-TODO Example with content inside scrollable and top sticky pane
+<div className={'py-4'}>
+    <LimitedHeightByParentSample/>
+</div>  
 
 In this case not all of passed rows can be rendered, so scrollbar is visible and sticky pane is pinned directly to top of
 his parant containing element. 
 
-#### Example: ReactGrid component NOT limited by height of his parent
+## Example: ReactGrid component NOT limited by height of his parent
 
-TODO Example with content inside scrollable and top sticky pane
+<div className={'py-4'}>
+    <NotLimitedHeightByParentSample />
+</div>    
 
 ReactGrid renders all of passed rows and columns, if sticky panes are passed - they are pinned directly to the egde 
 of `body` element.

@@ -4,6 +4,57 @@ title: Highlights
 metaTitle: "Highlights"
 metaDescription: "metaDescription"
 ---
+import { ReactGrid } from "@silevis/reactgrid";
+const code = `const HighlightsSample = () => {
+    const [state, setState] = React.useState(() => ({
+        columns: [
+            { columnId: "Name", width: 100 },
+            { columnId: "Surname", width: 100 }
+        ] as Column[],
+        rows: [
+            {
+                rowId: 0,
+                cells: [
+                    { type: "header", text: "Name" },
+                    { type: "header", text: "Surname" }
+                ]
+            },
+            {
+                rowId: 1,
+                cells: [
+                    { type: "text", text: "Thomas" },
+                    { type: "text", text: "Goldman" }
+                ]
+            },
+            {
+                rowId: 2,
+                cells: [
+                    { type: "text", text: "Susie" },
+                    { type: "text", text: "Spencer" }
+                ]
+            },
+            {
+                rowId: 3,
+                cells: [{ type: "text", text: "" }, { type: "text", text: "" }]
+            }
+        ] as Row[]
+    }));
+    const highlights: Highlight[] = [
+        { columnId: "Name", rowId: 1, borderColor: "#00ff00" },
+        { columnId: "Surname", rowId: 2, borderColor: "#0000ff" },
+        { columnId: "Name", rowId: 3, borderColor: "#ff0000" }
+    ];
+    return (
+        <ReactGrid
+            rows={state.rows}
+            columns={state.columns}
+            highlights={highlights}
+        />
+    );
+}
+render(<HighlightsSample/>)
+`;
+
 
 This guide is based on [getting started](link).
 
@@ -38,12 +89,10 @@ return (
 );
 ```
 
-## Result
+## Live demo
 
-<iframe
-    src="https://stackblitz.com/edit/reactgrid-highlights?embed=1&file=index.tsx&hideExplorer=1"
-    style="width:100%; height:250px; border:0; border-radius: 4px; overflow:hidden;"
-    title="reactgrid-highlights"
-    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+<LiveCode 
+  code={code}
+  title='Advanced menu context handling live demo'
+  noInline={true}
+/> 

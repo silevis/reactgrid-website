@@ -28,6 +28,10 @@
     overflow-y: scroll;
 }
 
+.live-editor-row {
+    line-height: 1.5;
+}
+
 @media (min-width: 576px) {
     .modal-open {
         .modal-dialog {
@@ -189,11 +193,13 @@
         &-track {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 7px;
+            // padding: 2px;
         }
         &-thumb {
             background: rgba(68, 255, 218, 0.522);
             transition: background-color 0.5s ease;
             border-radius: 7px;
+            margin: 2px;
             &:hover {background: rgba(68, 255, 218, 0.432) }
         }
         &-corner { background: transparent }
@@ -222,6 +228,10 @@ span.anchor {
 }
 
 .docs-page {
+
+    ol {
+        padding-inline-start: 1rem;
+    }
 
     a[href='link'] .language-text {
         // color: rgb(0, 166, 133);

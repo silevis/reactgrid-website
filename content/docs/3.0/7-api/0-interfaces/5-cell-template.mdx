@@ -12,10 +12,10 @@ At this moment if you are not familiar with cell marker interfaces, it might be 
 * [`Uncertain`](link)
 
 ## Definition
-```tsx
+```ts
 export interface CellTemplate<TCell extends Cell = Cell> {
     // Validate and convert to compatible cell type
-    getCompatibleCell(uncertainCell: Uncertain<TCell>): Compatible<TCell>
+    getCompatibleCell(uncertainCell: Uncertain<TCell>): Compatible<TCell>;
     // Returns true if the data in the cell is not replacable
     // Default: _ => true
     isFocusable?(cell: Compatible<TCell>): boolean;

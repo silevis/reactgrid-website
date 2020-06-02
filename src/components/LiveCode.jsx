@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { ReactGrid } from "@silevis/reactgrid";
 
-export const LiveCode = ({ code, title }) => {
+export const LiveCode = ({ code, title, noInline = false }) => {
   const scope = { ReactGrid };
 
   const [mode, setMode] = React.useState(() => ('closed'));
@@ -25,7 +25,7 @@ export const LiveCode = ({ code, title }) => {
     setMode('both');
   };
 
-  const liveComponent = <MyLiveProvider mode={mode} code={code} scope={scope} setMode={setMode} />
+  const liveComponent = <MyLiveProvider mode={mode} code={code} scope={scope} setMode={setMode} noInline={noInline} />
 
   return (
     <>
@@ -36,7 +36,8 @@ export const LiveCode = ({ code, title }) => {
           </Col>
           <Col className={'d-flex justify-content-end'} sm={'5'}>
             <Button onClick={toggle} size="sm" color="success">
-              {!modal ? `Toggle fullscreen` : `Collapse`}
+              {!modal ? `Toggle fullscreen ` : `Collapse`}
+              <i class="fas fa-expand-alt"></i>
             </Button>
           </Col>
         </BootRow>
@@ -45,6 +46,7 @@ export const LiveCode = ({ code, title }) => {
           {liveComponent}
         </div>
       </Container>
+
     </>
   )
 }
@@ -64,7 +66,7 @@ const CodeModal = ({ modal, title, toggle, liveComponent, children }) => (
   </Modal>
 )
 
-const MyLiveProvider = ({ mode, code, scope, setMode }) => {
+const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
   return (
     <LiveProvider
       code={code}
@@ -77,6 +79,7 @@ const MyLiveProvider = ({ mode, code, scope, setMode }) => {
           jsx: 'react'
         })
       }
+      noInline={noInline}
     >
       {mode === 'closed'
         ? <div className="d-flex justify-content-center">
@@ -88,11 +91,13 @@ const MyLiveProvider = ({ mode, code, scope, setMode }) => {
               <LiveEditor language={'tsx'} />
             </Col>}
             {mode !== 'code' && <Col sm={mode === 'both' ? '5' : '12'}>
-              <LivePreview language={'tsx'} />
-              <LiveError language={'tsx'} />
+              <div style={{ overflow: 'auto' }}>
+                <LivePreview language={'tsx'} />
+                <LiveError language={'tsx'} />
+              </div>
             </Col>}
           </BootRow>
-          <BootRow className="justify-content-center">
+          <BootRow className="justify-content-center pb-2">
             <Button color={mode === 'code' && 'info'} className="animation-on-hover" onClick={() => setMode('code')}>Code</Button>
             <Button color={mode === 'both' && 'info'} className="animation-on-hover mx-2" onClick={() => setMode('both')}>Both</Button>
             <Button color={mode === 'preview' && 'info'} className="animation-on-hover" onClick={() => setMode('preview')}>Preview</Button>

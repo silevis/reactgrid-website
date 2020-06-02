@@ -4,6 +4,63 @@ title: Handling data changes
 metaTitle: "Handling data changes"
 metaDescription: "metaDescription"
 ---
+import { ReactGrid } from "@silevis/reactgrid";
+const code = `const App = () => {
+  const [state, setState] = React.useState(() => ({
+    columns: [
+      { columnId: "Name", width: 100 },
+      { columnId: "Surname", width: 100 }
+    ],
+    rows: [
+      {
+        rowId: 0,
+        cells: [
+          { type: "header", text: "Name" },
+          { type: "header", text: "Surname" }
+        ]
+      },
+      {
+        rowId: 1,
+        cells: [
+          { type: "text", text: "Thomas" },
+          { type: "text", text: "Goldman" }
+        ]
+      },
+      {
+        rowId: 2,
+        cells: [
+          { type: "text", text: "Susie" },
+          { type: "text", text: "Spencer" }
+        ]
+      },
+      {
+        rowId: 3,
+        cells: [
+          { type: "text", text: "" }, 
+          { type: "text", text: "" }
+        ]
+      }
+    ] as Row[]
+  }));
+  const handleChanges = (changes: CellChange[]) => {
+    const newState = { ...state };
+    changes.forEach(change => {
+      const changeRowIdx = newState.rows.findIndex(el => el.rowId === change.rowId);
+      const changeColumnIdx = newState.columns.findIndex(el => el.columnId === change.columnId);
+      newState.rows[changeRowIdx].cells[changeColumnIdx] = change.newCell;
+    });
+    setState(newState);
+  };
+  return (
+    <ReactGrid
+      rows={state.rows}
+      columns={state.columns}
+      onCellsChanged={handleChanges}
+    />
+  );
+}
+render(<App/>)
+`;
 
 ## Idea of handling data changes
 
@@ -29,7 +86,7 @@ To support dynamic data editing, you will have to handle the `onCellsChanged` ev
 
 We can declare a basic handler function like this:
 
-```tsx
+```ts
 const handleChanges = (changes: CellChange[]) => {
   const newState = { ...state };
   changes.forEach(change => {
@@ -57,15 +114,15 @@ return (
 )
 ```
 
-## Result
+## Live demo
+
 And here's an interactive demo showing the event handler in action.
 Notice how it is now possible to edit the data not only by typing new values into the cells,
 but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
-<iframe
-  src="https://stackblitz.com/edit/reactgrid-handling-changes?ctl=1&embed=1&file=index.tsx&hideExplorer=1"
-  style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
-  title="reactgrid-handling-changes"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+
+<LiveCode 
+  code={code}
+  title='Handling changes live demo'
+  noInline={true}
+/> 

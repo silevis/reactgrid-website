@@ -5,9 +5,9 @@ metaTitle: "Column resizing"
 metaDescription: "metaDescription"
 proMark: true
 ---
-import { ReactGrid, Id, Column, Row } from "@silevis/reactgrid";
-const scope = { ReactGrid, Id, Column, Row };
-const code = `() => {
+import { ReactGrid } from "@silevis/reactgrid";
+const code = `
+const App = () => {
   const [state, setState] = React.useState(() => ({
     columns: [
       { columnId: "Name", resizable: true, width: 100 },
@@ -56,7 +56,9 @@ const code = `() => {
       onColumnResized={handleColumnResize}
     />
   );
-}`;
+}
+render(<App/>)
+`;
 
 ## How to implement column resize?
 
@@ -65,7 +67,7 @@ const code = `() => {
 For each column which should be resizable, add the `resizable` property
 to the corresponding column object and set its value to `true`.
 
-```tsx
+```ts
 // ...
 columns: [
     // columns can now be resized
@@ -84,7 +86,7 @@ define a handler function for that and pass it to our ReactGrid component.
 
 #### Implement the event handler function
 
-```tsx
+```ts
 const handleColumnResize = (ci: Id, width: number) => {
   let newState = { ...state };
   const columnIndex = newState.columns.findIndex((el: Column) => el.columnId === ci);
@@ -114,4 +116,5 @@ Let's check the results:
 <LiveCode 
   code={code}
   title='Column resizing live demo'
+  noInline={true}
 /> 

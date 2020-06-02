@@ -40,8 +40,6 @@ const calculateTreeData = (navOrder, edges, version) => {
     }
     return accu;
   }, { items: [] });
-  console.log(tree);
-
   const tmp = [...navOrder];
   // tmp.reverse();
   return tmp.reduce((accu, slug) => {
