@@ -72,12 +72,15 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
       code={code}
       scope={scope}
       language={'tsx'}
-      transformCode={snippet =>
-        window && window.ts && window.ts.transpile(snippet, {
-          noImplicitUseStrict: true,
-          target: 'es6',
-          jsx: 'react'
-        })
+      transformCode={snippet => {
+        if (typeof window !== 'undefined') {
+          window.ts.transpile(snippet, {
+            noImplicitUseStrict: true,
+            target: 'es6',
+            jsx: 'react'
+          })
+        }
+      }
       }
       noInline={noInline}
     >
