@@ -1,0 +1,50 @@
+---
+posttype: "docs"
+title: Embedding on website
+metaTitle: "Embedding on website"
+metaDescription: "metaDescription"
+---
+import {LimitedHeightByParentSample, NotLimitedHeightByParentSample} from '@silevis/reactgrid-samples';
+
+
+## About ReactGrig embedding, virtual scrolling and sticky panes pinning
+
+`ReactGrid` component isn't limited by height and width so it's behavior can change a little bit depending on his scrollable parent element.
+
+ReactGrid appends scroll event to his first scrollable parent and let's himself to expand to full height/width with 
+continous observing available viewport size to render content of all ranges. 
+
+Limiting size of `ReactGrid` can be achives basicly by add CSS class listed below 
+(keep in mind that sum of rows heights must be highter than scrollable element height)
+
+```css
+.reactgrid-wrapper {
+    height: 100px;
+    overflow: scroll;
+}
+```
+
+Multiple nested scrollable elements can cause unexpected experience like uncorrect cell editor position, wrong focus location etc.
+
+<Alert color="info">
+	<i className="tim-icons icon-alert-circle-exc pr-2"></i>
+	If all of rows/column can't be rendered in viewport - virtual scrolling still works great.
+</Alert>
+
+## Example: ReactGrid component limited by height of his parent
+
+<div className={'py-4'}>
+    <LimitedHeightByParentSample/>
+</div>  
+
+In this case not all of passed rows can be rendered, so scrollbar is visible and sticky pane is pinned directly to top of
+his parant containing element. 
+
+## Example: ReactGrid component NOT limited by height of his parent
+
+<div className={'py-4'}>
+    <NotLimitedHeightByParentSample />
+</div>    
+
+ReactGrid renders all of passed rows and columns, if sticky panes are passed - they are pinned directly to the egde 
+of `body` element.

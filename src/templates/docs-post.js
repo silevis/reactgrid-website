@@ -68,7 +68,7 @@ class DocsPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription} />
         <div className="docs-page section">
           <Container>
-            <div className="space-50"></div>
+            <div className="space-100"></div>
             <Row>
               <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
                 <UncontrolledDropdown className="dropdown-version-wrapper">
@@ -82,7 +82,9 @@ class DocsPostTemplate extends React.Component {
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb" id="docs-header"><span className="text-success">{post.frontmatter.metaTitle}</span></h1>
+                <h1 className="mb" id="docs-header"><span className="text-success">
+                  {post.frontmatter.metaTitle} {post.frontmatter.proMark && <i class="fas fa-tachometer-alt pl-2"></i>}</span>
+                </h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
                 </CustomMDXComponents>
@@ -155,6 +157,7 @@ export const pageQuery = graphql`
         title
         metaDescription
         metaTitle
+        proMark
       }
     }
     allMdx(filter: {frontmatter: {posttype: {eq: "docs"}}, fields: {slug: {}}}, sort: {fields: fields___slug, order: ASC}) {
@@ -169,6 +172,7 @@ export const pageQuery = graphql`
             title
             metaDescription
             metaTitle
+            proMark
           }
         }
       }

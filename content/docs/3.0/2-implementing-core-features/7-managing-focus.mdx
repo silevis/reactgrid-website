@@ -1,0 +1,39 @@
+---
+posttype: "docs"
+title: Managing focus
+metaTitle: "Managing focus"
+metaDescription: "metaDescription"
+---
+
+## Focus locations
+
+ReactGrid has two properties related with focus location inside grid via `ReactGrid`:
+
+1. `focusLocation`
+2. `initialFocusLocation`
+
+## initialFocusLocation prop
+
+You can set focus location at first render of ReactGrid. Then this prop is no more used.
+
+```tsx
+<ReactGrid
+    {...props}
+    initialFocusLocation={{ columnId: 'col-2', rowId: 'row-2' }} //highlight-line
+/>
+```
+
+## focusLocation prop
+
+1. Defining `focusLocation` prop takes precedence over pointer and keyboard actions, so you have to manage it all over time. 
+2. If `focusLocation` property has falsy value then is ignored. 
+3. Defined `initialFocusLocation` is imidiately overrided by `focusLocation`
+
+```tsx
+<ReactGrid
+    {...props}
+    initialFocusLocation={{ columnId: 'col-2', rowId: 'row-2' }} //highlight-line
+    focusLocation={{ columnId: 'col-2', rowId: 'row-2' }} //highlight-line
+/>
+```
+

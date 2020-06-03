@@ -20,11 +20,11 @@ class MainNavbar extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", this.changeNavbarColor);
+    window && window.addEventListener("scroll", this.changeNavbarColor);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.changeNavbarColor);
+    window && window.removeEventListener("scroll", this.changeNavbarColor);
   }
 
   changeNavbarColor = () => {

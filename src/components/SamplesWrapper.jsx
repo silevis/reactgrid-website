@@ -84,7 +84,9 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
       <Row>
         <Col xs="12" className={className}>
           {/* <h1 className="h1 text-success my-3">{title}</h1> */}
-          <div className="sample-wrapper">
+          <div className="sample-wrapper"
+          // style={{ height: '100%', overflow: 'scroll' }}
+          >
             <Sample />
           </div>
           <div className="pt-5">
