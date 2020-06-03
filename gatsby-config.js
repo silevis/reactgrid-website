@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `ReactGrid`,
     author: `Silevis Software`,
-    description: `Advanced spreadsheet for developers`,
+    description: `Advanced spreadsheet for React developers`,
     siteUrl: `http://reactgrid.com`,
     pages: [
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
@@ -20,7 +20,7 @@ module.exports = {
       { id: 'privacyPolicy', title: `Privacy Policy`, description: ``, route: `/privacy-policy`, active: true },
     ],
     docsVersions: [
-      { slug: "/2.0.9", desc: '2.0.9', index: '/0-introduction', active: true },
+      { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }
     ],
     docsPagesOrder: [
       "/Za",

@@ -24,7 +24,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
       if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
         allMdx.edges.map(item => {
           let innerItems;
-          if(item !== undefined) {
+          if (item !== undefined) {
             if ((item.node.fields.slug === location.pathname) || (docsRoute + item.node.fields.slug) === location.pathname) {
               if (item.node.tableOfContents.items) {
                 innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
@@ -44,18 +44,18 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
         });
       }
       const navWrapperClasses = classNames({
-          'overflow-auto': true,
-          'vh-100 position-fixed px-3 ml-n3': isFloating,
+        'overflow-auto': true,
+        'vh-100 position-sticky': isFloating,
       })
       if (finalNavItems && finalNavItems.length) {
         return (
-          <div style={{top: 0, fontSize: '0.9em'}} className={navWrapperClasses}>
-             <Nav vertical style={{paddingTop: isFloating ? '102px' : '0'}}>
-                <div style={{borderLeft: '1px solid rgba(255, 255, 255, 0.25)'}} className="pl-2">
-                  <div className="h5 text-white">CONTENTS</div>
-                  {finalNavItems}
-                </div>
-             </Nav>
+          <div style={{ top: 0, fontSize: '0.9em' }} className={navWrapperClasses}>
+            <Nav vertical style={{ paddingTop: isFloating ? '102px' : '0' }}>
+              <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.25)' }} className="pl-2">
+                <div className="h5 text-white">CONTENTS</div>
+                {finalNavItems}
+              </div>
+            </Nav>
           </div>
         );
       } else {

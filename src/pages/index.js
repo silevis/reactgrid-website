@@ -50,7 +50,7 @@ class Index extends React.Component {
                   </div>
                 </Col>
                 <Col className="ml-auto mt-5 d-flex align-items-center" lg="7" md="12">
-                  <div className="iframe-container ">
+                  <div className="iframe-container w-100">
                     <img alt="Demo animation" src={demoGIF} />
                   </div>
                 </Col>

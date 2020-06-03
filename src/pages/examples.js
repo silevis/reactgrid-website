@@ -18,7 +18,7 @@ class Examples extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={'Examples'} />
         {/* <Header header={headerTitle} description={headerDescription}/> */}
-        <SamplesWrapper/>
+        <SamplesWrapper />
         {/* <Features/> */}
       </Layout>
     )

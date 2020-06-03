@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FAQ from "../components/FAQ"
-
+import { isBrowserIE } from "../components/isBrowserIE"
 import {
   Container,
   Row,
@@ -16,8 +16,10 @@ import {
 
 class Pricing extends React.Component {
   componentDidMount() {
-    document.documentElement.scrollTop = 0;
-    document.scrollingElement.scrollTop = 0;
+    if (!isBrowserIE()) {
+      document.documentElement.scrollTop = 0;
+      document.scrollingElement.scrollTop = 0;
+    }
   }
   render() {
     const { data } = this.props

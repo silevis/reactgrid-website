@@ -46,11 +46,9 @@ import DemoFooter from "components/Footers/DemoFooter.jsx";
 class BlogPosts extends React.Component {
   constructor(props) {
     super(props);
-    let windowScrollTop;
+    let windowScrollTop = 0;
     if (window.innerWidth >= 768) {
       windowScrollTop = window.pageYOffset / 3;
-    } else {
-      windowScrollTop = 0;
     }
     this.state = {
       transform: "translate3d(0," + windowScrollTop + "px,0)"

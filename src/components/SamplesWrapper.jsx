@@ -31,23 +31,18 @@ class SamplesWrapper extends React.Component {
   }
 
   render() {
-
-    console.log(this.state.activeTabIdx);
-
-    const isAnySelected = this.state.activeTabIdx !== undefined;
-
+    const isSampleSelected = this.state.activeTabIdx !== undefined;
     const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <NavItem key={idx} className="pb-3">
         <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })} style={{ cursor: 'pointer' }}
           onClick={() => { this.setActiveTab(idx) }}>
-          {!isAnySelected &&
+          {!isSampleSelected &&
             <i className={`${sample.icon} text-shadow mt-2 mb-4`} />
           }
           <div className="text-shadow">{sample.title}</div>
         </NavLink>
       </NavItem>
     );
-
     const sampleTabs = samplesData.filter((sample) => sample.enabled).map((sample, idx) =>
       <SampleTab
         key={idx}
@@ -59,7 +54,6 @@ class SamplesWrapper extends React.Component {
       />
     );
 
-    const isSampleSelected = this.state.activeTabIdx !== undefined;
     return (
       <div className="section">
         <Container>
@@ -90,7 +84,9 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
       <Row>
         <Col xs="12" className={className}>
           {/* <h1 className="h1 text-success my-3">{title}</h1> */}
-          <div className="sample-wrapper">
+          <div className="sample-wrapper"
+          // style={{ height: '100%', overflow: 'scroll' }}
+          >
             <Sample />
           </div>
           <div className="pt-5">
