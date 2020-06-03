@@ -4,8 +4,7 @@ defaults: &defaults
 
 version: 2
 jobs:
-
-  deploy-on-gh-pages: 
+  deploy-on-gh-pages:
     <<: *defaults
 
     steps:
@@ -13,48 +12,64 @@ jobs:
 
       - run:
           name: Set configuration
-          command:  git config --global user.email "$GITHUB_AUTHOR_EMAIL" && 
-                    git config --global user.name "$GITHUB_AUTHOR_NAME"
+          command: git config --global user.email "$GITHUB_AUTHOR_EMAIL" &&
+            git config --global user.name "$GITHUB_AUTHOR_NAME"
 
-      - run: 
+      - run:
           name: Install Dependencies
           command: npm install
 
-      - run: 
+      - run:
+          name: Write Azure DevOps NPM Token to ~/.npmrc
+          command:
+            printf "registry=https://pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/registry/\n
+            always-auth=true\n\n
+
+            ; begin auth token\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/registry/:username=Silevis\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/registry/:_password=[$BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/registry/:email=patryk.eliasz@silevis.com\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/:username=Silevis\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/:_password=[$BASE64_ENCODED_PERSONAL_ACCESS_TOKEN]\n
+            //pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/:email=patryk.eliasz@silevis.com\n
+            ; end auth token" >> .npmrc
+
+      - run:
+          name: Install ReactGrid Pro
+          command: npm install @silevis/reactgrid@latest --no-save
+
+      - run:
           name: Build static
           command: npm run build
 
-      - run: 
+      - run:
           name: Move build files to tmp
-          command:  
-                    mkdir /tmp/build && 
-                    mkdir /tmp/build/public && 
-                    mv public/* /tmp/build/public
-                    
-      - run: 
+          command: mkdir /tmp/build &&
+            mkdir /tmp/build/public &&
+            mv public/* /tmp/build/public
+
+      - run:
           name: Checkout to deploy branch
           command: git checkout $GITHUB_DEPLOY_BRANCH
 
-      - run: 
+      - run:
           name: Move project contant files to tmp
-          command:  
-                    mv .gitignore /tmp/build &&
-                    mv CNAME /tmp/build
+          command: mv .gitignore /tmp/build &&
+            mv CNAME /tmp/build
 
-      - run: 
+      - run:
           name: Remove old files
           command: rm -rf *
 
-
-      - run: 
+      - run:
           name: List files in tmp
           command: cd /tmp/build && ls -all && cd /home/circleci/project
 
-      - run: 
-          name: Move back files 
-          command:  mv /tmp/build/public/* /home/circleci/project &&
-                    mv /tmp/build/CNAME /home/circleci/project &&
-                    mv /tmp/build/.gitignore /home/circleci/project
+      - run:
+          name: Move back files
+          command: mv /tmp/build/public/* /home/circleci/project &&
+            mv /tmp/build/CNAME /home/circleci/project &&
+            mv /tmp/build/.gitignore /home/circleci/project
 
       - run:
           name: Add changes
@@ -67,7 +82,6 @@ jobs:
       - run:
           name: Push deploy files
           command: git push -f https://$GITHUB_TOKEN@github.com/silevis/reactgrid-website.git $GITHUB_DEPLOY_BRANCH
-      
 
 workflows:
   version: 2
