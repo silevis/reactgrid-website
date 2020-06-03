@@ -23,7 +23,7 @@ Let's get started!
 
 ## 1. Prepare project file
 
-For this tutorial we are going to use previous project - [handling changes](link).
+For this tutorial we are going to use previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
 At the begining we update columns and rows displayed by grid. 
 Cell type in row `1` and `2` will be changed to `flag` at the end. 
 
@@ -79,7 +79,7 @@ import "./flag-cell-style.css";
 `type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
 `text` attribute will storage our text and it's also necessary. 
 
-```tsx
+```ts
 export interface FlagCell extends Cell {
     type: 'flag';
     text: string;
@@ -91,10 +91,10 @@ export interface FlagCell extends Cell {
 All of definded methods below are necessary to correct displaying and interfacing with internal ReactGrid model.
 
 * `getCompatibleCell` as a parameter gets incoming cell and returns a compatible cell (with `text` and `value`
-  attribute required by [`Compatible`](link) type). In more complex examples `getCellProperty` can throw an
-  exception if required cell field is `undefined`.
+  attribute required by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) type). 
+  In more complex examples `getCellProperty` can throw an exception if required cell field is `undefined`.
 
-```tsx
+```ts
 getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
     const text = getCellProperty(uncertainCell, 'text', 'string');
     const value = parseFloat(text);
@@ -105,7 +105,7 @@ getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
 * `handleKeyDown` method handles `keyDown` event on this cell template. Here just returns unchanged cell and enables 
   edit mode when user performed click or pressed <kbr>ENTER</kbr> key.
 
-```tsx
+```ts
 handleKeyDown(
     cell: Compatible<FlagCell>,
     keyCode: number,
@@ -123,10 +123,10 @@ handleKeyDown(
 ```
 
 * `update` - we are not sure that incoming cell is has the same interface like `FlagCell` so we marking it
-  as `UncertainCompatible` (incoming cell has attributes provided by [`Compatible`](link) but it can have
-  other attributes like `date` from `DateCell`). In our case we just copy `cell` and replace `text` value.
+  as `UncertainCompatible` (incoming cell has attributes provided by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) 
+  but it can have other attributes like `date` from `DateCell`). In our case we just copy `cell` and replace `text` value.
 
-```tsx
+```ts
 update(cell: Compatible<FlagCell>, cellToMerge: UncertainCompatible<FlagCell>): Compatible<FlagCell> {
     return this.getCompatibleCell({ ...cell, text: cellToMerge.text });
 }

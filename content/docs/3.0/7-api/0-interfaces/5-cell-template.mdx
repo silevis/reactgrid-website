@@ -5,11 +5,11 @@ metaTitle: "CellTemplate interface"
 metaDescription: "metaDescription"
 ---
 
-`CellTemplate` is an interface used the communication between ReactGrid and a cell. See example [implementation](link).
+`CellTemplate` is an interface used the communication between ReactGrid and a cell.
 At this moment if you are not familiar with cell marker interfaces, it might be helpful to read about them:
-* [`Compatible`](link)
-* [`UncertainCompatible`](link)
-* [`Uncertain`](link)
+* [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)
+* [`UncertainCompatible`](/docs/3.0/7-api/1-types/3-uncertain-compatible-cell/)
+* [`Uncertain`](/docs/3.0/7-api/1-types/2-uncertain-cell/)
 
 ## Definition
 ```ts
@@ -39,13 +39,12 @@ export interface CellTemplate<TCell extends Cell = Cell> {
 
 ## Properties
 
-| Method                                                                                                                                                | Returns                                                                   | Description |
-| -----------                                                                                                                                           | -------                                                                   | ----------- |
-| `getCompatibleCell(uncertainCell: `[`Uncertain`](link)`<TCell>)`                                                                                      | [`CompatibleCell`](link)`<TCell>`                                         | Validate and convert to compatible cell type |
-| `isFocusable?(cell: `[`Compatible`](link)`<TCell>)`                                                                                                   | `boolean`                                                                 | Marking cell as focusable or not |
-| `update?(cell: `[`Compatible`](link)`<TCell>, cellToMerge: `[`UncertainCompatible`](link)`<TCell>)`                                                   | [`CompatibleCell`](link)`<TCell>`                                         | Update cell based on new props, if not implemented, cell will be read-only |
-| `handleKeyDown?(cell: `[`Compatible`](link)`<TCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean)`                                   | `{ cell: `[`CompatibleCell`](link)`<TCell>; enableEditMode: boolean }`    | Returns the cell data either affected by the event or not. |
-| `getStyle?(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean)`                                                                               | [`CellStyle`](link)                                                       | Returns custom styles based on cell data applied to the cells `div` element |
-| `getClassName?(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean)`                                                                           | `string`                                                                  | Returns custom class names based on cell data applied to the cells `div` element |
-| `render(cell: `[`Compatible`](link)`<TCell>, isInEditMode: boolean, onCellChanged: (cell: `[`Compatible`](link)`<TCell>, commit: boolean) => void)`   | `React.ReactNode`                                                         | Renders cell content | 
-
+| Method                                                                                                                                                                                                                            | Returns                                                                                                           | Description           |
+| -----------                                                                                                                                                                                                                       | -------                                                                                                           | -----------           |
+| `getCompatibleCell(uncertainCell: `[`Uncertain`](/docs/3.0/7-api/1-types/2-uncertain-cell/)`<TCell>)`                                                                                                                             | [`CompatibleCell`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>`                                           | Validate and convert to compatible cell type |
+| `isFocusable?(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>)`                                                                                                                                         | `boolean`                                                                                                         | Marking cell as focusable or not      |
+| `update?(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, cellToMerge: `[`UncertainCompatible`](/docs/3.0/7-api/1-types/3-uncertain-compatible-cell/)`<TCell>)`                                         | [`CompatibleCell`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>`                                           | Update cell based on new props, if not implemented, cell will be read-only |
+| `handleKeyDown?(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean)`                                                                         | `{ cell: `[`CompatibleCell`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>; enableEditMode: boolean }`      | Returns the cell data either affected by the event or not. |
+| `getStyle?(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, isInEditMode: boolean)`                                                                                                                     | [`CellStyle`](/docs/3.0/7-api/0-interfaces/7-cell-style/)                                                         | Returns custom styles based on cell data applied to the cells `div` element |
+| `getClassName?(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, isInEditMode: boolean)`                                                                                                                 | `string`                                                                                                          | Returns custom class names based on cell data applied to the cells `div` element |
+| `render(cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, isInEditMode: boolean, onCellChanged: (cell: `[`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/)`<TCell>, commit: boolean) => void)`   | `React.ReactNode`                                                                                                 | Renders cell content | 

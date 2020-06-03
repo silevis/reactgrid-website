@@ -1,15 +1,11 @@
 ---
 posttype: "docs"
-title: Keyboard events handling
-metaTitle: "Keyboard events handling"
+title: Keyboard shortcuts
+metaTitle: "Keyboard shortcuts"
 metaDescription: "metaDescription"
 ---
-import { ReactGrid } from "@silevis/reactgrid";
-const keyboardHTMLmapping = {
-    Enter: <><kbd>Enter</kbd></>
-}
 
-## About keyboard
+## About keyboard events
 
 ReactGrid allows you to interact with grid using keyboard shortcuts in a way known from other spreadsheet like apps. 
 
@@ -17,15 +13,15 @@ At this moment we plan to add few callback events for clipboard action like copy
 
 ## Keyboard shortcuts
 
-| Shortcut                              | Action        |                    
+| Shortcut                              | Action        |
 | ------------                          | ------------- |
 | <kbd>↑</kbd>   | Moves cell focus cell up one cell (if is focusable) | 
 | <kbd>↓</kbd>   | Moves cell focus cell down one (if is focusable) | 
 | <kbd>←</kbd>   | Moves cell focus cell to the left (if is focusable) | 
 | <kbd>→</kbd>   | Moves cell focus cell to the right (if is focusable) | 
 | <kbd>Ctrl</kbd> + <kbd>Space</kbd>  | Expands selection in vertical direction (only on ) | 
-| <kbd>Shift</kbd> + <kbd>⌘</kbd> + <kbd>Home</kbd> or <kbd>Shift</kbd> + <kbd>⌘</kbd> + <kbd>Home</kbd>  | Selects all cells above currect selection | 
-| <kbd>Shift</kbd> + <kbd>⌘</kbd> + <kbd>End</kbd> or <kbd>Shift</kbd> + <kbd>⌘</kbd> + <kbd>End</kbd>  | Selects all cells below currect selection | 
+| <kbd>Ctrl</kbd>  + <kbd>Shift</kbd> + <kbd>Home</kbd> or <br/> <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>Home</kbd>  | Selects all cells above currect selection | 
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>End</kbd> or <br/> <kbd>⌘</kbd> + <kbd>Shift</kbd> +  <kbd>End</kbd>  | Selects all cells below currect selection | 
 | <kbd>⌘</kbd> + <kbd>A</kbd> or <kbd>Ctrl</kbd> + <kbd>A</kbd>  | Selects all cells | 
 | <kbd>⌘</kbd> + <kbd>Home</kbd> or <kbd>Ctrl</kbd> + <kbd>Home</kbd>  | Selects top left cell | 
 | <kbd>⌘</kbd> + <kbd>End</kbd> or <kbd>Ctrl</kbd> + <kbd>End</kbd>  | Selects bottom right cell | 
@@ -42,7 +38,6 @@ At this moment we plan to add few callback events for clipboard action like copy
 | <kbd>Shift</kbd> + <kbd>End</kbd>  | Expands selection to the last column | 
 | <kbd>Shift</kbd> + <kbd>PageUp</kbd>  | Increase or decrease selection by single page | 
 | <kbd>Shift</kbd> + <kbd>PageDown</kbd>  | Increase or decrease selection by single page | 
-
 | <kbd>Enter</kbd> | Opens cell editor if cell if focused or moves focus down inside range selection | 
 | <kbd>Delete</kbd> or <kbd>Backspace</kbd>  | Wipe selected range or only focused location | 
 | <kbd>↑</kbd> | Moves focus up (if cell is focusable) | 

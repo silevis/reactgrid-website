@@ -6,7 +6,7 @@ metaDescription: "metaDescription"
 ---
 
 Row interface contains two necessary properties: `rowId` and `cells`. It constains essential informations about grid row.
-`cells` field allow you to declare array of objects thats extends [`Cell`](link)`[]` base interface .
+`cells` field allow you to declare array of objects thats extends [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]` base interface .
 
 
 ## Example 
@@ -38,7 +38,7 @@ export const rows: Row<DefaultCellTypes | FlagCell>[] = [ // union of all  avail
         cells: [
             { type: "text", text: 'John' },
             { type: "text", text: "Doe" },
-            // `flag type is now allowed for usage
+            // `flag type is now allowed
             { type: 'flag', text: 'ger' }, //highlight-line
         ]
     }
@@ -58,9 +58,9 @@ export interface Row<TCell extends Cell = DefaultCellTypes> {
 
 ## Properties
 
-| Property name     | Type                                  | Property description  | 
-| ------------      | -------------                         | -------------         |
-| `rowId`           | [`Id`](link)                          | Unique [`Id`](link) in all rows array | 
-| `cells`           | `TCell extends` [`Cell`](link)`[]`    | Array of [`Cell`](link) objects. | 
-| `height?`         | `number`                              | Height of each grid row (in default set to `25px`)  | 
-| `reorderable?`    | `boolean`                             | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  
+| Property name     | Type                                                                  | Property description  | 
+| ------------      | -------------                                                         | -------------         |
+| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                 | Unique [`Id`](/docs/3.0/7-api/1-types/4-id/) in all rows array | 
+| `cells`           | `TCell extends` [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) objects. | 
+| `height?`         | `number`                                                              | Height of each grid row (in default set to `25px`)  | 
+| `reorderable?`    | `boolean`                                                             | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  

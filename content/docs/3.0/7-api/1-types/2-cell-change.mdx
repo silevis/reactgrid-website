@@ -5,10 +5,10 @@ metaTitle: "CellChange type"
 metaDescription: "metaDescription"
 ---
 
-`CellChange` type is used by `onCellsChanged` callback in [`ReactGrid`](link) component. `CellChange` represents 
+`CellChange` type is used by `onCellsChanged` callback in `ReactGrid` component. `CellChange` represents 
 mutually exclusive changes  on single cell.
 
-`CellTypes` utility type extracts all possible cells types based on [`Cell`](link) interface.
+`CellTypes` utility type extracts all possible cells types based on [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) interface.
 
 ## Basic usage cases
 
@@ -57,15 +57,16 @@ interface Change<TCell extends Cell = DefaultCellTypes> {
 }
 ```
 
-`TCell` is type that extends common [`Cell`](link) type. It can be one of [predefined cell types](link) or one of yours. 
-Read more about creacting [custom cell templates](link).
+`TCell` is type that extends common [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) type. 
+It can be one of [default cell types](/docs/3.0/7-api/1-types/6-default-cells/) or one of yours. 
+Read more about creacting [custom cell templates](/docs/3.0/5-create-your-own-cell-template/).
 
 ## Properties
 
-| Property name     | Type                                      | Property description | 
-| ------------      | -------------                             | -------------------- |
-| `rowId`           | [`Id`](link)                              | Row [`Id`](link) where change ocurred | 
-| `columnId`        | [`Id`](link)                              | Column [`Id`](link) where change ocurred | 
-| `type`            | `CellTypes<TCell>`                        | Extracted cell type of `TCell` e.g. `text`, `group` | 
-| `initialCell`     | `TCell extends Cell = `[`Cell`](link)     | Old content of cell | 
-| `newCell`         | `TCell extends Cell = `[`Cell`](link)     | New content of cell | 
+| Property name     | Type                                                                      | Property description      | 
+| ------------      | -------------                                                             | --------------------      |
+| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Row [`Id`](/docs/3.0/7-api/1-types/4-id/) where change ocurred | 
+| `columnId`        | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Column [`Id`](/docs/3.0/7-api/1-types/4-id/) where change ocurred | 
+| `type`            | `CellTypes<TCell>`                                                        | Extracted cell type of `TCell` e.g. `text`, `group` | 
+| `initialCell`     | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | Old content of cell | 
+| `newCell`         | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | New content of cell | 

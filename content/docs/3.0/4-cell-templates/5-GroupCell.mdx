@@ -10,7 +10,7 @@ metaDescription: "metaDescription"
 
 ## Interface declaration 
 
-```tsx
+```ts
 interface GroupCell extends Cell {
     type: 'group';
     text: string;
@@ -21,14 +21,14 @@ interface GroupCell extends Cell {
 }
 ```
 
-| Property name         | Type              | Property description | 
-| ------------          | -------------     | -------------------- |
-| `type`                | `group`           | Type of cell template | 
-| `text`                | `string`          | Text of cell content | 
-| `isExpanded?`         | `boolean`         | Is node expaned (displays chevron char as opened/closed) | 
-| `hasChildrens?`       | `boolean`         | Determining having children by a node element | 
-| `parentId?`           | [`Id`](link)      | [`Id`](link) of parent node, if undefined node becomes root | 
-| `indent?`             | `number`          | Indent size of cell content | 
+| Property name         | Type                                      | Property description | 
+| ------------          | -------------                             | -------------------- |
+| `type`                | `group`                                   | Type of cell template | 
+| `text`                | `string`                                  | Text of cell content | 
+| `isExpanded?`         | `boolean`                                 | Is node expaned (displays chevron char as opened/closed) | 
+| `hasChildrens?`       | `boolean`                                 | Determining having children by a node element | 
+| `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node, if undefined node becomes root | 
+| `indent?`             | `number`                                  | Indent size of cell content | 
 
 ## `GroupCellTemplate` class implementation
 
