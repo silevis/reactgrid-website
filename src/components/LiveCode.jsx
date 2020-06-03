@@ -74,7 +74,7 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
       language={'tsx'}
       transformCode={snippet => {
         if (typeof window !== 'undefined') {
-          window.ts.transpile(snippet, {
+          window.ts && window.ts.transpile(snippet, {
             noImplicitUseStrict: true,
             target: 'es6',
             jsx: 'react'
