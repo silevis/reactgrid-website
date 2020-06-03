@@ -20,6 +20,10 @@ jobs:
           command: npm install
 
       - run:
+          name: Install fabric ui
+          command: npm i office-ui-fabric-react@latest
+
+      - run:
           name: Write Azure DevOps NPM Token to ~/.npmrc
           command:
             printf "registry=https://pkgs.dev.azure.com/Silevis/ReactGrid/_packaging/ReactGrid-artifacts-feed/npm/registry/\n
