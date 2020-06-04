@@ -33,6 +33,28 @@ export const samplesData = [
         component: 'DatagridSample'
     },
     {
+        title: 'Budget planner',
+        icon: 'fas fa-search-dollar fa-3x',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    `Enabled most of core features of ReactGrid`,
+                    `Additional actions in context menu (removing rows or columns)`,
+                ]
+            },
+            {
+                header: `Applied core features:`,
+                content: [
+                    `todo`,
+                ]
+            }
+        ],
+        className: 'datagrid-sample',
+        component: 'BudgetPlannerSample'
+    },
+    {
         title: 'Frozens',
         icon: 'far fa-lightbulb fa-3x',
         enabled: false,

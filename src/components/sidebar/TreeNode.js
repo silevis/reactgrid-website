@@ -39,7 +39,7 @@ const TreeNode = ({ className = '', setCollapsed, collapsed, url, lvl, title, pr
             <h4 className="mb-0">
               <span className={calculatedTitleClassName} style={{ fontSize: '0.75em' }}>
                 {title}
-                {proMark && <i class="fas fa-tachometer-alt pl-2"></i>}
+                {proMark && <i className="fas fa-tachometer-alt pl-2"></i>}
               </span>
             </h4>
           </Link>
