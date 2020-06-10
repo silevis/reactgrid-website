@@ -21,11 +21,10 @@ interface ReactGridProps {
     readonly stickyBottomRows?: number;
     readonly stickyLeftColumns?: number;
     readonly stickyRightColumns?: number;
-    readonly disableFillHandle?: boolean;
-    readonly disableRangeSelection?: boolean;
+    readonly enableFillHandle?: boolean;
+    readonly enableRangeSelection?: boolean;
     readonly enableRowSelection?: boolean;
     readonly enableColumnSelection?: boolean;
-    readonly disableFloatingCellEditor?: boolean;
 
     readonly onCellsChanged?: (cellChanges: CellChange[]) => void;
     readonly onFocusLocationChanging?: (location: CellLocation) => boolean;
@@ -53,11 +52,10 @@ Name                            | Type                                          
 `stickyBottomRows?`             | `number`                                                          | Amount of rows which are frozen on the bottom |
 `stickyLeftColumns?`            | `number`                                                          | Amount of columns which are frozen on the left side |
 `stickyRightColumns?`           | `number`                                                          | Amount of columns which are frozen on the right side |
-`disableFillHandle?`            | `boolean`                                                         | Set `true` to disable cell fill feature (defaultly `false`) |
-`disableRangeSelection?`        | `boolean`                                                         | Set `true` to disable selection feature (defaultly `false`) |
+`enableFillHandle?`             | `boolean`                                                         | Set `true` to enable cell fill feature (defaultly `false`) |
+`enableRangeSelection?`         | `boolean`                                                         | Set `true` to enable selection feature (defaultly `false`) |
 `enableRowSelection?`           | `boolean`                                                         | Set `true` to enable row selection feature (defaultly `false`) |
 `enableColumnSelection?`        | `boolean`                                                         | Set `true` to enable column selection feature (defaultly `false`) |
-`disableFloatingCellEditor?`    | `boolean`                                                         | Set `true` to disable fixed position of cell editor (defaultly `false`) |
 
 ## Callbacks
 

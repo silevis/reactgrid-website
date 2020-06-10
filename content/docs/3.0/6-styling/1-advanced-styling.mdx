@@ -7,8 +7,15 @@ metaDescription: "metaDescription"
 
 ReactGrid let you to style all key components using Sass variables. 
 
-To override default styles of ReactGrid you have to assign new values ([available variables](/docs/3.0/6-styling/2-sass-variables/)) and then import all 
-necessary `.scss` files. If variable is not passed before imported `core.scss` it will be not modified.
+Before you use `.scss` files you have to install `node-sass` package:
+
+```shell
+npm install node-sass
+```
+
+To override default styles of ReactGrid you have to assign new values 
+([available variables](/docs/3.0/6-styling/2-sass-variables/)) and then import all  necessary `.scss` files. 
+If variable is not passed before imported `core.scss` it will be not modified.
 
 Here's an example how to add custom focus style on your grid will have default value.
 
@@ -16,12 +23,18 @@ Here's an example how to add custom focus style on your grid will have default v
 // Your custom color
 $primary-color: #3579f8;
 
-@import '@silevis/reactgrid/lib/assets/core.scss';
+@import '@silevis/reactgrid/styles.scss';
 ```
 
 See full styling example below:
 
-### TODO Add example
+<iframe
+    src="https://codesandbox.io/embed/reactgrid-getting-started-buwuw?fontsize=14&hidenavigation=1&theme=dark"
+    style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+    title="reactgrid-custom-styling"
+    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>
 
 If you use multiple grids on the same page, make sure your grid styles are 'local'.
 
@@ -29,12 +42,12 @@ If you use multiple grids on the same page, make sure your grid styles are 'loca
 // Independent ReactGrid classess
 #reactgrid-red {
     $primary-color: red;
-    @import '@silevis/reactgrid/lib/assets/core.scss';
+    @import '@silevis/reactgrid/styles.scss';
 }
 
 #reactgrid-blue {
     $primary-color: blue;
-    @import '@silevis/reactgrid/lib/assets/core.scss';
+    @import '@silevis/reactgrid/styles.scss';
 }
 ```
 
