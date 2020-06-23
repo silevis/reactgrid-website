@@ -2,14 +2,14 @@ module.exports = {
   siteMetadata: {
     title: `ReactGrid`,
     author: `Silevis Software`,
-    description: `Advanced spreadsheet for React developers`,
+    description: `Spreadsheet experience for your React app`,
     siteUrl: `http://reactgrid.com`,
     pages: [
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
-      { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
-      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
-      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
-      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: true },
+      { id: 'features', title: `Features`, description: ``, route: `/features`, active: false },
+      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: false },
+      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: false },
+      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],
     footerNav: [
@@ -28,9 +28,9 @@ module.exports = {
       "/Introduction",
     ],
     social: [
+      { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm' },
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
-      { title: `npm`, description: `Check our npm repo`, url: `https://www.npmjs.com/org/silevis`, fontAwesomeIcon: 'fab fa-npm' },
     ],
   },
   plugins: [

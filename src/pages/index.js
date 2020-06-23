@@ -2,14 +2,14 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 import {
   Container,
   Row,
   Col,
   Button
 } from "reactstrap";
-import demoGIF from "../assets/img/demo.gif";
+// import demoGIF from "../assets/img/demo.gif";
+import img from "../assets/img/img.png";
 
 
 class Index extends React.Component {
@@ -21,74 +21,58 @@ class Index extends React.Component {
   }
   render() {
     const { data } = this.props
-    const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
-    const docsVersion = docsVersions.find(version => version.active);;
-    const demoPage = pages.find(page => page.id === 'examples')
+    const { title, description, pages, social } = data.site.siteMetadata;
+    // const demoPage = pages.find(page => page.id === 'examples');
+    // const docsVersion = docsVersions.find(version => version.active);
     // const featuresPage = pages.find(page => page.id === 'features')
-    const docsPage = pages.find(page => page.id === 'docs')
-    const githubSocial = social.find(social => social.title === 'Github')
+    // const docsPage = pages.find(page => page.id === 'docs');
+    // const usps = data.allUspsYaml.edges;
+    const npmSocial = social.find(social => social.title === 'npm');
 
-    const usps = data.allUspsYaml.edges;
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
-          <div className="">
+          <div>
             <div className="space"></div>
-            <Container>
+            <div className=" space-50"></div>
+            <Container className="mb-md-5 pb-5">
               <Row>
-                <Col className="mr-auto text-left align-items-center" md="12" lg="5" >
+                <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
                   <h1 className="title display-1 mb-3">
-                    <span className="">Build <br /></span><span className="text-success">WOW!</span>-tables
+                    ReactGrid
                   </h1>
-                  <h3 className="title">Create highly customizable spreadsheet-like grids</h3>
-                  <br />
-                  <div className="buttons">
-                    <Button className="mr-3 px-3 " color="warning" tag={Link} to={demoPage.route} size="lg">
-                      Check examples {' '}<i className="tim-icons icon-double-right" />
-                    </Button>
-                  </div>
+                  <h2 className="display-3 font-weight-light">Spreadsheet experience<br />for your React app</h2>
                 </Col>
-                <Col className="ml-auto mt-5 d-flex align-items-center" lg="7" md="12">
-                  <div className="iframe-container w-100">
-                    <img alt="Demo animation" src={demoGIF} />
+                <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
+                  <div>
+                    <img alt="Cell graphics" src={img} style={{ maxWidth: '350px' }} />
                   </div>
                 </Col>
               </Row>
             </Container>
-            <div className="space"></div>
           </div>
         </div>
         <div>
           <Container>
             <Row className="align-items-center">
               <Col className="pb-5">
-                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
-              </Col>
-            </Row>
-            <Row className="align-items-center">
-              <Col>
-                <Row>
-                  {usps.map(item => <USP key={item.node.number} {...item.node} />)}
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        <div className="section">
-          <Container>
-            <Row>
-              <Col className="ml-auto mr-auto text-center mt-4" md="10">
-                <h2 className="title">Curious yet?</h2>
-                <h4 className="description mb-5">
-                  Dive in setup tutorial right now and develop your first ReactGrid application!
-                </h4>
-                <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
-                  Get started{' '}<i className="tim-icons icon-double-right" />
-                </Button>
-                <a className="btn btn-lg mx-2 btn-success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
-                  View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`} />
-                </a>
+                <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
+                <p className="em-xxs font-weight-light">
+                  ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
+                  Rather than other data grids it does not build the table based on the records and attributes but gives
+                  a reactive grid that has well‑known spreadsheet user experience on all devices.
+                  <br /><br />
+                  While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
+                </p>
+                <div className="buttons">
+                  <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="warning"
+                    tag={Link} to={npmSocial.url} target="_blank">
+                    <div className="d-flex align-items-center">
+                      <span className="em-xs"><i class="fab fa-github-square pr-3"></i></span> get The MIT
+                    </div>
+                  </Button>
+                </div>
               </Col>
             </Row>
           </Container>
@@ -98,9 +82,9 @@ class Index extends React.Component {
   }
 }
 
-export default Index
+export default Index;
 
-const USP = ({ number, header, description, features, graphics }) => {
+/* const USP = ({ number, header, description, features, graphics }) => {
   return (
     <Col md="12" className="py-md-5">
       <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center">
@@ -122,7 +106,7 @@ const USP = ({ number, header, description, features, graphics }) => {
       <hr className="line-primary mx-auto d-md-none" />
     </Col>
   )
-}
+} */
 
 export const pageQuery = graphql`
   query {
