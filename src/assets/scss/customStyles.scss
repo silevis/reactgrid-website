@@ -174,7 +174,7 @@
     $shadow-color:                      #11185e;
     $cell-editor-bg-color:              #ffffff;
 
-    @import '@silevis/reactgrid/lib/assets/core.scss';
+    @import '@silevis/reactgrid/styles.scss';
     
     // TODO FIX
     .rg-content {
@@ -253,7 +253,7 @@ span.anchor {
     $shadow-color:                      #11185e;
     $cell-editor-bg-color:              #ffffff;
 
-    @import '@silevis/reactgrid/lib/assets/core.scss';
+    @import '@silevis/reactgrid/styles.scss';
 
     :not(pre) > code[class*="language-text"] {
         padding: 0.2em 0.4em;

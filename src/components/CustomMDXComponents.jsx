@@ -1,5 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import React from 'react';
+import { Link } from "gatsby";
 import {
   Table,
   Alert,
@@ -65,6 +66,11 @@ export default function CustomMDXComponents({ children }) {
         table: props => <div style={{ overflowX: 'auto' }}><Table {...props}>{props.children}</Table></div>,
         th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
         li: props => <li {...props}><p>{props.children}</p></li>,
+        a: props => (
+          <Link {...props} to={props.href} className={props.className}>
+            {props.children}
+          </Link>
+        ),
       }}
     >
       {children}
