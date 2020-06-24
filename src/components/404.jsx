@@ -13,7 +13,7 @@ class ErrorPage extends React.Component {
         <div className="page-header page-header-compact error-page header-filter">
           <div
             className="page-header-image"
-            style={{ backgroundImage: "url(" + bg + ")" }}
+            style={{ backgroundImage: `url(${bg})` }}
           />
           <Container>
             <Row>

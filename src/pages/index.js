@@ -96,16 +96,16 @@ class Index extends React.Component {
                   </h4>
                   <ul className="pb-4">
                     <li>
-                      <h4 className="mb-1"><a href={'https://www.ag-grid.com/'} target="_blank">Ag-grid</a></h4>
+                      <h4 className="mb-1"><a href={'https://www.ag-grid.com/'} target="_blank" rel="noreferrer">Ag-grid</a></h4>
                     </li>
                     <li>
-                      <h4 className="mb-1"><a href={'https://handsontable.com/'} target="_blank">Handsontable</a></h4>
+                      <h4 className="mb-1"><a href={'https://handsontable.com/'} target="_blank" rel="noreferrer">Handsontable</a></h4>
                     </li>
                     <li>
-                      <h4 className="mb-1"><a href={'https://js.devexpress.com/'} target="_blank">DevExtreme DataGrid</a></h4>
+                      <h4 className="mb-1"><a href={'https://js.devexpress.com/'} target="_blank" rel="noreferrer">DevExtreme DataGrid</a></h4>
                     </li>
                     <li>
-                      <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank">Telerik Kendo UI DataTable</a></h4>
+                      <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank" rel="noreferrer">Telerik Kendo UI DataTable</a></h4>
                     </li>
                   </ul>
                 </li>
@@ -113,7 +113,7 @@ class Index extends React.Component {
                   <h3 className="font-weight-bold mb-1">Spreadsheet with formulas</h3>
                   <h4>
                     Do you need to display a fully functional spreadsheet in the browser?
-                    Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank">
+                    Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
                       Telerik Kendo UI Spreadsheet</a> which has a toolbar, coordinates and supports formulas.
                   </h4>
                 </li>
