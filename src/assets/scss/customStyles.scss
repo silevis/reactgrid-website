@@ -1,10 +1,52 @@
+@import "customBLKStyling";
+
 html {
-    background-color: #0f102c !important;
+    background-color: $background-gray;
+}
+
+header {
+    #main-navbar {
+        box-shadow: 0px 8px 10px $background-gray;
+    }
+
+    #navbar-collapser.show, #navbar-collapser.collapsing{
+        background-color: $background-light;
+        box-shadow: 0px 8px 10px darken($background-gray,15%) ;
+    }
+}
+
+main {
+
+}
+
+.icon-color-facebook {
+    color: $color-facebook;
+}
+
+.icon-color-github {
+    color: $color-github;
+}
+
+.icon-color-npm {
+    color: $color-npm;
+}
+
+.cookie-container {
+    .cookie-button {
+        color: $background-light !important;
+        background-color: $primary;
+    }
 }
 
 .footer {
-    border-bottom: 2px solid #1d8cf8;
+    border-top: 0px !important;
 }
+
+.main {
+
+}
+
+
 
 .page-header-compact {
     min-height: 500px;
@@ -18,6 +60,7 @@ html {
 
 .layout-main-wrapper {
     min-height: 100px;
+    background-color: $background-light;
 }
 
 .font-weight-md-bold {

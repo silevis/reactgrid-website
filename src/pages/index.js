@@ -33,50 +33,48 @@ class Index extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
-          <div>
-            <div className="space"></div>
-            <div className=" space-50"></div>
-            <Container className="mb-md-5 pb-5">
-              <Row>
-                <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
-                  <h1 className="title display-1 mb-3">
-                    ReactGrid
+          <div className="space"></div>
+          <div className=" space-50"></div>
+          <Container className="mb-md-5 pb-5">
+            <Row>
+              <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
+                <h1 className="title display-1 mb-5 text-primary">
+                  Spreadsheet experience for your React app.
                   </h1>
-                  <h2 className="display-3 font-weight-light">Spreadsheet experience<br />for your React app</h2>
-                </Col>
-                <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
-                  <div>
-                    <img alt="Cell graphics" src={img} style={{ maxWidth: '350px' }} />
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-          </div>
-        </div>
-        <div>
-          <Container>
-            <Row className="align-items-center">
-              <Col className="pb-5">
-                <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
-                <p className="em-xxs font-weight-light">
-                  ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
-                  Rather than other data grids it does not build the table based on the records and attributes but gives
-                  a reactive grid that has well‑known spreadsheet user experience on all devices.
-                  <br /><br />
-                  While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
-                </p>
-                <div className="buttons">
-                  <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="warning"
-                    tag={Link} to={npmSocial.url} target="_blank">
-                    <div className="d-flex align-items-center">
-                      <span className="em-xs"><i class="fab fa-github-square pr-3"></i></span> get The MIT
-                    </div>
-                  </Button>
+                <h2 className="display-4 font-weight-light ">
+                  ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
+                  </h2>
+              </Col>
+              <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
+                <div>
+                  <img alt="Cell graphics" src={img} style={{ maxWidth: '350px' }} />
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
+        <Container>
+          <Row className="align-items-center">
+            <Col className="pb-5">
+              <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
+              <p className="em-xxs font-weight-light">
+                ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
+                Rather than other data grids it does not build the table based on the records and attributes but gives
+                a reactive grid that has well‑known spreadsheet user experience on all devices.
+                  <br /><br />
+                While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
+                </p>
+              <div className="buttons">
+                <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="primary"
+                  tag={Link} to={npmSocial.url} target="_blank">
+                  <div className="d-flex align-items-center">
+                    <span className="em-xs"><i class="fab fa-github-square pr-3"></i></span> get The MIT
+                    </div>
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </Layout>
     )
   }

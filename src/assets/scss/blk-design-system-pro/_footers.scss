@@ -7,7 +7,7 @@
     }
 
     &.footer-simple{
-        background: $transparent-bg;
+        background: $background-gray;
     }
 
     nav{
@@ -82,10 +82,10 @@
             display: inline-block;
 
             a{
-                color: inherit;
+                color: $opacity-8;
                 padding: 13px $padding-base-vertical;
-                font-size: $font-size-sm;
-                text-transform: uppercase;
+                // font-size: $font-size-sm;
+                // text-transform: uppercase;
                 text-decoration: none;
 
                 &:hover{
