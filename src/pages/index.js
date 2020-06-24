@@ -41,9 +41,9 @@ class Index extends React.Component {
                 <h1 className="title display-1 mb-5 text-primary">
                   Spreadsheet experience for your React app.
                   </h1>
-                <h2 className="display-4 font-weight-light ">
+                <p className="em-xxs font-weight-light">
                   ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
-                  </h2>
+                </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <div>
@@ -56,8 +56,7 @@ class Index extends React.Component {
         <Container>
           <Row className="align-items-center">
             <Col className="pb-5">
-              <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
-              
+              {/* <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
               <p className="em-xxs font-weight-light">
                 ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
                 Rather than other data grids it does not build the table based on the records and attributes but gives
@@ -65,7 +64,60 @@ class Index extends React.Component {
                   <br /><br />
                 While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
                 </p>
-
+              <hr className="line-primary ml-auto" /> */}
+              <h1 className="title font-weight-normal pb-2">Why is ReactGrid unique?</h1>
+              <ul className="pl-0">
+                <li>
+                  <h3 className="font-weight-bold mb-1">Reactive</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is written purely in React with reactivity in mind. Rendering happens based on state changes
+                  </h4>
+                </li>
+                <li>
+                  <h3 className="font-weight-bold mb-1">Place any cell anywhere</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is fully customizable and extensible. You can literally place any cell type anywhere in the grid
+                  </h4>
+                </li>
+                <li>
+                  <h3 className="font-weight-bold mb-1">Optimized for touch devices</h3>
+                  <h4 className="pb-3">
+                    ReactGrid gives the same experience no matter if you work on desktop or mobile devices
+                  </h4>
+                </li>
+              </ul>
+              <hr className="line-primary ml-auto" />
+              <h1 className="title font-weight-normal pb-2">ReactGrid is NOT</h1>
+              <ul className="pl-0">
+                <li>
+                  <h3 className="font-weight-bold mb-1">Record-based data table</h3>
+                  <h4>
+                    Looking for a data grid with Sorting, Filtering, Grouping and Spreadsheet-like edit modes?<br /> Check out these:
+                  </h4>
+                  <ul className="pb-4">
+                    <li>
+                      <h4 className="mb-1"><a href={'https://www.ag-grid.com/'} target="_blank">Ag-grid</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://handsontable.com/'} target="_blank">Handsontable</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://js.devexpress.com/'} target="_blank">DevExtreme DataGrid</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank">Telerik Kendo UI DataTable</a></h4>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h3 className="font-weight-bold mb-1">Spreadsheet with formulas</h3>
+                  <h4>
+                    Do you need to display a fully functional spreadsheet in the browser?
+                    Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank">
+                      Telerik Kendo UI Spreadsheet</a> which has a toolbar, coordinates and supports formulas.
+                  </h4>
+                </li>
+              </ul>
 
               <div className="buttons">
                 <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="primary"

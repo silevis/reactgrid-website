@@ -41,7 +41,7 @@ class MainNavbar extends React.Component {
                   </Col>
                   <Col className="collapse-close" xs="2">
                     <button className="navbar-toggler text-danger w-100 h-100" id="navigation">
-                      <i class="fas fa-times"></i>
+                      <i className="fas fa-times"></i>
                     </button>
                   </Col>
                 </Row>

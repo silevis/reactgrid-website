@@ -1,5 +1,6 @@
 import React from "react";
-import FooterOnlyLinks from "../components/FooterOnlyLinks"
+import FooterOnlyLinks from "../components/FooterOnlyLinks";
+import { Link } from "gatsby";
 import {
   Button,
   Container,
@@ -53,7 +54,11 @@ class Footer extends React.Component {
             </Row>
             <Row className="py-3 justify-content-between justify-content-between align-items-center">
               <Col xs="12" sm="4">
-                <h3 className="font-weight-bold mb-0 text-center text-sm-left text-primary" style={{ fontSize: '1.75rem' }}>{title}</h3>
+                <h3 className="font-weight-bold mb-0 text-center text-sm-left text-primary" style={{ fontSize: '1.75rem' }}>
+                  <Link to='/'>
+                    <span className="font-weight-bold">{title}</span>
+                  </Link>
+                </h3>
               </Col>
               <Col xs="12" sm="8" className="d-flex justify-content-center justify-content-sm-end">
                 <span className="text-center text-sm-right">
@@ -82,8 +87,10 @@ const SocialLink = ({ fontAwesomeIcon, description, url, id, title }) => {
   return (
     <li className="w-100">
       <div style={{ maxWidth: '160px' }}>
-        <Button className="btn-simple d-flex align-items-center py-1 text-uppercase" id={tooltipId} href={url} target="_blank">
-          <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}><i className={fontAwesomeIcon} /></span>
+        <Button className="btn-simple d-flex align-items-center py-1 text-uppercase mb-0" id={tooltipId} href={url} target="_blank">
+          <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}>
+            <i className={fontAwesomeIcon} />
+          </span>
           <span>{' '}{title}</span>
         </Button>
         <UncontrolledTooltip delay={0} target={tooltipId}>{description}</UncontrolledTooltip>
