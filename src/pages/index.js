@@ -57,6 +57,7 @@ class Index extends React.Component {
           <Row className="align-items-center">
             <Col className="pb-5">
               <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
+              
               <p className="em-xxs font-weight-light">
                 ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
                 Rather than other data grids it does not build the table based on the records and attributes but gives
@@ -64,6 +65,8 @@ class Index extends React.Component {
                   <br /><br />
                 While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
                 </p>
+
+
               <div className="buttons">
                 <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="primary"
                   tag={Link} to={npmSocial.url} target="_blank">

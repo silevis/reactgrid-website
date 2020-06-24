@@ -7,9 +7,6 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  CardHeader,
-  CardBody,
 } from "reactstrap";
 
 
@@ -31,28 +28,20 @@ class PrivacyPolicy extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
+          <div className="space"></div>
           <div className="section">
             <Container>
               <Row>
                 <Col className="ml-auto mr-auto" md="10">
-                  <Card>
-                    <CardHeader className="text-center pt-5" data-color-icon="warning">
-                      <Row className="justify-content-between">
-                        <Col>
-                          <h1 className="h1 px-3">Privacy Policy</h1>
-                          <h3 className="h3 px-5 text-muted">Effective date: 16 December 2019</h3>
-                        </Col>
-                      </Row>
-                      <br />
-                    </CardHeader>
-                    <CardBody>
-                      <Row>
-                        <Col xs="11" className="mx-auto">
-                          <PrivacyPolicyContent />
-                        </Col>
-                      </Row>
-                    </CardBody>
-                  </Card>
+                  <Row className="justify-content-between">
+                    <Col>
+                      <h1 className="h1 px-0">Privacy Policy</h1>
+                      <h3 className="h3 px-0 text-muted">Effective date: 16 December 2019</h3>
+                    </Col>
+                    <Col xs="12" className="mx-auto">
+                      <PrivacyPolicyContent />
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
             </Container>
@@ -69,7 +58,7 @@ const PrivacyPolicyContent = () => {
       <p className="pb-3">
         Your privacy is important to us. It is Silevis Software sp. z. o.o.'s policy to respect your privacy
          regarding any information we may collect from you across our website,
-         <a href="http://reactgrid.com">reactgrid.com</a>, and other sites we own and operate.
+         {' '}<a href="http://reactgrid.com">reactgrid.com</a>, and other sites we own and operate.
       </p>
       <p className="pb-3">
         We only ask for personal information when we truly need it to provide a service to you. We collect
