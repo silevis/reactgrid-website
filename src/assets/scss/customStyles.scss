@@ -46,8 +46,6 @@ main {
 
 }
 
-
-
 .page-header-compact {
     min-height: 500px;
     max-height: 400px;
@@ -102,6 +100,7 @@ main {
             transform: unset;
             .modal-content {
                 height: 100vh;
+                background-color: $background-gray;
                 .modal-body {
                     .live-editor-row {
                         height: calc(100% - 50px) !important;
@@ -201,7 +200,6 @@ main {
 .resize-column-sample,
 .frozens-sample,
 .column-reorder-sample {
-    color: rgba(255, 255, 255, 0.81);
 
     // dropdown number
     .rg-dropdownNumber-cell {
@@ -216,48 +214,14 @@ main {
         @import '@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 
-    // reactgrid colors
-    $primary-color:                     rgb(0, 242, 195);
-    $bg-color:                          #21836f;
-    $shadow-color:                      #00f2c3;
-    $resize-line-color:                 rgba(62, 245, 208, 0.718);
-    $row-line-color:                    rgba(255, 255, 255, 0.3);
-    $col-line-color:                    rgba(255, 255, 255, 0.3);
-    $fillhandle-action-border-color:    rgb(0, 239, 191);
-    $cell-editor-bg-color:              white;
-    $sticky-bg-color:                   #040835;
-    $shadow-color:                      #11185e;
-    $cell-editor-bg-color:              #ffffff;
-
-    @import '@silevis/reactgrid/styles.scss';
-    
     // TODO FIX
     .rg-content {
         $base-decrease: gold !important; // overrgind variables not working
         @import '@silevis/reactgrid-samples/dist/cell-templates/cssClassCellTemplate/css-class-style.scss';
     }
 
-    // SCROLLBARS
     .rg-viewport {
         overflow: scroll;
-        scrollbar-color: #33c9ab rgba(255, 255, 255, 0.3);
-    }
-    ::-webkit-scrollbar {
-        width: 1em;
-        height: 1em;
-        &-track {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 7px;
-            // padding: 2px;
-        }
-        &-thumb {
-            background: rgba(68, 255, 218, 0.522);
-            transition: background-color 0.5s ease;
-            border-radius: 7px;
-            margin: 2px;
-            &:hover {background: rgba(68, 255, 218, 0.432) }
-        }
-        &-corner { background: transparent }
     }
 
 }
@@ -289,30 +253,53 @@ span.anchor {
     }
 
     a[href='link'] .language-text {
-        // color: rgb(0, 166, 133);
-        // text-decoration: underline;
+        color: rgb(0, 166, 133);
+        text-decoration: underline;
     }
+
     .reactgrid {
-        color: rgba(255, 255, 255, 0.81);
+        // color: rgba(255, 255, 255, 0.81);
     }
     // reactgrid colors
-    $primary-color:                     rgb(0, 242, 195);
-    $bg-color:                          #21836f;
-    $shadow-color:                      #00f2c3;
-    $resize-line-color:                 rgba(62, 245, 208, 0.718);
-    $row-line-color:                    rgba(255, 255, 255, 0.3);
-    $col-line-color:                    rgba(255, 255, 255, 0.3);
-    $fillhandle-action-border-color:    rgb(0, 239, 191);
-    $cell-editor-bg-color:              white;
-    $sticky-bg-color:                   #040835;
-    $shadow-color:                      #11185e;
-    $cell-editor-bg-color:              #ffffff;
+    // $primary-color:                     rgb(0, 242, 195);
+    // $bg-color:                          #21836f;
+    // $shadow-color:                      #00f2c3;
+    // $resize-line-color:                 rgba(62, 245, 208, 0.718);
+    // $row-line-color:                    rgba(255, 255, 255, 0.3);
+    // $col-line-color:                    rgba(255, 255, 255, 0.3);
+    // $fillhandle-action-border-color:    rgb(0, 239, 191);
+    // $cell-editor-bg-color:              white;
+    // $sticky-bg-color:                   #040835;
+    // $shadow-color:                      #11185e;
+    // $cell-editor-bg-color:              #ffffff;
 
     @import '@silevis/reactgrid/styles.scss';
 
     :not(pre) > code[class*="language-text"] {
         padding: 0.2em 0.4em;
-        background: rgba(52, 70, 117, 0.78);
+        background: $primary-light;
+    }
+
+    pre[class*="language-"] {
+        background: $primary-light;
+    }
+    
+    a ~ code[class*="language-"] {
+        // border: 2px solid red;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        padding-left: 0px;
+    }
+
+     code[class*="language-"] ~ a code {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding-right: 0px;
+    }
+
+    .live-code-container {
+        border-radius: 5px;
+        background-color: $primary-light;
     }
 
     .firstLevel > ul {
@@ -320,16 +307,16 @@ span.anchor {
     }
 
     .nav-docs-item.active {
-        color: rgb(0, 166, 133);
+        color: $primary;
         & a h4,
         & a h4 .font-weight-md-light {
-            color: rgb(0, 166, 133);
+            color: $primary;
             font-weight: 500 !important;
         }
     }
 
     a code:hover {
-        color: #00f2c3;
+        color: $primary;
     }
 
     .table {

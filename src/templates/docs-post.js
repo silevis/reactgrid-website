@@ -28,12 +28,10 @@ class DocsPostTemplate extends React.Component {
       document.scrollingElement.scrollTop = 0;
     }
     document.body.classList.add("blog-post");
-    // window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
     document.body.classList.remove("blog-post");
-    // window.removeEventListener("scroll", this.handleScroll);
   }
 
   handleScroll = () => {
@@ -45,17 +43,19 @@ class DocsPostTemplate extends React.Component {
   };
 
   render() {
-    const post = this.props.data.mdx;
-    const posts = this.props.data.allMdx.edges;
-    const location = this.props.location;
-    const { title, description, pages, social, docsVersions, docsPagesOrder } = this.props.data.site.siteMetadata;
-    const slug = this.props.location.pathname.split('/');
+    const { data, location } = this.props;
+    const { mdx, allMdx, site } = data;
+    const post = mdx;
+    const posts = allMdx.edges;
+    const { title, description, pages, social, docsVersions, docsPagesOrder } = site.siteMetadata;
+    const slug = location.pathname.split('/');
     const version = slug[2];
     const docsPage = pages.find(page => page.id === 'docs')
 
     const dropdownItemsList = docsVersions.filter(version => version.active).map(version => {
       return (
-        <DropdownItem active={version === version.desc} key={version.slug} tag={Link} to={`${docsPage.route + version.slug + version.index}/`}>
+        <DropdownItem active={version === version.desc} key={version.slug} tag={Link}
+          to={`${docsPage.route + version.slug + version.index}/`}>
           <h4 className="text-darker mb-0">{version.desc}</h4>
         </DropdownItem>
       );
@@ -72,7 +72,7 @@ class DocsPostTemplate extends React.Component {
             <Row>
               <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
                 <UncontrolledDropdown className="dropdown-version-wrapper">
-                  <DropdownToggle caret size="md" className="btn-success text-nowrap px-3">
+                  <DropdownToggle caret size="md" className="btn-primary text-nowrap px-3">
                     v{version}
                   </DropdownToggle>
                   <DropdownMenu right>
@@ -82,7 +82,7 @@ class DocsPostTemplate extends React.Component {
                 <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb" id="docs-header"><span className="text-success">
+                <h1 className="mb" id="docs-header"><span className="text-primary">
                   {post.frontmatter.metaTitle} {post.frontmatter.proMark && <i class="fas fa-tachometer-alt pl-2"></i>}</span>
                 </h1>
                 <CustomMDXComponents>
@@ -111,9 +111,9 @@ const DocsNavButton = ({ post, title, docsPageRoute, children }) => {
   return (
     <>
       {post &&
-        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="success">
+        <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="primary">
           <p className="">{title}</p>
-          <span className="h4 text-white mb-0">{post.node.frontmatter.title}</span>
+          <span className="h4 text-primary mb-0">{post.node.frontmatter.title}</span>
           {children}
         </Button>
       }

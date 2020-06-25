@@ -186,7 +186,7 @@ By default, the context menu is disabled. You can enable it by providing a handl
 to your ReactGrid using the `onContextMenu` property.
 
 <Alert color="warning">
-	<i className="tim-icons icon-alert-circle-exc pr-2"></i>
+    <i class="fas fa-exclamation-circle pr-2"></i>
 	Context menu is only available in Pro version
 </Alert>
 
@@ -253,50 +253,50 @@ import { ReactGrid, Id,SelectionMode, MenuOption,
 
 ```ts
 const handleContextMenu = (
-    selectedRowIds: Id[],
-    selectedColIds: Id[],
-    selectionMode: SelectionMode,
-    menuOptions: MenuOption[]
+  selectedRowIds: Id[],
+  selectedColIds: Id[],
+  selectionMode: SelectionMode,
+  menuOptions: MenuOption[]
 ): MenuOption[] => {
-    if (selectionMode === "row") {
-        menuOptions = [
-            ...menuOptions,
-            {
-                id: "removeRow",
-                label: "Remove row",
-                handler: () => {
-                    setState({
-                        ...state,
-                        rows: state.rows.filter(row => !selectedRowIds.includes(row.rowId))
-                    });
-                }
-            }
-        ];
-    }
-    if (selectionMode === "column") {
-        menuOptions = [
-            ...menuOptions,
-            {
-                id: "removeColumn",
-                label: "Remove column",
-                handler: () => {
-                    const columns = state.columns.filter(column => !selectedColIds.includes(column.columnId));
-                    const columnsIdxs = state.columns
-                        .map((column, idx) => {
-                            if (!columns.includes(column)) return idx;
-                            return undefined;
-                        })
-                        .filter(idx => idx !== undefined);
-                    const rows = state.rows.map(row => ({
-                        ...row,
-                        cells: row.cells.filter((_, idx) => !columnsIdxs.includes(idx))
-                    }));
-                    setState({ ...state, ...columns, ...rows });
-                }
-            }
-        ];
-    }
-    return menuOptions;
+  if (selectionMode === "row") {
+    menuOptions = [
+      ...menuOptions,
+      {
+        id: "removeRow",
+        label: "Remove row",
+        handler: () => {
+          setState({
+            ...state,
+            rows: state.rows.filter(row => !selectedRowIds.includes(row.rowId))
+          });
+        }
+      }
+    ];
+  }
+  if (selectionMode === "column") {
+    menuOptions = [
+      ...menuOptions,
+      {
+        id: "removeColumn",
+        label: "Remove column",
+        handler: () => {
+          const columns = state.columns.filter(column => !selectedColIds.includes(column.columnId));
+          const columnsIdxs = state.columns
+            .map((column, idx) => {
+              if (!columns.includes(column)) return idx;
+              return undefined;
+            })
+            .filter(idx => idx !== undefined);
+          const rows = state.rows.map(row => ({
+            ...row,
+            cells: row.cells.filter((_, idx) => !columnsIdxs.includes(idx))
+          }));
+          setState({ ...state, ...columns, ...rows });
+        }
+      }
+    ];
+  }
+  return menuOptions;
 };
 ```
 

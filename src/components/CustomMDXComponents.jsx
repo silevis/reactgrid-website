@@ -63,7 +63,7 @@ export default function CustomMDXComponents({ children }) {
             </h6>
           </>
         ),
-        p: props => <p {...props} style={{ paddingBottom: '1em', lineHeight: '2em' }}>{props.children}</p>,
+        p: props => <p {...props} style={{ paddingBottom: '1em', lineHeight: '1.9em' }}>{props.children}</p>,
         table: props => <div style={{ overflowX: 'auto' }}><Table {...props}>{props.children}</Table></div>,
         th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
         li: props => <li {...props}><p>{props.children}</p></li>,
