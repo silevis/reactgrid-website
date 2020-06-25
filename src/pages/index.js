@@ -8,8 +8,8 @@ import {
   Col,
   Button
 } from "reactstrap";
-// import demoGIF from "../assets/img/demo.gif";
-import img from "../assets/img/img.png";
+import SamplePoster from "../assets/img/sample.png";
+import Video from "../assets/video/sample.mp4";
 
 
 class Index extends React.Component {
@@ -20,7 +20,7 @@ class Index extends React.Component {
     document.body.classList.remove("reset-page");
   }
   render() {
-    const { data } = this.props
+    const { data, location } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
@@ -28,9 +28,10 @@ class Index extends React.Component {
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     const npmSocial = social.find(social => social.title === 'npm');
+    const githubSocial = social.find(social => social.title === 'Github');
 
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout location={location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
           <div className="space"></div>
@@ -46,9 +47,9 @@ class Index extends React.Component {
                 </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
-                <div>
-                  <img alt="Cell graphics" src={img} style={{ maxWidth: '350px' }} />
-                </div>
+                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px' }}>
+                  <source src={Video} type="video/mp4" />
+                </video>
               </Col>
             </Row>
           </Container>
@@ -56,41 +57,31 @@ class Index extends React.Component {
         <Container>
           <Row className="align-items-center">
             <Col className="pb-5">
-              {/* <h1 className="title font-weight-normal pb-3">Reactivity makes the difference!</h1>
-              <p className="em-xxs font-weight-light">
-                ReactGrid is a component that is used for displaying data in a spreadsheet‑like way.
-                Rather than other data grids it does not build the table based on the records and attributes but gives
-                a reactive grid that has well‑known spreadsheet user experience on all devices.
-                  <br /><br />
-                While we are working on the final release, you can already use the MIT release to see how truly reactive grid works!
-                </p>
-              <hr className="line-primary ml-auto" /> */}
               <h1 className="title font-weight-normal pb-2">Why is ReactGrid unique?</h1>
-              <ul className="pl-0">
+              <ul className="pl-5">
                 <li>
-                  <h3 className="font-weight-bold mb-1">Reactive</h3>
+                  <h3 className="mb-1">Reactive</h3>
                   <h4 className="pb-3">
                     ReactGrid is written purely in React with reactivity in mind. Rendering happens based on state changes
                   </h4>
                 </li>
                 <li>
-                  <h3 className="font-weight-bold mb-1">Place any cell anywhere</h3>
+                  <h3 className="mb-1">Place any cell anywhere</h3>
                   <h4 className="pb-3">
                     ReactGrid is fully customizable and extensible. You can literally place any cell type anywhere in the grid
                   </h4>
                 </li>
                 <li>
-                  <h3 className="font-weight-bold mb-1">Optimized for touch devices</h3>
+                  <h3 className="mb-1">Optimized for touch devices</h3>
                   <h4 className="pb-3">
                     ReactGrid gives the same experience no matter if you work on desktop or mobile devices
                   </h4>
                 </li>
               </ul>
-              <hr className="line-primary ml-auto" />
               <h1 className="title font-weight-normal pb-2">ReactGrid is NOT</h1>
-              <ul className="pl-0">
+              <ul className="pl-5">
                 <li>
-                  <h3 className="font-weight-bold mb-1">Record-based data table</h3>
+                  <h3 className="mb-1">Record-based data table</h3>
                   <h4>
                     Looking for a data grid with Sorting, Filtering, Grouping and Spreadsheet-like edit modes?<br /> Check out these:
                   </h4>
@@ -110,7 +101,7 @@ class Index extends React.Component {
                   </ul>
                 </li>
                 <li>
-                  <h3 className="font-weight-bold mb-1">Spreadsheet with formulas</h3>
+                  <h3 className="mb-1">Spreadsheet with formulas</h3>
                   <h4>
                     Do you need to display a fully functional spreadsheet in the browser?
                     Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
@@ -119,14 +110,21 @@ class Index extends React.Component {
                 </li>
               </ul>
 
-              <div className="buttons">
-                <Button className="my-5 mr-3 px-3 text-uppercase font-weight-bold d-inline-block" color="primary"
+              <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
+                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
                   tag={Link} to={npmSocial.url} target="_blank">
                   <div className="d-flex align-items-center">
-                    <span className="em-xs"><i class="fab fa-github-square pr-3"></i></span> get The MIT
-                    </div>
+                    <span className="em-xs icon-color-npm "><i class="fab fa-npm pr-3"></i></span> get the mit
+                  </div>
+                </Button>
+                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
+                  tag={Link} to={githubSocial.url} target="_blank">
+                  <div className="d-flex align-items-center">
+                    <span className="em-xs"><i class="fab fa-github pr-3"></i></span>  browse source code
+                  </div>
                 </Button>
               </div>
+              <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
             </Col>
           </Row>
         </Container>

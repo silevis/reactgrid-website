@@ -41,7 +41,8 @@ class Footer extends React.Component {
                     Silevis Software<br />
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
-                    Poland<br />
+                    Poland<br /><br />
+                    <i class="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
                   </address>
                 </p>
               </Col>

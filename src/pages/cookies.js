@@ -12,6 +12,7 @@ import {
   NavLink,
   Button,
 } from "reactstrap";
+import { getId } from '../functions/getId'
 
 
 class Cookies extends React.Component {
@@ -28,6 +29,37 @@ class Cookies extends React.Component {
   render() {
     const { data, location } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
+
+
+    const NavItems = [
+      {
+        title: 'What Are Cookies',
+      },
+      {
+        title: 'How We Use Cookies',
+      },
+      {
+        title: 'Disabling Cookies',
+      },
+      {
+        title: 'The Cookies We Set',
+      },
+      {
+        title: 'Third Party Cookies',
+      },
+      {
+        title: 'More infomations',
+      },
+    ].map(item => {
+      return (
+        <NavItem className="success">
+          <NavLink href={`#${getId(item.title, "-")}`} className="h4 d-flex h-100">
+            <Button className="btn-simple h-100 w-100" color="primary">{item.title}</Button>
+          </NavLink>
+        </NavItem>
+      )
+    });
+
     return (
       <Layout location={location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
@@ -42,36 +74,7 @@ class Cookies extends React.Component {
                       <h1 className="h1 px-3">This is the Cookie Policy for ReactGrid</h1>
                       <h3 className="h3 px-3 mb-0 text-muted">Effective date: 16 December 2019</h3>
                       <Nav justified className="mt-3 px-3 align-items-stretch">
-                        <NavItem className="success">
-                          <NavLink href="#what-are-cookies" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">What Are Cookies</Button>
-                          </NavLink>
-                        </NavItem>
-                        <NavItem>
-                          <NavLink href="#how-we-use-cookies" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">How We Use Cookies</Button>
-                          </NavLink>
-                        </NavItem>
-                        <NavItem>
-                          <NavLink href="#disabling-cookies" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">Disabling Cookies</Button>
-                          </NavLink>
-                        </NavItem>
-                        <NavItem>
-                          <NavLink href="#the-cookies-we-set" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">The Cookies We Set</Button>
-                          </NavLink>
-                        </NavItem>
-                        <NavItem>
-                          <NavLink href="#third-party-cookies" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">Third Party Cookies</Button>
-                          </NavLink>
-                        </NavItem>
-                        <NavItem>
-                          <NavLink href="#more-information" className="h4 d-flex h-100">
-                            <Button className="btn-simple h-100" color="primary">More infomations</Button>
-                          </NavLink>
-                        </NavItem>
+                        {NavItems}
                       </Nav>
                     </Col>
                   </Row>
@@ -192,8 +195,8 @@ class Cookies extends React.Component {
                         <hr className="line-primary ml-auto" />
                       </div>
                       <div className="cookies-policy-topic-wrapper">
-                        <span className="anchor" id="more-information"></span>
-                        <h2 className="h2">More Information</h2>
+                        <span className="anchor" id="more-infomations"></span>
+                        <h2 className="h2">More Informations</h2>
                         <p className="pb-3">Hopefully that has clarified things for you and as was previously mentioned if there is
                           something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case
                           it does interact with one of the features you use on our site.
@@ -204,7 +207,7 @@ class Cookies extends React.Component {
                             </p>
                         <ul className="pl-0">
                           <li>
-                            hello@silevis.com
+                            <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
                           </li>
                         </ul>
                         <hr className="line-primary ml-auto" />
