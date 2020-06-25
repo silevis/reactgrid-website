@@ -6,6 +6,7 @@ import {
   Alert,
 } from 'reactstrap';
 import { LiveCode } from './LiveCode';
+import { getId } from './../functions/getId';
 
 
 export default function CustomMDXComponents({ children }) {
@@ -16,7 +17,7 @@ export default function CustomMDXComponents({ children }) {
         LiveCode,
         h1: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h1 {...props} className="pt-4 mb-2" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.5em' }}>
               {props.children}
             </h1>
@@ -24,7 +25,7 @@ export default function CustomMDXComponents({ children }) {
         ),
         h2: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h2 {...props} className="pt-4 mb-2" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em' }}>
               {props.children}
             </h2>
@@ -32,7 +33,7 @@ export default function CustomMDXComponents({ children }) {
         ),
         h3: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h3 {...props} className="pt-4 mb-2" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em' }}>
               {props.children}
             </h3>
@@ -40,7 +41,7 @@ export default function CustomMDXComponents({ children }) {
         ),
         h4: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h4 {...props} style={{ paddingBottom: '0.3em' }}>
               {props.children}
             </h4>
@@ -48,7 +49,7 @@ export default function CustomMDXComponents({ children }) {
         ),
         h5: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h5 {...props} style={{ paddingBottom: '0.3em' }}>
               {props.children}
             </h5>
@@ -56,7 +57,7 @@ export default function CustomMDXComponents({ children }) {
         ),
         h6: props => (
           <>
-            <span className="anchor" id={props.children && props.children.toString().replace(/ /g, "").toLowerCase()}></span>
+            <span className="anchor" id={getId(props.children)}></span>
             <h6 {...props} style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '0.3em' }}>
               {props.children}
             </h6>

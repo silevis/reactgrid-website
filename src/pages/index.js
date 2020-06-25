@@ -2,14 +2,14 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
 import {
   Container,
   Row,
   Col,
   Button
 } from "reactstrap";
-import demoGIF from "../assets/img/demo.gif";
+import SamplePoster from "../assets/img/sample.png";
+import Video from "../assets/video/sample.mp4";
 
 
 class Index extends React.Component {
@@ -20,87 +20,123 @@ class Index extends React.Component {
     document.body.classList.remove("reset-page");
   }
   render() {
-    const { data } = this.props
-    const { title, description, pages, social, docsVersions } = data.site.siteMetadata;
-    const docsVersion = docsVersions.find(version => version.active);;
-    const demoPage = pages.find(page => page.id === 'examples')
+    const { data, location } = this.props;
+    const { title, description, pages, social } = data.site.siteMetadata;
+    // const demoPage = pages.find(page => page.id === 'examples');
+    // const docsVersion = docsVersions.find(version => version.active);
     // const featuresPage = pages.find(page => page.id === 'features')
-    const docsPage = pages.find(page => page.id === 'docs')
-    const githubSocial = social.find(social => social.title === 'Github')
+    // const docsPage = pages.find(page => page.id === 'docs');
+    // const usps = data.allUspsYaml.edges;
+    const npmSocial = social.find(social => social.title === 'npm');
+    const githubSocial = social.find(social => social.title === 'Github');
 
-    const usps = data.allUspsYaml.edges;
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout location={location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
-          <div className="">
-            <div className="space"></div>
-            <Container>
-              <Row>
-                <Col className="mr-auto text-left align-items-center" md="12" lg="5" >
-                  <h1 className="title display-1 mb-3">
-                    <span className="">Build <br /></span><span className="text-success">WOW!</span>-tables
-                  </h1>
-                  <h3 className="title">Create highly customizable spreadsheet-like grids</h3>
-                  <br />
-                  <div className="buttons">
-                    <Button className="mr-3 px-3 " color="warning" tag={Link} to={demoPage.route} size="lg">
-                      Check examples {' '}<i className="tim-icons icon-double-right" />
-                    </Button>
-                  </div>
-                </Col>
-                <Col className="ml-auto mt-5 d-flex align-items-center" lg="7" md="12">
-                  <div className="iframe-container w-100">
-                    <img alt="Demo animation" src={demoGIF} />
-                  </div>
-                </Col>
-              </Row>
-            </Container>
-            <div className="space"></div>
-          </div>
-        </div>
-        <div>
-          <Container>
-            <Row className="align-items-center">
-              <Col className="pb-5">
-                <h1 className="title text-center">Why is <span className="text-success">ReactGrid</span> unique?</h1>
-              </Col>
-            </Row>
-            <Row className="align-items-center">
-              <Col>
-                <Row>
-                  {usps.map(item => <USP key={item.node.number} {...item.node} />)}
-                </Row>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-        <div className="section">
-          <Container>
+          <div className="space"></div>
+          <div className=" space-50"></div>
+          <Container className="mb-md-5 pb-5">
             <Row>
-              <Col className="ml-auto mr-auto text-center mt-4" md="10">
-                <h2 className="title">Curious yet?</h2>
-                <h4 className="description mb-5">
-                  Dive in setup tutorial right now and develop your first ReactGrid application!
-                </h4>
-                <Button className="mx-2" color="primary" size="lg" tag={Link} to={`${docsPage.route}${docsVersion.slug}${docsVersion.index}/`}>
-                  Get started{' '}<i className="tim-icons icon-double-right" />
-                </Button>
-                <a className="btn btn-lg mx-2 btn-success" size="lg" target="_blank" rel="noopener noreferrer" href={githubSocial.url}>
-                  View Source on Github <i className={`${githubSocial.fontAwesomeIcon} p-0`} />
-                </a>
+              <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
+                <h1 className="title display-1 mb-5 text-primary">
+                  Spreadsheet experience for your React app.
+                  </h1>
+                <p className="em-xxs font-weight-light">
+                  ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
+                </p>
+              </Col>
+              <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
+                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px' }}>
+                  <source src={Video} type="video/mp4" />
+                  <track kind="captions" />
+                </video>
               </Col>
             </Row>
           </Container>
         </div>
+        <Container>
+          <Row className="align-items-center">
+            <Col className="pb-5">
+              <h1 className="title font-weight-normal pb-2">Why is ReactGrid unique?</h1>
+              <ul className="pl-5">
+                <li>
+                  <h3 className="mb-1">Reactive</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is written purely in React with reactivity in mind. Rendering happens based on state changes
+                  </h4>
+                </li>
+                <li>
+                  <h3 className="mb-1">Place any cell anywhere</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is fully customizable and extensible. You can literally place any cell type anywhere in the grid
+                  </h4>
+                </li>
+                <li>
+                  <h3 className="mb-1">Optimized for touch devices</h3>
+                  <h4 className="pb-3">
+                    ReactGrid gives the same experience no matter if you work on desktop or mobile devices
+                  </h4>
+                </li>
+              </ul>
+              <h1 className="title font-weight-normal pb-2">ReactGrid is NOT</h1>
+              <ul className="pl-5">
+                <li>
+                  <h3 className="mb-1">Record-based data table</h3>
+                  <h4>
+                    Looking for a data grid with Sorting, Filtering, Grouping and Spreadsheet-like edit modes?<br /> Check out these:
+                  </h4>
+                  <ul className="pb-4">
+                    <li>
+                      <h4 className="mb-1"><a href={'https://www.ag-grid.com/'} target="_blank" rel="noreferrer">Ag-grid</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://handsontable.com/'} target="_blank" rel="noreferrer">Handsontable</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://js.devexpress.com/'} target="_blank" rel="noreferrer">DevExtreme DataGrid</a></h4>
+                    </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank" rel="noreferrer">Telerik Kendo UI DataTable</a></h4>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h3 className="mb-1">Spreadsheet with formulas</h3>
+                  <h4>
+                    Do you need to display a fully functional spreadsheet in the browser?
+                    Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
+                      Telerik Kendo UI Spreadsheet</a> which has a toolbar, coordinates and supports formulas.
+                  </h4>
+                </li>
+              </ul>
+
+              <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
+                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
+                  tag={Link} to={npmSocial.url} target="_blank">
+                  <div className="d-flex align-items-center">
+                    <span className="em-xs icon-color-npm "><i class="fab fa-npm pr-3"></i></span> get the mit
+                  </div>
+                </Button>
+                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
+                  tag={Link} to={githubSocial.url} target="_blank">
+                  <div className="d-flex align-items-center">
+                    <span className="em-xs"><i class="fab fa-github pr-3"></i></span>  browse source code
+                  </div>
+                </Button>
+              </div>
+              <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
+            </Col>
+          </Row>
+        </Container>
       </Layout>
     )
   }
 }
 
-export default Index
+export default Index;
 
-const USP = ({ number, header, description, features, graphics }) => {
+/* const USP = ({ number, header, description, features, graphics }) => {
   return (
     <Col md="12" className="py-md-5">
       <Row className="d-flex flex-column flex-md-row text-center text-md-left align-items-center">
@@ -122,7 +158,7 @@ const USP = ({ number, header, description, features, graphics }) => {
       <hr className="line-primary mx-auto d-md-none" />
     </Col>
   )
-}
+} */
 
 export const pageQuery = graphql`
   query {

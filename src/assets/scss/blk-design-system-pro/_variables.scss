@@ -20,7 +20,7 @@ $gray-400: #ced4da !default;
 $gray-500: #adb5bd !default;
 $gray-600: #6c757d !default;   // Line footer color
 $gray-700: #525f7f !default;   // Line p color
-$gray-800: #32325d !default;   // Line heading color
+$gray-800: rgb(38, 57, 75) !default;   // Line heading color
 $gray-900: #212529 !default;
 $link-disabled:              #666666 !default;
 $transparent-bg:             transparent !default;
@@ -58,19 +58,19 @@ $line-height-sm:              1.5 !default;
 $line-height:                 1.35em         !default;
 
 
-$opacity-gray-3:             rgba(222,222,222, .3) !default;
-$opacity-gray-5:             rgba(222,222,222, .5) !default;
-$opacity-gray-8:             rgba(222,222,222, .8) !default;
+$opacity-gray-3:             rgba(26, 25, 25, .3) !default;
+$opacity-gray-5:             rgba(26, 25, 25, .5) !default;
+$opacity-gray-8:             rgba(26, 25, 25, .8) !default;
 
 
 $opacity-5:                  rgba(255,255,255, .5) !default;
 $opacity-6:                  rgba(255,255,255, .6) !default;
-$opacity-8:                  rgba(255,255,255, .8) !default;
+$opacity-8:                  rgba(0, 0, 0, 0.8) !default;
 
 
 
-$opacity-1:                  rgba(255,255,255, .1) !default;
-$opacity-2:                  rgba(255,255,255, .2) !default;
+$opacity-1:                  rgba(0, 0, 0, 0.1) !default;
+$opacity-2:                  rgba(0, 0, 0, 0.2) !default;
 
 
 // end beniamin
@@ -97,7 +97,7 @@ $colors: map-merge((
 $default-opacity:      rgba(182, 182, 182, .6) !default;
 $orange-color:               #f96332 !default;
 
-$default:       #344675 !default;
+$default:       #E5E5E5 !default;
 $primary:       #e14eca !default;
 $secondary:     #f4f5f7 !default;
 $success:       #00f2c3 !default;
@@ -234,8 +234,8 @@ $love-color: $red !default;
 
 // Body
 
-$body-bg: $background-black !default;
-$body-color: $gray-700 !default;
+$body-bg: $background-gray !default;
+$body-color: $gray-900 !default;
 
 
 // Sections
