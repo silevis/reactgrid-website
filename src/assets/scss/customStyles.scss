@@ -31,6 +31,10 @@ main {
     color: $color-npm;
 }
 
+.icon-color-gitter {
+    color: $color-gitter;
+}
+
 .cookie-container {
     .cookie-button {
         color: $background-light !important;
@@ -60,7 +64,6 @@ main {
     min-height: 100px;
     background-color: $background-light;
 }
-
 
 .overflow-y-auto {
     overflow-y: auto;
@@ -93,12 +96,13 @@ main {
 
 .gatsby-highlight {
     padding-bottom: 1em;
+    font-size: 0.9em;
 }
 
 .gatsby-highlight-code-line {
     display: block;
     width: 100%;
-    background-color: rgba(255,255,255, 0.2);
+    background-color: darken($primary-light, 10%);
 }
 
 .example-tabs-content {
@@ -275,8 +279,6 @@ span.anchor {
             font-weight: 500 !important;
         }
     }
-
-    
 
     .table {
         :not(pre) > code[class*="language-"],

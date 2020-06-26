@@ -9,7 +9,7 @@ Row interface contains two necessary properties: `rowId` and `cells`. It constai
 `cells` field allow you to declare array of objects thats extends [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]` base interface .
 
 
-## Example 
+#### Usage 
 
 ```ts
 
@@ -45,7 +45,7 @@ export const rows: Row<DefaultCellTypes | FlagCell>[] = [ // union of all  avail
 ]
 ```
 
-## Definition
+#### Definition
 
 ```ts
 export interface Row<TCell extends Cell = DefaultCellTypes> {
@@ -56,7 +56,7 @@ export interface Row<TCell extends Cell = DefaultCellTypes> {
 };
 ```
 
-## Properties
+#### Properties
 
 | Property name     | Type                                                                  | Property description  | 
 | ------------      | -------------                                                         | -------------         |

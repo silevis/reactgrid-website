@@ -216,14 +216,14 @@ const simpleHandleContextMenu = (
 ): MenuOption[] => {
   return menuOptions
 }
-// ...
+
 return <ReactGrid
   rows={state.rows}
   columns={state.columns}
   onCellsChanged={handleChanges}
   onContextMenu={simpleHandleContextMenu} // highlight-line
 />
-// ...
+
 ```
 
 Here's the result. Right click anywhere in the grid to see the context menu.

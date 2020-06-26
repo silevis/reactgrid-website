@@ -18,7 +18,7 @@ import { ReactGrid } from "@silevis/reactgrid";
 export const LiveCode = ({ code, title, noInline = false }) => {
   const scope = { ReactGrid };
 
-  const [mode, setMode] = React.useState(() => ('closed'));
+  const [mode, setMode] = React.useState(() => 'closed');
   const [modal, setModal] = React.useState(false);
 
   const toggle = () => {
@@ -31,11 +31,11 @@ export const LiveCode = ({ code, title, noInline = false }) => {
   return (
     <>
       <Container className='p-3 pb-5 live-code-container'>
-        <BootRow className={'pb-3'}>
-          <Col className={'d-flex align-items-center'} sm={'7'}>
+        <BootRow className='pb-3'>
+          <Col className={'d-flex align-items-center'} sm='7'>
             <h6 className='p-0 m-0'>{title}</h6>
           </Col>
-          <Col className={'d-flex justify-content-end'} sm={'5'}>
+          <Col className={'d-flex justify-content-end'} sm='5'>
             <Button onClick={toggle} size="sm" className="btn-simple">
               {!modal ? `Toggle fullscreen ` : `Collapse`}
               <i className="fas fa-expand-alt"></i>
@@ -47,7 +47,6 @@ export const LiveCode = ({ code, title, noInline = false }) => {
           {liveComponent}
         </div>
       </Container>
-
     </>
   )
 }

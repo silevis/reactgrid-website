@@ -9,7 +9,7 @@ metaDescription: "metaDescription"
 
 In this guide, we're going to build a very simple React App, which will make use of ReactGrid.
 
-## Initialize a React App with ReactGrid
+#### Initialize a React App with ReactGrid
 
 Let's create the basis for our App first:
 ```shell
@@ -29,7 +29,7 @@ or install from local tarball archive (placed where `package.json` is)
 npm install reactgrid-latest.tgz
 ```
 
-##  Integrate ReactGrid into the App
+####  Integrate ReactGrid into the App
 
 Once ReactGrid is installed and ready, we can import it like so:
 ```tsx
@@ -39,7 +39,7 @@ import { ReactGrid } from "@silevis/reactgrid";
 import "@silevis/reactgrid/styles.css";
 ```
 
-## Define some data to display in the grid
+#### Define some data to display in the grid
 
 Although we could create an empty ReactGrid, it arguably wouldn't make much sense.
 So let's define some data first, and then feed it into ReactGrid for display.
@@ -85,7 +85,7 @@ const rows = [
 ];
 ```
 
-## Pass the data to ReactGrid
+#### Pass the data to ReactGrid
 
 We've got everything we need to see ReactGrid in action.
 It's finally time to use the ReactGrid component we imported earlier, and give it the data
@@ -98,7 +98,7 @@ we defined in the previous step. This is easy, and can be done like so:
 />
 ```
 
-## Introduce state
+#### Introduce state
 
 The data we've defined so far is static. There's nothing wrong with that
 for the purposes of this tutorial, but in a real application you'll probably want
@@ -149,7 +149,7 @@ function App() {
 
 ```
 
-## Putting it all together
+#### Putting it all together
 
 After having followed this guide, your `App.js` file should look more or less like this:
 ```jsx
@@ -220,6 +220,6 @@ Or simply play around with the interactive demo below:
   sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
 ></iframe>
 
-## Summary
+#### Summary
 You should now have a basic understanding of what ReactGrid is and how it can be used.
 Continue to the next page for more advanced usage examples.

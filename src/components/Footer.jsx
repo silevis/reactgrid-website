@@ -84,18 +84,17 @@ class Footer extends React.Component {
 }
 
 const SocialLink = ({ fontAwesomeIcon, description, url, id, title }) => {
-  const tooltipId = 'tooltip' + id;
+  const tooltipId = 'tooltip-' + id;
   return (
     <li className="w-100">
-      <div style={{ maxWidth: '160px' }}>
-        <Button className="btn-simple d-flex align-items-center py-1 text-uppercase mb-0" id={tooltipId} href={url} target="_blank">
-          <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}>
-            <i className={fontAwesomeIcon} />
-          </span>
-          <span>{' '}{title}</span>
-        </Button>
-        <UncontrolledTooltip delay={0} target={tooltipId}>{description}</UncontrolledTooltip>
-      </div>
+      <Button className="btn-simple d-flex align-items-center py-1 text-uppercase my-0" id={tooltipId} href={url}
+        target="_blank" style={{ maxWidth: '160px' }}>
+        <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}>
+          <i className={fontAwesomeIcon} />
+        </span>
+        <span>{' '}{title}</span>
+      </Button>
+      <UncontrolledTooltip placement={'left'} delay={0} target={tooltipId}>{description}</UncontrolledTooltip>
     </li>
   )
 }

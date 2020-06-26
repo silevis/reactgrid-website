@@ -53,7 +53,7 @@ class DocsPostTemplate extends React.Component {
     const docsPage = pages.find(page => page.id === 'docs');
 
     const dropdownItemsList = docsVersions.filter(version => version.active).map(version => (
-      <DropdownItem active={version === version.desc} key={version.slug} tag={Link}
+      <DropdownItem active={version === version.desc} key={version.slug} tag={Link} className="bg-white"
         to={`${docsPage.route + version.slug + version.index}/`}>
         <h4 className="text-darker mb-0">{version.desc}</h4>
       </DropdownItem>
@@ -71,7 +71,7 @@ class DocsPostTemplate extends React.Component {
             <Row>
               <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
                 <UncontrolledDropdown className="dropdown-version-wrapper">
-                  <DropdownToggle caret size="md" className="btn-primary text-nowrap px-3">
+                  <DropdownToggle caret size="md" className="btn-primary text-nowrap px-3 ">
                     v{version}
                   </DropdownToggle>
                   <DropdownMenu right>

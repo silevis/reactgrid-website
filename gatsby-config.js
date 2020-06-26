@@ -31,6 +31,7 @@ module.exports = {
       { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm' },
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
       { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
+      { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter' },
     ],
   },
   plugins: [
