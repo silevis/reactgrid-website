@@ -44,22 +44,21 @@ class DocsPostTemplate extends React.Component {
 
   render() {
     const { data, location } = this.props;
-    const { mdx, allMdx, site } = data;
-    const post = mdx;
-    const posts = allMdx.edges;
+    const { mdx: post, allMdx, site } = data;
     const { title, description, pages, social, docsVersions, docsPagesOrder } = site.siteMetadata;
+    // const post = mdx;
+    const posts = allMdx.edges;
     const slug = location.pathname.split('/');
     const version = slug[2];
-    const docsPage = pages.find(page => page.id === 'docs')
+    const docsPage = pages.find(page => page.id === 'docs');
 
-    const dropdownItemsList = docsVersions.filter(version => version.active).map(version => {
-      return (
-        <DropdownItem active={version === version.desc} key={version.slug} tag={Link}
-          to={`${docsPage.route + version.slug + version.index}/`}>
-          <h4 className="text-darker mb-0">{version.desc}</h4>
-        </DropdownItem>
-      );
-    });
+    const dropdownItemsList = docsVersions.filter(version => version.active).map(version => (
+      <DropdownItem active={version === version.desc} key={version.slug} tag={Link}
+        to={`${docsPage.route + version.slug + version.index}/`}>
+        <h4 className="text-darker mb-0">{version.desc}</h4>
+      </DropdownItem>
+    )
+    );
     const currentPostIndex = posts.findIndex(item => `${docsPage.route}${item.node.fields.slug}` === location.pathname)
     const previousPost = posts[currentPostIndex - 1];
     const nextPost = posts[currentPostIndex + 1];
@@ -79,11 +78,11 @@ class DocsPostTemplate extends React.Component {
                     {dropdownItemsList}
                   </DropdownMenu>
                 </UncontrolledDropdown>
-                <Tree version={version} edges={posts} docsRoute={docsPage.route} location={location} navOrder={docsPagesOrder} />
+                <Tree version={version} edges={posts} docsRoute={docsPage.route} currentLocation={location} navOrder={docsPagesOrder} />
               </Col>
               <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
-                <h1 className="mb" id="docs-header"><span className="text-primary">
-                  {post.frontmatter.metaTitle} {post.frontmatter.proMark && <i class="fas fa-tachometer-alt pl-2"></i>}</span>
+                <h1 id="docs-header"><span className="text-primary">
+                  {post.frontmatter.metaTitle} {post.frontmatter.proMark && <i className="fas fa-tachometer-alt pl-2"></i>}</span>
                 </h1>
                 <CustomMDXComponents>
                   <MDXRenderer>{post.body}</MDXRenderer>
@@ -112,7 +111,7 @@ const DocsNavButton = ({ post, title, docsPageRoute, children }) => {
     <>
       {post &&
         <Button tag={Link} to={`${docsPageRoute}${post.node.fields.slug}`} className="btn-link text-left px-0" color="primary">
-          <p className="">{title}</p>
+          <p>{title}</p>
           <span className="h4 text-primary mb-0">{post.node.frontmatter.title}</span>
           {children}
         </Button>

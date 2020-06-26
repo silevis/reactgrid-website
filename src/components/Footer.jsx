@@ -36,15 +36,15 @@ class Footer extends React.Component {
               </Col>
               <Col xs="6" sm="6" md="6" className="pb-4 pb-sm-0">
                 <h5 className="text-uppercase font-weight-bold">Contact</h5>
-                <p>
-                  <address>
+                <address>
+                  <p>
                     Silevis Software<br />
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
                     Poland<br /><br />
-                    <i class="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
-                  </address>
-                </p>
+                    <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
+                  </p>
+                </address>
               </Col>
               <Col xs="12" sm="12" md="3" className="pb-4 pb-sm-0">
                 <h5 className="text-uppercase font-weight-bold">Social</h5>

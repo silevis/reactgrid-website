@@ -61,38 +61,10 @@ main {
     background-color: $background-light;
 }
 
-.font-weight-md-bold {
-    font-weight: 500 !important;
-}
-
-.font-weight-md-light {
-    font-weight: 300;
-}
-
-.bg-darker {
-    background-color: #0f102c !important;
-}
 
 .overflow-y-auto {
-    overflow-y: scroll;
+    overflow-y: auto;
 }
-
-.live-editor-row {
-    line-height: 1.5;
-}
-
-@media (min-width: 576px) {
-    .modal-open {
-        .modal-dialog {
-            &.modal-full-screen {
-            max-width: 100%;
-            margin: 0;
-            max-height: 100%;
-            }
-        }
-    }
-}
-
 
 .modal-open {
     .modal.show {
@@ -137,7 +109,6 @@ main {
 
 .sample-wrapper {
     height: 415px;
-    // border-radius: 0.5em;
     background: rgb(29, 32, 82);
     margin: 0.5em;
     overflow: scroll;
@@ -173,10 +144,6 @@ main {
 
 .strokeme {
     text-shadow: -5px -5px 0 #171941, 5px -5px 0 #171941, -5px 5px 0 #171941, 5px 5px 0 #171941;
-}
-
-.usp-graphics  {
-    
 }
 
 .usp-icon {
@@ -252,28 +219,24 @@ span.anchor {
         padding-inline-start: 1rem;
     }
 
-    a[href='link'] .language-text {
-        color: rgb(0, 166, 133);
-        text-decoration: underline;
+    a {
+        code:hover {
+            color: $primary;
+        }
+        &[href='link'] .language-text {
+            color: $primary;
+            text-decoration: underline;
+        }
     }
 
-    .reactgrid {
-        // color: rgba(255, 255, 255, 0.81);
+    p, 
+    p a {
+        font-weight: 400;
     }
-    // reactgrid colors
-    // $primary-color:                     rgb(0, 242, 195);
-    // $bg-color:                          #21836f;
-    // $shadow-color:                      #00f2c3;
-    // $resize-line-color:                 rgba(62, 245, 208, 0.718);
-    // $row-line-color:                    rgba(255, 255, 255, 0.3);
-    // $col-line-color:                    rgba(255, 255, 255, 0.3);
-    // $fillhandle-action-border-color:    rgb(0, 239, 191);
-    // $cell-editor-bg-color:              white;
-    // $sticky-bg-color:                   #040835;
-    // $shadow-color:                      #11185e;
-    // $cell-editor-bg-color:              #ffffff;
 
-    @import '@silevis/reactgrid/styles.scss';
+    .token.operator {
+        background: transparent;
+    }
 
     :not(pre) > code[class*="language-text"] {
         padding: 0.2em 0.4em;
@@ -285,13 +248,12 @@ span.anchor {
     }
     
     a ~ code[class*="language-"] {
-        // border: 2px solid red;
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
         padding-left: 0px;
     }
 
-     code[class*="language-"] ~ a code {
+    code[class*="language-"] ~ a code {
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         padding-right: 0px;
@@ -308,16 +270,13 @@ span.anchor {
 
     .nav-docs-item.active {
         color: $primary;
-        & a h4,
-        & a h4 .font-weight-md-light {
+        & a h4 {
             color: $primary;
             font-weight: 500 !important;
         }
     }
 
-    a code:hover {
-        color: $primary;
-    }
+    
 
     .table {
         :not(pre) > code[class*="language-"],
@@ -368,7 +327,17 @@ span.anchor {
     }
 }
 
-@media (min-width: 576px) { }
+@media (min-width: 576px) {
+    .modal-open {
+        .modal-dialog {
+            &.modal-full-screen {
+            max-width: 100%;
+            margin: 0;
+            max-height: 100%;
+            }
+        }
+    }
+}
 
 @media (min-width: 768px) { }
 

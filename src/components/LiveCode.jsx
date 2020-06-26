@@ -38,7 +38,7 @@ export const LiveCode = ({ code, title, noInline = false }) => {
           <Col className={'d-flex justify-content-end'} sm={'5'}>
             <Button onClick={toggle} size="sm" className="btn-simple">
               {!modal ? `Toggle fullscreen ` : `Collapse`}
-              <i class="fas fa-expand-alt"></i>
+              <i className="fas fa-expand-alt"></i>
             </Button>
           </Col>
         </BootRow>
@@ -91,7 +91,7 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
           <Button color="primary" className="animation-on-hover" onClick={() => setMode('both')}>Show live preview</Button>
         </div>
         : <>
-          <BootRow className='h-100 live-editor-row'>
+          <BootRow className='h-100 lh-150'>
             {mode !== 'preview' && <Col sm={mode === 'both' ? '7' : '12'} className='h-100 overflow-y-auto'>
               <LiveEditor language={'tsx'} />
             </Col>}
