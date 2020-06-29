@@ -7,7 +7,7 @@ metaDescription: "metaDescription"
 
 This template formats `Date` object and displays default browser date picker in edit mode. 
 
-## Interface declaration
+#### Interface declaration
 
 ```ts
 interface DateCell extends Cell {
@@ -23,7 +23,7 @@ interface DateCell extends Cell {
 | `date?`           | `Date`                    | `Date` object, optional | 
 | `format?`         | `Intl.DateTimeFormat`     | Formats date, if `undefined` formats date according to currect browser locale | 
 
-## `DateCellTemplate` class implementation
+#### `DateCellTemplate` class implementation
 
 ```tsx
 class DateCellTemplate implements CellTemplate<DateCell> {

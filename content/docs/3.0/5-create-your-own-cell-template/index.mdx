@@ -5,7 +5,7 @@ metaTitle: "Create your own cell template"
 metaDescription: "metaDescription"
 ---
 
-## Introduction 
+#### Introduction 
 
 Creating cell template is best way to customize data visualization and behaviour in ReactGrid.
 You can define your own and then use it as other built-in cell types. 
@@ -21,7 +21,7 @@ Expected functionality:
 
 Let's get started!
 
-## 1. Prepare project file
+#### 1. Prepare project file
 
 For this tutorial we are going to use previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
 At the begining we update columns and rows displayed by grid. 
@@ -51,7 +51,7 @@ const [state, setState] = React.useState(() => ({
 }));
 ```
 
-## 2. Creating necessary files
+#### 2. Creating necessary files
 
 Create new file named `FlagCellTemplate.tsx`, add the same imports like on listing below and `flag-cell-style.css`  that
 will contains some CSS styles (don't forget to import it in your project's file).
@@ -74,7 +74,7 @@ import {
 import "./flag-cell-style.css";
 ```
 
-## 3. Define cell data interface
+#### 3. Define cell data interface
 
 `type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
 `text` attribute will storage our text and it's also necessary. 
@@ -86,7 +86,7 @@ export interface FlagCell extends Cell {
 }
 ```
 
-## 4. Creating FlagCellTemplate class
+#### 4. Creating FlagCellTemplate class
 
 All of definded methods below are necessary to correct displaying and interfacing with internal ReactGrid model.
 
@@ -177,7 +177,7 @@ render(
 }
 ```
 
-## 5. Styling
+#### 5. Styling
 
 To adjust flag as background that covers div element we made CSS `rg-flag-wrapper` class. 
 All of cell has class name created based on cell `type` attribute. In our case cell class name will be `rg-flag-cell`. 
@@ -198,7 +198,7 @@ Due to `rg-cell` is flex element we centering it's content by `justify-content: 
 }
 ```
 
-## 6. Finishing
+#### 6. Finishing
 
 Go back to `index.tsx` file and add `customCellTemplates` prop as shown below and also change `type: "text"` to `type: "flag"`:
 
@@ -236,7 +236,7 @@ return (
 );
 ```
 
-## Result
+#### Result
 
 <iframe
     src="https://stackblitz.com/edit/reactgrid-creating-new-cell-template?embed=1&file=package.json&hideExplorer=1"

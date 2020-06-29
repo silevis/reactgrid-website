@@ -28,7 +28,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
             if ((item.node.fields.slug === location.pathname) || (docsRoute + item.node.fields.slug) === location.pathname) {
               if (item.node.tableOfContents.items) {
                 innerItems = item.node.tableOfContents.items.map((innerItem, index) => {
-                  const itemId = innerItem.title ? innerItem.title.replace(/\s+/g, '').toLowerCase() : '#';
+                  const itemId = innerItem.title ? innerItem.title.replace(/\s+/g, '').toLowerCase().replace(/\?/g, '') : '#';
                   return (
                     <NavItem key={index} className="py-1">
                       <a href={`#${itemId}`} className="text-primary">{innerItem.title}</a>
@@ -52,7 +52,7 @@ const DocsSideNav = ({ location, isFloating, docsRoute }) => (
           <div style={{ top: 0 }} className={navWrapperClasses}>
             <Nav vertical style={{ paddingTop: isFloating ? '102px' : '0' }}>
               <div style={{ borderLeft: '1px solid rgba(255, 255, 255, 0.25)' }} className="pl-2">
-                <h4 >CONTENTS</h4>
+                <h4>CONTENTS</h4>
                 {finalNavItems}
               </div>
             </Nav>

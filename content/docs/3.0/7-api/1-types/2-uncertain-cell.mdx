@@ -8,7 +8,7 @@ metaDescription: "metaDescription"
 `Uncertain` is a cell type that every field of `TCell` optional. 
 Cell of this type will have only one essential field provided by [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) interface - `type`.
 
-## Definition
+#### Definition
 
 ```ts
 type Uncertain<TCell extends Cell> = Partial<TCell> & Cell;

@@ -8,7 +8,7 @@ metaDescription: "metaDescription"
  `GroupCell` contains data about single node in the tree structure of the data. This cell template renders text with 
  the preceding chevron.
 
-## Interface declaration 
+#### Interface declaration 
 
 ```ts
 interface GroupCell extends Cell {
@@ -30,7 +30,7 @@ interface GroupCell extends Cell {
 | `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node, if undefined node becomes root | 
 | `indent?`             | `number`                                  | Indent size of cell content | 
 
-## `GroupCellTemplate` class implementation
+#### `GroupCellTemplate` class implementation
 
 ```tsx
 class GroupCellTemplate implements CellTemplate<GroupCell> {

@@ -62,7 +62,7 @@ const code = `const App = () => {
 render(<App/>)
 `;
 
-## Idea of handling data changes
+#### Idea of handling data changes
 
 1. A user changes the value of a cell. Among others, it could mean that the user has:
    - typed a new value into the cell by cell editor
@@ -82,7 +82,7 @@ To support dynamic data editing, you will have to handle the `onCellsChanged` ev
 2. Pasting by shortcut or context menu
 3. Fill handle action
 
-## Sample change handler function
+#### Sample change handler function
 
 We can declare a basic handler function like this:
 
@@ -114,7 +114,7 @@ return (
 )
 ```
 
-## Live demo
+#### Live demo
 
 And here's an interactive demo showing the event handler in action.
 Notice how it is now possible to edit the data not only by typing new values into the cells,

@@ -15,8 +15,8 @@ import {
 import Tree from "../components/sidebar/Tree";
 import SidebarLayout from "../components/DocsSideNav";
 import CustomMDXComponents from "../components/CustomMDXComponents";
-import { isBrowserIE } from "../components/isBrowserIE"
-import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
+import { isBrowserIE } from "../components/isBrowserIE";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 
 class DocsPostTemplate extends React.Component {
   state = {
@@ -34,19 +34,18 @@ class DocsPostTemplate extends React.Component {
     document.body.classList.remove("blog-post");
   }
 
-  handleScroll = () => {
+  /* handleScroll = () => {
     if (document.documentElement.scrollTop > 145 || document.body.scrollTop > 145) {
       this.setState({ isDocsNavFloating: true });
     } else if (document.documentElement.scrollTop < 146 || document.body.scrollTop < 146) {
       this.setState({ isDocsNavFloating: false });
     }
-  };
+  }; */
 
   render() {
     const { data, location } = this.props;
     const { mdx: post, allMdx, site } = data;
     const { title, description, pages, social, docsVersions, docsPagesOrder } = site.siteMetadata;
-    // const post = mdx;
     const posts = allMdx.edges;
     const slug = location.pathname.split('/');
     const version = slug[2];

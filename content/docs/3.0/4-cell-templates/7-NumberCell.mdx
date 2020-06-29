@@ -7,7 +7,7 @@ metaDescription: "metaDescription"
 
 Displays number, this cell allow to customly format number values using `Intl.NumberFormat`. 
 
-## Interface declaration 
+#### Interface declaration 
 
 ```ts
 interface NumberCell extends Cell {
@@ -27,7 +27,7 @@ interface NumberCell extends Cell {
 | `nanToZero?`      | `boolean`             | If `value` equals `NaN` then displays as `0` | 
 | `hideZero?`       | `boolean`             | If displayed value equals `0` then value is not rendered | 
 
-## `NumberCellTemplate` class implementation
+#### `NumberCellTemplate` class implementation
 
 ```tsx
 class NumberCellTemplate implements CellTemplate<NumberCell> {

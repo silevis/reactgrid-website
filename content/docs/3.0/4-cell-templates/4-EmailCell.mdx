@@ -7,7 +7,7 @@ metaDescription: "metaDescription"
 
 This cell render text value with possibility to validate it's own value and wrap result into `React.ReactNode` objects.
 
-## Interface declaration 
+#### Interface declaration 
 
 ```ts
 interface EmailCell extends Cell {
@@ -26,7 +26,7 @@ interface EmailCell extends Cell {
 | `renderer?`       | `(text: string) => React.ReactNode`   | Optional, gives oportunity to wrap `text` property into any `ReactNode` object | 
 
 
-## `EmailCellTemplate` class implementation
+#### `EmailCellTemplate` class implementation
 
 ```tsx
 class EmailCellTemplate implements CellTemplate<EmailCell> {

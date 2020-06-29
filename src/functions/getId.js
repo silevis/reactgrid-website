@@ -1,1 +1,1 @@
-export const getId = (text, replaceWith = "") => text && text.toString().replace(/ /g, replaceWith).toLowerCase();
+export const getId = (text, replaceWith = "") => text && text.toString().replace(/ /g, replaceWith).toLowerCase().replace(/\?/g, '');

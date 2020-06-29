@@ -7,7 +7,7 @@ metaDescription: "metaDescription"
 
 This template allow to display text as a string value and optionally change rendering method and validate displaying text.
 
-## Interface declaration 
+#### Interface declaration 
 
 ```ts
 interface TextCell extends Cell {
@@ -25,7 +25,7 @@ interface TextCell extends Cell {
 | `validator?`      | `(text: string) => boolean`           | Optional validation function, if undefined - returns `true`  | 
 | `renderer?`       | `(text: string) => React.ReactNode`   | Optional, gives oportunity to wrap `text` property into any `ReactNode` object | 
 
-## `TextCellTemplate` class implementation
+#### `TextCellTemplate` class implementation
 
 ```tsx
 class TextCellTemplate implements CellTemplate<TextCell> {
