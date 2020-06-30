@@ -21,12 +21,12 @@ const FooterOnlyLinks = () => {
         }
       `}
       render={data => {
-          const {footerNav} = data.site.siteMetadata;
-          return footerNav
-                  .filter(page => page.active)
-                  .map(page => <FooterLink key={page.id} route={page.route} title={page.title}/>)
+        const { footerNav } = data.site.siteMetadata;
+        return footerNav
+          .filter(page => page.active)
+          .map(page => <FooterLink key={page.id} route={page.route} title={page.title} />)
       }}
-      />
+    />
   )
 }
 

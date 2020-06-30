@@ -5,6 +5,7 @@ import {
   LiveError,
   LivePreview
 } from 'react-live';
+import theme from 'prism-react-renderer/themes/github';
 import {
   Container,
   Row as BootRow,
@@ -17,7 +18,7 @@ import { ReactGrid } from "@silevis/reactgrid";
 export const LiveCode = ({ code, title, noInline = false }) => {
   const scope = { ReactGrid };
 
-  const [mode, setMode] = React.useState(() => ('closed'));
+  const [mode, setMode] = React.useState(() => 'closed');
   const [modal, setModal] = React.useState(false);
 
   const toggle = () => {
@@ -29,15 +30,15 @@ export const LiveCode = ({ code, title, noInline = false }) => {
 
   return (
     <>
-      <Container style={{ borderRadius: '5px', backgroundColor: '#0f102c' }} className='p-3 pb-5'>
-        <BootRow className={'pb-3'}>
-          <Col className={'d-flex align-items-center'} sm={'7'}>
+      <Container className='p-3 pb-5 live-code-container'>
+        <BootRow className='pb-3'>
+          <Col className={'d-flex align-items-center'} sm='7'>
             <h6 className='p-0 m-0'>{title}</h6>
           </Col>
-          <Col className={'d-flex justify-content-end'} sm={'5'}>
-            <Button onClick={toggle} size="sm" color="success">
+          <Col className={'d-flex justify-content-end'} sm='5'>
+            <Button onClick={toggle} size="sm" className="btn-simple">
               {!modal ? `Toggle fullscreen ` : `Collapse`}
-              <i class="fas fa-expand-alt"></i>
+              <i className="fas fa-expand-alt"></i>
             </Button>
           </Col>
         </BootRow>
@@ -46,16 +47,15 @@ export const LiveCode = ({ code, title, noInline = false }) => {
           {liveComponent}
         </div>
       </Container>
-
     </>
   )
 }
 
 const CodeModal = ({ modal, title, toggle, liveComponent, children }) => (
-  <Modal isOpen={modal} toggle={toggle} size="full-screen" modalClassName="modal-black">
+  <Modal isOpen={modal} toggle={toggle} size="full-screen">
     <div className="modal-header align-items-stretch">
-      <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={toggle}>
-        <i className="tim-icons icon-simple-remove"></i>
+      <button type="button" className="close text-danger" data-dismiss="modal" aria-label="Close" onClick={toggle}>
+        <i className="fas fa-times"></i>
       </button>
       <h3 className="modal-title pt-2">{title}</h3>
     </div>
@@ -83,13 +83,14 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
         return snippet;
       }}
       noInline={noInline}
+      theme={theme}
     >
       {mode === 'closed'
         ? <div className="d-flex justify-content-center">
-          <Button color={'warning'} className="animation-on-hover" onClick={() => setMode('both')}>Show live preview</Button>
+          <Button color="primary" className="animation-on-hover" onClick={() => setMode('both')}>Show live preview</Button>
         </div>
         : <>
-          <BootRow className='h-100 live-editor-row'>
+          <BootRow className='h-100 lh-150'>
             {mode !== 'preview' && <Col sm={mode === 'both' ? '7' : '12'} className='h-100 overflow-y-auto'>
               <LiveEditor language={'tsx'} />
             </Col>}
@@ -101,9 +102,9 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
             </Col>}
           </BootRow>
           <BootRow className="justify-content-center pb-2">
-            <Button color={mode === 'code' && 'info'} className="animation-on-hover" onClick={() => setMode('code')}>Code</Button>
-            <Button color={mode === 'both' && 'info'} className="animation-on-hover mx-2" onClick={() => setMode('both')}>Both</Button>
-            <Button color={mode === 'preview' && 'info'} className="animation-on-hover" onClick={() => setMode('preview')}>Preview</Button>
+            <Button color={mode === 'code' && 'primary'} className="animation-on-hover btn-simple" onClick={() => setMode('code')}>Code</Button>
+            <Button color={mode === 'both' && 'primary'} className="animation-on-hover btn-simple mx-2" onClick={() => setMode('both')}>Both</Button>
+            <Button color={mode === 'preview' && 'primary'} className="animation-on-hover btn-simple" onClick={() => setMode('preview')}>Preview</Button>
           </BootRow>
         </>
       }

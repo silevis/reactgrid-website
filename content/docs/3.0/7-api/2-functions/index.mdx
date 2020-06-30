@@ -5,7 +5,7 @@ metaTitle: "Functions & Enums"
 metaDescription: "metaDescription"
 ---
 
-## Keycodes:
+#### Keycodes
 
 ```ts
 isAlphaNumericKey(keyCode: number): boolean
@@ -34,7 +34,7 @@ isNavigationKey(keyCode: number): boolean
 Used in creating custom cell templates. Checks if `keycode` is allowed for navigation 
 (arrows, end, home, backspace, delete keys).
 
-## Helpers:
+#### Helpers
 
 ```ts
 getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
@@ -45,7 +45,7 @@ getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
 ```
 Returns cell property value. Used to create compatible cell.
 
-## Enums
+#### Enums
 
 `keyCodes` enum contains set of key codes + `POINTER = 1` to marks pointer event (ReactGrid addon). 
 Used in cell templates.
