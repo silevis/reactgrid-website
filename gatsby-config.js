@@ -8,7 +8,7 @@ module.exports = {
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: false },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: false },
-      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
+      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: false },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],
