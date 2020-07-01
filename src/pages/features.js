@@ -77,14 +77,12 @@ class Features extends React.Component {
 
 export default Features
 
-const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, externalLink }) => {
-  console.log(imgSrc);
-
+const SingleFeature = ({ mediaSrc, imgAlt, poster, title, description, externalLinkText, externalLink }) => {
   return (
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
         <Col xs={12} lg={5} className="single-feature-col-img">
-          <FeatureImage imgSrc={require(`./../../content/features/${imgSrc.name + imgSrc.ext}`)} imgAlt={imgAlt} />
+          <FeatureImage mediaSrc={mediaSrc} imgAlt={imgAlt} />
         </Col>
         <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
@@ -106,17 +104,12 @@ const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, e
   )
 }
 
-{/* <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px' }}>
-  <source src={Video} type="video/mp4" />
-  <track kind="captions" />
-</video> */}
-
-const FeatureImage = ({ imgSrc, imgAlt }) => {
+const FeatureImage = ({ mediaSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <video controls autoPlay loop style={{ boxShadow: '0px 0px 2px rgb(0, 0, 0)', maxWidth: '500px', maxHeight: '500px' }} >
-          <source alt={imgAlt} src={imgSrc} type="video/mp4" />
+        <video controls autoPlay loop poster={require(`./../../content/features/${mediaSrc}.jpg`)} style={{ boxShadow: '0px 0px 2px rgb(0, 0, 0)', maxWidth: '500px', maxHeight: '500px' }} >
+          <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>
       </div>
@@ -126,45 +119,42 @@ const FeatureImage = ({ imgSrc, imgAlt }) => {
 
 export const pageQuery = graphql`
   query {
-          site {
-          siteMetadata {
-          title
+    site {
+      siteMetadata {
+        title
         description
         pages {
           description
           id
-        route
-        title
-        active
-      }
+          route
+          title
+          active
+        }
         docsVersions {
           slug
           desc
-        index
-        active
-      }
+          index
+          active
+        }
         social {
           description
           fontAwesomeIcon
-        title
-        url
+          title
+          url
+        }
       }
     }
-  }
     allFeaturesYaml {
-          edges {
-          node {
+      edges {
+        node {
           title
           externalLink
-        externalLinkText
-        description
-        imgAlt
-          imgSrc {
-          name
-            ext
+          externalLinkText
+          description
+          imgAlt
+          mediaSrc 
+        }
       }
     }
-  }
-}
 }
 `

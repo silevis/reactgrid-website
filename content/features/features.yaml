@@ -1,58 +1,58 @@
-- imgSrc: multi-user.mp4
+- mediaSrc: multi-user
   imgAlt: Animation for multi user capability feature
   title: Multi user capability
   description: "ReactGrid supports multiple users operations on the same sheet simultaneously. "
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-highlights-8o8gq"
-- imgSrc: fill-handle.mp4
+- mediaSrc: fill-handle
   imgAlt: ""
   title: Fill handle
   description: Clone cell data and it's properties with fill handle like in other spreadsheets
   externalLinkText: ""
   externalLink: ""
-- imgSrc: behaviour.mp4
+- mediaSrc: behaviour
   imgAlt: ""
   title: Spreadsheet-like behaviour
   description: Interract with grid in well know way with keyboard
   externalLinkText: ""
   externalLink: ""
-- imgSrc: select-area.mp4
+- mediaSrc: select-area
   imgAlt: ""
   title: Area selection/multiselection
   description: Choose multiple areas of choice in any way you like
   externalLinkText: ""
   externalLink: ""
-- imgSrc: resize-column.mp4
+- mediaSrc: resize-column
   imgAlt: ""
   title: "Column Resize"
   description: Modificate width of each column with drag&drop capability
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-column-resizing-f38v0"
-- imgSrc: column-reorder.mp4
+- mediaSrc: column-reorder
   imgAlt: ""
   title: "Column reordering"
   description: "Select columns, drag them and drop at the desired destination"
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
-- imgSrc: row-reorder.mp4
+- mediaSrc: row-reorder
   imgAlt: ""
   title: "Row reordering"
   description: "Select rows, drag them and drop at the desired destination"
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
-- imgSrc: sticky.mp4
+- mediaSrc: sticky
   imgAlt: ""
   title: "Freezing of rows and columns"
   description: You're able to lock specific rows or columns so that they are always visible when scrolling
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-freezing-panes-oikll"
-- imgSrc: copy-cut-paste.mp4
+- mediaSrc: copy-cut-paste
   imgAlt: ""
   title: "Copy, cut, paste"
   description: "Let users to copy/cut/paste data inside grid and between other data sources"
   externalLinkText: ""
   externalLink: ""
-- imgSrc: context-menu.mp4
+- mediaSrc: context-menu
   imgAlt: ""
   title: Context menu
   description: Use our builtin context menu or replace it with third party component
