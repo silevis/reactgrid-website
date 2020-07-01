@@ -15,10 +15,6 @@ header {
     }
 }
 
-main {
-
-}
-
 .icon-color-facebook {
     color: $color-facebook;
 }
@@ -44,10 +40,6 @@ main {
 
 .footer {
     border-top: 0px !important;
-}
-
-.main {
-
 }
 
 .page-header-compact {
@@ -147,7 +139,15 @@ main {
 }
 
 .strokeme {
-    text-shadow: -5px -5px 0 #171941, 5px -5px 0 #171941, -5px 5px 0 #171941, 5px 5px 0 #171941;
+    text-shadow: -5px -5px 0 #f3f4f5, 
+    5px -5px 0 #f3f4f5, 
+    -5px 5px 0 #f3f4f5, 
+    5px 5px 0 #f3f4f5;
+}
+
+.main-navigation-active {
+    color: $primary;
+    background-color: $primary-light;
 }
 
 .usp-icon {

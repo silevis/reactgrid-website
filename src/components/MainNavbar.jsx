@@ -19,8 +19,8 @@ class MainNavbar extends React.Component {
     const { pages, title, description, social } = this.props;
     return (
       <div className="header header-2">
-        <Navbar id="main-navbar" className="bg-white fixed-top" expand="lg">
-          <Container>
+        <Navbar id="main-navbar" className="bg-white fixed-top p-0 m-0" expand="lg" style={{ height: '66px' }}>
+          <Container className="h-100">
             <div className="navbar-translate">
               <NavbarBrand to={'/'} tag={Link}>
                 <span style={{ fontSize: '1.75em' }} className="text-primary">{title}</span> <span className="d-none">| {description}</span>
@@ -31,7 +31,7 @@ class MainNavbar extends React.Component {
                 <span className="navbar-toggler-bar bar3" />
               </button>
             </div>
-            <UncontrolledCollapse navbar toggler="#navigation" style={{ overflow: 'hidden' }} id="navbar-collapser">
+            <UncontrolledCollapse navbar toggler="#navigation" style={{ overflow: 'hidden' }} id="navbar-collapser" className="h-100">
               <div className="navbar-collapse-header">
                 <Row>
                   <Col className="collapse-brand" xs="10">
@@ -46,7 +46,7 @@ class MainNavbar extends React.Component {
                   </Col>
                 </Row>
               </div>
-              <Nav className="ml-auto d-flex" navbar>
+              <Nav className="ml-auto d-flex h-100" navbar>
                 <StaticQuery
                   query={graphql`
                     query {
@@ -71,9 +71,9 @@ class MainNavbar extends React.Component {
                       const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
                       // const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
                       return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
-                    })
+                    });
                     const getNow = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
-                      <NavLink to={npmSocial.url} target="_blank">
+                      <NavLink href={npmSocial.url} tag={Link} target="_blank">
                         <Button type="button" className="btn btn-primary btn-simple btn-sm px-4 py-2 text-capitalize">Get now</Button>
                       </NavLink>
                     </li>
@@ -96,9 +96,10 @@ class MainNavbar extends React.Component {
 
 const NavbarLink = ({ route, children }) => {
   return (
-    <NavItem className="px-0 align-items-center d-flex">
-      <NavLink to={route} tag={Link} partiallyActive={route === '/' ? false : true} className="d-flex align-items-center"
-        activeClassName="text-success font-weight-bold">
+    <NavItem className="px-0 mx-0 align-items-center d-flex">
+      <NavLink to={route} tag={Link} partiallyActive={!!(route === '/')}
+        className="d-flex align-items-center px-4 h-100 text-uppercase font-weight-normal"
+        activeClassName="main-navigation-active font-weight-bold">
         {children}
       </NavLink>
     </NavItem>
