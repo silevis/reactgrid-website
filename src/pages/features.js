@@ -42,14 +42,18 @@ class Features extends React.Component {
                     </i>
                   </div>
                   <h3 className="pb-3">Custom cell templates</h3>
-                  <p className="pb-3">Add your own custom cell (custom cell behaviours, styles, data formatting and validating)</p>
+                  <p className="pb-3">Add your own custom cell (custom cell behaviours_, styles, data formatting and validating)</p>
                 </div>
               </Col>
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
                     <i className="fab fa-firefox text-primary strokeme ">
-                      <i className="fa-inverse fab fa-edge text-primary strokeme" style={{ marginLeft: '-0.3em' }}></i>
+                      <i className="fa-inverse fab fa-edge text-primary strokeme" style={{ marginLeft: '-0.1em' }}>
+                        <i className="fa-inverse fab fa-safari text-primary strokeme" style={{ marginLeft: '-0.1em' }}>
+                          <i className="fa-inverse fab fa-chrome text-primary strokeme" style={{ marginLeft: '-0.1em' }}></i>
+                        </i>
+                      </i>
                     </i>
                   </div>
                   <h3 className="pb-3">Cross-browser support</h3>
@@ -58,7 +62,7 @@ class Features extends React.Component {
               </Col>
               <Col sm="6" lg="6">
                 <div className="text-center">
-                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-primary strokeme"></i></div>
+                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-layer-group text-primary strokeme"></i></div>
                   <h3 className="pb-3">Tree data</h3>
                   <p className="pb-3">You can easily display data that has parent/child relationships</p>
                 </div>
@@ -112,45 +116,45 @@ const FeatureImage = ({ imgSrc, imgAlt }) => {
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
+          site {
+          siteMetadata {
+          title
         description
         pages {
           description
           id
-          route
-          title
-          active
-        }
+        route
+        title
+        active
+      }
         docsVersions {
           slug
           desc
-          index
-          active
-        }
+        index
+        active
+      }
         social {
           description
           fontAwesomeIcon
-          title
-          url
-        }
-      }
-    }
-    allFeaturesYaml {
-      edges {
-        node {
-          title
-          externalLink
-          externalLinkText
-          description
-          imgAlt
-          imgSrc {
-            name
-            ext
-          }
-        }
+        title
+        url
       }
     }
   }
+    allFeaturesYaml {
+          edges {
+          node {
+          title
+          externalLink
+        externalLinkText
+        description
+        imgAlt
+          imgSrc {
+          name
+            ext
+      }
+    }
+  }
+}
+}
 `
