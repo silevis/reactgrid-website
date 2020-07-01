@@ -78,6 +78,8 @@ class Features extends React.Component {
 export default Features
 
 const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, externalLink }) => {
+  console.log(imgSrc);
+
   return (
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
@@ -104,11 +106,19 @@ const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, e
   )
 }
 
+{/* <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px' }}>
+  <source src={Video} type="video/mp4" />
+  <track kind="captions" />
+</video> */}
+
 const FeatureImage = ({ imgSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <img alt={imgAlt} src={imgSrc} style={{ boxShadow: '0px 0px 8px rgb(0, 0, 0)' }} />
+        <video controls autoPlay loop style={{ boxShadow: '0px 0px 2px rgb(0, 0, 0)', maxWidth: '500px', maxHeight: '500px' }} >
+          <source alt={imgAlt} src={imgSrc} type="video/mp4" />
+          <track kind="captions" />
+        </video>
       </div>
     </div>
   )
