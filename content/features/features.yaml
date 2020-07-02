@@ -58,9 +58,9 @@
   description: Use our builtin context menu or replace it with third party component
   externalLinkText: "Open on codesandbox.io"
   externalLink: "https://codesandbox.io/s/reactgrid-simple-context-menu-handling-kfwpe"
-# - imgSrc: touch-device.gif
-#   imgAlt: Animation for optimized for Touch devices feature
-#   title: Optimized for Touch devices
-#   description: "ReactGrid is adapted for use ontouch devices"
-#   externalLinkText:
-#   externalLink: ""
+- mediaSrc: touch-device
+  imgAlt: Animation for optimized for Touch devices feature
+  title: Optimized for Touch devices
+  description: "ReactGrid is adapted for use ontouch devices"
+  externalLinkText:
+  externalLink: ""
