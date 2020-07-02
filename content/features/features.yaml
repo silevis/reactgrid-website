@@ -2,8 +2,8 @@
   imgAlt: Animation for multi user capability feature
   title: Multi user capability
   description: "ReactGrid supports multiple users operations on the same sheet simultaneously. "
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-highlights-8o8gq"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/6-highlights/"
 - mediaSrc: fill-handle
   imgAlt: ""
   title: Fill handle
@@ -26,26 +26,26 @@
   imgAlt: ""
   title: "Column Resize"
   description: Modificate width of each column with drag&drop capability
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-column-resizing-f38v0"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/2-column-resizing/"
 - mediaSrc: column-reorder
   imgAlt: ""
   title: "Column reordering"
   description: "Select columns, drag them and drop at the desired destination"
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/"
 - mediaSrc: row-reorder
   imgAlt: ""
   title: "Row reordering"
   description: "Select rows, drag them and drop at the desired destination"
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/"
 - mediaSrc: sticky
   imgAlt: ""
   title: "Freezing of rows and columns"
   description: You're able to lock specific rows or columns so that they are always visible when scrolling
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-freezing-panes-oikll"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/4-sticky/"
 - mediaSrc: copy-cut-paste
   imgAlt: ""
   title: "Copy, cut, paste"
@@ -56,8 +56,8 @@
   imgAlt: ""
   title: Context menu
   description: Use our builtin context menu or replace it with third party component
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-simple-context-menu-handling-kfwpe"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/5-context-menu/"
 - mediaSrc: touch-device
   imgAlt: Animation for optimized for Touch devices feature
   title: Optimized for Touch devices

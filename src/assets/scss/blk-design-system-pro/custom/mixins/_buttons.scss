@@ -163,7 +163,7 @@
           &:focus,
           &:active,
           &:not(:disabled):not(.disabled):active{
-              color: $white;
+              color: $primary-states;
               border-color: $btn-color;
               background-image: linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
               background-image: -webkit-linear-gradient(to bottom left, $btn-color, $btn-states-color, $btn-color) !important;
@@ -182,7 +182,7 @@
         &:active{
             background-color: $transparent-bg !important;
             background-image: none !important;
-            color: $white !important;
+            color: $primary-states !important;
             text-decoration: none;
             box-shadow: none;
         }

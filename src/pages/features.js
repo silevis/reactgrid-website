@@ -24,6 +24,8 @@ class Features extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
+          <div className="space-70"></div>
+          <h2 style={{ fontSize: '3em' }} className="profile-title text-center mb-3">Features</h2>
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}
             <Row className="py-lg-5">
@@ -77,7 +79,7 @@ class Features extends React.Component {
 
 export default Features
 
-const SingleFeature = ({ mediaSrc, imgAlt, poster, title, description, externalLinkText, externalLink }) => {
+const SingleFeature = ({ mediaSrc, imgAlt, title, description, externalLinkText, externalLink, docsVersion }) => {
   return (
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
