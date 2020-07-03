@@ -5,8 +5,8 @@ metaTitle: "Row interface"
 metaDescription: "metaDescription"
 ---
 
-Row interface contains two necessary properties: `rowId` and `cells`. It constains essential informations about grid row.
-`cells` field allow you to declare array of objects thats extends [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]` base interface .
+Row interface contains two necessary properties: `rowId` and `cells`. It contains essential information about the grid row.
+`cells` field allows you to declare an array of objects that extends [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]` base interface.
 
 
 #### Usage 
@@ -22,7 +22,7 @@ const rows: Row[] = [
     }
 ]
 ```
-If you want to use your custom cell templates in your code use it in this way: `Row<DefaultCellTypes | MyCustomCell>`. 
+If you want to use your custom cell templates in code this is the correct way of doing that: `Row<DefaultCellTypes | MyCustomCell>`. 
 
 
 ```ts

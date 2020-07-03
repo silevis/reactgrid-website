@@ -65,22 +65,22 @@ render(<App/>)
 #### Idea of handling data changes
 
 1. A user changes the value of a cell. Among others, it could mean that the user has:
-   - typed a new value into the cell by cell editor
-   - used a fill handle 
-   - pasted some data into the cell matrix
-   - interacted with a clickable cell (e. g. expanded group cell)
+   - typed a new value into the a cell by cell editor,
+   - used a fill handle ,
+   - pasted some data into the cell matrix,
+   - interacted with a clickable cell (e. g. expanded group cell).
 2. ReactGrid fires the `onCellsChanged` event
 3. Your handler function processes the event and updates the application state
 4. The `ReactGrid` component receives new data and gets rerendered
 
-By default, the data grid will behave as if it was in a "read only" mode.
+By default, the data grid will behave as if it was in a "read-only" mode.
 To support dynamic data editing, you will have to handle the `onCellsChanged` event yourself.
 
 #### When my handler function is called?
 
-1. Commiting changes after cell editing
-2. Pasting by shortcut or context menu
-3. Fill handle action
+1. Committing changes after cell editing.
+2. Pasting by shortcut or context menu.
+3. Fill handle action.
 
 #### Sample change handler function
 
@@ -99,7 +99,7 @@ const handleChanges = (changes: CellChange[]) => {
 ```
 
 The function receives an array describing all of the changes made to the data grid's cells.
-Given that information, we find the row and column touched by each change,
+Given that information, we find the row and column affected by each change,
 and then replace the appropriate cell object with a new one.
 
 Let's pass the handler function to our ReactGrid component:
@@ -117,7 +117,7 @@ return (
 #### Live demo
 
 And here's an interactive demo showing the event handler in action.
-Notice how it is now possible to edit the data not only by typing new values into the cells,
+Notice how it is now possible to edit the data not only by typing new values into the cells
 but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
 
