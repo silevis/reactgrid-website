@@ -44,7 +44,7 @@ class Features extends React.Component {
                     </i>
                   </div>
                   <h3 className="pb-3">Custom cell templates</h3>
-                  <p className="pb-3">Add your own custom cell (custom cell behaviours_, styles, data formatting and validating)</p>
+                  <p className="pb-3">Add your own custom cell (custom cell behaviors, styles, data formatting and validating)</p>
                 </div>
               </Col>
               <Col sm="6" lg="6">
@@ -110,7 +110,8 @@ const FeatureImage = ({ mediaSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)} style={{ boxShadow: '0px 0px 2px rgb(0, 0, 0)', maxWidth: '500px', maxHeight: '500px' }} >
+        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)}
+          style={{ boxShadow: 'rgb(120, 120, 120) 0px 0px 10px -3px', maxWidth: '100%', maxHeight: '500px' }} >
           <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>

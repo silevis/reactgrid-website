@@ -106,7 +106,7 @@ class Index extends React.Component {
                   <h4>
                     Do you need to display a fully functional spreadsheet in the browser?
                     Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
-                      Telerik Kendo UI Spreadsheet</a> which has a toolbar, coordinates and supports formulas.
+                      Telerik Kendo UI Spreadsheet</a> which has a&nbsp;toolbar, coordinates and supports formulas.
                   </h4>
                 </li>
               </ul>
