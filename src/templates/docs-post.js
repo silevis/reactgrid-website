@@ -66,10 +66,10 @@ class DocsPostTemplate extends React.Component {
         <SEO title={post.frontmatter.title} description={post.frontmatter.metaDescription} />
         <div className="docs-page section">
           <Container>
-            <div className="space-100"></div>
+            <div className="space-70 d-none d-md-block"></div>
             <Row>
               <Col md="3" lg="3" xl="3" className="pb-5 pb-md-0">
-                <UncontrolledDropdown className="dropdown-version-wrapper">
+                <UncontrolledDropdown className="dropdown-version-wrapper mt-4 mt-md-0">
                   <DropdownToggle caret size="md" className="btn-primary text-nowrap px-3 ">
                     v{version}
                   </DropdownToggle>

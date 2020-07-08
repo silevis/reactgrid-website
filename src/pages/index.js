@@ -47,7 +47,7 @@ class Index extends React.Component {
                 </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
-                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px' }}>
+                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%' }}>
                   <source src={Video} type="video/mp4" />
                   <track kind="captions" />
                 </video>

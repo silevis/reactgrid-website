@@ -98,7 +98,7 @@ const NavbarLink = ({ route, children }) => {
   return (
     <NavItem className="px-0 mx-0 align-items-center d-flex">
       <NavLink to={route} tag={Link} partiallyActive={!!(route === '/')}
-        className="d-flex align-items-center px-4 h-100 text-uppercase font-weight-normal"
+        className="d-flex w-100 align-items-center px-4 h-100 text-uppercase font-weight-normal"
         activeClassName="main-navigation-active font-weight-bold">
         {children}
       </NavLink>

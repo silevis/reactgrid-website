@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `ReactGrid`,
-    author: `Silevis Software`,
+    author: `Silevis Software Sp. z o.o.`,
     description: `Spreadsheet experience for your React app`,
     siteUrl: `http://reactgrid.com`,
     pages: [

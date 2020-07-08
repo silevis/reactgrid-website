@@ -38,7 +38,7 @@ class Footer extends React.Component {
                 <h5 className="text-uppercase font-weight-bold">Contact</h5>
                 <address>
                   <p>
-                    Silevis Software<br />
+                    Silevis Software Sp. z o.o.<br />
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
                     Poland<br /><br />
@@ -63,7 +63,7 @@ class Footer extends React.Component {
               </Col>
               <Col xs="12" sm="8" className="d-flex justify-content-center justify-content-sm-end">
                 <span className="text-center text-sm-right">
-                  Copyright © 2019-{new Date().getFullYear()} Silevis Software, All Rights Reserved.
+                  Copyright © 2019-{new Date().getFullYear()} Silevis Software Sp. z o.o., All Rights Reserved.
                 </span>
               </Col>
             </Row>
