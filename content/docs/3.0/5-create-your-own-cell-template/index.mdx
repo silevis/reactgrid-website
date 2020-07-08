@@ -7,24 +7,24 @@ metaDescription: "metaDescription"
 
 #### Introduction 
 
-Creating cell template is best way to customize data visualization and behaviour in ReactGrid.
+Creating a cell template is the best way to customize data visualization and behaviour in ReactGrid.
 You can define your own and then use it as other built-in cell types. 
 
-In this example we will completly discuss how to make it.
+In this example, we will explain how to make it.
 
 Let's imagine that you need to implement a brand new cell for displaying country flag.
 
 Expected functionality:
 
 1. In edit mode cell allows to type text without any constraints
-2. When cell is just display should show country flag based on cell text
+2. When a cell is displayed it should show country a flag based on cell text
 
 Let's get started!
 
 #### 1. Prepare project file
 
-For this tutorial we are going to use previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
-At the begining we update columns and rows displayed by grid. 
+For this tutorial we are going to use the previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
+At the beginning we should update columns and rows displayed by the grid.
 Cell type in row `1` and `2` will be changed to `flag` at the end. 
 
 ```tsx 
@@ -53,8 +53,8 @@ const [state, setState] = React.useState(() => ({
 
 #### 2. Creating necessary files
 
-Create new file named `FlagCellTemplate.tsx`, add the same imports like on listing below and `flag-cell-style.css`  that
-will contains some CSS styles (don't forget to import it in your project's file).
+Create new file named `FlagCellTemplate.tsx`, add the same imports as on listing below and `flag-cell-style.css`  that
+will contain some CSS styles (don't forget to import it in your project's file).
 
 ```tsx 
 // FlagCellTemplate.tsx
@@ -88,7 +88,7 @@ export interface FlagCell extends Cell {
 
 #### 4. Creating FlagCellTemplate class
 
-All of definded methods below are necessary to correct displaying and interfacing with internal ReactGrid model.
+For all defined methods below it is necessary to correct displaying and interfacing with internal ReactGrid model.
 
 * `getCompatibleCell` as a parameter gets incoming cell and returns a compatible cell (with `text` and `value`
   attribute required by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) type). 
@@ -122,9 +122,9 @@ handleKeyDown(
 }
 ```
 
-* `update` - we are not sure that incoming cell is has the same interface like `FlagCell` so we marking it
-  as `UncertainCompatible` (incoming cell has attributes provided by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) 
-  but it can have other attributes like `date` from `DateCell`). In our case we just copy `cell` and replace `text` value.
+* `update` - as we are not sure that incoming cell has the same interface like `FlagCell` so we marking it
+  as `UncertainCompatible` (the incoming cell has attributes provided by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) 
+  but it can have other attributes like `date` from `DateCell`). In our case, we just copy `cell` and replace `text` value.
 
 ```ts
 update(cell: Compatible<FlagCell>, cellToMerge: UncertainCompatible<FlagCell>): Compatible<FlagCell> {
@@ -132,7 +132,7 @@ update(cell: Compatible<FlagCell>, cellToMerge: UncertainCompatible<FlagCell>): 
 }
 ```
 
-* `render` method returns content of cell. In edit mode we will display `input` element. Change that taking place in the 
+* `render` method returns content of cell. In edit mode we will display `input` element. This change is made in the 
   cell `input` is propagated outside ReactGrid by `onCellChanged` function.
 
 ```tsx
@@ -180,8 +180,8 @@ render(
 #### 5. Styling
 
 To adjust flag as background that covers div element we made CSS `rg-flag-wrapper` class. 
-All of cell has class name created based on cell `type` attribute. In our case cell class name will be `rg-flag-cell`. 
-Due to `rg-cell` is flex element we centering it's content by `justify-content: center;` attribute.
+All of the cells have a class name created based on cell `type` attribute. In our case, the cell class name will be `rg-flag-cell`. 
+Due to `rg-cell` is flex element we centering its content by `justify-content: center;` attribute.
 
 ```css
 .rg-flag-cell {

@@ -26,6 +26,7 @@ interface ReactGridProps {
     readonly enableRowSelection?: boolean;
     readonly enableColumnSelection?: boolean;
     readonly labels?: TextLabels;
+    readonly enableFullWidthHeader?: boolean;
 
     readonly onCellsChanged?: (cellChanges: CellChange[]) => void;
     readonly onFocusLocationChanged?: (location: CellLocation) => void;
@@ -58,6 +59,7 @@ Name                            | Type                                          
 `enableRowSelection?`           | `boolean`                                                         | Set `true` to enable row selection feature (defaultly `false`) |
 `enableColumnSelection?`        | `boolean`                                                         | Set `true` to enable column selection feature (defaultly `false`) |
 `labels?`                       | [`TextLabels`](/docs/3.0/7-api/0-interfaces/90-textlabels/)       | Object that contains labels of texts used by ReactGrid |
+`enableFullWidthHeader?`        | `boolean`                                                         | Set `true` to enable full width header (defaultly `false`, feature is experimental) |
 
 #### Callbacks
 

@@ -1,66 +1,66 @@
-- imgSrc: multi-user.gif
+- mediaSrc: multi-user
   imgAlt: Animation for multi user capability feature
   title: Multi user capability
   description: "ReactGrid supports multiple users operations on the same sheet simultaneously. "
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-highlights-8o8gq"
-- imgSrc: fill-handle.gif
-  imgAlt: ""
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/6-highlights/"
+- mediaSrc: fill-handle
+  imgAlt: "Video describing fill handle feature"
   title: Fill handle
   description: Clone cell data and it's properties with fill handle like in other spreadsheets
   externalLinkText: ""
   externalLink: ""
-- imgSrc: behaviour.gif
-  imgAlt: ""
-  title: Spreadsheet-like behaviour
+- mediaSrc: behaviour
+  imgAlt: "Video describing ReactGrid behavior"
+  title: Spreadsheet-like behavior
   description: Interract with grid in well know way with keyboard
   externalLinkText: ""
   externalLink: ""
-- imgSrc: select-area.gif
-  imgAlt: ""
+- mediaSrc: select-area
+  imgAlt: "Video describing area selection feature"
   title: Area selection/multiselection
   description: Choose multiple areas of choice in any way you like
   externalLinkText: ""
   externalLink: ""
-- imgSrc: resize-column.gif
-  imgAlt: ""
+- mediaSrc: resize-column
+  imgAlt: "Video describing column resize feature"
   title: "Column Resize"
   description: Modificate width of each column with drag&drop capability
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-column-resizing-f38v0"
-- imgSrc: column-reorder.gif
-  imgAlt: ""
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/2-column-resizing/"
+- mediaSrc: column-reorder
+  imgAlt: "Video describing colum reordering feature"
   title: "Column reordering"
   description: "Select columns, drag them and drop at the desired destination"
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
-- imgSrc: row-reorder.gif
-  imgAlt: ""
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/"
+- mediaSrc: row-reorder
+  imgAlt: "Video describing row reordering feature"
   title: "Row reordering"
   description: "Select rows, drag them and drop at the desired destination"
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-columns-and-rows-reorder-4x3xc"
-- imgSrc: frozens.gif
-  imgAlt: ""
-  title: "Freezing of rows and columns"
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/"
+- mediaSrc: sticky
+  imgAlt: "Video describing sticky rows and columns"
+  title: "Sticky columns and rows"
   description: You're able to lock specific rows or columns so that they are always visible when scrolling
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-freezing-panes-oikll"
-- imgSrc: copy-cut-paste.gif
-  imgAlt: ""
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/4-sticky/"
+- mediaSrc: copy-cut-paste
+  imgAlt: "Video describing copy-cut-paste feature"
   title: "Copy, cut, paste"
   description: "Let users to copy/cut/paste data inside grid and between other data sources"
   externalLinkText: ""
   externalLink: ""
-- imgSrc: context-menu.gif
-  imgAlt: ""
+- mediaSrc: context-menu
+  imgAlt: "Video describing context menu feature"
   title: Context menu
-  description: Use our builtin context menu or replace it with third party component
-  externalLinkText: "Open on codesandbox.io"
-  externalLink: "https://codesandbox.io/s/reactgrid-simple-context-menu-handling-kfwpe"
-- imgSrc: touch-device.gif
+  description: Use our built-in context menu or replace it with third party component
+  externalLinkText: "Open in docs"
+  externalLink: "/docs/3.0/2-implementing-core-features/5-context-menu/"
+- mediaSrc: touch-device
   imgAlt: Animation for optimized for Touch devices feature
   title: Optimized for Touch devices
-  description: "ReactGrid is adapted for use ontouch devices"
+  description: "ReactGrid is adapted for use on touch devices"
   externalLinkText:
   externalLink: ""

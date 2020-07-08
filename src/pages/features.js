@@ -24,12 +24,14 @@ class Features extends React.Component {
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
+          <div className="space-70"></div>
+          <h2 style={{ fontSize: '3em' }} className="profile-title text-center mb-3">Features</h2>
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}
             <Row className="py-lg-5">
               <Col sm="6" lg="6">
                 <div className="text-center">
-                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fab fa-sass text-success"></i></div>
+                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fab fa-sass text-primary strokeme"></i></div>
                   <h3 className="pb-3">SASS styling</h3>
                   <p className="pb-3">Feel free to customly style each element of grid using SASS</p>
                 </div>
@@ -37,19 +39,23 @@ class Features extends React.Component {
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
-                    <i className="fas fa-palette text-primary">
-                      <i className="fas fa-paint-brush strokeme text-success" style={{ marginLeft: '-0.3em' }}></i>
+                    <i className="fas fa-palette strokeme text-primary">
+                      <i className="fas fa-paint-brush strokeme text-primary" style={{ marginLeft: '-0.3em' }}></i>
                     </i>
                   </div>
                   <h3 className="pb-3">Custom cell templates</h3>
-                  <p className="pb-3">Add your own custom cell (custom cell behaviours, styles, data formatting and validating)</p>
+                  <p className="pb-3">Add your own custom cell (custom cell behaviors, styles, data formatting and validating)</p>
                 </div>
               </Col>
               <Col sm="6" lg="6">
                 <div className="text-center">
                   <div style={{ fontSize: '5em' }} className="mb-4">
-                    <i className="fab fa-firefox text-success">
-                      <i className="fa-inverse fab fa-internet-explorer text-info" style={{ marginLeft: '-0.3em' }}></i>
+                    <i className="fab fa-firefox text-primary strokeme ">
+                      <i className="fa-inverse fab fa-edge text-primary strokeme" style={{ marginLeft: '-0.1em' }}>
+                        <i className="fa-inverse fab fa-safari text-primary strokeme" style={{ marginLeft: '-0.1em' }}>
+                          <i className="fa-inverse fab fa-chrome text-primary strokeme" style={{ marginLeft: '-0.1em' }}></i>
+                        </i>
+                      </i>
                     </i>
                   </div>
                   <h3 className="pb-3">Cross-browser support</h3>
@@ -58,7 +64,7 @@ class Features extends React.Component {
               </Col>
               <Col sm="6" lg="6">
                 <div className="text-center">
-                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-align-left text-success"></i></div>
+                  <div style={{ fontSize: '5em' }} className="mb-4"><i className="fas fa-layer-group text-primary strokeme"></i></div>
                   <h3 className="pb-3">Tree data</h3>
                   <p className="pb-3">You can easily display data that has parent/child relationships</p>
                 </div>
@@ -73,12 +79,12 @@ class Features extends React.Component {
 
 export default Features
 
-const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, externalLink }) => {
+const SingleFeature = ({ mediaSrc, imgAlt, title, description, externalLinkText, externalLink, docsVersion }) => {
   return (
     <div className="single-feature my-lg-5 py-lg-5">
       <Row>
         <Col xs={12} lg={5} className="single-feature-col-img">
-          <FeatureImage imgSrc={require(`./../../content/features/${imgSrc.name + imgSrc.ext}`)} imgAlt={imgAlt} />
+          <FeatureImage mediaSrc={mediaSrc} imgAlt={imgAlt} />
         </Col>
         <Col className="single-feature-col-gap col-0 col-lg-2"></Col>
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
@@ -100,11 +106,15 @@ const SingleFeature = ({ imgSrc, imgAlt, title, description, externalLinkText, e
   )
 }
 
-const FeatureImage = ({ imgSrc, imgAlt }) => {
+const FeatureImage = ({ mediaSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <img alt={imgAlt} src={imgSrc} style={{ boxShadow: '0px 0px 8px rgb(0, 0, 0)' }} />
+        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)}
+          style={{ boxShadow: 'rgb(120, 120, 120) 0px 0px 10px -3px', maxWidth: '100%', maxHeight: '500px' }} >
+          <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
+          <track kind="captions" />
+        </video>
       </div>
     </div>
   )
@@ -145,12 +155,9 @@ export const pageQuery = graphql`
           externalLinkText
           description
           imgAlt
-          imgSrc {
-            name
-            ext
-          }
+          mediaSrc 
         }
       }
     }
-  }
+}
 `

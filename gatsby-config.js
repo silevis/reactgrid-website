@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
     title: `ReactGrid`,
-    author: `Silevis Software`,
+    author: `Silevis Software Sp. z o.o.`,
     description: `Spreadsheet experience for your React app`,
     siteUrl: `http://reactgrid.com`,
     pages: [
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
-      { id: 'features', title: `Features`, description: ``, route: `/features`, active: false },
+      { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: false },
-      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: false },
+      { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],

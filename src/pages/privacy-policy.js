@@ -56,7 +56,7 @@ const PrivacyPolicyContent = () => {
   return (
     <div className="cookies-policy-topic-wrapper">
       <p className="pb-3">
-        Your privacy is important to us. It is Silevis Software sp. z. o.o.'s policy to respect your privacy
+        Your privacy is important to us. It is Silevis Software Sp. z. o.o.'s policy to respect your privacy
          regarding any information we may collect from you across our website,
          {' '}<a href="http://reactgrid.com">reactgrid.com</a>, and other sites we own and operate.
       </p>

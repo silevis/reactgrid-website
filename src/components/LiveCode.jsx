@@ -37,8 +37,7 @@ export const LiveCode = ({ code, title, noInline = false }) => {
           </Col>
           <Col className={'d-flex justify-content-end'} sm='5'>
             <Button onClick={toggle} size="sm" className="btn-simple">
-              {!modal ? `Toggle fullscreen ` : `Collapse`}
-              <i className="fas fa-expand-alt"></i>
+              {!modal ? `Toggle fullscreen ` : `Collapse`} <i className="fas fa-expand-alt pl-2"></i>
             </Button>
           </Col>
         </BootRow>
