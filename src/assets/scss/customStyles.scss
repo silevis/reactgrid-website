@@ -109,8 +109,9 @@ header {
 }
 
 .sample-wrapper {
+    color: darken($secondary-light, 80%);
     height: 415px;
-    background: rgb(29, 32, 82);
+    // background: rgb(29, 32, 82);
     margin: 0.5em;
     overflow: scroll;
 }
@@ -180,13 +181,13 @@ header {
     // dropdown number
     .rg-dropdownNumber-cell {
         .dropdown {
-            background-color: #171941;
-            border-color: #00f2c3;
+            background-color: white;
+            border-color: $secondary-light;
         }
-        $track-color: #01aa88;
-        $thumb-color: #00f2c3;
-        $thumb-border-color: #01aa88 !default;
-        $track-border-color: #1f2258 !default;
+        $track-color: $secondary-light;
+        $thumb-color: $primary;
+        $thumb-border-color: $secondary-light !default;
+        $track-border-color: darken($secondary-light, 30%) !default;
         @import '@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 

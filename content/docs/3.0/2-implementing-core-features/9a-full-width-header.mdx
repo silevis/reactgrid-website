@@ -77,7 +77,7 @@ const simpleCode = `const FullWidthHeaderSample = () => {
       <ReactGrid
         rows={state.rows}
         columns={state.columns}
-        enableFullWidthHeader={true}
+        enableFullWidthHeader
         stickyTopRows={1} 
       />
     );
@@ -109,7 +109,7 @@ return (
         rows={state.rows}
         columns={state.columns}
         enableFullWidthHeader // highlight-line
-        stickyTopRows={2} // highlight-line
+        stickyTopRows={1} // highlight-line
     />
 );
 ```

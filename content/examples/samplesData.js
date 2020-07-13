@@ -17,7 +17,7 @@ export const samplesData = [
                 content: [
                     `Custom highlights`,
                     `Custom cell templates (e.g. flag icon)`,
-                    `Freezed columns and row`,
+                    `Sticky columns and row`,
                     `Column resize`,
                     `Row and column reordering`,
                     `Area, column and row selection (+ multi selection)`,
@@ -40,14 +40,21 @@ export const samplesData = [
             {
                 header: `Capabilities:`,
                 content: [
-                    `Enabled most of core features of ReactGrid`,
-                    `Additional actions in context menu (removing rows or columns)`,
+                    `Application of Group cell template that contains informations about single node`,
+                    `Toggling node with <code><kbd>SPACE</kbd></code> key or click on chevron`,
                 ]
             },
             {
                 header: `Applied core features:`,
                 content: [
-                    `todo`,
+                    `Grouping`,
+                    `Sticky column and row`,
+                    `Column resize`,
+                    `Area selection`,
+                    `Fill handle`,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `SASS custom styling`,
                 ]
             }
         ],
@@ -55,37 +62,9 @@ export const samplesData = [
         component: 'BudgetPlannerSample'
     },
     {
-        title: 'Frozens',
-        icon: 'far fa-lightbulb fa-3x',
-        enabled: false,
-        description: [
-            {
-                header: `Capabilities:`,
-                content: [
-                    ``,
-                    ``,
-                ]
-            },
-            {
-                header: `Applied core features:`,
-                content: [
-                    `Column and row reorder`,
-                    `Frozen panes`,
-                    `Freezed first top row`,
-                    `Area, column and row selection (+ multi selection)`,
-                    `Custom cell template`,
-                    `Touch capability`,
-                    `SASS styling`,
-                ]
-            }
-        ],
-        className: 'frozens-sample',
-        component: 'FrozensSample'
-    },
-    {
         title: 'Cryptocurrency Market',
         icon: 'fab fa-bitcoin fa-3x',
-        enabled: true,
+        enabled: false,
         description: [
             {
                 header: `Capabilities:`,
@@ -204,7 +183,7 @@ export const samplesData = [
     {
         title: 'Group data',
         icon: 'fa fa-stream fa-3x',
-        enabled: true,
+        enabled: false,
         description: [
             {
                 header: `Capabilities:`,
