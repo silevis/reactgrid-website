@@ -31,11 +31,6 @@ header {
     color: $color-gitter;
 }
 
-// TODO REMOVE when added to rG mit
-.rg-celleditor {
-    display: flex;
-}
-
 .cookie-container {
     .cookie-button {
         color: $background-light !important;
@@ -110,10 +105,10 @@ header {
 
 .sample-wrapper {
     color: darken($secondary-light, 80%);
-    height: 415px;
-    // background: rgb(29, 32, 82);
+    // height: 465px;
+    // background: $primary-light;
     margin: 0.5em;
-    overflow: scroll;
+    overflow-x: auto;
 }
 
 .list-style-none {
@@ -140,10 +135,6 @@ header {
     font-size: 6em;
 }
 
-.em-xl {
-    font-size: 8em;
-}
-
 .strokeme {
     text-shadow: -5px -5px 0 #f3f4f5, 
     5px -5px 0 #f3f4f5, 
@@ -160,10 +151,6 @@ header {
     font-size: 0.8em; 
     bottom: -0.3em;
     right: -0.3em
-}
-
-.text-shadow {
-    text-shadow: 2px 2px 4px rgba(0,0,0,.5);
 }
 
 .live-editor-row,

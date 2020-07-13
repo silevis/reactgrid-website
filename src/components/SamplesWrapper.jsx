@@ -41,7 +41,7 @@ class SamplesWrapper extends React.Component {
         </NavLink>
       </NavItem>
     );
-    const sampleTabs = samplesData.filter((sample) => sample.enabled).map((sample, idx) =>
+    const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <SampleTab
         key={idx}
         tabId={idx}

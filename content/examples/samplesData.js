@@ -42,6 +42,7 @@ export const samplesData = [
                 content: [
                     `Application of Group cell template that contains informations about single node`,
                     `Toggling node with <code><kbd>SPACE</kbd></code> key or click on chevron`,
+                    `Filter by date, group by one of three groups`,
                 ]
             },
             {

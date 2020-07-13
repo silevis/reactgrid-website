@@ -72,7 +72,7 @@
     "prettier": "^1.19.1"
   },
   "peerDependencies": {
-    "@silevis/reactgrid": "file:reactgrid-1.0.18.tgz"
+    "@silevis/reactgrid": "file:reactgrid-1.0.20.tgz"
   },
   "keywords": [
     "spreadsheet",
