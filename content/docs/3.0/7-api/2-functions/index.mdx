@@ -7,6 +7,9 @@ metaDescription: "metaDescription"
 
 #### Keycodes
 
+Keycode related functions are commonly used by every cell template and they uses the unicode value of pressed keyboard key
+(exacly like `KeyboardEvent.keyCode`).
+
 ```ts
 isAlphaNumericKey(keyCode: number): boolean
 ```
@@ -33,6 +36,12 @@ isNavigationKey(keyCode: number): boolean
 ```
 Used in creating custom cell templates. Checks if `keycode` is allowed for navigation 
 (arrows, end, home, backspace, delete keys).
+
+```ts
+getCharFromKeyCode(keyCode: number, isShiftKey: boolean = false): boolean
+```
+
+Converts key code into char including the <kbd>Shift</kbd>.
 
 #### Helpers
 

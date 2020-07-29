@@ -13,7 +13,7 @@ export default function CustomMDXComponents({ children }) {
   return (
     <MDXProvider
       components={{
-        Alert,
+        Alert: props => <Alert {...props} transition={{ baseClass: '', }} >{props.children}</Alert>,
         LiveCode,
         h1: props => (
           <>
@@ -71,6 +71,6 @@ export default function CustomMDXComponents({ children }) {
       }}
     >
       {children}
-    </MDXProvider>
+    </MDXProvider >
   )
 }
