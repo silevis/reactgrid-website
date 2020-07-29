@@ -6,9 +6,9 @@ metaDescription: "metaDescription"
 ---
 
 `CellChange` type is used by `onCellsChanged` callback in `ReactGrid` component. `CellChange` represents 
-mutually exclusive changes on a single cell.
+mutually exclusive changes to a single cell.
 
-`CellTypes` utility type extracts all possible cells types based on [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) interface.
+`CellTypes` utility type extracts all possible cell types based on [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) interface.
 
 #### Basic usage cases
 
@@ -65,8 +65,8 @@ Read more about creating [custom cell templates](/docs/3.0/5-create-your-own-cel
 
 | Property name     | Type                                                                      | Property description      | 
 | ------------      | -------------                                                             | --------------------      |
-| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Row [`Id`](/docs/3.0/7-api/1-types/4-id/) where change ocurred | 
-| `columnId`        | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Column [`Id`](/docs/3.0/7-api/1-types/4-id/) where change ocurred | 
+| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Row [`Id`](/docs/3.0/7-api/1-types/4-id/) where the change ocurred | 
+| `columnId`        | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                     | Column [`Id`](/docs/3.0/7-api/1-types/4-id/) where the change ocurred | 
 | `type`            | `CellTypes<TCell>`                                                        | Extracted cell type of `TCell` e.g. `text`, `group` | 
-| `initialCell`     | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | Old content of cell | 
-| `newCell`         | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | New content of cell | 
+| `initialCell`     | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | Old content of the cell | 
+| `newCell`         | `TCell extends Cell = `[`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)     | New content of the cell | 

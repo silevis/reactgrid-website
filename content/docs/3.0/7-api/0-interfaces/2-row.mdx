@@ -22,7 +22,7 @@ const rows: Row[] = [
     }
 ]
 ```
-If you want to use your custom cell templates in code this is the correct way of doing that: `Row<DefaultCellTypes | MyCustomCell>`. 
+If you want to use your custom cell templates in code, the correct way of doing so is: `Row<DefaultCellTypes | MyCustomCell>`. 
 
 
 ```ts
@@ -62,4 +62,4 @@ export interface Row<TCell extends Cell = DefaultCellTypes> {
 | `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                 | Unique [`Id`](/docs/3.0/7-api/1-types/4-id/) in all rows array | 
 | `cells`           | `TCell extends` [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) objects. | 
 | `height?`         | `number`                                                              | Height of each grid row (in default set to `25px`)  | 
-| `reorderable?`    | `boolean`                                                             | Property that allow row to change it's position in grid, default: `false` (row reorder implementation is on the developer side) |  
+| `reorderable?`    | `boolean`                                                             | Property that allows row to change is position in grid, default: `false` (row reorder implementation is on the developer's side) |  

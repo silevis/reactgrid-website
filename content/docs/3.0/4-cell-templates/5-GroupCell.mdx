@@ -5,7 +5,7 @@ metaTitle: "GroupCell template"
 metaDescription: "metaDescription"
 ---
 
- `GroupCell` contains data about single node in the tree structure of the data. This cell template renders text with 
+ `GroupCell` contains data about a single node in the tree structure of the data. This cell template renders text with 
  the preceding chevron.
 
 #### Interface declaration 
@@ -26,8 +26,8 @@ interface GroupCell extends Cell {
 | `type`                | `group`                                   | Type of cell template | 
 | `text`                | `string`                                  | Text of cell content | 
 | `isExpanded?`         | `boolean`                                 | Is node expaned (displays chevron char as opened/closed) | 
-| `hasChildren?`        | `boolean`                                 | Determining having children by a node element | 
-| `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node, if undefined node becomes root | 
+| `hasChildren?`        | `boolean`                                 | Determines if a node element has children | 
+| `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node, if undefined the node becomes a root | 
 | `indent?`             | `number`                                  | Indent size of cell content | 
 
 #### `GroupCellTemplate` class implementation

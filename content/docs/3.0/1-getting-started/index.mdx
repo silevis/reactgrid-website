@@ -18,12 +18,12 @@ cd reactgrid-getting-started
 ```
 
 The only thing that's missing from our project now is ReactGrid itself.
-To add it to the mix, simply run:
+To add it to the dependencies, simply run:
 ```shell
 npm install @silevis/reactgrid
 ```
 
-or install from local tarball archive (placed where `package.json` is)
+or install from local tarball archive (placed where `package.json` is located)
 
 ```shell
 npm install reactgrid-latest.tgz
@@ -31,7 +31,7 @@ npm install reactgrid-latest.tgz
 
 ####  Integrate ReactGrid into the App
 
-Once ReactGrid is installed and ready, we can import it like so:
+Once ReactGrid is installed and ready, we can import it in the following way:
 ```tsx
 // App.js
 import React, { useState } from "react";
@@ -41,10 +41,10 @@ import "@silevis/reactgrid/styles.css";
 
 #### Define some data to display in the grid
 
-Although we could create an empty ReactGrid, it arguably wouldn't make much sense.
+Although we were able to create an empty ReactGrid, it arguably wouldn't make much sense.
 So let's define some data first, and then feed it into ReactGrid for display.
 We're going to need two arrays. One for [`columns`](/docs/3.0/7-api/0-interfaces/3-column/), and the other for [`rows`](/docs/3.0/7-api/0-interfaces/2-row/).
-For now, you shouldn't worry about all of the properties of column and row objects -
+Don't worry about all of the properties of column and row objects now -
 we'll cover them later on. 
 
 ```tsx
@@ -89,7 +89,7 @@ const rows = [
 
 We've got everything we need to see ReactGrid in action.
 It's finally time to use the ReactGrid component we imported earlier, and give it the data
-we defined in the previous step. This is easy, and can be done like so:
+we defined in the previous step. This is easy, and can be done like that:
 
 ``` tsx
 <ReactGrid

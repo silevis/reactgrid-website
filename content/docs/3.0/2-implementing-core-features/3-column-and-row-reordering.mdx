@@ -95,7 +95,7 @@ render(<ColumnsAndRowsReorderSample/>)
 
 This guide is based on [getting started](/docs/3.0/1-getting-started/).
 
-#### 1. Add some new imports which we'll use going forward.
+#### 1. Add some new imports for further usage
 
 We'll need [`Id`](/docs/3.0/7-api/1-types/4-id/), [`DropPosition`](/docs/3.0/7-api/1-types/5-drop-position/), 
 [`Column`](/docs/3.0/7-api/0-interfaces/3-column/), [`Row`](/docs/3.0/7-api/0-interfaces/2-row/), 
@@ -117,8 +117,8 @@ columns: [
 ],
 ```
 
-Notice that we don't want the first row to be reorderable because that's our grid's header so `reorderable` 
-the property will by just `undefined` in contrast to other rows.
+Notice that we don't want the first row to be reorderable because that's our grid's header so the `reorderable` 
+property will become `undefined` contrary to other rows.
 
 ```ts
 rows: [
@@ -158,7 +158,7 @@ rows: [
 
 #### 3. Implement the handler functions
 
-`reorderArray` function is used for correct order columns or rows. 
+`reorderArray` function is used to order columns or rows. 
 
 ```ts
 // a helper function used to reorder arbitrary arrays
@@ -187,8 +187,8 @@ const handleRowsReordered = (targetRowId: Id, rowIds: Id[], dropPosition: DropPo
 }
 ```
 
-4. Pass the handler functions to your `ReactGrid` component and add `enableRowSelection` and `enableColumnSelection` props for 
-enabling this type of events handling.
+4. Pass the handler functions to your `ReactGrid` component and add `enableRowSelection` and `enableColumnSelection` properties to
+enable this type of events handling.
 
 ```tsx
 <ReactGrid

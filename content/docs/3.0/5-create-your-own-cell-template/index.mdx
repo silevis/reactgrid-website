@@ -8,16 +8,16 @@ metaDescription: "metaDescription"
 #### Introduction 
 
 Creating a cell template is the best way to customize data visualization and behaviour in ReactGrid.
-You can define your own and then use it as other built-in cell types. 
+You can define your own one and then use it as other built-in cell types. 
 
 In this example, we will explain how to make it.
 
-Let's imagine that you need to implement a brand new cell for displaying country flag.
+Let's imagine that you need to implement a brand new cell for displaying a country flag.
 
 Expected functionality:
 
-1. In edit mode cell allows to type text without any constraints
-2. When a cell is displayed it should show country a flag based on cell text
+1. In edit mode a cell allows you to type in text without any constraints
+2. When a cell is displayed, it should show a country flag based on the cell text
 
 Let's get started!
 
@@ -53,8 +53,8 @@ const [state, setState] = React.useState(() => ({
 
 #### 2. Creating necessary files
 
-Create new file named `FlagCellTemplate.tsx`, add the same imports as on listing below and `flag-cell-style.css`  that
-will contain some CSS styles (don't forget to import it in your project's file).
+Create new file named `FlagCellTemplate.tsx`, add the same imports as in the listing below and make `flag-cell-style.css`file that
+will contain some CSS styles (don't forget to import it into your project's file).
 
 ```tsx 
 // FlagCellTemplate.tsx
@@ -77,7 +77,7 @@ import "./flag-cell-style.css";
 #### 3. Define cell data interface
 
 `type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
-`text` attribute will storage our text and it's also necessary. 
+`text` attribute will store our text and it's also necessary. 
 
 ```ts
 export interface FlagCell extends Cell {
@@ -88,11 +88,11 @@ export interface FlagCell extends Cell {
 
 #### 4. Creating FlagCellTemplate class
 
-For all defined methods below it is necessary to correct displaying and interfacing with internal ReactGrid model.
+For all defined methods below it is necessary to display and interface the flag cell with internal ReactGrid model correctly.
 
-* `getCompatibleCell` as a parameter gets incoming cell and returns a compatible cell (with `text` and `value`
+* `getCompatibleCell` as a parameter gets an incoming cell and returns a compatible cell (with `text` and `value`
   attribute required by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) type). 
-  In more complex examples `getCellProperty` can throw an exception if required cell field is `undefined`.
+  In more complex examples `getCellProperty` may throw an exception if the required cell field is `undefined`.
 
 ```ts
 getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
@@ -102,8 +102,8 @@ getCompatibleCell(uncertainCell: Uncertain<FlagCell>): Compatible<FlagCell> {
 }
 ```
 
-* `handleKeyDown` method handles `keyDown` event on this cell template. Here just returns unchanged cell and enables 
-  edit mode when user performed click or pressed <kbr>ENTER</kbr> key.
+* `handleKeyDown` method handles `keyDown` event on this cell template. Here it just returns unchanged cell and enables 
+  edit mode when a user performed a click or pressed <kbr>ENTER</kbr> key.
 
 ```ts
 handleKeyDown(
@@ -122,7 +122,7 @@ handleKeyDown(
 }
 ```
 
-* `update` - as we are not sure that incoming cell has the same interface like `FlagCell` so we marking it
+* `update` - as we are not sure if an incoming cell has the same interface like `FlagCell` so we mark it
   as `UncertainCompatible` (the incoming cell has attributes provided by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) 
   but it can have other attributes like `date` from `DateCell`). In our case, we just copy `cell` and replace `text` value.
 
@@ -132,7 +132,7 @@ update(cell: Compatible<FlagCell>, cellToMerge: UncertainCompatible<FlagCell>): 
 }
 ```
 
-* `render` method returns content of cell. In edit mode we will display `input` element. This change is made in the 
+* `render` method returns the content of a cell. In edit mode we will display `input` element. The change which is made in the 
   cell `input` is propagated outside ReactGrid by `onCellChanged` function.
 
 ```tsx
@@ -179,9 +179,9 @@ render(
 
 #### 5. Styling
 
-To adjust flag as background that covers div element we made CSS `rg-flag-wrapper` class. 
-All of the cells have a class name created based on cell `type` attribute. In our case, the cell class name will be `rg-flag-cell`. 
-Due to `rg-cell` is flex element we centering its content by `justify-content: center;` attribute.
+To set a flag as the background covering the `div` element, we created CSS `rg-flag-wrapper` class. 
+All of the cells have a class name created based on the cell `type` attribute. In our case, the cell class name will be `rg-flag-cell`. 
+As `rg-cell` is a flex element we center its content with `justify-content: center;` attribute.
 
 ```css
 .rg-flag-cell {
@@ -200,7 +200,7 @@ Due to `rg-cell` is flex element we centering its content by `justify-content: c
 
 #### 6. Finishing
 
-Go back to `index.tsx` file and add `customCellTemplates` prop as shown below and also change `type: "text"` to `type: "flag"`:
+Go back to `index.tsx` file and add `customCellTemplates` property as shown below and also change `type: "text"` to `type: "flag"`:
 
 ```tsx
 const [state, setState] = React.useState(() => ({

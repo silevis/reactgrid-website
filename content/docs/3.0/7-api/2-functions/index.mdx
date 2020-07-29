@@ -28,7 +28,7 @@ Used in creating custom cell templates. Checks if `keycode` is between 0 and 9 o
 ```ts
 isAllowedOnNumberTypingKey(keyCode: number): boolean
 ```
-Used in creating custom cell templates. Checks if `keycode` is allowed on while typing 
+Used in creating custom cell templates. Checks if `keycode` is allowed while typing 
 numbers (for chars like comma, dash, period).
 
 ```ts
@@ -52,9 +52,9 @@ getCellProperty = <TCell extends Cell, TKey extends keyof TCell>(
     expectedType: 'string' | 'number' | 'boolean' | 'undefined' | 'function' | 'object' | string
 )
 ```
-Returns cell property value. Used to create compatible cell.
+Returns cell property value. Used to create a compatible cell.
 
 #### Enums
 
-`keyCodes` enum contains set of key codes + `POINTER = 1` to marks pointer event (ReactGrid addon). 
+`keyCodes` enum contains a set of key codes + `POINTER = 1` to mark a pointer event (ReactGrid addon). 
 Used in cell templates.
