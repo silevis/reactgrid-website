@@ -82,7 +82,7 @@ class Pricing extends React.Component {
                     </Button>
                   </CardBody>
                 </Card>
-                <hr className="line-success my-5 d-md-none mx-auto" />
+                <hr className="line-primary my-5 d-md-none mx-auto" />
               </Col>
               <Col md="4">
                 <Card className="card-pricing card-plain">

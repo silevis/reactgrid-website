@@ -89,15 +89,15 @@ render(<StickyPanesSample/>)
 
 #### Introduction
 
-ReactGrid allows you to stick chosen rows and columns at the top or left side and additionally on right and bottom 
-of the ReactGrid viewport only in Pro version. Sticky rows or columns will be visible at all times, no matter the scroll position.
+ReactGrid allows you to stick chosen rows and columns at the top or left side and additionally on the right and at the bottom 
+of the ReactGrid viewport only in Pro version. Sticky rows or columns will be visible at all times, no matter what the scroll position is.
  
-<Alert color="primary">
+<Alert color="primary" transition={{baseClass: ''}}>
 	<i class="fas fa-exclamation-circle pr-3"></i>
-	Right and bottom sticky are only available in Pro version
+	Right and bottom sticky ranges are only available in Pro version
 </Alert>
 
-Sticky rows and columns can be enabled by adding dedicated `ReactGrid` component props:
+Sticky rows and columns can be enabled by adding dedicated `ReactGrid` component properties:
 - `stickyTopRows`
 - `stickyBottomRows`
 - `stickyLeftColumns`
@@ -105,12 +105,12 @@ Sticky rows and columns can be enabled by adding dedicated `ReactGrid` component
 
 All of these properties are numeric and determine the number of columns or rows sticky next to the grid's edges.
 
-#### How to freeze columns and rows?
+#### How to make columns and rows sticky?
 
 This guide is based on [getting started](/docs/3.0/1-getting-started/).
 
 1. Add some more data to the table, so that it's more likely for a scrollbar to appear
-or reduce the height of grids container
+or reduce the height of the grid container
 
 ```ts
 // ...
@@ -201,7 +201,7 @@ return (
 
 #### Result
 
-Here's how frozen rows and columns look in action (we recommend to play with this demo on fullscreen mode):
+Here's how sticky rows and columns look in action (we recommend playing with this demo in the fullscreen mode):
 
 <LiveCode 
   code={code}

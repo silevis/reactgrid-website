@@ -101,7 +101,7 @@ const SingleFeature = ({ mediaSrc, imgAlt, title, description, externalLinkText,
           </div>
         </Col>
       </Row>
-      <hr className="line-success my-5 d-lg-none" />
+      <hr className="line-primary my-5 d-lg-none ml-auto" />
     </div>
   )
 }

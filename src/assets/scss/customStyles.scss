@@ -104,10 +104,11 @@ header {
 }
 
 .sample-wrapper {
-    height: 415px;
-    background: rgb(29, 32, 82);
+    color: darken($secondary-light, 80%);
+    // height: 465px;
+    // background: $primary-light;
     margin: 0.5em;
-    overflow: scroll;
+    overflow-x: auto;
 }
 
 .list-style-none {
@@ -134,10 +135,6 @@ header {
     font-size: 6em;
 }
 
-.em-xl {
-    font-size: 8em;
-}
-
 .strokeme {
     text-shadow: -5px -5px 0 #f3f4f5, 
     5px -5px 0 #f3f4f5, 
@@ -156,10 +153,6 @@ header {
     right: -0.3em
 }
 
-.text-shadow {
-    text-shadow: 2px 2px 4px rgba(0,0,0,.5);
-}
-
 .live-editor-row,
 .budget-planner-sample,
 .dropdown-number-cell-sample,
@@ -169,19 +162,18 @@ header {
 .group-cell-sample,
 .datagrid-sample,
 .resize-column-sample,
-.frozens-sample,
 .column-reorder-sample {
 
     // dropdown number
     .rg-dropdownNumber-cell {
         .dropdown {
-            background-color: #171941;
-            border-color: #00f2c3;
+            background-color: white;
+            border-color: $secondary-light;
         }
-        $track-color: #01aa88;
-        $thumb-color: #00f2c3;
-        $thumb-border-color: #01aa88 !default;
-        $track-border-color: #1f2258 !default;
+        $track-color: $secondary-light;
+        $thumb-color: $primary;
+        $thumb-border-color: $secondary-light !default;
+        $track-border-color: darken($secondary-light, 30%) !default;
         @import '@silevis/reactgrid-samples/dist/cell-templates/dropdownNumberCell/_inputrange.scss';
     }
 

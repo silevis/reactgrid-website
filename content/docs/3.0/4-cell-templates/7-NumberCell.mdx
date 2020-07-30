@@ -5,7 +5,7 @@ metaTitle: "NumberCell template"
 metaDescription: "metaDescription"
 ---
 
-Displays number, this cell allows customizing format number values using using `Intl.NumberFormat`. 
+Displays number, this cell allows to customize format number values using `Intl.NumberFormat`. 
 
 #### Interface declaration 
 
@@ -24,7 +24,7 @@ interface NumberCell extends Cell {
 | `type`            | `header`              | Type of cell template | 
 | `value`           | `number`              | Value of cell | 
 | `format?`         | `Intl.NumberFormat`   | Formats value, if undefined formats number according to currect browser locale | 
-| `nanToZero?`      | `boolean`             | If `value` equals `NaN` then displays as `0` | 
+| `nanToZero?`      | `boolean`             | If `value` equals `NaN` then displays `0` | 
 | `hideZero?`       | `boolean`             | If displayed value equals `0` then value is not rendered | 
 
 #### `NumberCellTemplate` class implementation

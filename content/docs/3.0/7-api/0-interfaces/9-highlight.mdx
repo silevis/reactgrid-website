@@ -5,11 +5,11 @@ metaTitle: "Highlight interface"
 metaDescription: "metaDescription"
 --- 
 
-Highlight is an element to mark any cell inside grid.
+Highlight is an element to mark any cell inside the grid.
 
-Highlight (in oppesed to *focus*):
-- can be placed on any cell
-- unlike to *focus* can't be managed by user
+Highlight (opposed to *focus*):
+- it can be placed on any cell
+- it must be managed by a developer unlike 'focus'
 
 
 #### Definition
@@ -27,7 +27,7 @@ interface Highlight {
 
 | Property name     | Type                                      | Property description |
 | -----------       | ------                                    | -------------------- |
-| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | Row id of cell to highlight  |
-| `columnId`        | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | Column id of cell to highlight  |
+| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | Row id of the cell to highlight  |
+| `columnId`        | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | Column id of the cell to highlight  |
 | `borderColor`     | `string`                                  | Optional border color |
-| `className`       | `string`                                  | Optional CSS classname of highlight element  |
+| `className`       | `string`                                  | Optional CSS classname of the highlighted element  |

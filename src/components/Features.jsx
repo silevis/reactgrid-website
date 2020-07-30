@@ -41,7 +41,7 @@ class Features extends React.Component {
                         <th>
                           <h6>Premium</h6>
                           <h4 className="desc">$79/mo</h4>
-                          <Button  color="success" href="#pablo" onClick={e => e.preventDefault()} size="sm">
+                          <Button color="success" href="#pablo" onClick={e => e.preventDefault()} size="sm">
                             Choose Plan
                           </Button>
                         </th>
@@ -78,7 +78,7 @@ class Features extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>Frozen rows and columns</td>
+                        <td>Sticky rows and columns</td>
                         <td>
                           <i className="tim-icons icon-simple-remove" />
                         </td>
@@ -148,7 +148,7 @@ class Features extends React.Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>                          
+                        <td>
                           Touch capability{" "}
                           <i className="tim-icons icon-alert-circle-exc" id="tc-tooltip" />
                           <UncontrolledTooltip delay={0} placement="right" target="tc-tooltip" >

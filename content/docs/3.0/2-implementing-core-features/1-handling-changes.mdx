@@ -65,7 +65,7 @@ render(<App/>)
 #### Idea of handling data changes
 
 1. A user changes the value of a cell. Among others, it could mean that the user has:
-   - typed a new value into the a cell by cell editor,
+   - typed a new value into a cell by cell editor,
    - used a fill handle ,
    - pasted some data into the cell matrix,
    - interacted with a clickable cell (e. g. expanded group cell).
@@ -78,9 +78,9 @@ To support dynamic data editing, you will have to handle the `onCellsChanged` ev
 
 #### When my handler function is called?
 
-1. Committing changes after cell editing.
-2. Pasting by shortcut or context menu.
-3. Fill handle action.
+1. Changes have been committed after cell editing.
+2. After pasting with the shortcut or the context menu.
+3. After fill handle action.
 
 #### Sample change handler function
 
@@ -99,8 +99,8 @@ const handleChanges = (changes: CellChange[]) => {
 ```
 
 The function receives an array describing all of the changes made to the data grid's cells.
-Given that information, we find the row and column affected by each change,
-and then replace the appropriate cell object with a new one.
+Given that information, we find the row and the column affected by each change,
+and then replace an appropriate cell object with a new one.
 
 Let's pass the handler function to our ReactGrid component:
 
@@ -117,7 +117,7 @@ return (
 #### Live demo
 
 And here's an interactive demo showing the event handler in action.
-Notice how it is now possible to edit the data not only by typing new values into the cells
+Notice how it is now possible to edit the data not only by typing new values into the cells,
 but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
 

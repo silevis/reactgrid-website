@@ -3,7 +3,7 @@ posttype: "docs"
 title: Column resizing
 metaTitle: "Column resizing"
 metaDescription: "metaDescription"
-proMark: true
+proMark: false
 ---
 import { ReactGrid } from "@silevis/reactgrid";
 const code = `
@@ -62,6 +62,11 @@ render(<App/>)
 
 #### Allow column to be resized
 
+<Alert color="primary">
+	<i class="fas fa-exclamation-circle pr-3"></i>
+	This feature is only available in Pro version
+</Alert>
+
 For each column which should be resizable, add the `resizable` property
 to the corresponding column object and set its value to `true`.
 
@@ -75,10 +80,10 @@ columns: [
 // ...
 ```
 
-If you hover over the vertical border line between column headers now
+If you hover over the vertical border line between the column headers,
 you will see your mouse pointer change to indicate that a column can be resized.
-But you'll quickly notice that the column resizing functionality doesn't work.
-Why is that? We still need to handle the events fired by ReactGrid when a column is resized.
+However, you'll quickly notice that the column resizing functionality doesn't work.
+Why is that? We still need to handle the events fired by ReactGrid when a column is being resized.
 Similar to how we handled data changes in [Handling data changes](/docs/3.0/2-implementing-core-features/1-handling-changes/),
  we can also define a handler function for that and pass it to our ReactGrid component.
 

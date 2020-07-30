@@ -34,12 +34,13 @@
             padding: $padding-btn-vertical $padding-round-horizontal;
             min-width: 100px;
             font-weight: $font-weight-normal;
-            color: rgba($white,0.5);
-            background-color: $card-black-background;
+            color: rgba($primary,0.9);
+            background-color: $primary-light;
 
 
             &:hover{
-                background-color: darken($card-black-background,2%);
+                background-color: darken($primary-light,7%);
+                color:  darken($primary-light,90%)
             }
 
             &.active{
