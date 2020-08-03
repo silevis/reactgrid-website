@@ -99,6 +99,9 @@ class Index extends React.Component {
                     <li>
                       <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank" rel="noreferrer">Telerik Kendo UI DataTable</a></h4>
                     </li>
+                    <li>
+                      <h4 className="mb-1"><a href={'https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/'} target="_blank" rel="noreferrer">dhtmlxSpreadsheet</a></h4>
+                    </li>
                   </ul>
                 </li>
                 <li>
