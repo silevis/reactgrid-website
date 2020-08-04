@@ -53,7 +53,7 @@ export const samplesData = [
             {
                 header: `Applied core features:`,
                 content: [
-                    `Vertical and horizontal grouping <a href="/fds>sadsa</a>`,
+                    `Vertical and horizontal grouping`,
                     `Custom cell templates (e.g. non editable number cell)`,
                     `Context menu (adding and removing row)`,
                     `Sticky column and row`,

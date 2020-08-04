@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { isBrowserIE } from "../components/isBrowserIE";
@@ -7,12 +7,6 @@ import {
   Container,
   Row,
   Col,
-  Table,
-  Button,
-  Card,
-  CardBody,
-  CardHeader,
-  CardTitle,
 } from "reactstrap";
 
 class Features extends React.Component {
@@ -78,104 +72,10 @@ class Features extends React.Component {
             </Row>
           </Container>
 
-          <div className="space-70"></div>
-          <h2 style={{ fontSize: '3em' }} className="text-center mb-3">Feature comparison</h2>
-          <div className="space-70"></div>
-          <Container>
-            <Row>
-              <Col sm={'12'}>
-                <Table className='feature-comparison-table'>
-                  <thead style={{ borderTopColor: 'transparent' }}>
-                    <tr >
-                      <th scope="row"></th>
-                      <th className='text-center bg-primary bordered font-weight-bold '><h3 className='text-white card-title'>PRO version</h3></th>
-                      <th className='text-center bg-white bordered font-weight-bold'><h3 className='card-title'>MIT version</h3></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <FeatureComparisonRow text='Spreadsheet-like behaviour' inPro={<Times />} inMit={<Check />} />
-                    <FeatureComparisonRow text='Spreadsheet-like behaviour' inPro={'jest w pyte'} inMit={'nie ma takiego bicia synek'} />
-                    <FeatureComparisonRow text='Spreadsheet-like behaviour' inPro={'jest w pyte'} inMit={'nie ma takiego bicia synek'} />
-                    <tr>
-                      <th scope="row"></th>
-                      <td className='text-center'>
-                        <Link href={''} target="_blank">
-                          <Button type="button" className="btn btn-primary px-4 py-2 text-uppercase">get it now</Button>
-                        </Link>
-                      </td>
-                      <td className='text-center'>
-                        <Link href={''} target="_blank">
-                          <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">download now</Button>
-                        </Link>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </Col>
-            </Row>
-          </Container>
-          <div className="space-70"></div>
-          <div className='w-100 position-relative' style={{ minHeight: '500px', }}>
-            {/* <div className='bg-primary position-absolute w-100' style={{ height: '300px', top: 0 }}></div> */}
-
-            <Container>
-              <h4 className='px-5 text-center'>
-                Reacgrid Link href= target="_blank"> Link lorem ....
-              </h4>
-
-              <Row>
-                <Col md={6} sm={12} lg={{ size: 4 }}>
-                  CARD
-                </Col>
-                <Col md={6} sm={12} lg={{ offset: 4, size: 4 }}>
-
-                  <Card className="card-pricing card-plain ca">
-                    <CardHeader>
-                      <h2 className="title">MIT</h2>
-                    </CardHeader>
-                    <CardBody>
-                      <ul>
-                        <li>
-                          10.000  MB
-                        </li>
-                        <li>
-                          10.000  MB
-                        </li>
-                      </ul>
-                      <Button
-                        className="mt-4"
-                        color="primary"
-                      >
-                        Get it Now
-                      </Button>
-                    </CardBody>
-                  </Card>
-
-                </Col>
-              </Row>
-
-            </Container>
-
-          </div>
-
         </div>
       </Layout>
     )
   }
-}
-
-const Times = () => <i class="fas fa-times text-warning fa-2x"></i>;
-
-const Check = () => <i class="fas fa-check text-primary fa-2x"></i>;
-
-const FeatureComparisonRow = ({ text, inPro, inMit }) => {
-  return (
-    <tr className='bordered'>
-      <th scope="row" className='bg-white'>{text}</th>
-      <td className='text-center bordered bg-primary-light '>{inPro}</td>
-      <td className='text-center bordered bg-white'>{inMit}</td>
-    </tr>
-  )
 }
 
 export default Features
@@ -211,8 +111,7 @@ const FeatureImage = ({ mediaSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)}
-          style={{ boxShadow: 'rgb(120, 120, 120) 0px 0px 10px -3px', maxWidth: '100%', maxHeight: '500px' }} >
+        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)} className='feature-video'>
           <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>
