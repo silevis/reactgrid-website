@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { isBrowserIE } from "../components/isBrowserIE"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { isBrowserIE } from "../components/isBrowserIE";
 import {
   Container,
   Row,
@@ -71,6 +71,7 @@ class Features extends React.Component {
               </Col>
             </Row>
           </Container>
+
         </div>
       </Layout>
     )
@@ -110,8 +111,7 @@ const FeatureImage = ({ mediaSrc, imgAlt }) => {
   return (
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
-        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)}
-          style={{ boxShadow: 'rgb(120, 120, 120) 0px 0px 10px -3px', maxWidth: '100%', maxHeight: '500px' }} >
+        <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)} className='feature-video'>
           <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>

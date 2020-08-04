@@ -46,7 +46,7 @@
         li{
             text-align: center;
             padding: 12px 0;
-            border-bottom: 1px solid rgba($default,.3);
+            border-bottom: 1px solid rgba($default,.7);
 
             &:last-child{
                 border: 0;
@@ -135,8 +135,8 @@
 
       &:hover{
         ul li{
-          border-color: $transparent-bg;
-          color: $white;
+          // border-color: $transparent-bg;
+          // color: $white;
         }
       }
     }

@@ -1,6 +1,6 @@
 export const samplesData = [
     {
-        title: 'Data table',
+        title: 'Multiuser',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
         description: [
@@ -8,7 +8,7 @@ export const samplesData = [
                 header: `Capabilities:`,
                 content: [
                     `Enabled most of core features of ReactGrid`,
-                    `Presenting multiple data changes in real time`,
+                    `Presenting multiple data changes in real time `,
                     `Additional actions in context menu (removing rows or columns)`,
                 ]
             },
@@ -40,17 +40,24 @@ export const samplesData = [
             {
                 header: `Capabilities:`,
                 content: [
-                    `Application of Group cell template that contains informations about single node`,
-                    `Toggling node with <code><kbd>SPACE</kbd></code> key or click on chevron`,
-                    `Filter by date, group by one of three groups`,
+                    `This budget planner sample shows the possibility of calculating values of aggregating fields in a 
+                    reactive way in two axes - for organization or project for some time. See the available functionality:`,
+                    `Only colored cells are able change its value (after that aggregation cells will be updated)`,
+                    `New value commited on quarter of node will be proportionally distributed into quarter's months`,
+                    `Reorder single row by drag & drop action on selected row (you can't reorder multiple rows)`,
+                    `Toggle node with <code><kbd>SPACE</kbd></code> key (node cell have to be focused) or click on chevron icon`,
+                    `Expand and collapse by clicking chevron icon on top header row`,
+                    `Add new row by clicking 'Add child row' context menu option on selected row or detele via 'Remove row' option`,
                 ]
             },
             {
                 header: `Applied core features:`,
                 content: [
-                    `Grouping`,
+                    `Vertical and horizontal grouping`,
+                    `Custom cell templates (e.g. non editable number cell)`,
+                    `Context menu (adding and removing row)`,
                     `Sticky column and row`,
-                    `Column resize`,
+                    `Row reordering`,
                     `Area selection`,
                     `Fill handle`,
                     `Copy/cut/paste`,
@@ -59,8 +66,8 @@ export const samplesData = [
                 ]
             }
         ],
-        className: 'datagrid-sample',
-        component: 'BudgetPlannerSample'
+        className: 'bp-sample',
+        component: 'BPSample'
     },
     {
         title: 'Cryptocurrency Market',

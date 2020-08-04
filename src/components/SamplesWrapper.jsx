@@ -87,9 +87,9 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
               <Row>
                 <Col md="5" className="pb-4">
                   <h3>{column1.header}</h3>
-                  <ol className="pl-2">
+                  <ul className="pl-2">
                     {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
-                  </ol>
+                  </ul>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
