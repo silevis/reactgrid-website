@@ -40,14 +40,14 @@ export const samplesData = [
             {
                 header: `Capabilities:`,
                 content: [
-                    `This budget planner sample shows the possibility of calculating values of aggregating fields in a 
-                    reactive way in two axes - for organization or project for some time. See the available functionality:`,
+                    `This budget planner sample shows the possibility of calculating values of aggregating fields in 
+                    a reactive way in two axes - for organization or project for some time. See the available functionality:`,
                     `Only colored cells are able change its value (after that aggregation cells will be updated)`,
                     `New value commited on quarter of node will be proportionally distributed into quarter's months`,
                     `Reorder single row by drag & drop action on selected row (you can't reorder multiple rows)`,
-                    `Toggle node with <code><kbd>SPACE</kbd></code> key (node cell have to be focused) or click on chevron icon`,
-                    `Expand and collapse by clicking chevron icon on top header row`,
-                    `Add new row by clicking 'Add child row' context menu option on selected row or detele via 'Remove row' option`,
+                    `Toggle unit node with <code><kbd>SPACE</kbd></code> key (node cell have to be focused) or click on chevron icon`,
+                    `Toggle years and quarters by clicking chevron icon on the top row`,
+                    `Add a new row by clicking 'Add child row' context menu option on a selected row or delete via 'Remove row' option`,
                 ]
             },
             {

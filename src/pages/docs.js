@@ -8,10 +8,7 @@ class NotFoundPage extends React.Component {
     const { data } = this.props;
     const { pages } = data.site.siteMetadata;
     const docs = pages.filter(page => page.active && page.active === true).find(page => page.id === 'docs');
-
-
     const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
-    console.log(docsVersions)
     navigate(`${docs.route}${docsVersions.slug}${docsVersions.index}/`);
   }
 

@@ -42,15 +42,19 @@ const featureComparisons = [
   { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
   { text: 'Single focus', pro: <Check />, mit: <Check /> },
   { text: 'Multiple highlights', pro: <Check />, mit: <Check /> },
-  { text: 'Columns ??', pro: <Check />, mit: <Check /> },
+  { text: 'Columns What?', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste on a single cell', pro: <Check />, mit: <Check /> },
   { text: 'Keyboard', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste on multiple cells', pro: <Check />, mit: <Times /> },
   { text: 'SASS styling', pro: <Check />, mit: <Times /> },
-  { text: 'Sticky rows and columns', pro: 'All sides', mit: 'Top and left side' },
+  { text: 'Sticky rows and columns', pro: 'All edges', mit: 'Top and left edge' },
   { text: 'Source code', pro: <Check />, mit: <Times /> },
   { text: 'Multiple range selections', pro: <Check />, mit: <Times /> },
-  { text: 'Copy/cut/paste on full', pro: <Check />, mit: <Times /> },
+  { text: 'Copy/cut/paste on full range selection', pro: <Check />, mit: <Times /> },
+  { text: 'Fill handle', pro: <Check />, mit: <Times /> },
+  { text: 'Column resize', pro: <Check />, mit: <Times /> },
+  { text: 'Row and column reorder', pro: <Check />, mit: <Times /> },
+  { text: 'Custom context menu options', pro: <Check />, mit: <Times /> },
 ];
 
 class FeatureComparison extends React.Component {
