@@ -87,7 +87,7 @@ const SocialLink = ({ fontAwesomeIcon, description, url, id, title }) => {
   const tooltipId = 'tooltip-' + id;
   return (
     <li className="w-100">
-      <Button className="btn-simple d-flex align-items-center py-1 text-uppercase my-0" id={tooltipId} href={url}
+      <Button className="btn-simple d-flex align-items-center py-1 text-uppercase my-0" id={tooltipId} href={url} rel="noreferrer"
         target="_blank" style={{ maxWidth: '160px' }}>
         <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}>
           <i className={fontAwesomeIcon} />
