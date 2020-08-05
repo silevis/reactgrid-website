@@ -30,7 +30,7 @@ export const LiveCode = ({ code, title, noInline = false }) => {
 
   return (
     <>
-      <Container className='p-3 pb-5 live-code-container'>
+      <Container className='p-3 pb-md live-code-container'>
         <BootRow className='pb-3'>
           <Col className={'d-flex align-items-center'} sm='7'>
             <h6 className='p-0 m-0'>{title}</h6>
