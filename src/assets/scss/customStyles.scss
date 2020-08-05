@@ -61,14 +61,23 @@ header {
     overflow-y: auto;
 }
 
-.modal-open {
+body.modal-open {
     .modal.show {
         .modal-dialog {
             transform: unset;
             .modal-content {
-                height: 100vh;
+                margin: 10px;
+                height: calc(100vh - 20px);
+                width: calc(100vw - 20px);
                 background-color: $background-gray;
                 .modal-body {
+                    .live-editor-column {
+                        line-height: 1.5;
+                        font-size: 1.1em;
+                    }
+                    .live-editor-conteiner {
+                        height: calc(100% - 50px) !important;
+                    }
                     .live-editor-row {
                         height: calc(100% - 50px) !important;
                     }

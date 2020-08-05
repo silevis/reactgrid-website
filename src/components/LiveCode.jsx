@@ -73,11 +73,12 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
       language={'tsx'}
       transformCode={snippet => {
         if (typeof window !== 'undefined' && window && window.ts) {
-          return window.ts.transpile(snippet, {
+          const result = window.ts.transpile(snippet, {
             noImplicitUseStrict: true,
             target: 'es6',
             jsx: 'react'
-          });
+          })
+          return result;
         }
         return snippet;
       }}
@@ -89,10 +90,11 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
           <Button color="primary" className="animation-on-hover" onClick={() => setMode('both')}>Show live preview</Button>
         </div>
         : <>
-          <BootRow className='h-100 lh-150'>
-            {mode !== 'preview' && <Col sm={mode === 'both' ? '7' : '12'} className='h-100 overflow-y-auto'>
-              <LiveEditor language={'tsx'} />
-            </Col>}
+          <BootRow className='live-editor-conteiner h-100 lh-150'>
+            {mode !== 'preview' &&
+              <Col sm={mode === 'both' ? '7' : '12'} className='live-editor-column h-100 overflow-y-auto'>
+                <LiveEditor language={'tsx'} />
+              </Col>}
             {mode !== 'code' && <Col sm={mode === 'both' ? '5' : '12'}>
               <div style={{ overflow: 'auto' }}>
                 <LivePreview language={'tsx'} />
@@ -100,10 +102,10 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
               </div>
             </Col>}
           </BootRow>
-          <BootRow className="justify-content-center pb-2">
-            <Button color={mode === 'code' && 'primary'} className="animation-on-hover btn-simple" onClick={() => setMode('code')}>Code</Button>
-            <Button color={mode === 'both' && 'primary'} className="animation-on-hover btn-simple mx-2" onClick={() => setMode('both')}>Both</Button>
-            <Button color={mode === 'preview' && 'primary'} className="animation-on-hover btn-simple" onClick={() => setMode('preview')}>Preview</Button>
+          <BootRow className="justify-content-center py-2">
+            <Button color={mode === 'code' && 'primary'} onClick={() => setMode('code')}>Code</Button>
+            <Button color={mode === 'preview' && 'primary'} onClick={() => setMode('preview')}>Preview</Button>
+            <Button color={mode === 'both' && 'primary'} onClick={() => setMode('both')}>Both</Button>
           </BootRow>
         </>
       }
