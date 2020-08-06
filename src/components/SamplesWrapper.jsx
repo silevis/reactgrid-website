@@ -17,7 +17,7 @@ class SamplesWrapper extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTabIdx: undefined,
+      activeTabIdx: 1,
       activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
     };
   }
@@ -31,12 +31,10 @@ class SamplesWrapper extends React.Component {
   }
 
   render() {
-    const isSampleSelected = this.state.activeTabIdx !== undefined;
     const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <NavItem key={idx} className="pb-3">
-        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, ' h-100 d-flex flex-column justify-content-center': true })} style={{ cursor: 'pointer' }}
-          onClick={() => { this.setActiveTab(idx) }}>
-          {!isSampleSelected && <i className={`${sample.icon} mt-2 mb-4`} />}
+        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, ' h-100 d-flex flex-column justify-content-center': true })}
+          style={{ cursor: 'pointer' }} onClick={() => { this.setActiveTab(idx) }}>
           {sample.title}
         </NavLink>
       </NavItem>
@@ -57,8 +55,7 @@ class SamplesWrapper extends React.Component {
         <Row>
           <Col>
             <div className="space-50"></div>
-            {!isSampleSelected && <h1 className="text-center py-5">Try all features on our example applications</h1>}
-            <Nav pills={!isSampleSelected} tabs={isSampleSelected} className={`justify-content-center nav-pills-icons ${!isSampleSelected ? 'nav-pills-success' : ''}`}  >
+            <Nav pills className={`justify-content-center nav-pills-icons ${!true ? 'nav-pills-success' : ''}`}  >
               {tabMenuItems}
               <div className="space-50"></div>
               <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">

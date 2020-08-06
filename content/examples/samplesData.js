@@ -1,23 +1,23 @@
 export const samplesData = [
     {
-        title: 'Multiuser',
+        title: 'Multi user',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
         description: [
             {
                 header: `Capabilities:`,
                 content: [
-                    `Enabled most of core features of ReactGrid`,
-                    `Presenting multiple data changes in real time `,
-                    `Additional actions in context menu (removing rows or columns)`,
+                    `Includes most features of ReactGrid`,
+                    `Presents multiple data changes in real time `,
+                    `Provides additional actions in context menu (removing rows or columns)`,
                 ]
             },
             {
-                header: `Applied core features:`,
+                header: `Core features (applied):`,
                 content: [
                     `Custom highlights`,
                     `Custom cell templates (e.g. flag icon)`,
-                    `Sticky columns and row`,
+                    `Sticky row and columns`,
                     `Column resize`,
                     `Row and column reordering`,
                     `Area, column and row selection (+ multi selection)`,
@@ -40,23 +40,23 @@ export const samplesData = [
             {
                 header: `Capabilities:`,
                 content: [
-                    `This budget planner sample shows the possibility of calculating values of aggregating fields in 
-                    a reactive way in two axes - for organization or project for some time. See the available functionality:`,
-                    `Only colored cells are able change its value (after that aggregation cells will be updated)`,
-                    `New value commited on quarter of node will be proportionally distributed into quarter's months`,
-                    `Reorder single row by drag & drop action on selected row (you can't reorder multiple rows)`,
-                    `Toggle unit node with <code><kbd>SPACE</kbd></code> key (node cell have to be focused) or click on chevron icon`,
-                    `Toggle years and quarters by clicking chevron icon on the top row`,
-                    `Add a new row by clicking 'Add child row' context menu option on a selected row or delete via 'Remove row' option`,
+                    `This budget planner example shows the possibility of calculating values of all aggregation fields 
+                    in a reactive way in two axes - for organization or project for some time. See the available functionality:`,
+                    `Only white cells are able to change their value (all the aggregation cells will be updated accordingly)`,
+                    `A new value entered for a certain quarter on a given node will be proportionally distributed into the months within this quarter`,
+                    `Reorder a single row by drag & drop action onto a selected row (you can't reorder multiple rows)`,
+                    `Fold/unfold unit node with <code><kbd>SPACE</kbd></code> key (node cell has to be focused) or click on the chevron icon`,
+                    `Fold/unfold year and/or quarter columns by clicking chevron icon in the top row`,
+                    `Add a new row by clicking 'Add child row' in the context menu option on a selected row or delete it via 'Remove row' option`,
                 ]
             },
             {
-                header: `Applied core features:`,
+                header: `Core features (applied):`,
                 content: [
                     `Vertical and horizontal grouping`,
                     `Custom cell templates (e.g. non editable number cell)`,
                     `Context menu (adding and removing row)`,
-                    `Sticky column and row`,
+                    `Sticky row and column`,
                     `Row reordering`,
                     `Area selection`,
                     `Fill handle`,
