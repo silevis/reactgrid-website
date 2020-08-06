@@ -156,7 +156,7 @@ class Cookies extends React.Component {
                         <h2 className="h2">Third Party Cookies</h2>
                         <p className="pb-3">In some special cases we also use cookies provided by trusted third parties.
                           The following section details which third party cookies you might encounter through this site.
-                            </p>
+                        </p>
                         <ul className="pl-0">
                           <li>
                             <p>
@@ -186,7 +186,7 @@ class Cookies extends React.Component {
                             <p>
                               We also use social media buttons and/or plugins on this site that allow you to connect with your
                               social network in various ways. For these to work the following social media sites including;
-                              https://github.com/, https://www.facebook.com/, https://www.npmjs.com/
+                              https://github.com/, https://www.facebook.com/, https://www.npmjs.com/, https://www.gitter.im/
                               will set cookies through our site which may be used to enhance your profile on their site or contribute
                               to the data they hold for various purposes outlined in their respective privacy policies.
                             </p>

@@ -90,7 +90,7 @@ const PrivacyPolicyContent = () => {
       <p className="pb-3">
         This policy is effective as of 16 December 2019.
       </p>
-      <hr class="line-primary ml-auto" />
+      <hr className="line-primary ml-auto" />
     </div>
   )
 }

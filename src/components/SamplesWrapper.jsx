@@ -57,7 +57,7 @@ class SamplesWrapper extends React.Component {
         <Row>
           <Col>
             <div className="space-50"></div>
-            {!isSampleSelected && <h1 className="text-center py-5">Try all features on our sample applications</h1>}
+            {!isSampleSelected && <h1 className="text-center py-5">Try all features on our example applications</h1>}
             <Nav pills={!isSampleSelected} tabs={isSampleSelected} className={`justify-content-center nav-pills-icons ${!isSampleSelected ? 'nav-pills-success' : ''}`}  >
               {tabMenuItems}
               <div className="space-50"></div>

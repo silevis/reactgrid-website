@@ -1,5 +1,6 @@
 import React from "react";
-import FooterOnlyLinks from "../components/FooterOnlyLinks";
+import FooterNavLinks from "./FooterNavLinks";
+import FooterExploreLinks from "./FooterExploreLinks";
 import { Link } from "gatsby";
 import {
   Button,
@@ -22,22 +23,16 @@ class Footer extends React.Component {
         <footer className="footer footer-simple">
           <Container>
             <Row className="text-left pt-4">
-              {/* <Col xs="6" sm="4" md="3" className="pb-4 pb-sm-0">
-                  <h5>About</h5>
-                  <ul className="links-vertical">
-                    <CommonFooterLinks pages={pages} />
-                  </ul>
-                </Col> */}
-              <Col xs="6" sm="6" md="3" className="pb-4 pb-sm-0">
+              <Col xs="6" lg='3' className="pb-4 pb-sm-0">
                 <h5 className="text-uppercase font-weight-bold">Information</h5>
                 <ul className="links-vertical">
-                  <FooterOnlyLinks />
+                  <FooterNavLinks />
                 </ul>
               </Col>
-              <Col xs="6" sm="6" md="6" className="pb-4 pb-sm-0">
+              <Col xs="6" lg='3' className="pb-4 pb-sm-0">
                 <h5 className="text-uppercase font-weight-bold">Contact</h5>
                 <address>
-                  <p>
+                  <p style={{ lineHeight: '2.3' }} className="font-weight-light">
                     Silevis Software Sp. z o.o.<br />
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
@@ -46,7 +41,13 @@ class Footer extends React.Component {
                   </p>
                 </address>
               </Col>
-              <Col xs="12" sm="12" md="3" className="pb-4 pb-sm-0">
+              <Col xs="6" lg='3' className="pb-4 pb-sm-0">
+                <h5 className="text-uppercase font-weight-bold">Explore</h5>
+                <ul className="links-vertical">
+                  <FooterExploreLinks />
+                </ul>
+              </Col>
+              <Col xs="6" lg='3' className="pb-4 pb-sm-0">
                 <h5 className="text-uppercase font-weight-bold">Social</h5>
                 <ul className="links-horizontal">
                   {socialLinks}
@@ -87,7 +88,7 @@ const SocialLink = ({ fontAwesomeIcon, description, url, id, title }) => {
   const tooltipId = 'tooltip-' + id;
   return (
     <li className="w-100">
-      <Button className="btn-simple d-flex align-items-center py-1 text-uppercase my-0" id={tooltipId} href={url} rel="noreferrer"
+      <Button className="btn-link d-flex align-items-center p-0 text-uppercase m-0 font-weight-light" id={tooltipId} href={url} rel="noreferrer"
         target="_blank" style={{ maxWidth: '160px' }}>
         <span className={`em-xs pr-3 p-0 icon-color-${title.toLowerCase()}`} style={{ width: '1.4em', fontSize: '1.75em' }}>
           <i className={fontAwesomeIcon} />

@@ -50,8 +50,7 @@ class DocsPostTemplate extends React.Component {
         to={`${docsPage.route + version.slug + version.index}/`}>
         <h4 className="text-darker mb-0">{version.desc}</h4>
       </DropdownItem>
-    )
-    );
+    ));
     const currentPostIndex = posts.findIndex(item => `${docsPage.route}${item.node.fields.slug}` === location.pathname)
     const previousPost = posts[currentPostIndex - 1];
     const nextPost = posts[currentPostIndex + 1];

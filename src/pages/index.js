@@ -24,10 +24,10 @@ class Index extends React.Component {
     const { title, description, pages, social } = data.site.siteMetadata;
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
-    // const featuresPage = pages.find(page => page.id === 'features')
+    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison')
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
-    const npmSocial = social.find(social => social.title === 'npm');
+    // const npmSocial = social.find(social => social.title === 'npm');
     const githubSocial = social.find(social => social.title === 'Github');
 
     return (
@@ -41,9 +41,13 @@ class Index extends React.Component {
               <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
                 <h1 className="title display-1 mb-5 text-primary">
                   Spreadsheet experience for your React app.
-                  </h1>
-                <p className="em-xxs font-weight-light">
+                </h1>
+                <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
+                </p>
+                <p className="h4 font-weight-light">
+                  ReactGrid is available in two versions, MIT which serve the full interface but is limited in functionality
+                  and PRO which is fully functional version. You can compare versions <Link to={featuresComparisonPage.route}>here</Link>.
                 </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
@@ -99,39 +103,32 @@ class Index extends React.Component {
                     <li>
                       <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank" rel="noreferrer">Telerik Kendo UI DataTable</a></h4>
                     </li>
-                    <li>
-                      <h4 className="mb-1"><a href={'https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/'} target="_blank" rel="noreferrer">dhtmlxSpreadsheet</a></h4>
-                    </li>
                   </ul>
                 </li>
                 <li>
                   <h3 className="mb-1">Spreadsheet with formulas</h3>
                   <h4>
-                    Do you need to display a fully functional spreadsheet in the browser?
-                    Have a look at <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
-                      Telerik Kendo UI Spreadsheet</a> which has a&nbsp;toolbar, coordinates and supports formulas.
+                    Do you need to display a fully functional spreadsheet in the browser? Have a look at &nbsp;
+                    <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
+                      Telerik Kendo UI Spreadsheet </a>or&nbsp;
+                    <a href={'https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/'} target="_blank" rel="noreferrer">dhtmlxSpreadsheet</a>&nbsp;
+                    which have a toolbar, coordinates and support formulas.
                   </h4>
                 </li>
               </ul>
-
               <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
-                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
-                  tag={Link} to={npmSocial.url} target="_blank">
-                  <div className="d-flex align-items-center">
-                    <span className="em-xs icon-color-npm "><i class="fab fa-npm pr-3"></i></span> get the mit
+                <a href={githubSocial.url} target="_blank" rel="noreferrer">
+                  <Button className="my-5 mr-3 px-3 d-inline-block btn-simple" >
+                    <div className="d-flex align-items-center">
+                      <span className="em-xs"><i className="fab fa-github pr-3"></i></span>Get Now
                   </div>
-                </Button>
-                <Button className="my-5 mr-3 px-3 d-inline-block btn-simple"
-                  tag={Link} to={githubSocial.url} target="_blank">
-                  <div className="d-flex align-items-center">
-                    <span className="em-xs"><i class="fab fa-github pr-3"></i></span>  browse source code
-                  </div>
-                </Button>
+                  </Button>
+                </a>
               </div>
               <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
             </Col>
           </Row>
-        </Container>
+        </Container >
       </Layout>
     )
   }

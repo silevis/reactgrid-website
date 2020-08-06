@@ -46,6 +46,9 @@ header {
 
 .footer {
     border-top: 0px !important;
+    & ul:not(.links-vertical) {
+        line-height: 2.5 !important;
+    }
 }
 
 .page-header-compact {

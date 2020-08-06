@@ -15,46 +15,51 @@ import {
 } from "reactstrap";
 
 
-const mitCardFeatures = [
-  'Multiple applications',
-  'Public use',
-  'Comunity support',
-  'Free updates',
-  'Source available',
-  'MIT features',
-];
+// const mitCardFeatures = [
+//   'Multiple applications',
+//   'Public use',
+//   'Community support',
+//   'Free updates',
+//   'Source available',
+//   'MIT features',
+// ];
 
-const proCardFeatures = [
-  'Multiple applications',
-  'Public use',
-  '12 months of support',
-  'free product updates',
-  'Source Code available - no tak średnio xD',
-  'Pro features',
-  'Set up assistance',
-];
+// const proCardFeatures = [
+//   'Multiple applications',
+//   'Public use',
+//   '12 months of support',
+//   'Free product updates',
+//   'Pro features',
+//   'Set up assistance',
+// ];
 
 const Times = () => <i className="fas fa-times text-warning fa-lg"></i>;
 
 const Check = () => <i className="fas fa-check text-primary fa-lg"></i>;
 
+// const featureComparisons = [
+//   { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
+// ];
+
 const featureComparisons = [
   { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
-  { text: 'Single focus', pro: <Check />, mit: <Check /> },
-  { text: 'Multiple highlights', pro: <Check />, mit: <Check /> },
-  { text: 'Columns What?', pro: <Check />, mit: <Check /> },
-  { text: 'Copy/cut/paste on a single cell', pro: <Check />, mit: <Check /> },
-  { text: 'Keyboard', pro: <Check />, mit: <Check /> },
-  { text: 'Copy/cut/paste on multiple cells', pro: <Check />, mit: <Times /> },
-  { text: 'SASS styling', pro: <Check />, mit: <Times /> },
-  { text: 'Sticky rows and columns', pro: 'All edges', mit: 'Top and left edge' },
-  { text: 'Source code', pro: <Check />, mit: <Times /> },
-  { text: 'Multiple range selections', pro: <Check />, mit: <Times /> },
-  { text: 'Copy/cut/paste on full range selection', pro: <Check />, mit: <Times /> },
+  { text: 'Focusing cell', pro: <Check />, mit: <Check /> },
+  { text: 'Highlights', pro: <Check />, mit: <Check /> },
+  { text: 'Sticky rows and columns', pro: <>All edges <i className="far fa-square fa-lg"></i></>, mit: <>Top and left edge <i className="fas fa-border-style fa-lg"></i></> },
+  { text: 'Custom cell templates', pro: <Check />, mit: <Check /> },
+  { text: 'Keyboard actions', pro: <Check />, mit: <Check /> },
+  { text: 'Copy/cut/paste single cell', pro: <Check />, mit: <Check /> },
+  { text: 'Copy/cut/paste multiple cells', pro: <Check />, mit: <Times /> },
   { text: 'Fill handle', pro: <Check />, mit: <Times /> },
   { text: 'Column resize', pro: <Check />, mit: <Times /> },
   { text: 'Row and column reorder', pro: <Check />, mit: <Times /> },
-  { text: 'Custom context menu options', pro: <Check />, mit: <Times /> },
+  { text: 'Multiple range selections', pro: <Check />, mit: <Times /> },
+  { text: 'Context menu', pro: <Check />, mit: <Times /> },
+  { text: 'SASS styling', pro: <Check />, mit: <Check /> },
+  { text: 'Virtual scrolling', pro: <Check />, mit: <Check /> },
+  { text: 'Native sticky panes behaviour', pro: <Check />, mit: <Check /> },
+  { text: 'i18n options', pro: <Check />, mit: <Check /> },
+  { text: 'Optimized for touch devices', pro: <Check />, mit: <Check /> },
 ];
 
 class FeatureComparison extends React.Component {
@@ -69,6 +74,7 @@ class FeatureComparison extends React.Component {
   render() {
     const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
+    const githubSocial = social.find(social => social.title === 'Github');
     return (
       <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
@@ -92,13 +98,13 @@ class FeatureComparison extends React.Component {
                     <tr>
                       <th scope="row"> </th>
                       <td className='text-center'>
-                        <Link to={''} target="_blank">
+                        <a href="mailto:reactgrid@silevis.com">
                           <Button type="button" className="btn btn-primary px-4 py-2 text-uppercase">Ask for price</Button>
-                        </Link>
+                        </a>
                       </td>
                       <td className='text-center'>
-                        <Link to={''} target="_blank">
-                          <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">download now</Button>
+                        <Link to={githubSocial.url} target="_blank">
+                          <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">Check on Github</Button>
                         </Link>
                       </td>
                     </tr>
@@ -107,7 +113,7 @@ class FeatureComparison extends React.Component {
               </Col>
             </Row>
           </Container>
-          <div className="space-70"></div>
+          {/* <div className="space-70"></div>
           <div className='w-100 position-relative' style={{ minHeight: '600px', }}>
             <div className='bg-primary position-absolute w-100' style={{ height: '350px', top: 0 }}></div>
             <Container>
@@ -123,14 +129,14 @@ class FeatureComparison extends React.Component {
                 </Col>
               </Row>
             </Container>
-          </div>
+          </div> */}
         </div>
       </Layout>
     )
   }
 }
 
-const FeaturesCard = ({ title, features, btnText }) => {
+/* const FeaturesCard = ({ title, features, btnText }) => {
   return (
     <Card className="card-pricing bg-white card-plain ca">
       <CardHeader><h2 className="title">{title}</h2></CardHeader>
@@ -142,7 +148,7 @@ const FeaturesCard = ({ title, features, btnText }) => {
       </CardBody>
     </Card>
   )
-}
+} */
 
 const FeatureComparisonRow = ({ text, inPro, inMit }) => {
   return (

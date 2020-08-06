@@ -104,8 +104,8 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
           </BootRow>
           <BootRow className="justify-content-center py-2">
             <Button color={mode === 'code' && 'primary'} onClick={() => setMode('code')}>Code</Button>
-            <Button color={mode === 'preview' && 'primary'} onClick={() => setMode('preview')}>Preview</Button>
             <Button color={mode === 'both' && 'primary'} onClick={() => setMode('both')}>Both</Button>
+            <Button color={mode === 'preview' && 'primary'} onClick={() => setMode('preview')}>Preview</Button>
           </BootRow>
         </>
       }
