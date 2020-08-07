@@ -230,6 +230,16 @@ body.modal-open {
 
 }
 
+#multiuser-sample .rg-checkbox-cell label span:after {
+    left: 5px;
+    top: 1px;
+    width: 7px;
+    height: 12px;
+    border: solid #ffffff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
 span.anchor {
     display: block;
     position: relative;
@@ -311,6 +321,10 @@ span.anchor {
             color: $primary;
             font-weight: 500 !important;
         }
+    }
+    
+    .nav-docs-item.lvl-1:not(:last-child) {
+        border-bottom: 1px solid #e3e3e3;
     }
 
     .table {

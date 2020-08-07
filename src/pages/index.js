@@ -36,7 +36,7 @@ class Index extends React.Component {
         <div className="wrapper" ref="wrapper">
           <div className="space"></div>
           <div className=" space-50"></div>
-          <Container className="mb-md-5 pb-5">
+          <Container className="pb-5">
             <Row>
               <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
                 <h1 className="title display-1 mb-5 text-primary">
@@ -51,7 +51,7 @@ class Index extends React.Component {
                 </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
-                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%' }}>
+                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
                   <source src={Video} type="video/mp4" />
                   <track kind="captions" />
                 </video>

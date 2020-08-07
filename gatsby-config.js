@@ -22,9 +22,9 @@ module.exports = {
     ],
     explore: [
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
+      { id: 'feature-comparison', title: `Feature comparison`, description: ``, route: `/feature-comparison`, active: true },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
-      { id: 'manual', title: `Manual`, description: ``, route: `/manual`, active: true },
-      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: true },
+      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
     docsVersions: [
       { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }

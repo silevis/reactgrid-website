@@ -1,23 +1,21 @@
-import React from "react"
-import { graphql, navigate } from "gatsby"
+import React from "react";
+import { graphql, navigate } from "gatsby";
 
 
-class NotFoundPage extends React.Component {
+const DocsRedirectPage = (props) => {
 
-  componentDidMount() {
-    const { data } = this.props;
+  React.useEffect(() => {
+    const { data } = props;
     const { pages } = data.site.siteMetadata;
     const docs = pages.filter(page => page.active && page.active === true).find(page => page.id === 'docs');
     const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
     navigate(`${docs.route}${docsVersions.slug}${docsVersions.index}/`);
-  }
+  });
 
-  render() {
-    return null
-  }
+  return null;
 }
 
-export default NotFoundPage
+export default DocsRedirectPage;
 
 export const pageQuery = graphql`
   query {

@@ -9,45 +9,32 @@ import {
   Col,
   Table,
   Button,
-  Card,
-  CardBody,
-  CardHeader,
 } from "reactstrap";
 
 
-// const mitCardFeatures = [
-//   'Multiple applications',
-//   'Public use',
-//   'Community support',
-//   'Free updates',
-//   'Source available',
-//   'MIT features',
-// ];
-
-// const proCardFeatures = [
-//   'Multiple applications',
-//   'Public use',
-//   '12 months of support',
-//   'Free product updates',
-//   'Pro features',
-//   'Set up assistance',
-// ];
 
 const Times = () => <i className="fas fa-times text-warning fa-lg"></i>;
 
 const Check = () => <i className="fas fa-check text-primary fa-lg"></i>;
 
-// const featureComparisons = [
-//   { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
-// ];
+const whatsIncluded = [
+  { text: 'Support', pro: 'Priority support', mit: 'Community' },
+  { text: 'Support', pro: <Check />, mit: <Check /> },
+  { text: 'Free updates', pro: <Check />, mit: <Check /> },
+  { text: 'Implementation assistance', pro: <Check />, mit: <Times /> },
+];
 
 const featureComparisons = [
   { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
   { text: 'Focusing cell', pro: <Check />, mit: <Check /> },
   { text: 'Highlights', pro: <Check />, mit: <Check /> },
-  { text: 'Sticky rows and columns', pro: <>All edges <i className="far fa-square fa-lg"></i></>, mit: <>Top and left edge <i className="fas fa-border-style fa-lg"></i></> },
+  {
+    text: 'Sticky rows and columns',
+    pro: <span className='d-flex align-items-center justify-content-center'><span className='pr-2'>All edges</span> <i className="far fa-square fa-lg"></i></span>,
+    mit: <span className='d-flex align-items-center justify-content-center'><span className='pr-2'>Top and left edge</span><i className="fas fa-border-style fa-lg"></i></span>
+  },
   { text: 'Custom cell templates', pro: <Check />, mit: <Check /> },
-  { text: 'Keyboard actions', pro: <Check />, mit: <Check /> },
+  { text: 'Keyboard shortcuts', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste single cell', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste multiple cells', pro: <Check />, mit: <Times /> },
   { text: 'Fill handle', pro: <Check />, mit: <Times /> },
@@ -88,12 +75,15 @@ class FeatureComparison extends React.Component {
                 <Table className='feature-comparison-table'>
                   <thead style={{ borderTopColor: 'transparent' }}>
                     <tr >
-                      <th scope="row"> </th>
+                      <th scope="row" > </th>
                       <th className='text-center bg-primary bordered font-weight-bold'><h3 className='mb-0 text-white card-title'>PRO version</h3></th>
                       <th className='text-center bg-white bordered font-weight-bold'><h3 className='mb-0 card-title'>MIT version</h3></th>
                     </tr>
                   </thead>
                   <tbody>
+                    <TableHeaderRow text='What is included / What you get?' />
+                    {[...whatsIncluded].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
+                    <TableHeaderRow text='Features' />
                     {[...featureComparisons].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr>
                       <th scope="row"> </th>
@@ -150,9 +140,11 @@ class FeatureComparison extends React.Component {
   )
 } */
 
+const TableHeaderRow = ({ text }) => <tr><th scope="row" colSpan={3} className='text-center bordered bg-white py-3'><span className='h4'>{text}</span></th></tr>;
+
 const FeatureComparisonRow = ({ text, inPro, inMit }) => {
   return (
-    <tr className='bordered'>
+    <tr className='bordered h6'>
       <th scope="row" className='bg-white'>{text}</th>
       <td className='text-center bordered bg-primary-light '>{inPro}</td>
       <td className='text-center bordered bg-white'>{inMit}</td>

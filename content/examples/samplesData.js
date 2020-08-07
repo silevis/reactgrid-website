@@ -1,37 +1,16 @@
+import React from 'react';
+import { Link } from "gatsby";
+
+
+const LinkToDocs = ({ to, children }) => {
+    return (
+        <Link to={to}>
+            {children || <><span className='text-nowrap'>docs <i className="fas fa-external-link-alt fa-xs"></i></span></>}
+        </Link>
+    )
+}
+
 export const samplesData = [
-    {
-        title: 'Multi user',
-        icon: 'fas fa-border-all fa-3x',
-        enabled: true,
-        description: [
-            {
-                header: `Capabilities:`,
-                content: [
-                    `Includes most features of ReactGrid`,
-                    `Presents multiple data changes in real time `,
-                    `Provides additional actions in context menu (removing rows or columns)`,
-                ]
-            },
-            {
-                header: `Core features (applied):`,
-                content: [
-                    `Custom highlights`,
-                    `Custom cell templates (e.g. flag icon)`,
-                    `Sticky row and columns`,
-                    `Column resize`,
-                    `Row and column reordering`,
-                    `Area, column and row selection (+ multi selection)`,
-                    `Fill handle`,
-                    `Context menu`,
-                    `Copy/cut/paste`,
-                    `Touch capability`,
-                    `SASS custom styling`,
-                ]
-            }
-        ],
-        className: 'datagrid-sample',
-        component: 'DatagridSample'
-    },
     {
         title: 'Budget planner',
         icon: 'fas fa-search-dollar fa-3x',
@@ -53,12 +32,12 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    `Vertical and horizontal grouping`,
-                    `Custom cell templates (e.g. non editable number cell)`,
-                    `Context menu (adding and removing row)`,
-                    `Sticky row and column`,
-                    `Row reordering`,
-                    `Area selection`,
+                    <>Vertical and horizontal grouping (see the <LinkToDocs to={'/docs/3.0/4-cell-templates/5-GroupCell/'} />)</>,
+                    <>Custom cell templates (e.g. non editable number cell, see the <LinkToDocs to={'/docs/3.0/5-create-your-own-cell-template/'} />)</>,
+                    <>Context menu (adding and removing row, see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Row reordering (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4a-selections/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -68,6 +47,39 @@ export const samplesData = [
         ],
         className: 'bp-sample',
         component: 'BPSample'
+    },
+    {
+        title: 'Multi user',
+        icon: 'fas fa-border-all fa-3x',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    `Includes most features of ReactGrid`,
+                    `Presents multiple data changes in real time `,
+                    `Provides additional actions in context menu (removing rows or columns)`,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    <>Highlights (see the <LinkToDocs to={'/docs/3.0/4-cell-templates/5-GroupCell/'} />)</>,
+                    <>Custom cell templates (e.g. flag icon, see the <LinkToDocs to={'/docs/3.0/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Column resize (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/2-column-resizing/'} />)</>,
+                    <>Row and column reordering (see the&nbsp;<LinkToDocs to={'/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.0/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Context menu (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/5-context-menu/'} />)</>,
+                    `Fill handle`,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `SASS custom styling`,
+                ]
+            }
+        ],
+        className: 'datagrid-sample',
+        component: 'DatagridSample'
     },
     {
         title: 'Cryptocurrency Market',

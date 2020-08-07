@@ -10,46 +10,43 @@ import {
 } from "reactstrap";
 
 
-class PrivacyPolicy extends React.Component {
-  componentDidMount() {
+const PrivacyPolicy = ({ data }) => {
+
+  React.useEffect(() => {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0;
       document.scrollingElement.scrollTop = 0;
     }
     document.body.classList.add("reset-page");
-  }
-  componentWillUnmount() {
-    document.body.classList.remove("reset-page");
-  }
-  render() {
-    const { data } = this.props
-    const { title, description, pages, social } = data.site.siteMetadata;
-    return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={title} />
-        <div className="wrapper" ref="wrapper">
-          <div className="space"></div>
-          <div className="section">
-            <Container>
-              <Row>
-                <Col className="ml-auto mr-auto" md="10">
-                  <Row className="justify-content-between">
-                    <Col>
-                      <h1 className="h1 px-0">Privacy Policy</h1>
-                      <h3 className="h3 px-0 text-muted">Effective date: 16 December 2019</h3>
-                    </Col>
-                    <Col xs="12" className="mx-auto">
-                      <PrivacyPolicyContent />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Container>
-          </div>
+    return () => document.body.classList.remove("reset-page");
+  });
+
+  const { title, description, pages, social } = data.site.siteMetadata;
+  return (
+    <Layout pages={pages} social={social} description={description} title={title}>
+      <SEO title={title} />
+      <div className="wrapper">
+        <div className="space"></div>
+        <div className="section">
+          <Container>
+            <Row>
+              <Col className="ml-auto mr-auto" md="10">
+                <Row className="justify-content-between">
+                  <Col>
+                    <h1 className="h1 px-0">Privacy Policy</h1>
+                    <h3 className="h3 px-0 text-muted">Effective date: 16 December 2019</h3>
+                  </Col>
+                  <Col xs="12" className="mx-auto">
+                    <PrivacyPolicyContent />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Container>
         </div>
-      </Layout>
-    )
-  }
+      </div>
+    </Layout>
+  )
 }
 
 const PrivacyPolicyContent = () => {

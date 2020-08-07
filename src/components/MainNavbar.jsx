@@ -72,7 +72,7 @@ class MainNavbar extends React.Component {
                       return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
                     });
                     const getNow = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
-                      <NavLink to={featuresComparisonPage.route} tag={Link}>
+                      <NavLink to={featuresComparisonPage.route} tag={Link} activeClassName="main-navigation-active font-weight-bold">
                         <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize">Get Now</Button>
                       </NavLink>
                     </li>

@@ -65,7 +65,7 @@ class DocsPostTemplate extends React.Component {
               <Col md="3" lg="3" xl="3" className="pb-3 pb-md-0">
                 <UncontrolledCollapse navbar toggler="#docsnav" id="docs-collapser"
                   className="h-100 d-md-none position-relative overflow-hidden position-absolute">
-                  <Button className="navbar-toggler btn-link btn-danger btn-sm text-danger position-absolute mr-3 mt-3" id="docsnav"
+                  <Button className="navbar-toggler btn-link btn-danger btn-sm bg-white text-danger position-absolute mr-3 mt-3" id="docsnav"
                     style={{ top: 0, right: 0 }}>
                     <i className="fas fa-times fa-2x p-2"></i>
                   </Button>
