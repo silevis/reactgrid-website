@@ -17,10 +17,9 @@ const Times = () => <i className="fas fa-times text-warning fa-lg"></i>;
 
 const Check = () => <i className="fas fa-check text-primary fa-lg"></i>;
 
-const whatsIncluded = [
-  { text: 'Support', pro: 'Priority support', mit: 'Community' },
+const whatYouGet = [
   { text: 'Commercial use', pro: <Check />, mit: <Check /> },
-  { text: 'Free updates', pro: <Check />, mit: <Check /> },
+  { text: 'Priority support', pro: <Check />, mit: <Times /> },
   { text: 'Implementation assistance', pro: <Check />, mit: <Times /> },
 ];
 
@@ -62,12 +61,25 @@ class FeatureComparison extends React.Component {
     const { data }: any = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     const githubSocial = social.find(social => social.title === 'Github');
+
+    const askForPrice = (
+      <a href="mailto:reactgrid@silevis.com">
+        <Button type="button" className="btn btn-primary px-4 py-2 text-uppercase">Ask for price</Button>
+      </a>
+    );
+
+    const checkOnGithub = (
+      <Link to={githubSocial.url} target="_blank">
+        <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">Check on Github</Button>
+      </Link>
+    );
+
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
           <div className="space-70"></div>
-          <h2 style={{ fontSize: '3em' }} className="text-center mb-3">Feature comparison</h2>
+          <h2 style={{ fontSize: '3em' }} className="text-center mb-3">Choose your version</h2>
           <div className="space-70"></div>
           <Container>
             <Row>
@@ -75,14 +87,23 @@ class FeatureComparison extends React.Component {
                 <Table className='feature-comparison-table'>
                   <thead style={{ borderTopColor: 'transparent' }}>
                     <tr >
-                      <th scope="row" > </th>
-                      <th className='text-center bg-primary bordered font-weight-bold'><h3 className='mb-0 text-white card-title'>PRO version</h3></th>
-                      <th className='text-center bg-white bordered font-weight-bold'><h3 className='mb-0 card-title'>MIT version</h3></th>
+                      <th scope="row"> </th>
+                      <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '35%' }}><h3 className='mb-0 text-white card-title'>PRO version</h3></th>
+                      <th className='text-center bg-white bordered font-weight-bold' style={{ width: '25%' }}><h3 className='mb-0 card-title'>MIT version</h3></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <TableHeaderRow text='What is included / What you get?' />
-                    {[...whatsIncluded].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
+                    <TableHeaderRow text='What you get?' />
+                    {[...whatYouGet].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
+                    <tr className='h6'>
+                      <th scope="row" className='bg-transparent'></th>
+                      <td className='text-center bordered bg-primary-light '>
+                        {askForPrice}
+                      </td>
+                      <td className='text-center bordered bg-white'>
+                        {checkOnGithub}
+                      </td>
+                    </tr>
                     <TableHeaderRow text='Features' />
                     {[...featureComparisons].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr>
@@ -140,12 +161,12 @@ class FeatureComparison extends React.Component {
   )
 } */
 
-const TableHeaderRow = ({ text }) => <tr><th scope="row" colSpan={3} className='text-center bordered bg-white py-3'><span className='h4'>{text}</span></th></tr>;
+const TableHeaderRow = ({ text }) => <tr><th scope="row" className='bg-transparent'></th><th scope="row" colSpan={2} className='text-center bordered bg-white py-3'><span className='h4'>{text}</span></th></tr>;
 
 const FeatureComparisonRow = ({ text, inPro, inMit }) => {
   return (
-    <tr className='bordered h6'>
-      <th scope="row" className='bg-white'>{text}</th>
+    <tr className='h6'>
+      <th scope="row" className='bordered bg-white'>{text}</th>
       <td className='text-center bordered bg-primary-light '>{inPro}</td>
       <td className='text-center bordered bg-white'>{inMit}</td>
     </tr>
