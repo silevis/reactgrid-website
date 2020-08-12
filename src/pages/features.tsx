@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { isBrowserIE } from "../functions/isBrowserIE";
@@ -9,7 +9,7 @@ import {
   Col,
 } from "reactstrap";
 
-class Features extends React.Component {
+class Features extends React.Component<any, PageProps> {
   componentDidMount() {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0;
@@ -17,11 +17,11 @@ class Features extends React.Component {
     }
   }
   render() {
-    const { data } = this.props
+    const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     const features = data.allFeaturesYaml.edges;
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
           <div className="space-70"></div>
