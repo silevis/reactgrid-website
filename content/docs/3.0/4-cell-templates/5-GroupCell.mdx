@@ -5,8 +5,15 @@ metaTitle: "GroupCell template"
 metaDescription: "metaDescription"
 ---
 
- `GroupCell` contains data about a single node in the tree structure of the data. This cell template renders text with 
- the preceding chevron.
+`GroupCell` contains data about a single node in the tree structure of the data. This cell template renders text with 
+the preceding chevron.
+
+Implementation of grouping functionality remains on developer (e.g., creating tree structure of cells, 
+filtering rows available to display, creating indents).
+
+#### Implementation
+
+ - Open `EmailCell` implementation on <a href="https://github.com/silevis/reactgrid/blob/develop/src/lib/CellTemplates/GroupCellTemplate.tsx" target="_blank"> github <i className="fas fa-external-link-alt fa-xs pl-1"></i></a>
 
 #### Interface declaration 
 
@@ -27,105 +34,5 @@ interface GroupCell extends Cell {
 | `text`                | `string`                                  | Text of cell content | 
 | `isExpanded?`         | `boolean`                                 | Is node expaned (displays chevron char as opened/closed) | 
 | `hasChildren?`        | `boolean`                                 | Determines if a node element has children | 
-| `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node, if undefined the node becomes a root | 
+| `parentId?`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)     | [`Id`](/docs/3.0/7-api/1-types/4-id/) of parent node (cell), if undefined the node becomes a root | 
 | `indent?`             | `number`                                  | Indent size of cell content | 
-
-#### `GroupCellTemplate` class implementation
-
-```tsx
-class GroupCellTemplate implements CellTemplate<GroupCell> {
-
-  getCompatibleCell(uncertainCell: Uncertain<GroupCell>): Compatible<GroupCell> {
-    const text = getCellProperty(uncertainCell, 'text', 'string');
-    let isExpanded = false;
-    try {
-        isExpanded = getCellProperty(uncertainCell, 'isExpanded', 'boolean');
-    } catch {
-        isExpanded = true;
-    }
-    let indent = -1;
-    try {
-        indent = getCellProperty(uncertainCell, 'indent', 'number');
-    } catch {
-        indent = 0;
-    }
-    let hasChildren = false;
-    try {
-        hasChildren = getCellProperty(uncertainCell, 'hasChildren', 'boolean');
-    } catch {
-        hasChildren = false;
-    }
-    const value = parseFloat(text);
-    return { ...uncertainCell, text, value, isExpanded, hasChildren, indent };
-  }
-
-  update(cell: Compatible<GroupCell>, cellToMerge: UncertainCompatible<GroupCell>): Compatible<GroupCell> {
-    return this.getCompatibleCell({ ...cell, isExpanded: cellToMerge.isExpanded, text: cellToMerge.text })
-  }
-
-  handleKeyDown(cell: Compatible<GroupCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<GroupCell>, enableEditMode: boolean } {
-    let enableEditMode = keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER;
-    const cellCopy = { ...cell };
-    const char = getCharFromKeyCode(keyCode, shift);
-    if (keyCode === keyCodes.SPACE && cellCopy.isExpanded !== undefined && !shift) {
-      cellCopy.isExpanded = !cellCopy.isExpanded;
-    } else if (!ctrl && !alt && isAlphaNumericKey(keyCode) && !(shift && keyCode === keyCodes.SPACE)) {
-      cellCopy.text = !shift ? char.toLowerCase() : char;
-      enableEditMode = true;
-    }
-    return { cell: cellCopy, enableEditMode };
-  }
-
-  getClassName(cell: Compatible<GroupCell>, isInEditMode: boolean) {
-    const isExpanded = cell.hasChildren ? cell.isExpanded ? 'expanded' : 'collapsed' : '';
-    const className = cell.className ?? '';
-    return `${isExpanded} ${className}`;
-  }
-
-  getStyle(cell: Compatible<GroupCell>, isInEditMode: boolean): CellStyle {
-    const indent = cell.indent ?? 0;
-    const elementMarginMultiplier = indent * 1.4;
-    return { paddingLeft: `calc(${elementMarginMultiplier}em + 2px)` };
-  }
-
-  render(cell: Compatible<GroupCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<GroupCell>, commit: boolean) => void): React.ReactNode {
-    return (
-      !isInEditMode ?
-        <>
-          {cell.hasChildren &&
-            <div
-              className="chevron"
-              onPointerDown={e => {
-                e.stopPropagation();
-                onCellChanged(this.getCompatibleCell({ ...cell, isExpanded: !cell.isExpanded }), true)
-              }}
-            >
-              <span className="icon">❯</span>
-            </div>
-          }
-          {cell.text}
-        </>
-        :
-        <input
-            ref={input => {
-              if (input) {
-                input.focus();
-                input.setSelectionRange(input.value.length, input.value.length);
-              }
-            }}
-            defaultValue={cell.text}
-            onChange={e => onCellChanged(this.getCompatibleCell({ ...cell, text: e.currentTarget.value }), false)}
-            onBlur={e => onCellChanged(this.getCompatibleCell({ ...cell, text: e.currentTarget.value }), true)}
-            onCopy={e => e.stopPropagation()}
-            onCut={e => e.stopPropagation()}
-            onPaste={e => e.stopPropagation()}
-            onPointerDown={e => e.stopPropagation()}
-            onKeyDown={e => {
-              if (isAlphaNumericKey(e.keyCode) || (isNavigationKey(e.keyCode))) e.stopPropagation();
-            }}
-        />
-    );
-  }
-
-}
-```

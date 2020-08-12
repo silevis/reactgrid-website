@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FAQ from "../components/FAQ"
-import { isBrowserIE } from "../components/isBrowserIE"
+import { isBrowserIE } from "../functions/isBrowserIE"
 import {
   Container,
   Row,

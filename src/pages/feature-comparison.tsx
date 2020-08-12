@@ -2,7 +2,7 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { isBrowserIE } from "../components/isBrowserIE";
+import { isBrowserIE } from "../functions/isBrowserIE";
 import {
   Container,
   Row,
@@ -19,13 +19,13 @@ const Check = () => <i className="fas fa-check text-primary fa-lg"></i>;
 
 const whatsIncluded = [
   { text: 'Support', pro: 'Priority support', mit: 'Community' },
-  { text: 'Support', pro: <Check />, mit: <Check /> },
+  { text: 'Commercial use', pro: <Check />, mit: <Check /> },
   { text: 'Free updates', pro: <Check />, mit: <Check /> },
   { text: 'Implementation assistance', pro: <Check />, mit: <Times /> },
 ];
 
 const featureComparisons = [
-  { text: 'Spreadsheet-like behaviour', pro: <Check />, mit: <Check /> },
+  { text: 'Spreadsheet-like look and feel', pro: <Check />, mit: <Check /> },
   { text: 'Focusing cell', pro: <Check />, mit: <Check /> },
   { text: 'Highlights', pro: <Check />, mit: <Check /> },
   {
@@ -59,11 +59,11 @@ class FeatureComparison extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    const { data }: any = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     const githubSocial = social.find(social => social.title === 'Github');
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
           <div className="space-70"></div>

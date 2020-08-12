@@ -28,7 +28,7 @@ class Index extends React.Component {
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     // const npmSocial = social.find(social => social.title === 'npm');
-    const githubSocial = social.find(social => social.title === 'Github');
+    // const githubSocial = social.find(social => social.title === 'Github');
 
     return (
       <Layout location={location} pages={pages} social={social} description={description} title={title}>
@@ -117,13 +117,11 @@ class Index extends React.Component {
                 </li>
               </ul>
               <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
-                <a href={githubSocial.url} target="_blank" rel="noreferrer">
-                  <Button className="my-5 mr-3 px-3 d-inline-block btn-simple" >
-                    <div className="d-flex align-items-center">
-                      <span className="em-xs"><i className="fab fa-github pr-3"></i></span>Get Now
-                  </div>
+                <Link to={featuresComparisonPage.route}>
+                  <Button className="my-5 mr-3 px-3 d-inline-block btn-simple d-flex align-items-center" size='lg'>
+                    <i className="fas fa-exchange-alt fa-xl pr-2"></i>Get Now
                   </Button>
-                </a>
+                </Link>
               </div>
               <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
             </Col>

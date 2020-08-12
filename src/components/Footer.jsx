@@ -64,7 +64,7 @@ class Footer extends React.Component {
               </Col>
               <Col xs="12" sm="8" className="d-flex justify-content-center justify-content-sm-end">
                 <span className="text-center text-sm-right">
-                  Copyright © 2019-{new Date().getFullYear()} Silevis Software Sp. z o.o., All Rights Reserved.
+                  Copyright © 2019-{new Date().getFullYear()} <a href='https://www.silevis.com/' >Silevis Software </a> Sp. z o.o., All Rights Reserved.
                 </span>
               </Col>
             </Row>

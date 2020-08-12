@@ -3,7 +3,7 @@ posttype: "docs"
 title: Column resizing
 metaTitle: "Column resizing"
 metaDescription: "metaDescription"
-proMark: false
+proMark: true
 ---
 import { ReactGrid } from "@silevis/reactgrid";
 const code = `
@@ -60,12 +60,13 @@ const App = () => {
 render(<App/>)
 `;
 
-#### Allow column to be resized
 
 <Alert color="primary">
 	<i class="fas fa-exclamation-circle pr-3"></i>
 	This feature is only available in PRO version
 </Alert>
+
+#### Allow column to be resized
 
 For each column which should be resizable, add the `resizable` property
 to the corresponding column object and set its value to `true`.

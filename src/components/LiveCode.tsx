@@ -50,7 +50,7 @@ export const LiveCode = ({ code, title, noInline = false }) => {
   )
 }
 
-const CodeModal = ({ modal, title, toggle, liveComponent, children }) => (
+const CodeModal = ({ modal, title, toggle, liveComponent }) => (
   <Modal isOpen={modal} toggle={toggle} size="full-screen">
     <div className="modal-header align-items-stretch">
       <button type="button" className="close text-danger" data-dismiss="modal" aria-label="Close" onClick={toggle}>
@@ -60,7 +60,6 @@ const CodeModal = ({ modal, title, toggle, liveComponent, children }) => (
     </div>
     <ModalBody style={{ height: 0 }}>
       {liveComponent}
-      {children}
     </ModalBody>
   </Modal>
 )
@@ -97,15 +96,15 @@ const MyLiveProvider = ({ mode, code, scope, setMode, noInline }) => {
               </Col>}
             {mode !== 'code' && <Col sm={mode === 'both' ? '5' : '12'}>
               <div style={{ overflow: 'auto' }}>
-                <LivePreview language={'tsx'} />
-                <LiveError language={'tsx'} />
+                <LivePreview />
+                <LiveError />
               </div>
             </Col>}
           </BootRow>
           <BootRow className="justify-content-center py-2">
-            <Button color={mode === 'code' && 'primary'} onClick={() => setMode('code')}>Code</Button>
-            <Button color={mode === 'both' && 'primary'} onClick={() => setMode('both')}>Both</Button>
-            <Button color={mode === 'preview' && 'primary'} onClick={() => setMode('preview')}>Preview</Button>
+            <Button color={(mode === 'code') ? 'primary' : ''} onClick={() => setMode('code')}>Code</Button>
+            <Button color={mode === 'both' ? 'primary' : ''} onClick={() => setMode('both')}>Both</Button>
+            <Button color={mode === 'preview' ? 'primary' : ''} onClick={() => setMode('preview')}>Preview</Button>
           </BootRow>
         </>
       }

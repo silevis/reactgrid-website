@@ -70,7 +70,29 @@ const simpleCode = `const FullWidthHeaderSample = () => {
             { type: "text", text: "" },
             { type: "text", text: "" }
           ]
-        }
+        },
+        {
+          rowId: 5,
+          cells: [
+            { type: "text", text: "" },
+            { type: "text", text: "" },
+            { type: "date", date: NaN },
+            { type: "number", value: NaN },
+            { type: "text", text: "" },
+            { type: "text", text: "" }
+          ]
+        },
+        {
+          rowId: 6,
+          cells: [
+            { type: "text", text: "" },
+            { type: "text", text: "" },
+            { type: "date", date: NaN },
+            { type: "number", value: NaN },
+            { type: "text", text: "" },
+            { type: "text", text: "" }
+          ]
+        },
       ]
     }));
     return (
@@ -83,7 +105,7 @@ const simpleCode = `const FullWidthHeaderSample = () => {
     );
 }
 render(
-  <div style={{width: '1200px'}}>
+  <div style={{width: '1200px', height: '200px'}}>
     <FullWidthHeaderSample/>
   </div>
   )

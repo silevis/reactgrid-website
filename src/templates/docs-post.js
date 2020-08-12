@@ -16,7 +16,7 @@ import {
 import Tree from "../components/sidebar/Tree";
 import SidebarLayout from "../components/DocsSideNav";
 import CustomMDXComponents from "../components/CustomMDXComponents";
-import { isBrowserIE } from "../components/isBrowserIE";
+import { isBrowserIE } from "../functions/isBrowserIE";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 
 

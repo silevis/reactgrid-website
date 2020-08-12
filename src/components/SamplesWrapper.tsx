@@ -10,7 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { samplesData } from './../../content/examples/samplesData';
+import { samplesData } from '../../content/examples/samplesData';
 import * as samples from '@silevis/reactgrid-samples';
 
 class SamplesWrapper extends React.Component {
