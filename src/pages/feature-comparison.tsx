@@ -86,8 +86,8 @@ class FeatureComparison extends React.Component {
               <Col sm={'12'}>
                 <Table className='feature-comparison-table'>
                   <thead style={{ borderTopColor: 'transparent' }}>
-                    <tr >
-                      <th scope="row"> </th>
+                    <tr>
+                      <th scope="row" style={{ visibility: 'hidden' }}> </th>
                       <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '35%' }}><h3 className='mb-0 text-white card-title'>PRO version</h3></th>
                       <th className='text-center bg-white bordered font-weight-bold' style={{ width: '25%' }}><h3 className='mb-0 card-title'>MIT version</h3></th>
                     </tr>
@@ -96,7 +96,7 @@ class FeatureComparison extends React.Component {
                     <TableHeaderRow text='What you get?' />
                     {[...whatYouGet].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr className='h6'>
-                      <th scope="row" className='bg-transparent'></th>
+                      <th scope="row" className='bg-transparent' style={{ visibility: 'hidden' }}></th>
                       <td className='text-center bordered bg-primary-light '>
                         {askForPrice}
                       </td>

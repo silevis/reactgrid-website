@@ -144,6 +144,12 @@ body.modal-open {
     }
 }
 
+.card-contact {
+    .form-control {
+        border-color: lighten(#000000, 65%);
+    }
+}
+
 .bg-primary-light {
     background-color: lighten($primary, 45);
 } 
