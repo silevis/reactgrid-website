@@ -8,7 +8,10 @@ import {
   Form, Card, Button, FormFeedback, CustomInput
 } from 'reactstrap';
 import copy from 'copy-to-clipboard';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
+import ReCAPTCHA from "react-google-recaptcha";
 
+const SITE_KEY = "6LfcVb4ZAAAAAMAMPGSOfuYSsBhX89cgFcc4fWcV";
 
 const Contact = ({ data }) => {
   const { title, description, pages, social } = data.site.siteMetadata;
@@ -39,6 +42,10 @@ const Contact = ({ data }) => {
     },
   });
 
+  const [sending, setSending] = React.useState(false);
+  const [sendBtnEnabled, setSendBtnEnabled] = React.useState(false);
+  const [reCaptha, setReCaptha] = React.useState(null);
+
   const handleChange = (event: SyntheticEvent, field: string) => {
     console.log((event.target as any).type, (event.target as any).checked);
     if ((event.target as any).type === 'checkbox') {
@@ -49,11 +56,28 @@ const Contact = ({ data }) => {
   }
 
   const handleformSubmit = (e) => {
+    e.preventDefault();
+    setSending(true);
     // const isFullNameValid = state.fullName.value.length < 5 || state.fullName.value.length > 50;
     // setState({ ...state, fullName: { ...state.fullName, isInvalid: isFullNameValid } });
 
-    console.log('form sent', state);
-    e.preventDefault();
+    const templateParams = {
+      category: state.category.value,
+      fullName: state.fullName.value,
+      companyName: state.companyName.value,
+      email: state.email.value,
+      message: state.message.value
+    };
+   
+    emailjs.send('gmail','template_WPgnbrkT', templateParams, 'user_f8AmrIhk6YqY1dxIup7Pk')
+      .then((response) => {
+         console.log('SUCCESS!', response.status, response.text);
+      }, (err: EmailJSResponseStatus) => {
+         console.log('FAILED...', err);
+      }).finally(() => {
+        setSending(false);
+      });
+
   }
 
   return (
@@ -161,6 +185,10 @@ const Contact = ({ data }) => {
                         <Input id="message" name="message" rows="10" type="textarea" bsSize="lg" placeholder="Your message"
                           onChange={e => handleChange(e, 'message')} />
                       </FormGroup>
+                      <ReCAPTCHA
+                        sitekey={SITE_KEY}
+                        onChange={(ev) => setReCaptha(ev)}
+                      />
                       <Row>
                         <Col md="9">
                           <FormGroup check>
@@ -175,7 +203,9 @@ const Contact = ({ data }) => {
                           </FormGroup>
                         </Col>
                         <Col md="3">
-                          <Button className="btn-primary pull-right" color="primary" type="submit">Send</Button>
+                          <Button className="btn-primary pull-right" color="primary" type="submit"> 
+                            {sending ? <i className="fas fa-spinner fa-spin fa-lg"></i> : 'Send'}
+                          </Button>
                         </Col>
                       </Row>
                     </CardBody>
