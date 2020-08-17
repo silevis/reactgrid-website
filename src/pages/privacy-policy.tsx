@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { isBrowserIE } from "../functions/isBrowserIE"
@@ -54,8 +54,8 @@ const PrivacyPolicyContent = () => {
     <div className="cookies-policy-topic-wrapper">
       <p className="pb-3">
         Your privacy is important to us. It is Silevis Software Sp. z. o.o.'s policy to respect your privacy
-         regarding any information we may collect from you across our website,
-         {' '}<a href="http://reactgrid.com">reactgrid.com</a>, and other sites we own and operate.
+        regarding any information we may collect from you across our website,
+         {' '}<Link to="/">reactgrid.com</Link>, and other sites we own and operate.
       </p>
       <p className="pb-3">
         We only ask for personal information when we truly need it to provide a service to you. We collect
@@ -68,7 +68,7 @@ const PrivacyPolicyContent = () => {
         and theft, as well as unauthorized access, disclosure, copying, use or modification.
       </p>
       <p className="pb-3">We don’t share any personally identifying information publicly or with third-parties,
-        except when required to by law.
+      except when required to by law.
       </p>
       <p className="pb-3">
         Our website may link to external sites that are not operated by us. Please be aware that

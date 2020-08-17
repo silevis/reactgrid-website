@@ -59,19 +59,20 @@ class FeatureComparison extends React.Component {
 
   render() {
     const { data }: any = this.props;
-    const { title, description, pages, social } = data.site.siteMetadata;
+    const { title, description, pages, social, explore } = data.site.siteMetadata;
     const githubSocial = social.find(social => social.title === 'Github');
+    const contactUs = explore.find(ex => ex.id === 'contact-us');
 
     const askForPrice = (
-      <a href="mailto:reactgrid@silevis.com">
+      <Link to={contactUs.route}>
         <Button type="button" className="btn btn-primary px-4 py-2 text-uppercase">Ask for price</Button>
-      </a>
+      </Link>
     );
 
     const checkOnGithub = (
-      <Link to={githubSocial.url} target="_blank">
+      <a href={githubSocial.url} target="_blank">
         <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">Check on Github</Button>
-      </Link>
+      </a>
     );
 
     return (
@@ -88,8 +89,12 @@ class FeatureComparison extends React.Component {
                   <thead style={{ borderTopColor: 'transparent' }}>
                     <tr>
                       <th scope="row" style={{ visibility: 'hidden' }}> </th>
-                      <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '35%' }}><h3 className='mb-0 text-white card-title'>PRO version</h3></th>
-                      <th className='text-center bg-white bordered font-weight-bold' style={{ width: '25%' }}><h3 className='mb-0 card-title'>MIT version</h3></th>
+                      <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '30%' }}>
+                        <h3 className='mb-0 text-white card-title'>PRO version</h3>
+                      </th>
+                      <th className='text-center bg-white bordered font-weight-bold' style={{ width: '25%' }}>
+                        <h3 className='mb-0 card-title'>MIT version</h3>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -109,14 +114,10 @@ class FeatureComparison extends React.Component {
                     <tr>
                       <th scope="row"> </th>
                       <td className='text-center'>
-                        <a href="mailto:reactgrid@silevis.com">
-                          <Button type="button" className="btn btn-primary px-4 py-2 text-uppercase">Ask for price</Button>
-                        </a>
+                        {askForPrice}
                       </td>
                       <td className='text-center'>
-                        <Link to={githubSocial.url} target="_blank">
-                          <Button type="button" className="btn btn-primary btn-simple px-4 py-2 text-uppercase">Check on Github</Button>
-                        </Link>
+                        {checkOnGithub}
                       </td>
                     </tr>
                   </tbody>
@@ -182,6 +183,13 @@ export const pageQuery = graphql`
         title
         description
         pages {
+          description
+          id
+          route
+          title
+          active
+        }
+        explore {
           description
           id
           route
