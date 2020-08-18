@@ -5,7 +5,7 @@ import SEO from "../components/seo";
 import Container from 'reactstrap/lib/Container';
 import {
   Label, FormGroup, Input, InputGroupText, Row, Col, InputGroup, InputGroupAddon, CardBody,
-  Form, Card, Button, FormFeedback, CustomInput, Alert
+  Form, Card, Button, FormFeedback, CustomInput, Alert, Popover, PopoverHeader, PopoverBody
 } from 'reactstrap';
 import copy from 'copy-to-clipboard';
 import emailjs from 'emailjs-com';
@@ -13,13 +13,19 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const categories = [
   "General questions",
+  "PRO version inquiry",
+  "Request for quotation",
   "Support",
   "Other"
 ];
 
+const SERVICE_ID = "sendgrid";
+const TEMPLATE_ID = "template_WPgnbrkT";
+const USER_ID = "user_f8AmrIhk6YqY1dxIup7Pk";
+
 const form = {
   category: {
-    isInvalid: true,
+    isInvalid: undefined,
     value: ''
   },
   fullName: {
@@ -51,13 +57,17 @@ const Contact = ({ data }) => {
   const [reCAPTHA, setReCAPTHA] = React.useState(undefined);
   const [sending, setSending] = React.useState(false);
   const [emailSent, setEmailSent] = React.useState(undefined);
+  const [validateForm, setValidateForm] = React.useState(false);
 
-  const recaptchaRef = React.useRef();
+  const [copyPopoverOpen, setCopyPopoverOpen] = React.useState(false);
+
+  const toggleCopyPopover = () => setCopyPopoverOpen(!copyPopoverOpen);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>, field: string) => {
     const target = event.target;
     const value = target[target.type === 'checkbox' ? 'checked' : 'value'];
     let isInvalid;
+
     switch (field) {
       case 'email':
         isInvalid = validateEmail(value as string);
@@ -78,7 +88,7 @@ const Contact = ({ data }) => {
         isInvalid = validateAgreement(value as boolean);
         break;
     }
-
+    setEmailSent(undefined);
     setState({
       ...state, [field]: {
         ...state[field],
@@ -93,30 +103,31 @@ const Contact = ({ data }) => {
     return re.test(email);
   }
 
-  const validateCategory = (category: string) => {
-    return categories.some(cat => cat === category);
-  }
+  const validateCategory = (category: string) => categories.some(cat => cat === category);
 
-  const validateFullname = (fullname: string) => {
-    return fullname.length >= 2 && fullname.length < 50;
-  }
+  const validateFullname = (fullname: string) => fullname.length >= 5 && fullname.length < 50;
 
-  const validateCompanyName = (companyName: string) => {
-    return companyName.length >= 2 && companyName.length < 50;
-  }
+  const validateCompanyName = (companyName: string) => companyName.length >= 5 && companyName.length < 50;
 
-  const validateAgreement = (agreement: boolean) => {
-    return agreement;
-  }
+  const validateAgreement = (agreement: boolean) => agreement;
 
-  const validateMessage = (message: string) => {
-    return message.length > 10;
-  }
+  const validateMessage = (message: string) => message.length > 20;
+
+  const isFromValid = !reCAPTHA || !validateEmail(state.email.value) || !validateCategory(state.category.value)
+    || !validateAgreement(state.agreement.value) || !validateFullname(state.fullName.value)
+    || !validateCompanyName(state.companyName.value) || !validateMessage(state.message.value);
 
   const handleformSubmit = e => {
     e.preventDefault();
     setSending(true);
     setEmailSent(undefined);
+    setValidateForm(true);
+
+    if (isFromValid) {
+      setEmailSent(false);
+      setSending(false);
+      return;
+    }
 
     const templateParams = {
       email: state.email.value,
@@ -126,12 +137,13 @@ const Contact = ({ data }) => {
       message: state.message.value,
     };
 
-    emailjs.send('gmail', 'template_WPgnbrkT', templateParams, 'user_f8AmrIhk6YqY1dxIup7Pk')
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID)
       .then((response) => {
         console.log('SUCCESS, email sent!', response.status, response.text);
         setEmailSent(true);
         setState({ ...form });
         setReCAPTHA(null);
+        setValidateForm(false);
       }, (err) => {
         setEmailSent(false);
         console.log('FAILED...', err);
@@ -141,15 +153,6 @@ const Contact = ({ data }) => {
 
   }
 
-  const isDisabled = !reCAPTHA || !validateEmail(state.email.value) || !validateCategory(state.category.value)
-    || !validateAgreement(state.agreement.value) || !validateFullname(state.fullName.value)
-    || !validateCompanyName(state.companyName.value) || !validateMessage(state.message.value);
-
-  console.log({ isDisabled }, state.email.value);
-
-  console.log(reCAPTHA, validateCategory(state.category.value), validateFullname(state.fullName.value)
-    , validateCompanyName(state.companyName.value), validateEmail(state.email.value)
-    , validateMessage(state.message.value), validateAgreement(state.agreement.value))
 
   return (
     <Layout pages={pages} social={social} description={description} title={title}>
@@ -162,15 +165,20 @@ const Contact = ({ data }) => {
                 <h2 className="title">Contact us</h2>
                 <div className="info info-horizontal mt-5">
                   <div className="description">
-                    <p className="description">
+                    <p className="description p-0">
                       Silevis Software Sp. z o.o.<br />
                       Sienkiewicza Street 17/3<br />
                       25-007 Kielce<br />
                       Poland<br /><br />
-                      <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
-                      <Button size='sm' className="btn-simple ml-2" onClick={() => copy('reactgrid@silevis.com')}>
-                        <i className="far fa-copy"></i>
-                      </Button>
+                      <span>
+                        <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
+                        <Button size='sm' className="btn-simple ml-2" onClick={() => copy('reactgrid@silevis.com')} id="Popover1">
+                          <i className="far fa-copy"></i>
+                        </Button>
+                        <Popover placement="top" isOpen={copyPopoverOpen} target="Popover1" toggle={toggleCopyPopover}>
+                          <PopoverBody>Copied!</PopoverBody>
+                        </Popover>
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -180,7 +188,7 @@ const Contact = ({ data }) => {
                   <Form id="contact-form" method="post" role="form" onSubmit={handleformSubmit}>
                     <CardBody>
                       <FormGroup>
-                        <label>Select a category</label>
+                        <Label for="category">Select a category</Label>
                         <InputGroup >
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -190,15 +198,16 @@ const Contact = ({ data }) => {
                           <Input type="select" aria-label="Select a category..." placeholder="Select a category..." bsSize="lg"
                             value={state.category.value || 'Select an option'}
                             onChange={e => handleChange(e, 'category')}
+                            invalid={validateForm && !state.category.isInvalid}
                           >
                             <option>Select an option</option>
                             {categories.map(category => <option key={category}>{category}</option>)}
                           </Input>
-                          <FormFeedback>You have to select and option!</FormFeedback>
+                          <FormFeedback>You have to select an option!</FormFeedback>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
-                        <label>Full name</label>
+                        <Label for="fullName">Full name</Label>
                         <InputGroup >
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -212,11 +221,13 @@ const Contact = ({ data }) => {
                             placeholder="Full name..."
                             type="text"
                             bsSize="lg"
+                            invalid={validateForm && !state.fullName.isInvalid}
                           />
+                          <FormFeedback>This field is invalid (min. 5 chars)</FormFeedback>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
-                        <label>Company name</label>
+                        <Label for="companyName">Company name</Label>
                         <InputGroup>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -230,12 +241,13 @@ const Contact = ({ data }) => {
                             placeholder="Company name..."
                             type="text"
                             bsSize="lg"
+                            invalid={validateForm && !state.companyName.isInvalid}
                           />
-                          <FormFeedback>This field is invalid!</FormFeedback>
+                          <FormFeedback>This field is invalid! (min. 5 chars)</FormFeedback>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
-                        <label>Email address</label>
+                        <Label for="email">Email address</Label>
                         <InputGroup>
                           <InputGroupAddon addonType="prepend">
                             <InputGroupText>
@@ -248,46 +260,59 @@ const Contact = ({ data }) => {
                             placeholder="Email Here..."
                             type="email"
                             bsSize="lg"
+                            invalid={validateForm && !state.email.isInvalid}
                           />
-                          <FormFeedback>This field is invalid!</FormFeedback>
+                          <FormFeedback>Type valid email address!</FormFeedback>
                         </InputGroup>
                       </FormGroup>
                       <FormGroup>
-                        <label>Your message</label>
+                        <Label for="message">Your message</Label>
                         <Input id="message" name="message" rows="10" type="textarea" bsSize="lg" placeholder="Your message"
                           value={state.message.value}
+                          invalid={validateForm && !state.message.isInvalid}
                           onChange={e => handleChange(e, 'message')} />
+                        <FormFeedback>The message should be at least 20 characters long</FormFeedback>
                       </FormGroup>
                       <Row>
-                        <Col md="9">
+                        <Col>
+                          {emailSent === false && <Alert color="danger">
+                            {isFromValid ? 'Complete contact form and try again' : 'An error occurred while sending a message'}
+                          </Alert>}
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
                           <ReCAPTCHA
                             sitekey="6LfcVb4ZAAAAAMAMPGSOfuYSsBhX89cgFcc4fWcV"
-                            onChange={res => setReCAPTHA(res)}
+                            onChange={res => {
+                              setEmailSent(undefined);
+                              setReCAPTHA(res);
+                            }}
                           />
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md="12" lg="9">
                           <FormGroup check>
-                            <Label check>
+                            <Label check for="agreement">
                               <CustomInput type="checkbox" onChange={e => handleChange(e, 'agreement')}
                                 checked={state.agreement.value} id="checkbox"
                                 label="I give my consent to the processing of my personal data entered in the above 
                                 form for the purpose of addressing the selected category of inquiry."
+                                invalid={validateForm && !state.agreement.isInvalid}
                               />
                               <FormFeedback>You have to accept agreements!</FormFeedback>
                             </Label>
                           </FormGroup>
                         </Col>
-                        <Col md="3">
-                          {emailSent === false && <Alert color="danger">
-                            An error occurred while sending a message
-                          </Alert>}
-                          <Button className="btn-primary pull-right" color="primary" type="submit"
-                            disabled={isDisabled}
-                          > {sending
-                            ? <i className="fas fa-circle-notch fa-spin"></i>
-                            : emailSent
-                              ? 'Thanks! Email sent'
-                              : 'Send'
+                        <Col md="12" lg="3">
+                          <Button className="btn-primary pull-right" color="primary" type="submit">
+                            {sending
+                              ? <i className="fas fa-circle-notch fa-spin"></i>
+                              : emailSent
+                                ? 'Thanks! Email sent'
+                                : 'Send'
                             }</Button>
-
                         </Col>
                       </Row>
                     </CardBody>
