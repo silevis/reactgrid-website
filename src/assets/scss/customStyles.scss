@@ -382,6 +382,13 @@ span.anchor {
     }
 }
 
+
+@media (max-width: 375px) {
+    .title.page-title {
+        font-size: 12vw;
+    }
+}
+
 @media (min-width: 576px) {
     .modal-open {
         .modal-dialog {

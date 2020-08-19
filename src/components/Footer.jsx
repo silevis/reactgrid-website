@@ -20,7 +20,7 @@ class Footer extends React.Component {
     })
     return (
       <>
-        <footer className="footer footer-simple">
+        <footer className="footer footer-simple px-md-0">
           <Container>
             <Row className="text-left pt-4">
               <Col xs="6" lg='3' className="pb-4 pb-sm-0">
@@ -37,7 +37,7 @@ class Footer extends React.Component {
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
                     Poland<br /><br />
-                    <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
+                    <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com" className="text-break">reactgrid@silevis.com</a>
                   </p>
                 </address>
               </Col>

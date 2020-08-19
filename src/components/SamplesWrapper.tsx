@@ -48,7 +48,7 @@ class SamplesWrapper extends React.Component {
     );
 
     return (
-      <Container className="section">
+      <Container className="section  px-3">
         <Row>
           <Col>
             <div className="space-50"></div>
@@ -81,14 +81,14 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
               <Row>
                 <Col md="5" className="pb-4">
                   <h3>{column1.header}</h3>
-                  <ul className="pl-2">
+                  <ul className="">
                     {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
                   </ul>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
                   <h3>{column2.header}</h3>
-                  <ul className="p-0">
+                  <ul className="">
                     {column2.content.map((item, idx) => {
                       return <li key={idx} className="pb-2 text-left">
                         {/* {<i className="fas fa-check pr-1 text-primary"></i>}  */}

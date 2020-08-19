@@ -78,7 +78,7 @@ class FeatureComparison extends React.Component {
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
-        <div className="section mt-5 mt-md-0">
+        <div className="section mt-5 mt-md-0 px-3">
           <div className="space-70"></div>
           <h2 style={{ fontSize: '3em' }} className="text-center mb-3">Choose your version</h2>
           <div className="space-70"></div>
@@ -88,7 +88,7 @@ class FeatureComparison extends React.Component {
                 <Table className='feature-comparison-table'>
                   <thead style={{ borderTopColor: 'transparent' }}>
                     <tr>
-                      <th scope="row" style={{ visibility: 'hidden' }}> </th>
+                      <th scope="row" style={{ borderTop: 'transparent' }}> </th>
                       <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '30%' }}>
                         <h3 className='mb-0 text-white card-title'>PRO version</h3>
                       </th>
@@ -101,7 +101,7 @@ class FeatureComparison extends React.Component {
                     <TableHeaderRow text='What you get?' />
                     {[...whatYouGet].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr className='h6'>
-                      <th scope="row" className='bg-transparent' style={{ visibility: 'hidden' }}></th>
+                      <th scope="row" className='bg-transparent' ></th>
                       <td className='text-center bordered bg-primary-light '>
                         {askForPrice}
                       </td>
@@ -112,7 +112,7 @@ class FeatureComparison extends React.Component {
                     <TableHeaderRow text='Features' />
                     {[...featureComparisons].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr>
-                      <th scope="row"> </th>
+                      <th scope="row" style={{ visibility: 'hidden' }}> </th>
                       <td className='text-center'>
                         {askForPrice}
                       </td>
@@ -162,13 +162,17 @@ class FeatureComparison extends React.Component {
   )
 } */
 
-const TableHeaderRow = ({ text }) => <tr><th scope="row" className='bg-transparent'></th><th scope="row" colSpan={2} className='text-center bordered bg-white py-3'><span className='h4'>{text}</span></th></tr>;
+const TableHeaderRow = ({ text }) => (
+  <tr>
+    <th scope="row" className='bg-transparent' style={{ borderTop: 'transparent' }}></th>
+    <th scope="row" colSpan={2} className='text-center bordered bg-white py-3'><span className='h4'>{text}</span></th>
+  </tr>);
 
 const FeatureComparisonRow = ({ text, inPro, inMit }) => {
   return (
     <tr className='h6'>
       <th scope="row" className='bordered bg-white'>{text}</th>
-      <td className='text-center bordered bg-primary-light '>{inPro}</td>
+      <td className='text-center bordered bg-primary-light'>{inPro}</td>
       <td className='text-center bordered bg-white'>{inMit}</td>
     </tr>
   )
