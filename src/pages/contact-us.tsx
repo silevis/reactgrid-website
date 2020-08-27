@@ -5,7 +5,7 @@ import SEO from "../components/seo";
 import Container from 'reactstrap/lib/Container';
 import {
   Label, FormGroup, Input, InputGroupText, Row, Col, InputGroup, InputGroupAddon, CardBody,
-  Form, Card, Button, FormFeedback, CustomInput, Alert, Popover, PopoverHeader, PopoverBody
+  Form, Card, Button, FormFeedback, CustomInput, Alert, Popover, PopoverBody
 } from 'reactstrap';
 import copy from 'copy-to-clipboard';
 import emailjs from 'emailjs-com';
@@ -22,6 +22,7 @@ const categories = [
 const SERVICE_ID = "sendgrid";
 const TEMPLATE_ID = "template_WPgnbrkT";
 const USER_ID = "user_f8AmrIhk6YqY1dxIup7Pk";
+const SITE_KEY = "6LfcVb4ZAAAAAMAMPGSOfuYSsBhX89cgFcc4fWcV";
 
 const form = {
   category: {
@@ -113,7 +114,7 @@ const Contact = ({ data }) => {
 
   const validateMessage = (message: string) => message.length > 20;
 
-  const isFromValid = !reCAPTHA || !validateEmail(state.email.value) || !validateCategory(state.category.value)
+  const isFormValid = !reCAPTHA || !validateEmail(state.email.value) || !validateCategory(state.category.value)
     || !validateAgreement(state.agreement.value) || !validateFullname(state.fullName.value)
     || !validateCompanyName(state.companyName.value) || !validateMessage(state.message.value);
 
@@ -123,7 +124,7 @@ const Contact = ({ data }) => {
     setEmailSent(undefined);
     setValidateForm(true);
 
-    if (isFromValid) {
+    if (isFormValid) {
       setEmailSent(false);
       setSending(false);
       return;
@@ -146,7 +147,7 @@ const Contact = ({ data }) => {
         setValidateForm(false);
       }, (err) => {
         setEmailSent(false);
-        console.log('FAILED...', err);
+        console.error('FAILED...', err);
       }).finally(() => {
         setSending(false);
       });
@@ -273,21 +274,17 @@ const Contact = ({ data }) => {
                           onChange={e => handleChange(e, 'message')} />
                         <FormFeedback>The message should be at least 20 characters long</FormFeedback>
                       </FormGroup>
-                      <ReCAPTCHA
-                        sitekey={SITE_KEY}
-                        onChange={(ev) => setReCAPTHA(ev)}
-                      />
                       <Row>
                         <Col>
                           {emailSent === false && <Alert color="danger">
-                            {isFromValid ? 'Complete contact form and try again' : 'An error occurred while sending a message'}
+                            {isFormValid ? 'Complete contact form and try again' : 'An error occurred while sending a message'}
                           </Alert>}
                         </Col>
                       </Row>
                       <Row>
                         <Col>
                           <ReCAPTCHA
-                            sitekey="6LfcVb4ZAAAAAMAMPGSOfuYSsBhX89cgFcc4fWcV"
+                            sitekey={SITE_KEY}
                             onChange={res => {
                               setEmailSent(undefined);
                               setReCAPTHA(res);
