@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { isBrowserIE } from "../functions/isBrowserIE"
@@ -15,7 +15,7 @@ import {
 import { getId } from '../functions/getId'
 
 
-class Cookies extends React.Component {
+class Cookies extends React.Component<PageProps<any>, {}> {
   componentDidMount() {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0;
@@ -61,7 +61,7 @@ class Cookies extends React.Component {
     });
 
     return (
-      <Layout location={location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="space"></div>
         <div className="wrapper" ref="wrapper">

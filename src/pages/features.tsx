@@ -112,7 +112,7 @@ const FeatureImage = ({ mediaSrc, imgAlt }) => {
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
         <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)} className='feature-video'>
-          <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
+          <source src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>
       </div>

@@ -12,7 +12,7 @@ import SamplePoster from "../assets/img/sample.png";
 import Video from "../assets/video/sample.mp4";
 
 
-class Index extends React.Component<PageProps, {}> {
+class Index extends React.Component<PageProps<any>, {}> {
   componentDidMount() {
     document.body.classList.add("reset-page");
   }
@@ -31,7 +31,7 @@ class Index extends React.Component<PageProps, {}> {
     // const githubSocial = social.find(social => social.title === 'Github');
 
     return (
-      <Layout location={location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
           <div className="space"></div>
