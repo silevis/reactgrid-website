@@ -91,7 +91,7 @@ const SingleFeature = ({ mediaSrc, imgAlt, title, description, externalLinkText,
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
           <div className="feature-description flex-column d-flex mt-4 w-100">
             <div className="w-100">
-              <h2 className="profile-title text-left mb-4">{title}</h2>
+              <h2 className="profile-title text-left mb-4 text-wrap">{title}</h2>
               <p className="description pb-3">{description}</p>
               {externalLink && externalLinkText &&
                 <div>

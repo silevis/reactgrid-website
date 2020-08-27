@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql, Link, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import {
@@ -12,7 +12,7 @@ import SamplePoster from "../assets/img/sample.png";
 import Video from "../assets/video/sample.mp4";
 
 
-class Index extends React.Component {
+class Index extends React.Component<PageProps, {}> {
   componentDidMount() {
     document.body.classList.add("reset-page");
   }
@@ -39,7 +39,7 @@ class Index extends React.Component {
           <Container className="pb-5">
             <Row>
               <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
-                <h1 className="title display-1 mb-5 text-primary">
+                <h1 className="title display-1 mb-5 text-primary page-title">
                   Spreadsheet experience for your React app.
                 </h1>
                 <p className="em-xxs font-weight-light pb-3">

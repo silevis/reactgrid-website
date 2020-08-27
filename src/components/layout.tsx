@@ -15,7 +15,7 @@ const Layout = ({ title, social, pages, description, children }) => {
       <header>
         <MainNavbar pages={pages} title={title} social={social} description={description} />
       </header>
-      <main className="layout-main-wrapper">{children}</main>
+      <main className="layout-main-wrapper px-md-0">{children}</main>
       <Footer pages={pages} social={social} title={title} description={description} />
     </>
   )
