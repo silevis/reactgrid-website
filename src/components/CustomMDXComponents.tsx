@@ -6,14 +6,14 @@ import {
   Alert,
 } from 'reactstrap';
 import { LiveCode } from './LiveCode';
-import { getId } from './../functions/getId';
+import { getId } from '../functions/getId';
 
 
 export default function CustomMDXComponents({ children }) {
   return (
     <MDXProvider
       components={{
-        Alert: props => <Alert {...props} transition={{ baseClass: '', }} >{props.children}</Alert>,
+        Alert: props => <Alert {...props} transition={{ baseClass: '', timeout: 0 }} >{props.children}</Alert>,
         LiveCode,
         h1: props => (
           <>

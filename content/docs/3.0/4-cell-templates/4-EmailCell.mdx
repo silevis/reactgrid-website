@@ -7,6 +7,10 @@ metaDescription: "metaDescription"
 
 This cell renders text value with the possibility to validate its value and wrap the result into `React.ReactNode` objects.
 
+#### Implementation
+
+ - Open `EmailCell` implementation on <a href="https://github.com/silevis/reactgrid/blob/develop/src/lib/CellTemplates/EmailCellTemplate.tsx" target="_blank"> github <i className="fas fa-external-link-alt fa-xs pl-1"></i></a>
+
 #### Interface declaration 
 
 ```ts
@@ -24,54 +28,3 @@ interface EmailCell extends Cell {
 | `text`            | `string`                              | Text content of cell | 
 | `validator?`      | `(text: string) => boolean`           | Optional validation function, if undefined - returns `true`  | 
 | `renderer?`       | `(text: string) => React.ReactNode`   | Optional, gives oportunity to wrap `text` property into any `ReactNode` object | 
-
-
-#### `EmailCellTemplate` class implementation
-
-```tsx
-class EmailCellTemplate implements CellTemplate<EmailCell> {
-
-  getCompatibleCell(uncertainCell: Uncertain<EmailCell>): Compatible<EmailCell> {
-    const text = getCellProperty(uncertainCell, 'text', 'string');
-    const value = parseFloat(text);
-    return { ...uncertainCell, text, value };
-  }
-
-  handleKeyDown(cell: Compatible<EmailCell>, keyCode: number, ctrl: boolean, shift: boolean, alt: boolean): { cell: Compatible<EmailCell>, enableEditMode: boolean } {
-    const char = getCharFromKeyCode(keyCode, shift);
-    if (!ctrl && !alt && isAlphaNumericKey(keyCode) && !(shift && keyCode === keyCodes.SPACE))
-      return { cell: { ...cell, text: !shift ? char.toLowerCase() : char }, enableEditMode: true }
-    return { cell, enableEditMode: keyCode === keyCodes.POINTER || keyCode === keyCodes.ENTER }
-  }
-
-  update(cell: Compatible<EmailCell>, cellToMerge: UncertainCompatible<EmailCell>): Compatible<EmailCell> {
-    return this.getCompatibleCell({ ...cell, text: cellToMerge.text })
-  }
-
-  getClassName(cell: Compatible<EmailCell>, isInEditMode: boolean) {
-    const isValid = cell.validator ? cell.validator(cell.text) : true;
-    return isValid ? 'valid' : 'invalid';
-  }
-
-  render(cell: Compatible<EmailCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<EmailCell>, commit: boolean) => void): React.ReactNode {
-    if (!isInEditMode)
-      return cell.renderer ? cell.renderer(cell.text) : cell.text;
-
-    return <input
-      ref={input => {
-          if (input) input.focus();
-      }}
-      onChange={e => onCellChanged(this.getCompatibleCell({ ...cell, text: e.currentTarget.value }), false)}
-      onBlur={e => onCellChanged(this.getCompatibleCell({ ...cell, text: e.currentTarget.value }), true)}
-      onKeyDown={e => {
-          if (isAlphaNumericKey(e.keyCode) || (isNavigationKey(e.keyCode))) e.stopPropagation();
-      }}
-      defaultValue={cell.text}
-      onCopy={e => e.stopPropagation()}
-      onCut={e => e.stopPropagation()}
-      onPaste={e => e.stopPropagation()}
-      onPointerDown={e => e.stopPropagation()}
-    />
-  }
-}
-```

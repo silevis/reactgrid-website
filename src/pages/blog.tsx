@@ -1,30 +1,29 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Header from "../components/Header"
-import BlogView from "../components/Blog"
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import Header from "../components/Header";
+import BlogView from "../components/Blog";
 
-class Blog extends React.Component {
-  render() {
-    const { data } = this.props
-    const { title, description, pages, social } = data.site.siteMetadata;
-    const posts = data.allMdx.edges;
-    const blogPage = pages.find(page => page.id === 'blog')
-    const blogPageRoute = blogPage.route;
 
-    const headerTitle = <h1 className="title">Latest blogposts</h1>;
-    const headerDescription = (
-      <p className="description">Read our newsfeed</p>
-    );
-    return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
-        <SEO title={title} />
-        <Header header={headerTitle} description={headerDescription}/>
-        <BlogView posts={posts} blogRoute={blogPageRoute}/>
-      </Layout>
-    )
-  }
+const Blog = (props) => {
+  const { data } = props;
+  const { title, description, pages, social } = data.site.siteMetadata;
+  const posts = data.allMdx.edges;
+  const blogPage = pages.find(page => page.id === 'blog');
+  const blogPageRoute = blogPage.route;
+
+  const headerTitle = <h1 className="title">Latest blogposts</h1>;
+  const headerDescription = (
+    <p className="description">Read our newsfeed</p>
+  );
+  return (
+    <Layout pages={pages} social={social} description={description} title={title}>
+      <SEO title={title} />
+      <Header header={headerTitle} description={headerDescription} />
+      <BlogView posts={posts} blogRoute={blogPageRoute} />
+    </Layout>
+  )
 }
 
 export default Blog

@@ -13,7 +13,7 @@ At this stage if you are still not familiar with cell marker interfaces, it migh
 
 #### Definition
 ```ts
-export interface CellTemplate<TCell extends Cell = Cell> {
+interface CellTemplate<TCell extends Cell = Cell> {
     // Validate and convert to compatible cell type
     getCompatibleCell(uncertainCell: Uncertain<TCell>): Compatible<TCell>;
     // Returns true if the data in the cell is not replacable

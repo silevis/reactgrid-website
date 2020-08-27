@@ -1,7 +1,7 @@
 - mediaSrc: multi-user
   imgAlt: Animation for multi user capability feature
   title: Multi user capability
-  description: "ReactGrid supports multiple users operations on the same sheet simultaneously. "
+  description: "ReactGrid supports multiple users operations on the same sheet simultaneously "
   externalLinkText: "Open in docs"
   externalLink: "/docs/3.0/2-implementing-core-features/6-highlights/"
 - mediaSrc: fill-handle
@@ -12,7 +12,7 @@
   externalLink: ""
 - mediaSrc: behaviour
   imgAlt: "Video describing ReactGrid behavior"
-  title: Spreadsheet-like behavior
+  title: Spreadsheet-like look and feel
   description: Interract with grid in well know way with keyboard
   externalLinkText: ""
   externalLink: ""

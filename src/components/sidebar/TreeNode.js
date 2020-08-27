@@ -13,7 +13,8 @@ const TreeNode = ({ setCollapsed, collapsed, url, lvl, title, proMark, items, cu
   const active = (currentLocation && currentLocation.pathname === (docsRoute + url));
   const calculatedClassName = classNames({
     'nav-docs-item': true,
-    'active': active
+    'active': active,
+    // [`lvl-${lvl}`]: true,
   });
   const calculatedTitleClassName = classNames({
     'font-weight-bold': lvl < 3,
@@ -32,14 +33,14 @@ const TreeNode = ({ setCollapsed, collapsed, url, lvl, title, proMark, items, cu
             <h4 className="mb-0">
               <span className={calculatedTitleClassName} style={{ fontSize: '0.8em' }}>
                 {title}
-                {proMark && <i className="fas fa-tachometer-alt pl-2"></i>}
+                {proMark && <i className="fas fa-rocket pl-1 fa-md"></i>}
               </span>
             </h4>
           </Link>
         </>
       )}
       {!isCollapsed ? (
-        <ul className={`${lvl > 1 ? 'pl-2' : ''} mb-0 list-unstyled`}>
+        <ul className={`${lvl > 1 ? 'pl-3' : ''} mb-0 list-unstyled`}>
           {items.map((item, idx) => (
             <TreeNode key={idx} setCollapsed={setCollapsed} lvl={lvl + 1} collapsed={collapsed}
               docsRoute={docsRoute} currentLocation={currentLocation}  {...item} />

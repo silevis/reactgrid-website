@@ -10,17 +10,14 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { samplesData } from './../../content/examples/samplesData';
+import { samplesData } from '../../content/examples/samplesData';
 import * as samples from '@silevis/reactgrid-samples';
 
 class SamplesWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeTabIdx: undefined,
-      activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
-    };
-  }
+  state = {
+    activeTabIdx: 0,
+    activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
+  };
   setActiveTab = idx => {
     if (this.state.activeTabIdx !== idx) {
       this.setState({
@@ -31,12 +28,10 @@ class SamplesWrapper extends React.Component {
   }
 
   render() {
-    const isSampleSelected = this.state.activeTabIdx !== undefined;
     const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
       <NavItem key={idx} className="pb-3">
-        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, ' h-100 d-flex flex-column justify-content-center': true })} style={{ cursor: 'pointer' }}
-          onClick={() => { this.setActiveTab(idx) }}>
-          {!isSampleSelected && <i className={`${sample.icon} mt-2 mb-4`} />}
+        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
+          style={{ cursor: 'pointer' }} onClick={() => { this.setActiveTab(idx) }}>
           {sample.title}
         </NavLink>
       </NavItem>
@@ -53,12 +48,11 @@ class SamplesWrapper extends React.Component {
     );
 
     return (
-      <Container className="section">
+      <Container className="section  px-3">
         <Row>
           <Col>
             <div className="space-50"></div>
-            {!isSampleSelected && <h1 className="text-center py-5">Try all features on our sample applications</h1>}
-            <Nav pills={!isSampleSelected} tabs={isSampleSelected} className={`justify-content-center nav-pills-icons ${!isSampleSelected ? 'nav-pills-success' : ''}`}  >
+            <Nav pills className={`justify-content-center nav-pills-icons`}  >
               {tabMenuItems}
               <div className="space-50"></div>
               <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
@@ -87,15 +81,19 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
               <Row>
                 <Col md="5" className="pb-4">
                   <h3>{column1.header}</h3>
-                  <ul className="pl-2">
+                  <ul className="">
                     {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
                   </ul>
                 </Col>
                 <Col className="d-none d-md-block" md="2"></Col>
                 <Col md="5">
                   <h3>{column2.header}</h3>
-                  <ul className="list-unstyled">
-                    {column2.content.map((item, idx) => <li key={idx} className="pb-2 text-left"><i className="tim-icons icon-check-2 text-success  pr-1"></i> {item}</li>)}
+                  <ul className="">
+                    {column2.content.map((item, idx) => {
+                      return <li key={idx} className="pb-2 text-left">
+                        {/* {<i className="fas fa-check pr-1 text-primary"></i>}  */}
+                        {item}</li>
+                    })}
                   </ul>
                 </Col>
               </Row>

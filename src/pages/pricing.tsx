@@ -1,9 +1,9 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import FAQ from "../components/FAQ"
-import { isBrowserIE } from "../components/isBrowserIE"
+import { isBrowserIE } from "../functions/isBrowserIE"
 import {
   Container,
   Row,
@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 
-class Pricing extends React.Component {
+class Pricing extends React.Component<PageProps<any>, {}> {
   componentDidMount() {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0;
@@ -26,7 +26,7 @@ class Pricing extends React.Component {
     const { title, description, pages, social } = data.site.siteMetadata;
 
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section">
           <Container>

@@ -8,7 +8,7 @@ import {
   Col
 } from "reactstrap";
 import Img from 'gatsby-image'
-import { isBrowserIE } from "../components/isBrowserIE"
+import { isBrowserIE } from "../functions/isBrowserIE"
 import CustomMDXComponents from "../components/CustomMDXComponents";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 

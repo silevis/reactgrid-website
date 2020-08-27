@@ -7,9 +7,10 @@ module.exports = {
     pages: [
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
-      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: false },
+      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
+      { id: 'feature-comparison', title: `Feature-comparison`, description: ``, route: `/feature-comparison`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
     ],
     footerNav: [
@@ -18,6 +19,13 @@ module.exports = {
       { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: false },
       { id: 'cookie', title: `Cookie Policy`, description: ``, route: `/cookies`, active: true },
       { id: 'privacyPolicy', title: `Privacy Policy`, description: ``, route: `/privacy-policy`, active: true },
+    ],
+    explore: [
+      { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
+      { id: 'feature-comparison', title: `Feature comparison`, description: ``, route: `/feature-comparison`, active: true },
+      { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
+      { id: 'contact-us', title: `Contact us`, description: ``, route: `/contact-us`, active: true },
+      { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
     docsVersions: [
       { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }

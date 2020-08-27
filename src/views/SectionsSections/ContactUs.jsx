@@ -362,9 +362,7 @@ class ContactUs extends React.Component {
                             <label>First name</label>
                             <InputGroup
                               className={classnames({
-                                "input-group-focus": this.state
-                                  .firstNameContact1Focus
-                              })}
+                                "input-group-focus": true)}
                             >
                               <InputGroupAddon addonType="prepend">
                                 <InputGroupText>

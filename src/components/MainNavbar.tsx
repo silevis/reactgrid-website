@@ -16,7 +16,7 @@ import {
 class MainNavbar extends React.Component {
 
   render() {
-    const { pages, title, description, social } = this.props;
+    const { pages, title, description } = this.props;
     return (
       <div className="header header-2">
         <Navbar id="main-navbar" className="bg-white fixed-top p-0 m-0" expand="lg" style={{ height: '66px' }}>
@@ -64,17 +64,16 @@ class MainNavbar extends React.Component {
                   `}
                   render={data => {
                     const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
-                    // const docsPage = pages.find(page => page.id === 'docs');
+                    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
                     // const githubSocial = social.find(social => social.title === 'Github');
-                    const npmSocial = social.find(social => social.title === 'npm');
                     const navbarLinks = pages.filter(page => page.active && page.active === true).map(page => {
                       const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
                       // const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
                       return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
                     });
                     const getNow = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
-                      <NavLink href={npmSocial.url} target="_blank">
-                        <Button type="button" className="btn btn-primary btn-simple btn-sm px-4 py-2 text-capitalize">Get now</Button>
+                      <NavLink to={featuresComparisonPage.route} tag={Link} activeClassName="main-navigation-active font-weight-bold" className='h-100 d-flex align-items-center'>
+                        <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize">Get Now</Button>
                       </NavLink>
                     </li>
                     // const github = <li key={'githubLink'} className="align-items-center d-flex p-0">

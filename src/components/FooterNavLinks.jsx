@@ -2,7 +2,7 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby";
 import FooterLink from "./FooterLink"
 
-const FooterOnlyLinks = () => {
+const FooterNavLinks = () => {
   return (
     <StaticQuery
       query={graphql`
@@ -30,4 +30,4 @@ const FooterOnlyLinks = () => {
   )
 }
 
-export default FooterOnlyLinks
+export default FooterNavLinks

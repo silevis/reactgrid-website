@@ -15,6 +15,12 @@ header {
     }
 }
 
+#docs-collapser.show, #docs-collapser.collapsing{
+    background-color: white;
+    box-shadow: 0px 8px 10px darken($background-gray,15%);
+    z-index: 1;
+}
+
 .icon-color-facebook {
     color: $color-facebook;
 }
@@ -40,6 +46,9 @@ header {
 
 .footer {
     border-top: 0px !important;
+    & ul:not(.links-vertical) {
+        line-height: 2.5 !important;
+    }
 }
 
 .page-header-compact {
@@ -61,14 +70,23 @@ header {
     overflow-y: auto;
 }
 
-.modal-open {
+body.modal-open {
     .modal.show {
         .modal-dialog {
             transform: unset;
             .modal-content {
-                height: 100vh;
+                margin: 10px;
+                height: calc(100vh - 20px);
+                width: calc(100vw - 20px);
                 background-color: $background-gray;
                 .modal-body {
+                    .live-editor-column {
+                        line-height: 1.5;
+                        font-size: 1.1em;
+                    }
+                    .live-editor-conteiner {
+                        height: calc(100% - 50px) !important;
+                    }
                     .live-editor-row {
                         height: calc(100% - 50px) !important;
                     }
@@ -89,6 +107,10 @@ header {
     box-shadow: rgb(120, 120, 120) 0px 0px 10px -3px;
     max-width: 100%;
     max-height: 500px;
+}
+
+.bp-sample .rg-horizontalGroup-cell .chevron .icon {
+    margin-top: -0.25em;
 }
 
 .gatsby-highlight {
@@ -119,6 +141,12 @@ header {
 .feature-comparison-table {
     .bordered {
         border: 0.0625rem solid #e3e3e3; 
+    }
+}
+
+.card-contact {
+    .form-control {
+        border-color: lighten(#000000, 65%);
     }
 }
 
@@ -208,6 +236,16 @@ header {
 
 }
 
+#multiuser-sample .rg-checkbox-cell label span:after {
+    left: 5px;
+    top: 1px;
+    width: 7px;
+    height: 12px;
+    border: solid #ffffff;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
 span.anchor {
     display: block;
     position: relative;
@@ -235,7 +273,7 @@ span.anchor {
     }
 
     a {
-        code:hover {
+        code {
             color: $primary;
         }
         &[href='link'] .language-text {
@@ -290,6 +328,10 @@ span.anchor {
             font-weight: 500 !important;
         }
     }
+    
+    .nav-docs-item.lvl-1:not(:last-child) {
+        border-bottom: 1px solid #e3e3e3;
+    }
 
     .table {
         :not(pre) > code[class*="language-"],
@@ -337,6 +379,13 @@ span.anchor {
                 padding-bottom: 10px;
             }
         }
+    }
+}
+
+
+@media (max-width: 375px) {
+    .title.page-title {
+        font-size: 12vw;
     }
 }
 

@@ -1,15 +1,15 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import { isBrowserIE } from "../components/isBrowserIE";
+import { isBrowserIE } from "../functions/isBrowserIE";
 import {
   Container,
   Row,
   Col,
 } from "reactstrap";
 
-class Features extends React.Component {
+class Features extends React.Component<any, PageProps> {
   componentDidMount() {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0;
@@ -17,11 +17,11 @@ class Features extends React.Component {
     }
   }
   render() {
-    const { data } = this.props
+    const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     const features = data.allFeaturesYaml.edges;
     return (
-      <Layout location={this.props.location} pages={pages} social={social} description={description} title={title}>
+      <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
           <div className="space-70"></div>
@@ -91,7 +91,7 @@ const SingleFeature = ({ mediaSrc, imgAlt, title, description, externalLinkText,
         <Col xs={12} lg={5} className="single-feature-col-desc d-flex align-items-center">
           <div className="feature-description flex-column d-flex mt-4 w-100">
             <div className="w-100">
-              <h2 className="profile-title text-left mb-4">{title}</h2>
+              <h2 className="profile-title text-left mb-4 text-wrap">{title}</h2>
               <p className="description pb-3">{description}</p>
               {externalLink && externalLinkText &&
                 <div>
@@ -112,7 +112,7 @@ const FeatureImage = ({ mediaSrc, imgAlt }) => {
     <div className="d-flex align-items-center justify-content-center h-100 px-5 px-lg-0">
       <div className="w-100">
         <video controls loop autoPlay poster={require(`./../../content/features/${mediaSrc}.jpg`)} className='feature-video'>
-          <source alt={imgAlt} src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
+          <source src={require(`./../../content/features/${mediaSrc}.mp4`)} type="video/mp4" />
           <track kind="captions" />
         </video>
       </div>
