@@ -31,9 +31,9 @@ const TreeNode = ({ setCollapsed, collapsed, url, lvl, title, proMark, items, cu
           } */}
           <Link to={docsRoute + url}>
             <h4 className="mb-0">
-              <span className={calculatedTitleClassName} style={{ fontSize: '0.8em' }}>
+              <span className={calculatedTitleClassName} style={{ fontSize: '0.8em', marginLeft: proMark ? '-18px' : '0' }}>
+                {proMark && <i className="fas fa-rocket pl-1 pr-1 fa-xs" style={{ opacity: '70%' }}></i>}
                 {title}
-                {proMark && <i className="fas fa-rocket pl-1 fa-md"></i>}
               </span>
             </h4>
           </Link>
