@@ -46,8 +46,8 @@ class Index extends React.Component<PageProps<any>, {}> {
                   ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
                 </p>
                 <p className="h4 font-weight-light">
-                  ReactGrid is available in two versions, MIT which serve the full interface but is limited in functionality
-                  and PRO which is fully functional version. You can compare versions <Link to={featuresComparisonPage.route}>here</Link>.
+                  ReactGrid is available in two versions: MIT, which serves the full interface, but is limited in functionality
+                  and PRO, which is a fully functional version. You can compare both versions <Link to={featuresComparisonPage.route}>here</Link>.
                 </p>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
@@ -79,7 +79,7 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <li>
                   <h3 className="mb-1">Optimized for touch devices</h3>
                   <h4 className="pb-3">
-                    ReactGrid gives the same experience no matter if you work on desktop or mobile devices
+                    ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices
                   </h4>
                 </li>
               </ul>

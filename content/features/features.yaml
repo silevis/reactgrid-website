@@ -7,13 +7,13 @@
 - mediaSrc: fill-handle
   imgAlt: "Video describing fill handle feature"
   title: Fill handle
-  description: Clone cell data and it's properties with fill handle like in other spreadsheets
+  description: Clone cell data and its properties with fill handle like in other spreadsheets
   externalLinkText: ""
   externalLink: ""
 - mediaSrc: behaviour
   imgAlt: "Video describing ReactGrid behavior"
   title: Spreadsheet-like look and feel
-  description: Interract with grid in well know way with keyboard
+  description: Interract with the grid in a well-known way with your keyboard
   externalLinkText: ""
   externalLink: ""
 - mediaSrc: select-area
@@ -25,7 +25,7 @@
 - mediaSrc: resize-column
   imgAlt: "Video describing column resize feature"
   title: "Column Resize"
-  description: Modificate width of each column with drag&drop capability
+  description: Modify the width of each column with drag&drop capability
   externalLinkText: "Open in docs"
   externalLink: "/docs/3.0/2-implementing-core-features/2-column-resizing/"
 - mediaSrc: column-reorder
@@ -49,7 +49,7 @@
 - mediaSrc: copy-cut-paste
   imgAlt: "Video describing copy-cut-paste feature"
   title: "Copy, cut, paste"
-  description: "Let users to copy/cut/paste data inside grid and between other data sources"
+  description: "Let users copy/cut/paste data inside the grid and apply changes, then move the data back to where it was taken from"
   externalLinkText: ""
   externalLink: ""
 - mediaSrc: context-menu
@@ -61,6 +61,6 @@
 - mediaSrc: touch-device
   imgAlt: Animation for optimized for Touch devices feature
   title: Optimized for Touch devices
-  description: "ReactGrid is adapted for use on touch devices"
+  description: "ReactGrid is adapted for usage on touch devices"
   externalLinkText:
   externalLink: ""
