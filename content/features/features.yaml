@@ -52,6 +52,12 @@
   description: "Let users copy/cut/paste data inside the grid and apply changes, then move the data back to where it was taken from"
   externalLinkText: ""
   externalLink: ""
+# - mediaSrc: group-id
+#   imgAlt: "Video describing group Id functionality"
+#   title: "Group Id"
+#   description: "Apply changes to specyfic cells group on pasting data and executing fill handle action"
+#   externalLinkText: ""
+#   externalLink: "/docs/3.0/2-implementing-core-features/5a-groupId/"
 - mediaSrc: context-menu
   imgAlt: "Video describing context menu feature"
   title: Context menu
