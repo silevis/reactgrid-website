@@ -21,44 +21,61 @@ Expected functionality:
 
 Let's get started!
 
-#### 1. Prepare project file
+#### 1. Define flag cell interface
 
 For this tutorial we are going to use the previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
-At the beginning we should update columns and rows displayed by the grid.
-Cell type in row `1` and `2` will be changed to `flag` at the end. 
 
-```tsx 
-const [state, setState] = React.useState(() => ({
-    columns: [{ columnId: 0, width: 100 }],
-    rows: [
-        {
-            rowId: 0,
-            cells: [{ type: "header", text: "Flag" }]
-        },
-        {
-            rowId: 1,
-            cells: [{ type: "text", text: "ger" }]
-        },
-        {
-            rowId: 2,
-            cells: [{ type: "text", text: "usa" }]
-        },
-        {
-            rowId: 3,
-            cells: [{ type: "text", text: "" }]
-        }
-    ]
-}));
+`type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
+`text` attribute will store our text and it's also necessary. 
+
+```ts
+export interface FlagCell extends Cell {
+    type: 'flag';
+    text: string;
+}
 ```
 
-#### 2. Creating necessary files
+#### 2. Data holders
+
+At the beginning we should update columns and rows displayed by the grid.
+Cell type in row `1`, `2` and `3` will be changed to `flag` at the end.
+
+
+```tsx 
+const [columns] = React.useState<Column[]>(() => [
+  { columnId: 0, width: 100 }
+]);
+const [rows, setRows] = React.useState<Row<DefaultCellTypes | FlagCell>[]>(() => [
+  {
+    rowId: 0,
+    height: 40,
+    cells: [{ type: "header", text: "Flag" }]
+  },
+  {
+    rowId: 1,
+    height: 40,
+    cells: [{ type: "text", text: "rus" }]
+  },
+  {
+    rowId: 2,
+    height: 40,
+    cells: [{ type: "text", text: "usa" }]
+  },
+  {
+    rowId: 3,
+    height: 40,
+    cells: [{ type: "text", text: "" }]
+  }
+]);
+```
+
+#### 3. Creating necessary files
 
 Create new file named `FlagCellTemplate.tsx`, add the same imports as in the listing below and make `flag-cell-style.css`file that
 will contain some CSS styles (don't forget to import it into your project's file).
 
 ```tsx 
 // FlagCellTemplate.tsx
-
 import * as React from "react";
 import {
   CellTemplate,
@@ -72,18 +89,6 @@ import {
   keyCodes
 } from "@silevis/reactgrid";
 import "./flag-cell-style.css";
-```
-
-#### 3. Define cell data interface
-
-`type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
-`text` attribute will store our text and it's also necessary. 
-
-```ts
-export interface FlagCell extends Cell {
-    type: 'flag';
-    text: string;
-}
 ```
 
 #### 4. Creating FlagCellTemplate class
@@ -141,39 +146,39 @@ render(
     isInEditMode: boolean,
     onCellChanged: (cell: Compatible<FlagCell>, commit: boolean) => void
 ): React.ReactNode {
-    if (!isInEditMode) {
-        const flagISO = cell.text.toLowerCase(); // ISO 3166-1, 2/3 letters
-        const flagURL = `https://restcountries.eu/data/${flagISO}.svg`;
-        const alternativeURL = `https://upload.wikimedia.org/wikipedia/commons/0/04/Nuvola_unknown_flag.svg`;
-        return (
-            <div
-                className="rg-flag-wrapper"
-                style={{ backgroundImage: `url(${flagURL}), url(${alternativeURL})` }}
-            />
-        );
-    }
+  if (!isInEditMode) {
+    const flagISO = cell.text.toLowerCase(); // ISO 3166-1, 2/3 letters
+    const flagURL = `https://restcountries.eu/data/${flagISO}.svg`;
+    const alternativeURL = `https://upload.wikimedia.org/wikipedia/commons/0/04/Nuvola_unknown_flag.svg`;
     return (
-        <input
-            ref={input => {
-            input && input.focus();
-            }}
-            defaultValue={cell.text}
-            onChange={e =>
-                onCellChanged(
-                    this.getCompatibleCell({ ...cell, text: e.currentTarget.value }),
-                    false
-                )
-            }
-            onCopy={e => e.stopPropagation()}
-            onCut={e => e.stopPropagation()}
-            onPaste={e => e.stopPropagation()}
-            onPointerDown={e => e.stopPropagation()}
-            onKeyDown={e => {
-            if (isAlphaNumericKey(e.keyCode) || isNavigationKey(e.keyCode))
-                e.stopPropagation();
-            }}
-        />
+      <div
+        className="rg-flag-wrapper"
+        style={{ backgroundImage: `url(${flagURL}), url(${alternativeURL})` }}
+      />
     );
+  }
+  return (
+    <input
+      ref={input => {
+        input && input.focus();
+      }}
+      defaultValue={cell.text}
+      onChange={e =>
+        onCellChanged(
+          this.getCompatibleCell({ ...cell, text: e.currentTarget.value }),
+          false
+        )
+      }
+      onCopy={e => e.stopPropagation()}
+      onCut={e => e.stopPropagation()}
+      onPaste={e => e.stopPropagation()}
+      onPointerDown={e => e.stopPropagation()}
+      onKeyDown={e => {
+      if (isAlphaNumericKey(e.keyCode) || isNavigationKey(e.keyCode))
+        e.stopPropagation();
+      }}
+    />
+  );
 }
 ```
 
@@ -203,36 +208,39 @@ As `rg-cell` is a flex element we center its content with `justify-content: cent
 Go back to `index.tsx` file and add `customCellTemplates` property as shown below and also change `type: "text"` to `type: "flag"`:
 
 ```tsx
-const [state, setState] = React.useState(() => ({
-    columns: [{ columnId: 0, width: 100 }],
-    rows: [
-        {
-            rowId: 0,
-            cells: [{ type: "header", text: "Flag" }] 
-        },
-        {
-            rowId: 1,
-            cells: [{ type: "flag", text: "ger" }] //highlight-line
-        },
-        {
-            rowId: 2,
-            cells: [{ type: "flag", text: "usa" }] //highlight-line
-        },
-        {
-            rowId: 3,
-            cells: [{ type: "flag", text: "" }] //highlight-line
-        }
-    ]
-}));
+
 // ...
+const [rows, setRows] = React.useState<Row<DefaultCellTypes | FlagCell>[]>(() => [
+  {
+    rowId: 0,
+    height: 40,
+    cells: [{ type: "header", text: "Flag" }]
+  },
+  {
+    rowId: 1,
+    height: 40,
+    cells: [{ type: "flag", text: "rus" }] // highlight-line
+  },
+  {
+    rowId: 2,
+    height: 40,
+    cells: [{ type: "flag", text: "usa" }] // highlight-line
+  },
+  {
+    rowId: 3,
+    height: 40,
+    cells: [{ type: "flag", text: "" }] // highlight-line
+  }
+]);
+
 
 return (
-    <ReactGrid
-      rows={state.rows}
-      columns={state.columns}
-      onCellsChanged={handleChanges}
-      customCellTemplates={{ flag: new FlagCellTemplate() }}  //highlight-line
-    />
+  <ReactGrid
+    rows={rows}
+    columns={columns}
+    onCellsChanged={handleChanges}
+    customCellTemplates={{ flag: new FlagCellTemplate() }}  //highlight-line
+  />
 );
 ```
 
