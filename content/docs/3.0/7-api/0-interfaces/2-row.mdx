@@ -49,7 +49,7 @@ export const rows: Row<DefaultCellTypes | FlagCell>[] = [ // union of all  avail
 ```ts
 export interface Row<TCell extends Cell = DefaultCellTypes> {
   readonly rowId: Id;
-  readonly cells: TCell[];
+  readonly cells: Cell[] | TCell[];
   readonly height?: number;
   readonly reorderable?: boolean;
 };
@@ -60,6 +60,6 @@ export interface Row<TCell extends Cell = DefaultCellTypes> {
 | Property name     | Type                                                                  | Property description  | 
 | ------------      | -------------                                                         | -------------         |
 | `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                 | Unique [`Id`](/docs/3.0/7-api/1-types/4-id/) in all rows array | 
-| `cells`           | `TCell extends` [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) objects. | 
+| `cells`           | [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]  TCell extends` [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) objects. | 
 | `height?`         | `number`                                                              | Height of each grid row (in default set to `25px`)  | 
 | `reorderable?`    | `boolean`                                                             | Property that allows row to change is position in grid, default: `false` (row reorder implementation is on the developer's side) |  
