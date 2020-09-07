@@ -59,7 +59,7 @@ class Features extends React.Component<any, PageProps> {
                     </i>
                   </div>
                   <h3 className="pb-3">Cross-browser support</h3>
-                  <p className="pb-3">ReactGrid performs great in all modern browsers and has backward compatibility</p>
+                  <p className="pb-3">ReactGrid performs efficiently in all modern browsers</p>
                 </div>
               </Col>
               <Col sm="6" lg="6">

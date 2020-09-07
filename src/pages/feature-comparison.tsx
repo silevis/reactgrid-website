@@ -12,9 +12,7 @@ import {
 } from "reactstrap";
 
 
-
 const Times = () => <i className="fas fa-times text-warning fa-lg"></i>;
-
 const Check = () => <i className="fas fa-check text-primary fa-lg"></i>;
 
 const whatYouGet = [
@@ -34,6 +32,7 @@ const featureComparisons = [
   },
   { text: 'Custom cell templates', pro: <Check />, mit: <Check /> },
   { text: 'Keyboard shortcuts', pro: <Check />, mit: <Check /> },
+  { text: 'Group Id', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste single cell', pro: <Check />, mit: <Check /> },
   { text: 'Copy/cut/paste multiple cells', pro: <Check />, mit: <Times /> },
   { text: 'Fill handle', pro: <Check />, mit: <Times /> },
