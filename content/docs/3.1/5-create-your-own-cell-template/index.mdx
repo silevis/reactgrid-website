@@ -23,7 +23,7 @@ Let's get started!
 
 #### 1. Define flag cell interface
 
-For this tutorial we are going to use the previous project - [handling changes](/docs/3.0/2-implementing-core-features/1-handling-changes/).
+For this tutorial we are going to use the previous project - [handling changes](/docs/3.1/2-implementing-core-features/1-handling-changes/).
 
 `type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
 `text` attribute will store our text and it's also necessary. 
@@ -96,7 +96,7 @@ import "./flag-cell-style.css";
 For all defined methods below it is necessary to display and interface the flag cell with internal ReactGrid model correctly.
 
 * `getCompatibleCell` as a parameter gets an incoming cell and returns a compatible cell (with `text` and `value`
-  attribute required by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) type). 
+  attribute required by [`Compatible`](/docs/3.1/7-api/1-types/1-compatible-cell/) type). 
   In more complex examples `getCellProperty` may throw an exception if the required cell field is `undefined`.
 
 ```ts
@@ -128,7 +128,7 @@ handleKeyDown(
 ```
 
 * `update` - as we are not sure if an incoming cell has the same interface like `FlagCell` so we mark it
-  as `UncertainCompatible` (the incoming cell has attributes provided by [`Compatible`](/docs/3.0/7-api/1-types/1-compatible-cell/) 
+  as `UncertainCompatible` (the incoming cell has attributes provided by [`Compatible`](/docs/3.1/7-api/1-types/1-compatible-cell/) 
   but it can have other attributes like `date` from `DateCell`). In our case, we just copy `cell` and replace `text` value.
 
 ```ts

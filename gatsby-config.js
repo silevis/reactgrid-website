@@ -28,6 +28,7 @@ module.exports = {
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
     docsVersions: [
+      { slug: "/3.1", desc: '3.1', index: '/0-introduction', active: true },
       { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }
     ],
     docsPagesOrder: [

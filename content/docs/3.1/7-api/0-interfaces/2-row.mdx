@@ -6,7 +6,7 @@ metaDescription: "ReactGrid docs"
 ---
 
 Row interface contains two necessary properties: `rowId` and `cells`. It contains essential information about the grid row.
-`cells` field allows you to declare an array of objects that extends [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]` base interface.
+`cells` field allows you to declare an array of objects that extends [`Cell`](/docs/3.1/7-api/0-interfaces/4-cell/)`[]` base interface.
 
 
 #### Usage 
@@ -59,7 +59,7 @@ export interface Row<TCell extends Cell = DefaultCellTypes> {
 
 | Property name     | Type                                                                  | Property description  | 
 | ------------      | -------------                                                         | -------------         |
-| `rowId`           | [`Id`](/docs/3.0/7-api/1-types/4-id/)                                 | Unique [`Id`](/docs/3.0/7-api/1-types/4-id/) in all rows array | 
-| `cells`           | [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]  TCell extends` [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.0/7-api/0-interfaces/4-cell/) objects. | 
+| `rowId`           | [`Id`](/docs/3.1/7-api/1-types/4-id/)                                 | Unique [`Id`](/docs/3.1/7-api/1-types/4-id/) in all rows array | 
+| `cells`           | [`Cell`](/docs/3.1/7-api/0-interfaces/4-cell/)`[]  TCell extends` [`Cell`](/docs/3.1/7-api/0-interfaces/4-cell/)`[]`    | Array of [`Cell`](/docs/3.1/7-api/0-interfaces/4-cell/) objects. | 
 | `height?`         | `number`                                                              | Height of each grid row (in default set to `25px`)  | 
 | `reorderable?`    | `boolean`                                                             | Property that allows row to change is position in grid, default: `false` (row reorder implementation is on the developer's side) |  
