@@ -1,0 +1,152 @@
+---
+posttype: "docs"
+title: Full width header
+metaTitle: "Full width header"
+metaDescription: "ReactGrid docs"
+---
+import { ReactGrid } from "@silevis/reactgrid";
+const simpleCode = `const FullWidthHeaderSample = () => {
+    ${``}
+  const [columns] = React.useState<Column[]>(() => [
+    { columnId: "Name", width: 150 },
+    { columnId: "Surname", width: 100 },
+    { columnId: "Birth Data", width: 100 },
+    { columnId: "Phone", width: 100 },
+    { columnId: "Company", width: 150 },
+    { columnId: "Occupation", width: 250 }
+  ]);
+  ${``}
+  const [rows, setRows] = React.useState<Row[]>(() => [
+    {
+      rowId: 0,
+      cells: [
+        { type: "text", text: "Name" },
+        { type: "text", text: "Surname" },
+        { type: "text", text: "Birth Data" },
+        { type: "text", text: "Phone" },
+        { type: "text", text: "Company" },
+        { type: "text", text: "Occupation" }
+      ]
+    },
+    {
+      rowId: 1,
+      cells: [
+        { type: "text", text: "Thomas Anthony" },
+        { type: "text", text: "Goldman" },
+        { type: "date", date: new Date("1989-04-01") },
+        { type: "number", value: 293827394 },
+        { type: "text", text: "Electronic Geek" },
+        { type: "text", text: "Textile and furnishings occupation" }
+      ]
+    },
+    {
+      rowId: 2,
+      cells: [
+        { type: "text", text: "Susie Evelyn" },
+        { type: "text", text: "Spencer" },
+        { type: "date", date: new Date("1970-12-02") },
+        { type: "number", value: 684739283 },
+        { type: "text", text: "Harold Powell" },
+        { type: "text", text: "Concrete paving machine operator" }
+      ]
+    },
+    {
+      rowId: 3,
+      cells: [
+        { type: "text", text: "Mathew Lawrence" },
+        { type: "text", text: "Joshua" },
+        { type: "date", date: new Date("1970-12-02") },
+        { type: "number", value: 684739283 },
+        { type: "text", text: "De-Jaiz Mens Clothing" },
+        { type: "text", text: "Technical recruiter" }
+      ]
+    },
+    {
+      rowId: 4,
+      cells: [
+        { type: "text", text: "" },
+        { type: "text", text: "" },
+        { type: "date", date: NaN },
+        { type: "number", value: NaN },
+        { type: "text", text: "" },
+        { type: "text", text: "" }
+      ]
+    },
+    {
+      rowId: 5,
+      cells: [
+        { type: "text", text: "" },
+        { type: "text", text: "" },
+        { type: "date", date: NaN },
+        { type: "number", value: NaN },
+        { type: "text", text: "" },
+        { type: "text", text: "" }
+      ]
+    },
+    {
+      rowId: 6,
+      cells: [
+        { type: "text", text: "" },
+        { type: "text", text: "" },
+        { type: "date", date: NaN },
+        { type: "number", value: NaN },
+        { type: "text", text: "" },
+        { type: "text", text: "" }
+      ]
+    },
+  ]);
+  ${``}
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      enableFullWidthHeader
+      stickyTopRows={1} 
+    />
+  );
+}
+${``}
+render(
+  <div style={{width: '1200px', height: '200px'}}>
+    <FullWidthHeaderSample/>
+  </div>
+)
+`;
+
+#### Introduction
+
+<Alert color="primary" transition={{baseClass: ''}}>
+	<i class="fas fa-exclamation-circle pr-3"></i>
+	Full width header feature is experimental and it can be changed in the future
+</Alert>
+
+This feature extends width of top sticky pane to full available space inside ReactGrid's parent. 
+
+#### Usage
+
+1. Add `enableFullWidthHeader` property to ReactGrid component and add any number of `stickyTopRows`. In our example, the sample
+ReactGrid component was also wrapped inside a div element that is wider than all columns. 
+
+```tsx
+return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      enableFullWidthHeader // highlight-line
+      stickyTopRows={1}  // highlight-line
+    />
+);
+
+```
+
+<LiveCode 
+  code={simpleCode}
+  title='Full width header demo'
+  noInline={true}
+/> 
+
+## 
+#### Issues
+
+- If the width of ReactGrid's parent is less then the sum of all the columns (including left sticky), there might be bugs
+- enabling right and bottom sticky panes can cause bugs related with scrolling, ranges selection etc.
