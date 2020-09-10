@@ -15,14 +15,44 @@ interface CellStyle {
     readonly background?: string;
     readonly overflow?: string;
     readonly paddingLeft?: string;
+    readonly border?: {
+        readonly left?: {
+            readonly color?: string,
+            readonly style?: string,
+            readonly width?: string
+        }
+        readonly top?: {
+            readonly color?: string,
+            readonly style?: string,
+            readonly width?: string
+        }
+        readonly right?: {
+            readonly color?: string,
+            readonly style?: string,
+            readonly width?: string
+        }
+        readonly bottom?: {
+            readonly color?: string,
+            readonly style?: string,
+            readonly width?: string
+        }
+    }
 }
 ```
 
 #### Properties
 
-| Property name     | Type      |  Property description         |
-| -----------       | -------   | -------------------------     |
-| `color?`          | `string`  | CSS `color` property          |
-| `background?`     | `string`  | CSS `background` property     |
-| `overflow?`       | `string`  | CSS `overflow` property       |
-| `paddingLeft?`    | `string`  | CSS `padding-left` property   |
+| Property name     | Type                                                 |  Property description                      |
+| ------------      | --------------------------------------------------   | -------------------------------------      |
+| `color?`          | `string`                                             | CSS `color` property                       |
+| `background?`     | `string`                                             | CSS `background` property                  |
+| `overflow?`       | `string`                                             | CSS `overflow` property                    |
+| `paddingLeft?`    | `string`                                             | CSS `padding-left` property                |
+| `border?`         | `{ left?: {}, top?: {}, right?: {}, bottom?: {} }`   | Object contains border edges objects       |
+| `left?`           | `{ color?: string, style?: string, width?: string }` | Object contains border properties          |
+| `top?`            | `{ color?: string, style?: string, width?: string }` | Object contains border properties          |
+| `right?`          | `{ color?: string, style?: string, width?: string }` | Object contains border properties          |
+| `bottom?`         | `{ color?: string, style?: string, width?: string }` | Object contains border properties          |
+| `color?`          | `string`                                             | CSS `color` property                       |
+| `style?`          | `string`                                             | CSS `style` property                       |
+| `width?`          | `string`                                             | CSS `width` property                       |
