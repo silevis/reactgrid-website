@@ -6,6 +6,8 @@ metaDescription: "ReactGrid docs"
 ---
 
 `CellStyle` interface prevents passing unwanted CSS properties that could break down grid rendering.
+This interface uses also a `BorderProps` to style particular cell's border edge.
+Each cell has its own border
 
 #### Definition
 
@@ -15,14 +17,27 @@ interface CellStyle {
     readonly background?: string;
     readonly overflow?: string;
     readonly paddingLeft?: string;
+    readonly border?: {
+        readonly left?: BorderProps;
+        readonly top?: BorderProps;
+        readonly right?: BorderProps;
+        readonly bottom?: BorderProps;
+    }
+}
+
+interface BorderProps {
+    readonly color?: string;
+    readonly style?: string;
+    readonly width?: string;
 }
 ```
 
 #### Properties
 
-| Property name     | Type      |  Property description         |
-| -----------       | -------   | -------------------------     |
-| `color?`          | `string`  | CSS `color` property          |
-| `background?`     | `string`  | CSS `background` property     |
-| `overflow?`       | `string`  | CSS `overflow` property       |
-| `paddingLeft?`    | `string`  | CSS `padding-left` property   |
+| Property name     | Type                                                                                      |  Property description                                 |
+| ------------      | --------------------------------------------------                                        | -------------------------------------                 |
+| `color?`          | `string`                                                                                  | CSS `color` property                                  |
+| `background?`     | `string`                                                                                  | CSS `background` property                             |
+| `overflow?`       | `string`                                                                                  | CSS `overflow` property                               |
+| `paddingLeft?`    | `string`                                                                                  | CSS `padding-left` property                           |
+| `border?`         | `{ left?: BorderProps; top?: BorderProps; right?: BorderProps; bottom?: BorderProps; }`   | Object that contains all cell's borders properties    |
