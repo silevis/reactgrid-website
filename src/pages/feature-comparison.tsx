@@ -88,24 +88,23 @@ class FeatureComparison extends React.Component {
                   <thead style={{ borderTopColor: 'transparent' }}>
                     <tr>
                       <th scope="row" style={{ borderTop: 'transparent' }}> </th>
-                      <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '30%' }}>
-                        <h3 className='mb-0 text-white card-title'>PRO version</h3>
-                      </th>
                       <th className='text-center bg-white bordered font-weight-bold' style={{ width: '25%' }}>
                         <h3 className='mb-0 card-title'>MIT version</h3>
+                      </th>
+                      <th className='text-center bg-primary bordered font-weight-bold' style={{ width: '30%' }}>
+                        <h3 className='mb-0 text-white card-title'>PRO version</h3>
                       </th>
                     </tr>
                   </thead>
                   <tbody>
-                    <TableHeaderRow text='What you get?' />
                     {[...whatYouGet].map((feature, idx) => <FeatureComparisonRow key={idx} text={feature.text} inPro={feature.pro} inMit={feature.mit} />)}
                     <tr className='h6'>
                       <th scope="row" className='bg-transparent' ></th>
-                      <td className='text-center bordered bg-primary-light '>
-                        {askForPrice}
-                      </td>
                       <td className='text-center bordered bg-white'>
                         {checkOnGithub}
+                      </td>
+                      <td className='text-center bordered bg-primary-light '>
+                        {askForPrice}
                       </td>
                     </tr>
                     <TableHeaderRow text='Features' />
@@ -171,8 +170,8 @@ const FeatureComparisonRow = ({ text, inPro, inMit }) => {
   return (
     <tr className='h6'>
       <th scope="row" className='bordered bg-white'>{text}</th>
-      <td className='text-center bordered bg-primary-light'>{inPro}</td>
       <td className='text-center bordered bg-white'>{inMit}</td>
+      <td className='text-center bordered bg-primary-light'>{inPro}</td>
     </tr>
   )
 }
