@@ -112,10 +112,10 @@ class FeatureComparison extends React.Component {
                     <tr>
                       <th scope="row" style={{ visibility: 'hidden' }}> </th>
                       <td className='text-center'>
-                        {askForPrice}
+                        {checkOnGithub}
                       </td>
                       <td className='text-center'>
-                        {checkOnGithub}
+                        {askForPrice}
                       </td>
                     </tr>
                   </tbody>
