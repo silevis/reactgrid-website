@@ -5,9 +5,8 @@ metaTitle: "CellStyle interface"
 metaDescription: "ReactGrid docs"
 ---
 
-`CellStyle` interface prevents passing unwanted CSS properties that could break down grid rendering.
-This interface uses also a `BorderProps` to style particular cell's border edge.
-Each cell has its own border
+`CellStyle` styles single cell and prevents passing unwanted CSS properties that could break down view rendering.
+This interface uses also a `BorderProps` to style particular cells border edge.
 
 #### Definition
 
@@ -33,6 +32,11 @@ interface BorderProps {
 ```
 
 #### Properties
+
+| Property name     | Type          | Property description                      |
+| `color?`          | `string`      | Color of border - e.g. `#eee`/`red`       |
+| `style?`          | `string`      | Style of border - e.g. `dotted`/`solid`   |
+| `width?`          | `string`      | Width of border - e.g. `2px`              |
 
 | Property name     | Type                                                                                      |  Property description                                 |
 | ------------      | --------------------------------------------------                                        | -------------------------------------                 |
