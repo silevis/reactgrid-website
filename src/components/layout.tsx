@@ -12,7 +12,7 @@ import MainNavbar from "./MainNavbar";
 const Layout = ({ title, social, pages, description, children }) => {
   return (
     <>
-      <header>
+      <header className="sticky-header">
         <MainNavbar pages={pages} title={title} social={social} description={description} />
       </header>
       <main className="layout-main-wrapper px-md-0">{children}</main>
