@@ -6,64 +6,65 @@ metaDescription: "ReactGrid docs"
 proMark: true
 ---
 import { ReactGrid } from "@silevis/reactgrid";
-const code = `
-${` `}
-const App = () => {
-  const [columns, setColumns] = React.useState<Column[]>(() => [
-    { columnId: "Name", width: 100, resizable: true },
-    { columnId: "Surname", width: 100, resizable: true }
-  ]);
-  const [rows, setRows] = React.useState<Row[]>(() => [
-    {
-      rowId: 0,
-      cells: [
-        { type: "header", text: "Name" },
-        { type: "header", text: "Surname" }
-      ]
-    },
-    {
-      rowId: 1,
-      cells: [
-        { type: "text", text: "Thomas" },
-        { type: "text", text: "Goldman" }
-      ]
-    },
-    {
-      rowId: 2,
-      cells: [
-        { type: "text", text: "Susie" },
-        { type: "text", text: "Spencer" }
-      ]
-    },
-    {
-      rowId: 3,
-      cells: [
-        { type: "text", text: "" },
-        { type: "text", text: "" }
-      ]
-    }
-  ]);
-  ${` `}
-  const handleColumnResize = (ci: Id, width: number) => {
-    setColumns((prevColumns) => {
-      const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
-      const resizedColumn = prevColumns[columnIndex];
-      const updatedColumn = { ...resizedColumn, width };
-      prevColumns[columnIndex] = updatedColumn;
-      return [...prevColumns];
-    });
-  }
-  ${` `}
-  return (
-    <ReactGrid
-      rows={rows}
-      columns={columns}
-      onColumnResized={handleColumnResize}
-    />
-  );
+const code = `interface Person {
+    name: string;
+    surname: string;
 }
 ${` `}
-render(<App/>)
+const getPeople = (): Person[] => [
+    { name: "Thomas", surname: "Goldman" },
+    { name: "Susie", surname: "Quattro" },
+    { name: "", surname: "" }
+];
+${` `}
+const getColumns = (): Column[] => [
+    { columnId: "name", width: 150, resizable: true },
+    { columnId: "surname", width: 150, resizable: true }
+];
+${` `}
+const headerRow: Row = {
+    rowId: "header",
+    cells: [
+        { type: "header", text: "Name" },
+        { type: "header", text: "Surname" }
+    ]
+};
+${` `}
+const getRows = (people: Person[]): Row[] => [
+    headerRow,
+    ...people.map<Row>((person, idx) => ({
+        rowId: idx,
+        cells: [
+            { type: "text", text: person.name },
+            { type: "text", text: person.surname }
+        ]
+    }))
+];
+${` `}
+const ColumnResizingSample = () => {
+    const [people] = React.useState<Person[]>(getPeople());
+    const [columns, setColumns] = React.useState<Column[]>(getColumns());
+    ${` `}
+    const rows = getRows(people);
+    ${` `}
+    const handleColumnResize = (ci: Id, width: number) => {
+        setColumns((prevColumns) => {
+            const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
+            const resizedColumn = prevColumns[columnIndex];
+            const updatedColumn = { ...resizedColumn, width };
+            prevColumns[columnIndex] = updatedColumn;
+            return [...prevColumns];
+        });
+    }
+    ${` `}
+    return <ReactGrid 
+      rows={rows} 
+      columns={columns} 
+      onColumnResized={handleColumnResize} 
+    />;
+}
+${` `}
+render(<ColumnResizingSample/>)
 `;
 
 
@@ -77,44 +78,57 @@ render(<App/>)
 For each column which should be resizable, add the `resizable` property
 to the corresponding column object and set its value to `true`.
 
-```ts
-const [columns, setColumns] = React.useState<Column[]>(() => [
-  { columnId: "Name", width: 100, resizable: true }, //highlight-line
-  { columnId: "Surname", width: 100, resizable: true } //highlight-line
-]);
+```tsx
+const getColumns = (): Column[] => [
+    { columnId: "name", width: 150, resizable: true }, //highlight-line
+    { columnId: "surname", width: 150, resizable: true } //highlight-line
+];
 ```
 
 If you hover over the vertical border line between the column headers,
 you will see your mouse pointer change to indicate that a column can be resized.
 However, you'll quickly notice that the column resizing functionality doesn't work.
 Why is that? We still need to handle the events fired by ReactGrid when a column is being resized.
-Similar to how we handled data changes in [Handling data changes](/docs/3.1/2-implementing-core-features/1-handling-changes/),
- we can also define a handler function for that and pass it to our ReactGrid component.
+Similar to how we handled data changes in [handling changes](/docs/3.1/2-implementing-core-features/1-handling-changes/),
+we can also define a handler function for that and pass it to our ReactGrid component.
 
-#### Implement the event handler function
+#### `useState` hook for columns storing
 
-```ts
-const handleColumnResize = (ci: Id, width: number) => {
-  setColumns((prevColumns) => {
-    const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
-    const resizedColumn = prevColumns[columnIndex];
-    const updatedColumn = { ...resizedColumn, width };
-    prevColumns[columnIndex] = updatedColumn;
-    return [...prevColumns];
-  });
+```tsx
+function App() {
+    const [people] = React.useState<Person[]>(getPeople());
+    const [columns, setColumns] = React.useState<Column[]>(getColumns()); //highlight-line
+
+    const rows = getRows(people);
+
+    return <ReactGrid rows={rows} columns={columns} />;
 }
 ```
 
-#### Pass the handler function
+#### Implement the handler function
+
+`handleColumnResize` handles the event when its finished. Knowing the column `Id` and its new width, we can apply
+changes by calling `setColumns` function and returning array of updated columns (width/widths).
 
 ```tsx
-return (
-  <ReactGrid
-    rows={rows}
-    columns={columns}
-    onColumnResized={handleColumnResize} //highlight-line
-  />
-);
+function App() {
+    const [people] = React.useState<Person[]>(getPeople());
+    const [columns, setColumns] = React.useState<Column[]>(getColumns());
+
+    const rows = getRows(people);
+
+    const handleColumnResize = (ci: Id, width: number) => {
+        setColumns((prevColumns) => {
+            const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
+            const resizedColumn = prevColumns[columnIndex];
+            const updatedColumn = { ...resizedColumn, width };
+            prevColumns[columnIndex] = updatedColumn;
+            return [...prevColumns];
+        });
+    }
+
+    return <ReactGrid rows={rows} columns={columns} onColumnResized={handleColumnResize} />;
+}
 ```
 
 #### Live demo
