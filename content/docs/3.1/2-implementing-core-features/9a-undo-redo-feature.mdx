@@ -7,16 +7,16 @@ metaDescription: "ReactGrid docs"
 
 #### Idea of Undo/Redo feature
 
-1. An Undo/Redo feature isn't implemented internally, but we prepared example which you can take pattern of this.
-2. ReactGrid bypassing undo and redo events.
+1. An Undo/Redo feature isn't implemented internally, but we prepared an example which you can follow.
+2. ReactGrid bypasses undo and redo events.
 3. You can handle `onKeyDown` event to use your own implemented Undo/Redo feature.
 4. The `ReactGrid` component receives revoked or restored data and gets rerendered.
 
-It's possible to use with keyboard `ctrl+z` and `ctrl+y` shortcuts or prepared by you buttons.
+It's possible to use with <kbd>Ctrl</kbd> + <kbd>z</kbd> and <kbd>Ctrl</kbd> + <kbd>y</kbd> keyboard shortcuts or prepared by you buttons.
 
-#### When is my handler functions called?
+#### When are my handler functions called?
 
-1. Changes have been committed after `ctrl+z` and `ctrl+y` key.
+1. Changes have been committed after <kbd>Ctrl</kbd> + <kbd>z</kbd> and <kbd>Ctrl</kbd> + <kbd>y</kbd> key.
 2. Changes have been committed after `Undo` and `Redo` button.
 
 #### Implementing feature in your project
@@ -31,9 +31,9 @@ import { ReactGrid, Column, Row, CellChange, TextCell} from "@silevis/reactgrid"
 
 #### Sample Undo/Redo feature
 
-We are prepared specially for you functions which you can use and adjust to your project.
-We have an array of changes made by the user at each step. The place in the history of changes you are in is stored.
-Look at this functions:
+For this reason we prepared special functions, which you can use in your project and adjust to it.
+We have an array of changes made by the user at each step. The place in the history of changes, where you currently are, is stored.
+Look at this function:
 
 ```tsx
   const applyNewValue = (
@@ -50,8 +50,8 @@ Look at this functions:
     return [...prevPeople];
   };
 ```
-Function `applyChangesToPeople` is similar function which is responsible for handling changes.
-We need additionally to store all changes and changes index with help us to move on the changes array.
+Function `applyChangesToPeople` is a similar function which is responsible for handling changes.
+Additionally we need to store all the changes and the index of changes, which will help us to move within the changes array.
 
 ```tsx
     const applyChangesToPeople = (
@@ -66,7 +66,7 @@ We need additionally to store all changes and changes index with help us to move
 ```
 
 The `undoChanges` function allows you to set the previous value and change the index in the appropriate place in the array.
-Change index is moved one step backward. 
+The change index is moved one step backwards. 
 
 ```tsx
   const undoChanges = (
@@ -78,7 +78,7 @@ Change index is moved one step backward.
     return updated;
   };
 ```
-The `redoChanges` function allows you to set the restored change. Change index also have to be moved one position forward.
+The `redoChanges` function allows you to set the restored change. Change index also has to be moved one position forward.
 
 ```tsx
   const redoChanges = (
@@ -91,20 +91,20 @@ The `redoChanges` function allows you to set the restored change. Change index a
   };
 ```
 
-Let's use the above functions inside example `App` component. Inside it we added two hooks:
+Let's use the above functions inside an example `App` component. We added two hooks inside it:
 
 ```ts
 const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
 const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(() => []);
 
-The first one stores current index of change for the second hook - storing an array of changes that has been affected on 
+The first one stores current index of changes for the second hook - storing an array of changes that has affected 
 the `TextCells`.
 ```
-We have wrapped ReactGrid with `div` elementthat listens to `onKeyDown` event. 
+We have wrapped ReactGrid with `div` element that listens to `onKeyDown` event. 
 Changes can be also restored/redone with two buttons.
 
-Inside both methods (`handleUndoChanges` and `handleRedoChanges`) we updates our data - poople array.
-These changes comes from `cellChanges` array.
+Inside both methods (`handleUndoChanges` and `handleRedoChanges`) we update our data - poople array.
+These changes come from `cellChanges` array.
 
 ```tsx
 function App() {

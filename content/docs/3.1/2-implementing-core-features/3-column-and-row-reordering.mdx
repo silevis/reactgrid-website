@@ -137,8 +137,8 @@ const getPeople = (): Person[] => [
 
 #### 2. Update column related properties
 
-In our sample we will be able to see and reorder two column. 
-We currenly working with column that we know everything about their destiny.
+In our example we will be able to see how to reorder two declared columns.
+We are currenly working with a column whose application we know everything about.
 Let's define coresponding interface that is personalized stricly to our needs.
 
 ```tsx
@@ -153,8 +153,8 @@ const columnMap: ColumnMap = {
 };
 ```
 
-ReactGrid's `Column` interface contains `columnId` property. You can assign to this property any `string` or even `number`.
-In this example we know that we working with only `name` and `surname` as so we can augument `Column` 
+ReactGrid's `Column` interface contains `columnId` property. You can assign any `string` or even `number`to this property.
+In this example we know that we are working with only `name` and `surname` as so we can augment `Column`
 interface definition by doing this:
 
 ```tsx
@@ -163,7 +163,7 @@ type ColumnId = keyof ColumnMap;
 
 #### 3. Make your columns reorderable
 
-This step is simply - just add `reorderable: true` to the column definitions.
+This step is simple - just add `reorderable: true` to the column definitions.
 
 ```tsx
 const getColumns = (): Column[] => [
@@ -174,10 +174,10 @@ const getColumns = (): Column[] => [
 
 #### 4. Display rows with arbitrary columns order
 
-Relative to base example we need to add a one mode argument: `columnsOrder`. 
-This parameter contains columns key (`name` or `surname`) in order that we went to display people.
-We also moved `headerRow` and replace it with object to get coresponding column title and value of `columnMap`.
-Also cells inside mapped `people` array selects persons attribute accordingly to columns order.
+In Relation to the base example we need to add one mode argument: `columnsOrder`. 
+This parameter contains columns key (`name` or `surname`) in the same order as we want to display people.
+We also moved `headerRow` and replaced it with an object to get a corresponding column title and value of `columnMap`.
+Also cells inside mapped `people` array select persons' attributes in accordance with the order of columns.
 
 ```tsx
 const getRows = (people: Person[], columnsOrder: ColumnId[]): Row[] => {
@@ -216,9 +216,9 @@ const reorderArray = <T extends {}>(arr: T[], idxs: number[], to: number) => {
 
 #### 5.  Implement column and row handlers
 
-All that remains to write handler for rows and column reordering. 
-Column and row reorder handler are based on searching for destination target index and mapping reordered items to array
-ot their occurrence. After that we pass previously mentioned indexes to `reorderArray` function and update data by calling 
+All that remains to write is handler for rows and column reordering. 
+Column and row reorder handler is based on searching for destination target index and mapping reordered items to array
+of their occurrence. After that we pass previously mentioned indexes to `reorderArray` function and update data by calling 
 `setColumns` and `setPeople`.
 `ReactGrid` component needs to have enabled `enableRowSelection` and `enableColumnSelection`.
 
@@ -259,11 +259,11 @@ const ColumnsAndRowsReorderSample = () => {
 This 'feature' can be done by making `handleCanReorderRows` function and passing it to `canReorderRows` ReactGrid prop.
 We also provided `canReorderColumns` prop that can do the same thing, but with columns. 
 
-While you reorder row you can see the line that is visible above the  header row. We probably don't want to mislead end user
-that he can drop row over there. 
+While you reorder a row you can see the line that is visible above the  header row. We probably don't want to mislead the end user
+who might drop the row over there.
 
-When you drop row then your `handleCanReorderRows` is fired. We can define that dropping over row that its `rowId` field equals
-`header` is prohibited. In this case you won't see reorder line indication and `handleRowsReorder` is not fired by default.
+When you drop row then your `handleCanReorderRows` is called. We can define that dropping over the row whose `rowId` field equals
+`header` is prohibited. In this case you won't see reorder line indication and `handleRowsReorder` is not called by default.
 
 ```ts
 const handleCanReorderRows = (targetRowId: Id, rowIds: Id[]): boolean => {
