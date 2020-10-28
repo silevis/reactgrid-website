@@ -113,6 +113,37 @@ export const samplesData = [
         component: 'ExcercisesDataSample'
     },
     {
+        title: 'Workhours',
+        icon: 'fas fa-border-all fa-3x',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    // `Implements most ReactGrid features in a simple way`,
+                    // `Calculates the athlete's points in the real time`,
+                    // `Built-in Chevron Cell allows you to collapse the excercise's category
+                    //     by pressing on the chevron on pressing space`,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    // <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    // <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    // `Custom cell templates`,
+                    // `Sticky row and column`,
+                    // `Range selection`,
+                    // `Copy/cut/paste`,
+                    // `Touch capability`,
+                    // `SASS custom styling`,
+                ]
+            }
+        ],
+        className: 'workhours-sample',
+        component: 'WorkhoursSample'
+    },
+    {
         title: 'Cryptocurrency Market',
         icon: 'fab fa-bitcoin fa-3x',
         enabled: false,
