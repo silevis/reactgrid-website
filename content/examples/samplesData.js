@@ -100,9 +100,8 @@ export const samplesData = [
                 content: [
                     <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
                     <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    `Custom cell templates`,
-                    `Sticky row and column`,
-                    `Range selection`,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
                     `Copy/cut/paste`,
                     `Touch capability`,
                     `SASS custom styling`,
@@ -120,23 +119,22 @@ export const samplesData = [
             {
                 header: `Capabilities:`,
                 content: [
-                    // `Implements most ReactGrid features in a simple way`,
-                    // `Calculates the athlete's points in the real time`,
-                    // `Built-in Chevron Cell allows you to collapse the excercise's category
-                    //     by pressing on the chevron on pressing space`,
+                    `Workhours sample ReactGrid implementation allows user to add new records by editing the last blank row`,
+                    `It is possible to render every row in various ways, ReactGrid empowers the user to fully configure each cell independently`,
+                    `The simple configurator shows how easily you can style your table`,
+                    `Sample contains custom written dropdown cell`,
+                    `The header row and the blank row are sticky, so you can always see the title of the column and you're able to add new records`,
                 ]
             },
             {
                 header: `Core features (applied):`,
                 content: [
-                    // <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    // <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    // `Custom cell templates`,
-                    // `Sticky row and column`,
-                    // `Range selection`,
-                    // `Copy/cut/paste`,
-                    // `Touch capability`,
-                    // `SASS custom styling`,
+                    <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `SASS custom styling`,
                 ]
             }
         ],
