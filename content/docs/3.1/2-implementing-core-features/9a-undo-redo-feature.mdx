@@ -5,11 +5,11 @@ metaTitle: "Undo / Redo feauture"
 metaDescription: "ReactGrid docs"
 ---
 
-#### Idea of Undo / Redo feature
+#### Idea of Undo/Redo feature
 
-1. An Undo / Redo feature should be implemented by the user, but we prepared example which you can use.
-2. ReactGrid is not handling `ctrl+z` and `ctrl+y` events internally.
-3. You can handle `onKeyDown` event to use your own implemented Undo / Redo feature.
+1. An Undo/Redo feature isn't implemented internally, but we prepared example which you can take pattern of this.
+2. ReactGrid bypassing undo and redo events.
+3. You can handle `onKeyDown` event to use your own implemented Undo/Redo feature.
 4. The `ReactGrid` component receives revoked or restored data and gets rerendered.
 
 It's possible to use with keyboard `ctrl+z` and `ctrl+y` shortcuts or prepared by you buttons.
@@ -21,8 +21,7 @@ It's possible to use with keyboard `ctrl+z` and `ctrl+y` shortcuts or prepared b
 
 #### Implementing feature in your project
 
-This feauture is connected with [handling changes](/docs/3.1/2-implementing-core-features/1-handling-changes/).
-
+This feature develops [handling changes](/docs/3.1/2-implementing-core-features/1-handling-changes/) example.
 
 Let's start with updating imports:
 
@@ -30,10 +29,10 @@ Let's start with updating imports:
 import { ReactGrid, Column, Row, CellChange, TextCell} from "@silevis/reactgrid";
 ```
 
-#### Sample Undo / Redo feature
+#### Sample Undo/Redo feature
 
 We are prepared specially for you functions which you can use and adjust to your project.
-We have a stack of changes made by the user at each step. The place in the history of changes you are in is remembered.
+We have an array of changes made by the user at each step. The place in the history of changes you are in is stored.
 Look at this functions:
 
 ```tsx
@@ -52,7 +51,7 @@ Look at this functions:
   };
 ```
 Function `applyChangesToPeople` is similar function which is responsible for handling changes.
-We need additionally to set all changes and changes index.
+We need additionally to store all changes and changes index with help us to move on the changes array.
 
 ```tsx
     const applyChangesToPeople = (
@@ -67,6 +66,7 @@ We need additionally to set all changes and changes index.
 ```
 
 The `undoChanges` function allows you to set the previous value and change the index in the appropriate place in the array.
+Change index is moved one step backward. 
 
 ```tsx
   const undoChanges = (
@@ -78,7 +78,7 @@ The `undoChanges` function allows you to set the previous value and change the i
     return updated;
   };
 ```
-The `redoChanges` function allows you to set the restored value and change the index in the appropriate place in the array.
+The `redoChanges` function allows you to set the restored change. Change index also have to be moved one position forward.
 
 ```tsx
   const redoChanges = (
@@ -91,7 +91,20 @@ The `redoChanges` function allows you to set the restored value and change the i
   };
 ```
 
-Let's use the above functions to our ReactGrid component:
+Let's use the above functions inside example `App` component. Inside it we added two hooks:
+
+```ts
+const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
+const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(() => []);
+
+The first one stores current index of change for the second hook - storing an array of changes that has been affected on 
+the `TextCells`.
+```
+We have wrapped ReactGrid with `div` elementthat listens to `onKeyDown` event. 
+Changes can be also restored/redone with two buttons.
+
+Inside both methods (`handleUndoChanges` and `handleRedoChanges`) we updates our data - poople array.
+These changes comes from `cellChanges` array.
 
 ```tsx
 function App() {
