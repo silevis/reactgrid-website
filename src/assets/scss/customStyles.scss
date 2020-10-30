@@ -28,6 +28,57 @@ header {
     z-index: 4;
 }
 
+.header-medium {
+    min-height: 300px;
+    max-height: 999px;
+}
+
+.header-large {
+    min-height: 500px;
+    max-height: 999px;
+}
+
+.blog-page-header {
+    padding: 0;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    & .page-header-image {
+        position: absolute;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+$brand-colors: (
+	facebook: #3b5998,
+	twitter: #1da1f2,
+	linkedin: #0077b5,
+	reddit: #ff4500,
+);
+
+.post-social {
+	.button {
+		margin: 0.5rem 0.25rem;
+		transition: all 300ms ease-out;
+		@each $class, $color in $brand-colors {
+			&.#{$class} {
+				color: $color !important;
+				border: 1px solid $color !important;
+				&:hover {
+					background-color: $color !important;
+					border-color: $color !important;
+					color: #fff !important;
+				}
+			}
+		}
+	}
+}
+
 .icon-color-facebook {
     color: $color-facebook;
 }

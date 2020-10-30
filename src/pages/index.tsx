@@ -20,7 +20,7 @@ class Index extends React.Component<PageProps<any>, {}> {
     document.body.classList.remove("reset-page");
   }
   render() {
-    const { data, location } = this.props;
+    const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
@@ -182,6 +182,7 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+          active
         }
       }
     }
