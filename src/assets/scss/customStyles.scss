@@ -28,21 +28,71 @@ header {
     z-index: 4;
 }
 
-.icon-color-facebook {
-    color: $color-facebook;
+.header-medium {
+    min-height: 300px;
+    max-height: 999px;
 }
 
-.icon-color-github {
-    color: $color-github;
+.header-large {
+    min-height: 500px;
+    max-height: 999px;
 }
 
-.icon-color-npm {
-    color: $color-npm;
+.blog-page-header {
+    padding: 0;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    & .page-header-image {
+        position: absolute;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-.icon-color-gitter {
-    color: $color-gitter;
+.navbar.bg-white:not(.navbar-transparent) .navbar-toggler-bar {
+    background-color: #7F7D7D !important;
 }
+
+.blog-post {
+
+    .gatsby-resp-image-image {
+        box-shadow: $background-light 0px 0px 0px 400px inset !important;
+    }
+
+    .gatsby-resp-image-figcaption {
+        margin-top: .5rem;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    .post-social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .button {
+            margin: 0.5rem 0.25rem;
+            transition: all 300ms ease-out;
+            @each $class, $color in $brand-colors {
+                &.#{$class} {
+                    color: $color !important;
+                    border: 1px solid $color !important;
+                    &:hover {
+                        background-color: $color !important;
+                        border-color: $color !important;
+                        color: #fff !important;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 
 .cookie-container {
     .cookie-button {
@@ -56,6 +106,27 @@ header {
     & ul:not(.links-vertical) {
         line-height: 2.5 !important;
     }
+
+    .icon-color-facebook {
+        color: $color-facebook;
+    }
+    
+    .icon-color-github {
+        color: $color-github;
+    }
+    
+    .icon-color-npm {
+        color: $color-npm;
+    }
+    
+    .icon-color-twitter {
+        color: $color-twitter;
+    }
+    
+    .icon-color-discord {
+        color: $color-discord;
+    }
+    
 }
 
 .page-header-compact {
@@ -143,6 +214,10 @@ body.modal-open {
     // background: $primary-light;
     margin: 0.5em;
     overflow-x: auto;
+}
+.sample-wrapper-workhours {
+    color: darken($secondary-light, 80%);
+    margin: 0.5em;
 }
 
 .feature-comparison-table {

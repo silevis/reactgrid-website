@@ -153,6 +153,7 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+          active
         }
         docsVersions {
           slug

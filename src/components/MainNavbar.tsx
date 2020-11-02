@@ -13,7 +13,7 @@ import {
   Button,
 } from "reactstrap";
 
-class MainNavbar extends React.Component {
+class MainNavbar extends React.Component<any, {}> {
 
   render() {
     const { pages, title, description } = this.props;
@@ -66,7 +66,7 @@ class MainNavbar extends React.Component {
                     const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
                     const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
                     // const githubSocial = social.find(social => social.title === 'Github');
-                    const navbarLinks = pages.filter(page => page.active && page.active === true).map(page => {
+                    const navbarLinks = pages.filter(page => page.active).map(page => {
                       const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
                       // const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
                       return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
@@ -96,7 +96,7 @@ class MainNavbar extends React.Component {
 const NavbarLink = ({ route, children }) => {
   return (
     <NavItem className="px-0 mx-0 align-items-center d-flex">
-      <NavLink to={route} tag={Link} partiallyActive={!!(route === '/')}
+      <NavLink to={route} tag={Link} partiallyActive={true || !!(route === '/' || route === '/blog')}
         className="d-flex w-100 align-items-center px-4 h-100 text-uppercase font-weight-normal"
         activeClassName="main-navigation-active font-weight-bold">
         {children}

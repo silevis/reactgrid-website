@@ -11,10 +11,9 @@ module.exports = {
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'feature-comparison', title: `Feature-comparison`, description: ``, route: `/feature-comparison`, active: false },
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
     ],
     footerNav: [
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
       { id: 'team', title: `Team`, description: ``, route: `/team`, active: false },
       { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: false },
       { id: 'cookie', title: `Cookie Policy`, description: ``, route: `/cookies`, active: true },
@@ -24,6 +23,7 @@ module.exports = {
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
       { id: 'feature-comparison', title: `Feature comparison`, description: ``, route: `/feature-comparison`, active: true },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
       { id: 'contact-us', title: `Contact us`, description: ``, route: `/contact-us`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
@@ -37,10 +37,11 @@ module.exports = {
       "/Introduction",
     ],
     social: [
-      { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm' },
-      { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
-      { title: `Twitter`, description: `Check our Twitter profile`, url: `https://twitter.com/ReactGrid`, fontAwesomeIcon: 'fab fa-twitter' },
-      { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter' },
+      { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm', active: true },
+      { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github', active: true },
+      { title: `Twitter`, description: `Check our Twitter profile`, url: `https://twitter.com/ReactGrid`, fontAwesomeIcon: 'fab fa-twitter', active: true },
+      { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter', active: false },
+      { title: `Discord`, description: `Join our community`, url: `https://discord.gg/tWYV64j`, fontAwesomeIcon: 'fab fa-discord', active: true },
     ],
   },
   plugins: [
@@ -106,7 +107,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 800
+              maxWidth: 1000,
+              showCaptions: true,
             }
           },
           {

@@ -26,7 +26,7 @@ Let's get started!
 For this tutorial we are going to use the previous project - [handling changes](/docs/3.1/2-implementing-core-features/1-handling-changes/).
 
 `type` attribute is necessary in any cell template, in our sample we will refer to this cell template by `flag`.
-`text` attribute will store our text and it's also necessary. 
+`text` attribute will store our ISO code and it's also necessary. 
 
 ```ts
 export interface FlagCell extends Cell {
@@ -38,41 +38,27 @@ export interface FlagCell extends Cell {
 #### 2. Data holders
 
 At the beginning we should update columns and rows displayed by the grid.
-Cell type in row `1`, `2` and `3` will be changed to `flag` at the end.
-
+Our data is no longer a people array, but a flag indentified by its `isoCode`.
 
 ```tsx 
-const [columns] = React.useState<Column[]>(() => [
-  { columnId: 0, width: 100 }
-]);
-const [rows, setRows] = React.useState<Row<DefaultCellTypes | FlagCell>[]>(() => [
-  {
-    rowId: 0,
-    height: 40,
-    cells: [{ type: "header", text: "Flag" }]
-  },
-  {
-    rowId: 1,
-    height: 40,
-    cells: [{ type: "text", text: "rus" }]
-  },
-  {
-    rowId: 2,
-    height: 40,
-    cells: [{ type: "text", text: "usa" }]
-  },
-  {
-    rowId: 3,
-    height: 40,
-    cells: [{ type: "text", text: "" }]
-  }
-]);
+interface Flag {
+  isoCode: string;
+}
+
+const getFlags = (): Flag[] => [
+  { isoCode: "swe" },
+  { isoCode: "deu" },
+  { isoCode: "mex" },
+  { isoCode: "" }
+];
+
+const getColumns = (): Column[] => [{ columnId: "flag", width: 150 }];
 ```
 
 #### 3. Creating necessary files
 
-Create new file named `FlagCellTemplate.tsx`, add the same imports as in the listing below and make `flag-cell-style.css`file that
-will contain some CSS styles (don't forget to import it into your project's file).
+Create new file named `FlagCellTemplate.tsx`, add the same imports as in the listing below and make `flag-cell-style.css`
+file that will contain some CSS styles (don't forget to import it into your project's file).
 
 ```tsx 
 // FlagCellTemplate.tsx
@@ -91,7 +77,7 @@ import {
 import "./flag-cell-style.css";
 ```
 
-#### 4. Creating FlagCellTemplate class
+#### 4. Creating `FlagCellTemplate` class
 
 For all defined methods below it is necessary to display and interface the flag cell with internal ReactGrid model correctly.
 
@@ -203,45 +189,52 @@ As `rg-cell` is a flex element we center its content with `justify-content: cent
 }
 ```
 
-#### 6. Finishing
+#### 6. Updating header row and generating flag rows
 
-Go back to `index.tsx` file and add `customCellTemplates` property as shown below and also change `type: "text"` to `type: "flag"`:
+Header row is still static, but displays only one cell.
 
 ```tsx
+const headerRow: Row = {
+  rowId: "header",
+  height: 40,
+  cells: [{ type: "header", text: "Flags" }]
+};
+```
 
-// ...
-const [rows, setRows] = React.useState<Row<DefaultCellTypes | FlagCell>[]>(() => [
-  {
-    rowId: 0,
-    height: 40,
-    cells: [{ type: "header", text: "Flag" }]
-  },
-  {
-    rowId: 1,
-    height: 40,
-    cells: [{ type: "flag", text: "rus" }] // highlight-line
-  },
-  {
-    rowId: 2,
-    height: 40,
-    cells: [{ type: "flag", text: "usa" }] // highlight-line
-  },
-  {
-    rowId: 3,
-    height: 40,
-    cells: [{ type: "flag", text: "" }] // highlight-line
-  }
-]);
+`getRows` function now process the flags array, and return array of `Row<DefaultCellTypes | FlagCell>`.
+This record tells us that cells rows can be on one of [`DefaultCellTypes`](/docs/3.1/7-api/1-types/6-default-cells/) (build-in cell types) or brand new 
+template - `FlagCell` with type of `flag`.
 
+```tsx
+const getRows = (flags: Flag[]): Row<DefaultCellTypes | FlagCell>[] => [
+  headerRow,
+  ...flags.map<Row<DefaultCellTypes | FlagCell>>((flag, idx) => ({
+    rowId: idx,
+    height: 60,
+    cells: [{ type: "flag", text: flag.isoCode }]
+  }))
+];
+```
 
-return (
-  <ReactGrid
-    rows={rows}
-    columns={columns}
-    onCellsChanged={handleChanges}
-    customCellTemplates={{ flag: new FlagCellTemplate() }}  //highlight-line
-  />
-);
+#### 7. Finishing
+
+Go back to `index.tsx` file and add `customCellTemplates` property as shown below:
+
+```tsx
+function App() {
+  const [flags] = React.useState<Flag[]>(getFlags());
+
+  const rows = getRows(flags);
+  const columns = getColumns();
+
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      customCellTemplates={{ flag: new FlagCellTemplate() }}
+    />
+  );
+}
 ```
 
 #### Result

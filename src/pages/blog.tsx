@@ -13,14 +13,10 @@ const Blog = (props) => {
   const blogPage = pages.find(page => page.id === 'blog');
   const blogPageRoute = blogPage.route;
 
-  const headerTitle = <h1 className="title">Latest blogposts</h1>;
-  const headerDescription = (
-    <p className="description">Read our newsfeed</p>
-  );
   return (
     <Layout pages={pages} social={social} description={description} title={title}>
       <SEO title={title} />
-      <Header header={headerTitle} description={headerDescription} />
+      <Header />
       <BlogView posts={posts} blogRoute={blogPageRoute} />
     </Layout>
   )
@@ -46,6 +42,7 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+          active
         }
       }
     }
@@ -62,6 +59,7 @@ export const pageQuery = graphql`
             title
             description
             author
+            canonicalUrl
             date(formatString: "DD MMMM YYYY")
             thumbnail {
               childImageSharp {
