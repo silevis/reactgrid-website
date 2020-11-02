@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: What is ReactGrid and why is it unique?
-description: "Short ReactGrid"
+description: "Short article about fundamentals of ReactGrid"
 canonicalUrl: "https://medium.com/reactgrid/what-is-reactgrid-and-why-is-it-unique-9b4e5e807f5a"
 date: "2020-10-29"
 tags: ["Reactjs", "JavaScript", "DataGrid", "DataTable"]
