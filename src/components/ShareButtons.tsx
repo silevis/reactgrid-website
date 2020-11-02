@@ -10,6 +10,7 @@ export const ShareButtons = ({ url, title, tags }) => {
   return (
     <>
       <div className="post-social">
+        <h5 className='m-0 text-muted pr-2'>Share:</h5>
         <FacebookShareButton
           style={style}
           url={url}

@@ -96,7 +96,7 @@ class MainNavbar extends React.Component<any, {}> {
 const NavbarLink = ({ route, children }) => {
   return (
     <NavItem className="px-0 mx-0 align-items-center d-flex">
-      <NavLink to={route} tag={Link} partiallyActive={!!(route === '/' || route === '/blog')}
+      <NavLink to={route} tag={Link} partiallyActive={true || !!(route === '/' || route === '/blog')}
         className="d-flex w-100 align-items-center px-4 h-100 text-uppercase font-weight-normal"
         activeClassName="main-navigation-active font-weight-bold">
         {children}

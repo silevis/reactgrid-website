@@ -40,7 +40,7 @@ export default function BlogMDXComponents({ children }) {
         th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
         li: props => <li {...props} style={{ fontSize: '1.1rem', lineHeight: '2rem' }}>{props.children}</li>,
         a: props => <Link {...props} to={props.href} className={props.className}> {props.children} </Link>,
-        img: props => <div className='d-flex justify-content-center'><img className=' img-raised' {...props}>{props.children}</img> </div>
+        img: props => <div className='d-flex justify-content-center'><img className='img-raised' {...props}>{props.children}</img> </div>
       }}
     >
       {children}

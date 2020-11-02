@@ -6,19 +6,12 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  CardBody,
-  CardTitle
 } from "reactstrap";
 import Img from 'gatsby-image';
 import { isBrowserIE } from "../functions/isBrowserIE";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import BlogMDXComponents from '../components/BlogMDXComponents';
-import FacebookShareButton from 'react-share/lib/FacebookShareButton';
-import TwitterShareButton from 'react-share/lib/TwitterShareButton';
-import LinkedinShareButton from 'react-share/lib/LinkedinShareButton';
 import { ShareButtons } from '../components/ShareButtons';
-import { Divide, DivideSquare } from 'react-feather';
 
 interface BlogPostTemplatePageProps {
   [key: string]: any;
@@ -39,8 +32,6 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
 
   const { mdx: post, site } = data;
   const { title, description, pages, social, siteUrl } = site.siteMetadata;
-
-  console.log(data, `${siteUrl}/blog/${post.fields.slug}`);
 
   const url = `${siteUrl}/blog${post.fields.slug}`;
   return (
@@ -80,7 +71,6 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
                 </BlogMDXComponents>
               </div>
               <hr />
-              <h2 className='text-primary d-inline-block'><i className="fas fa-share-alt pr-2 "></i></h2>
               <ShareButtons tags={post.frontmatter.tags} title={post.frontmatter.title} url={url} />
             </Col>
           </Row>

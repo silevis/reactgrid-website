@@ -4,7 +4,7 @@ title: What is ReactGrid and why is it unique?
 description: "Short ReactGrid"
 canonicalUrl: "https://medium.com/reactgrid/what-is-reactgrid-and-why-is-it-unique-9b4e5e807f5a"
 date: "2020-10-29"
-tags: ["Reactjs","JavaScript","DataGrid", "DataTable"]
+tags: ["Reactjs", "JavaScript", "DataGrid", "DataTable"]
 thumbnail: "./ReactGrid-illustration05.png"
 author: "Patryk Eliasz"
 authorImg: "./../../authors/silevis.png"
@@ -18,9 +18,7 @@ Then there are Spreadsheet web components like KendoUI Spreadsheet or dhtmlx Spr
 
 ReactGrid places itself exactly in the middle between the two. It is not limited to a record-based model where each row has to have the same schema. The component enables you to create tables of any shape that look and feel like Excel-sheets. Additionally it integrates well with the data handling model provided by React.
 
-![ReactGrid Budget planner example](./ReactGrid-illustration05.png)
-
-<!-- # When do you need ReactGrid in your app? -->
+![Adjust your grid view and behaviour to your needs with ReactGrid](./ReactGrid-illustration05.png)
 
 # When do you need ReactGrid in your app?
 
@@ -41,17 +39,17 @@ To show the difference, we created a simple graph with two key aspects contained
 
 - vertical — reactivity — a concept taken directly from React.js library. The opposite is imperative, you have full control over actions and their influence on the current view. In most cases you should follow the following pattern:
 
-![Three ReactGrid fundamentals](./ReactGrid-illustration02.png)
+![Reactivity in ReactGrid](./ReactGrid-illustration02.png)
 
 - horizontal — arbitrary cell placement — opportunity to “Thinking in rows and columns”, each row has the same schema. Our component allows you to place any cell anywhere. We have focused on a fully controlled cell schema defined by our cell template engine. Templating is a powerful feature that allows you to define cell behavior based on its current and future data state.
 
-![Three ReactGrid fundamentals](./ReactGrid-illustration03.png)
+![ReactGrid compared with another spreadsheet/datagrid components](./ReactGrid-illustration03.png)
 
 We want to be (and we are) more reactive and cell-oriented. Breaking with the approach known from such alternatives as agGrid, Handsontable, it is necessary to handle events through self-implemented callbacks. Implementing a basic cell change event relies on your implementation. We prepared examples where you can just copy and paste predefined implementation.
 
 ReactGrid’s content is rerendered only in case when visible data has changed or additional conditions such as a changed number of sticky rows and columns have appeared. Other examples might include handling scrolling (continuously following visible range for virtual scrolling), focusing cell, handling user actions like copying and pasting data. ReactGrid works perfectly even if you display a huge amount of cells — 10 000, 20 000, 100 000 is not a big deal.
 
-![Three ReactGrid fundamentals](./ReactGrid-illustration04.png)
+![Sample component lifecycle that uses ReactGrid](./ReactGrid-illustration04.png)
 
 Let’s talk about a simplified lifecycle based on ReactGrid. The component containing ReactGrid (AppComponent) has its data (it is a Single Point Of Truth for ReactGrid), which contains data on the basis of which the grid view will be generated.
 
@@ -68,7 +66,7 @@ The rendered view is ready to handle events coming from the user, e.g. changes c
 
 ReactGrid works perfectly with modern web browsers. The same goes for their mobile counterparts along with touchscreens. With ReactGrid, a mobile-friendly spreadsheet-like component, you can use your app in the same fashion and experience the same productivity as on a desktop device. Let’s have a look at the basic mobile usage case — cell selection, fill handle… it just works on ReactGrid.
 
-![Three ReactGrid fundamentals](./reactgrid-comparison.gif)
+![ReactGrid compared with agGrid and Handsontable](./reactgrid-comparison.gif)
 
 ## ReactGrid is NOT…
 

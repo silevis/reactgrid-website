@@ -96,10 +96,11 @@ Let's use the above functions inside an example `App` component. We added two ho
 ```ts
 const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
 const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(() => []);
+```
 
 The first one stores current index of changes for the second hook - storing an array of changes that has affected 
 the `TextCells`.
-```
+
 We have wrapped ReactGrid with `div` element that listens to `onKeyDown` event. 
 Changes can be also restored/redone with two buttons.
 

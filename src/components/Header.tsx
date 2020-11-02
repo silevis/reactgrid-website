@@ -18,7 +18,7 @@ const Header = (props) => {
       <Container>
         <Row className="text-left" style={{ marginTop: 66 }}> {/*  66- height if navbar */}
           <Col md="6" xs="12">
-            <h1 className="display-2 text-primary">Latest blogposts</h1>
+            <h1 className="display-2">Latest blogposts</h1>
             <p className="display-4">Read our newsfeed</p>
             {props.children}
           </Col>
