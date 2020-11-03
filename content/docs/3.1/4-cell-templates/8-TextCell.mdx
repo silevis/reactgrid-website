@@ -18,6 +18,7 @@ a possibility to change rendering method and validate displaying text.
 interface TextCell extends Cell {
     type: 'text',
     text: string,
+    placeholder?: string,
     validator?: (text: string) => boolean,
     renderer?: (text: string) => React.ReactNode
 }
@@ -27,5 +28,6 @@ interface TextCell extends Cell {
 | ------------      | -------------                         | -------------------- |
 | `type`            | `header`                              | Type of cell template | 
 | `text`            | `string`                              | Text content of cell | 
+| `placeholder?`    | `string`                              | Optional, when `text` property is empty, display this value in placeholder input style | 
 | `validator?`      | `(text: string) => boolean`           | Optional validation function, if undefined - returns `true`  | 
 | `renderer?`       | `(text: string) => React.ReactNode`   | Optional, gives oportunity to wrap `text` property into any `ReactNode` object | 
