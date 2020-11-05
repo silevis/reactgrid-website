@@ -7,6 +7,9 @@ import {
 } from 'reactstrap';
 import { LiveCode } from './LiveCode';
 import { getId } from '../functions/getId';
+import {
+  GroupIdSample, LimitedHeightByParentSample, NotLimitedHeightByParentSample
+} from './../samples/index';
 
 
 export default function CustomMDXComponents({ children }) {
@@ -15,6 +18,9 @@ export default function CustomMDXComponents({ children }) {
       components={{
         Alert: props => <Alert {...props} transition={{ baseClass: '', timeout: 0 }} >{props.children}</Alert>,
         LiveCode,
+        GroupIdSample,
+        LimitedHeightByParentSample,
+        NotLimitedHeightByParentSample,
         h1: props => (
           <>
             <span className="anchor" id={getId(props.children)}></span>
