@@ -33,10 +33,8 @@ interface BorderProps {
 
 #### Properties
 
-| Property name     | Type          | Property description                      |
-| `color?`          | `string`      | Color of border - e.g. `#eee`/`red`       |
-| `style?`          | `string`      | Style of border - e.g. `dotted`/`solid`   |
-| `width?`          | `string`      | Width of border - e.g. `2px`              |
+`CellStyle` interface properties. 
+
 
 | Property name     | Type                                                                                      |  Property description                                 |
 | ------------      | --------------------------------------------------                                        | -------------------------------------                 |
@@ -45,3 +43,12 @@ interface BorderProps {
 | `overflow?`       | `string`                                                                                  | CSS `overflow` property                               |
 | `paddingLeft?`    | `string`                                                                                  | CSS `padding-left` property                           |
 | `border?`         | `{ left?: BorderProps; top?: BorderProps; right?: BorderProps; bottom?: BorderProps; }`   | Object that contains all cell's borders properties    |
+
+`BorderProps` interface properties. By default, cell has only right and bottom border, except cells on panes edges.
+If you want to style cell border properly, it's important to declare all properties: `color, style, width`.
+
+| Property name     | Type                                                                                      | Property description                      |
+| ------------      | --------------------------------------------------                                        | -------------------------------------     |
+| `color?`          | `string`                                                                                  | Color of border - e.g. `#eee`/`red`       |
+| `style?`          | `string`                                                                                  | Style of border - e.g. `dotted`/`solid`   |
+| `width?`          | `string`                                                                                  | Width of border - e.g. `2px`              |

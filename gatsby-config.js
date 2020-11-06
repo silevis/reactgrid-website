@@ -180,5 +180,68 @@ module.exports = {
         crossOrigin: `use-credentials`,
       }
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  // TODO add source 
+                  title: edge.node.frontmatter.title,
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  author: edge.node.frontmatter.author,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(filter: {frontmatter: {posttype: {eq: "blog"}}, fields: {slug: {}}}, sort: {fields: fields___slug, order: ASC}) {
+                  edges {
+                    node {
+                      html
+                      excerpt
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        posttype
+                        title
+                        metaDescription
+                        metaTitle
+                        proMark
+                        tags
+                        date
+                        author
+                        canonicalUrl
+                      }
+                    }
+                  }
+                  totalCount
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "ReactGrid's blog RSS feed",
+          },
+        ],
+      },
+    },
   ],
 }
