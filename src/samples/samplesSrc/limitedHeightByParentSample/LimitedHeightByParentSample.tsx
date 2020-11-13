@@ -23,6 +23,7 @@ export const LimitedHeightByParentSample: React.FunctionComponent = () => {
             height: 150,
             overflow: 'auto'
         }}>
+            {/* <div className='position-sticky' style={{ top: '0' }}>hej</div> */}
             <h1>Scroll me</h1> Example Content
             <ReactGrid
                 rows={state.rows}
