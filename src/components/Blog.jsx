@@ -45,7 +45,7 @@ const BlogPost = ({ node, blogRoute }) => {
               <Link to={linkUrl}>{node.frontmatter.title}</Link>
             </CardTitle>
             <p className="card-description text-muted mb-0">
-              {node.excerpt}{" "}
+              {node.excerpt || ''}{" "}
               <Link to={linkUrl}>read more</Link>
             </p>
             <div className="author">

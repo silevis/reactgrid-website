@@ -91,6 +91,12 @@ header {
             }
         }
     }
+
+    .gist {
+        .table th, .table td {
+            border-top: unset;
+        }
+    }
 }
 
 .card-blog.blog-horizontal {

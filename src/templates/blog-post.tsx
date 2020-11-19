@@ -12,6 +12,7 @@ import { isBrowserIE } from "../functions/isBrowserIE";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import BlogMDXComponents from '../components/BlogMDXComponents';
 import { ShareButtons } from '../components/ShareButtons';
+import "../assets/css/gist.css";
 
 interface BlogPostTemplatePageProps {
   [key: string]: any;
