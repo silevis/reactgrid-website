@@ -104,6 +104,9 @@ module.exports = {
         plugins: [`gatsby-remark-images`],
         gatsbyRemarkPlugins: [
           {
+            resolve: "gatsby-remark-embed-gist",
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
