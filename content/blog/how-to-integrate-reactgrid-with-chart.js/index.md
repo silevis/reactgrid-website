@@ -21,57 +21,46 @@ This guide shows you how to integrate it with the well-known pure Javascript lib
 
 ## Why ReactGrid?
 
-ReactGrid was designed with the idea of not only displaying the data but also entering them
+ReactGrid was designed with the idea of not only to display the data but also enter it.
 It doesn't care about your data schema, therefore you can easily map your data to our component.
-If your incoming data has non specified or you want to encapsulate a existing excel sheet into secure app ReactGrid is 
-perfect for your needs.
-Nothing keep you from using it on mobile device with touch capability with the same experience as on a desktop.
+If your incoming data is not specified or you want to encapsulate an existing excel sheet into a secure app, ReactGrid should suit your needs.
+Nothing restrains you from using it on a mobile device with a touch capability, thus obtaining the same experience as on a desktop.
 
 Before we get started let's list three main tasks:
 
 - displaying the collected data will be achieved with ReactGrid. To be **reactive** we will rerender the view only when 
-  the source data had changed.
-  In this example raw data come from the audiometer - device that is used for making hearing test. 
-  In a nutshell, audiometer measures multiple hearing difficulties at many frequrencies, and the audiogram is a way of
-  visualizing this disorders.
+  the source data has changed.
+  In this example raw data comes from the audiometer - device that is used for making hearing tests. 
+  In a nutshell, audiometer measures multiple hearing difficulties at many frequencies, and the audiogram is a way of
+  visualizing such disorders.
 - visualize the collected data on the line chart using Chart.js and its React wrapper,
-- add a possibility to enter new value and rerender whole view with updated state.
+- add a possibility to enter a new value and rerender the whole view with an updated state.
+
 ## Let's code!
 
-**Define usefull interfaces and types**
+**Define useful interfaces and types**
 
-In the begining, we need to declare a few interfaces and types that help us to keep everything in the right place and order.
+First, we need to declare a few interfaces and types that help us to keep everything in the right place and order.
 In this particular example, we know all about the data that we want to process.
 A good idea is to 'be as narrow' as possible.
 
-<!-- `gist:patryk0493/c314344a4789ac9f4cb25483c1656c7c#interfaces.ts` -->
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='interfaces.ts' />
 
 **Mark the columns and rows**
 
 Relying on those interfaces now we can introduce `getColumns` function. 
-In our app, we got a `Line` column, and after that, we got columns that, are related to a particular frequency from 0Hz to 16000Hz.
+In our app, we got a `Line` column, and after that, we got columns which are related to a particular frequency from 0Hz to 16000Hz.
 
 <Gist id='cc2b0f02403956f7578205c84a137a2a' file='columns.ts' />
 
 The next stage is mapping all the rows. We make it in a similar way to previous examples.
 
-```ts
-export const rowsMap: RowsMap = {
-  hearing_aid: "Hearing aid (device)",
-  blue: "Blue Line",
-  aid_higher: "Hearing aid higher",
-  aid_lower: "Hearing aid lower",
-  dotted_line_higher: "Dotted line higher",
-  dotted_line_lower: "Dotted line lower",
-  pattern_line: "Pattern line",
-}
-```
+<Gist id='091dc8ddd23fe5b43a0522e485eb6b5f' file='rows.ts' />
 
 **Define the data**
 
-As we defined our data, it's time to define our data that we working on. 
-`getRawData` function returns an object that every key must must in the `RowsMap` interface.
+As we defined our data, it's time to define our data that we are working on. 
+`getRawData` function returns an object whose each key must exist within the `RowsMap` interface.
 Each key of this object contains an array of `Freq` objects.
 
 <Gist id='091dc8ddd23fe5b43a0522e485eb6b5f' file='getRawData.ts' />
@@ -85,7 +74,7 @@ Each row contains the same amount of cells, but all of them can be arbitrarily p
 
 **The main component - `Audiogram`**
 
-It is time to create main the component - `Audiogram` and wrap up already written code. 
+It is time to create the main component - `Audiogram` and wrap up already written code. 
 As you can see we stored our data inside React `useState` hook. 
 ReactGrid always expects two props - `columns` (they are constant and don’t change over time) and `rows` 
 (they are calculated every time the `Audiogram` component is rerendered).
@@ -95,7 +84,6 @@ ReactGrid always expects two props - `columns` (they are constant and don’t ch
 All that's left is to render the component with:
 
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='index.ts' />
-
 
 ![ReactGrid displaying the data](./only-grid.png)
 
@@ -109,7 +97,7 @@ There are two things left to do:
 **Adding the header row**
 
 To add it we have to create a short function called `getHeaderRow`. 
-As an argument, it gets a column order (as keys of columns) and returns a row object that contains the only a cell of the `header` type. 
+As an argument, it gets a column order (as keys of columns) and returns a row object that contains only a cell of the `header` type. 
 We also added some green background to those cells.
 
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='getHeaderRow.ts' />
@@ -118,19 +106,19 @@ We also added some green background to those cells.
 
 **Editing frequency values in cell editor**
 
-At this moment ReactGrid's behaves as a read-only. 
+At this moment ReactGrid behaves as a read-only. 
 To change that we updated the `Audiogram` component by adding our handler function called `handleChanges`. 
 We expect that only `NumberCell` will be changed, therefore we marked the `changes` argument as `CellChange<NumberCell>[]`. 
-Our task is to change data on the basis ReactGrid was rendered.
+Our task is to change data on the basis ReactGrid has been rendered.
 
 Cell editor opens when it receives double-click action or the Enter key is pressed. 
-Then you can type a new value and then commit the change. 
+Then you can type a new value in and then commit the change. 
 If we `console.log(changes)` we get an array of objects as shown below:
 
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='changes.json' />
 
 To change our raw data we have to find `rowId` where the change takes place. 
-Then loop over all frequency samples and apply new value (`change.newCell.value`) to appropriate cell or just return without changes.
+Then loop over all frequency samples and apply new value (`change.newCell.value`) to an appropriate cell or just return without changes.
 
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='AudiogramWithLineChart.ts' />
 
@@ -140,13 +128,13 @@ Chart.js library delivers plenty of components to visualize data, but this time 
 `Line` from `react-chartjs-2` that we can use as a React component.
 
 We have to create two functions:
-1. `getChartData` - this function should return an object that contains two fields. The `labels` - which is an array of frequency title label. 
+1. `getChartData` - this function should return an object that contains two fields. The `labels` - which is an array of frequency title label
   and then `datasets` field to provide the `data` field which contains an array of values for each frequency. 
   You can also style your line by setting for example a `backgroundColor` or `pointRadius` for better experience.
 
   <Gist id='32c10a2f03059d8153ca300d2f11314f' file='getChartData.ts' />
 
-2. `getChartOptions` - here we are returns object that is compatible `ChartOptions` interface. 
+2. `getChartOptions` - here we return an object that is compatible with `ChartOptions` interface. 
   We want to disable legend, set the title, display, and adjust axes.
 
 That's all! The job is done, now you can check the result below.
@@ -160,10 +148,10 @@ That's all! The job is done, now you can check the result below.
 
 ## Summary
 
-What you learned after complete this guide:
-- what is ReactGrid and what you can do with it; 
+What you learned after completing this guide:
+- what is ReactGrid and how to do a fully functional app; 
 - how you can use it in a reactive way;
-- why TypeScipt is also helpful in a small scale projects to avoid most common mistakes;
+- why TypeScipt is also helpful in a small scale projects to avoid most common mistakes.
 
 As you see integrating ReactGrid with other libraries like Chart.js is not so hard. 
-Of course, you don't need to start a Typescript project and make whole data mappings to compose predictable code.
+Of course, you don't need to start a Typescript project and make all data mappings to compose predictable solution.
