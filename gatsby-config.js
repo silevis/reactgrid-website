@@ -133,18 +133,7 @@ module.exports = {
       options: {
         id: "GTM-WWDXHMH",
         includeInDevelopment: true,
-        defaultDataLayer: { platform: "gatsby" },
-
-        // Specify optional GTM environment details.
-        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
-        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
-        // dataLayerName: "YOUR_DATA_LAYER_NAME",
-
-        // Name of the event that is triggered
-        // on every Gatsby route change.
-        //
-        // Defaults to gatsby-route-change
-        // routeChangeEventName: "YOUR_ROUTE_CHANGE_EVENT_NAME",
+        defaultDataLayer: { platform: "dataLayer" },
       },
     },
     `gatsby-transformer-sharp`,
@@ -155,19 +144,20 @@ module.exports = {
     //     //trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-gdpr-cookies`,
-    //   options: {
-    //     googleAnalytics: {
-    //       trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
-    //       anonymize: true
-    //     },
-    //     facebookPixel: {
-    //       pixelId: 'YOUR_FACEBOOK_PIXEL_ID'
-    //     },
-    //     environments: ['production', 'development']
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleTagManager: {
+          trackingId: 'GTM-WWDXHMH', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-google-tagmanager', // default
+          dataLayerName: 'dataLayer', // default
+        },
+        // facebookPixel: {
+        //   pixelId: 'YOUR_FACEBOOK_PIXEL_ID'
+        // },
+        environments: ['production', 'development']
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
