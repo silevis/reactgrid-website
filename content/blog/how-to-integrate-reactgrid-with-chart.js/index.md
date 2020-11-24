@@ -123,7 +123,7 @@ Cell editor opens when it receives double-click action or the Enter key is press
 Then you can type a new value in and then commit the change. 
 If we `console.log(changes)` we get an array of objects as shown below:
 
-<!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=changes.ts -->
+<!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=changes.json -->
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='changes.json' />
 
 To change our raw data we have to find `rowId` where the change takes place. 
