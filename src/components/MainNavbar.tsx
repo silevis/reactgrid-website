@@ -20,7 +20,7 @@ class MainNavbar extends React.Component<any, {}> {
     return (
       <header className="sticky-header ">
         <div className="header header-2">
-          <Navbar id="main-navbar" className="bg-transparent" expand="lg" style={{ height: '66px' }}>
+          <Navbar id="main-navbar" className="bg-white py-0" expand="lg" style={{ height: '66px' }}>
             <Container className="h-100">
               <div className="navbar-translate">
                 <NavbarBrand to={'/'} tag={Link}>
