@@ -12,9 +12,8 @@ import MainNavbar from "./MainNavbar";
 const Layout = ({ title, social, pages, description, children }) => {
   return (
     <>
-      <header className="sticky-header">
-        <MainNavbar pages={pages} title={title} social={social} description={description} />
-      </header>
+
+      <MainNavbar pages={pages} title={title} social={social} description={description} />
       <main className="layout-main-wrapper px-md-0">{children}</main>
       <Footer social={social} title={title} />
       <script src="https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js"></script>

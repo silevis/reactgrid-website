@@ -74,6 +74,7 @@ const Footer = ({ title, social }) => {
             containerClasses="cookie-container text-left"
             buttonStyle={{ backgroundColor: '#0683F9' }}
             buttonClasses="cookie-button"
+            cookieName="gatsby-gdpr-google-tagmanager"
           >
             This website uses cookies to ensure you get the best experience on our website.
         </CookieConsent>
