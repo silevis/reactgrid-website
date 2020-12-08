@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, title, canonicalUrl }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -62,6 +62,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
+      {canonicalUrl !== '' && <link rel="canonical" href={canonicalUrl} />}
       <script src="https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js"></script>
     </Helmet>
   )
@@ -71,6 +72,7 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   description: ``,
+  canonicalUrl: '',
 }
 
 SEO.propTypes = {
@@ -78,6 +80,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  canonicalUrl: PropTypes.bool,
 }
 
 export default SEO

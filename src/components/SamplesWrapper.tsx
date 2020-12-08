@@ -11,7 +11,7 @@ import {
   NavLink,
 } from "reactstrap";
 import { samplesData } from '../../content/examples/samplesData';
-import * as samples from '@silevis/reactgrid-samples';
+import * as samples from '../samples';
 
 class SamplesWrapper extends React.Component {
   state = {
@@ -73,20 +73,19 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
     <TabPane tabId={tabId}>
       <Row>
         <Col xs="12" className={className}>
-          <div className="sample-wrapper">
+          <div className={tabId === 3 ? "sample-wrapper-workhours" : "sample-wrapper"}>
             <Sample />
           </div>
           <div className="pt-5">
             {description.length === 2 ?
               <Row>
-                <Col md="5" className="pb-4">
+                <Col md="6" className="pb-4">
                   <h3>{column1.header}</h3>
                   <ul className="">
                     {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
                   </ul>
                 </Col>
-                <Col className="d-none d-md-block" md="2"></Col>
-                <Col md="5">
+                <Col md="6">
                   <h3>{column2.header}</h3>
                   <ul className="">
                     {column2.content.map((item, idx) => {

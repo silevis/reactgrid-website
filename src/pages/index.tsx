@@ -20,11 +20,11 @@ class Index extends React.Component<PageProps<any>, {}> {
     document.body.classList.remove("reset-page");
   }
   render() {
-    const { data, location } = this.props;
+    const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
-    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison')
+    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     // const npmSocial = social.find(social => social.title === 'npm');
@@ -34,8 +34,7 @@ class Index extends React.Component<PageProps<any>, {}> {
       <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="wrapper" ref="wrapper">
-          <div className="space"></div>
-          <div className=" space-50"></div>
+          <div className="d-none d-md-block space-50"></div>
           <Container className="pb-5">
             <Row>
               <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
@@ -43,12 +42,15 @@ class Index extends React.Component<PageProps<any>, {}> {
                   Spreadsheet experience for your React app.
                 </h1>
                 <p className="em-xxs font-weight-light pb-3">
-                  ReactGrid is a component for displaying and entering data in a spreadsheet-like way.
+                  ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
                 </p>
                 <p className="h4 font-weight-light">
-                  ReactGrid is available in two versions, MIT which serve the full interface but is limited in functionality
-                  and PRO which is fully functional version. You can compare versions <Link to={featuresComparisonPage.route}>here</Link>.
+                  ReactGrid is available in two versions: MIT, which serves the full interface, but is limited in functionality
+                  and PRO, which is a fully functional version. You can compare both versions <Link to={featuresComparisonPage.route}>here</Link>.
                 </p>
+                <a href={featuresComparisonPage.route}>
+                  <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
+                </a>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
@@ -79,7 +81,7 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <li>
                   <h3 className="mb-1">Optimized for touch devices</h3>
                   <h4 className="pb-3">
-                    ReactGrid gives the same experience no matter if you work on desktop or mobile devices
+                    ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices
                   </h4>
                 </li>
               </ul>
@@ -182,6 +184,7 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+          active
         }
       }
     }

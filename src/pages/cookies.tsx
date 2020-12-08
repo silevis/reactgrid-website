@@ -130,22 +130,22 @@ class Cookies extends React.Component<PageProps<any>, {}> {
                           <li>
                             <p>Surveys related cookies</p>
                             <p>From time to time we offer user surveys and questionnaires to provide you with interesting insights,
-                              helpful tools, or to understand our user base more accurately. These surveys may use cookies to remember
-                               who has already taken part in a survey or to provide you with accurate results after you change pages.
+                            helpful tools, or to understand our user base more accurately. These surveys may use cookies to remember
+                            who has already taken part in a survey or to provide you with accurate results after you change pages.
                             </p>
                           </li>
                           <li>
                             <p>Forms related cookies</p>
                             <p>When you submit data to through a form such as those found on contact pages or comment forms cookies
-                              may be set to remember your user details for future correspondence.
+                            may be set to remember your user details for future correspondence.
                             </p>
                           </li>
                           <li>
                             <p>Site preferences cookies</p>
                             <p>In order to provide you with a great experience on this site we provide the functionality to set
-                              your preferences for how this site runs when you use it. In order to remember your preferences we
-                              need to set cookies so that this information can be called whenever you interact with a page is
-                              affected by your preferences.
+                            your preferences for how this site runs when you use it. In order to remember your preferences we
+                            need to set cookies so that this information can be called whenever you interact with a page is
+                            affected by your preferences.
                             </p>
                           </li>
                         </ul>
@@ -155,7 +155,7 @@ class Cookies extends React.Component<PageProps<any>, {}> {
                         <span className="anchor" id="third-party-cookies"></span>
                         <h2 className="h2">Third Party Cookies</h2>
                         <p className="pb-3">In some special cases we also use cookies provided by trusted third parties.
-                          The following section details which third party cookies you might encounter through this site.
+                        The following section details which third party cookies you might encounter through this site.
                         </p>
                         <ul className="pl-0">
                           <li>
@@ -171,15 +171,15 @@ class Cookies extends React.Component<PageProps<any>, {}> {
                           </li>
                           <li>
                             <p>Third party analytics are used to track and measure usage of this site so that we can continue
-                               to produce engaging content. These cookies may track things such as how long you spend on the
-                               site or pages you visit which helps us to understand how we can improve the site for you.
+                            to produce engaging content. These cookies may track things such as how long you spend on the
+                            site or pages you visit which helps us to understand how we can improve the site for you.
                             </p>
                           </li>
                           <li>
                             <p>From time to time we test new features and make subtle changes to the way that the site is delivered.
-                              When we are still testing new features these cookies may be used to ensure that you receive a consistent
-                              experience whilst on the site whilst ensuring we understand which optimisations our users appreciate
-                              the most.
+                            When we are still testing new features these cookies may be used to ensure that you receive a consistent
+                            experience whilst on the site whilst ensuring we understand which optimisations our users appreciate
+                            the most.
                             </p>
                           </li>
                           <li>
@@ -198,8 +198,8 @@ class Cookies extends React.Component<PageProps<any>, {}> {
                         <span className="anchor" id="more-infomations"></span>
                         <h2 className="h2">More Informations</h2>
                         <p className="pb-3">Hopefully that has clarified things for you and as was previously mentioned if there is
-                          something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case
-                          it does interact with one of the features you use on our site.
+                        something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case
+                        it does interact with one of the features you use on our site.
                              </p>
                         <p className="pb-3">
                           However if you are still looking for more information then you can contact us through
@@ -244,6 +244,7 @@ export const pageQuery = graphql`
           fontAwesomeIcon
           title
           url
+          active
         }
       }
     }

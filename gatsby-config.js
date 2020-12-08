@@ -11,10 +11,9 @@ module.exports = {
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'feature-comparison', title: `Feature-comparison`, description: ``, route: `/feature-comparison`, active: false },
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
     ],
     footerNav: [
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
       { id: 'team', title: `Team`, description: ``, route: `/team`, active: false },
       { id: 'faq', title: `FAQ`, description: ``, route: `/faq`, active: false },
       { id: 'cookie', title: `Cookie Policy`, description: ``, route: `/cookies`, active: true },
@@ -24,10 +23,12 @@ module.exports = {
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
       { id: 'feature-comparison', title: `Feature comparison`, description: ``, route: `/feature-comparison`, active: true },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
       { id: 'contact-us', title: `Contact us`, description: ``, route: `/contact-us`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
     docsVersions: [
+      { slug: "/3.1", desc: '3.1', index: '/0-introduction', active: true },
       { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }
     ],
     docsPagesOrder: [
@@ -36,10 +37,11 @@ module.exports = {
       "/Introduction",
     ],
     social: [
-      { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm' },
-      { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github' },
-      { title: `Facebook`, description: `Check our Facebook profile`, url: `https://www.facebook.com/silevis.software/`, fontAwesomeIcon: 'fab fa-facebook-square' },
-      { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter' },
+      { title: `npm`, description: `Check our npm`, url: `https://www.npmjs.com/package/@silevis/reactgrid`, fontAwesomeIcon: 'fab fa-npm', active: true },
+      { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github', active: true },
+      { title: `Twitter`, description: `Check our Twitter profile`, url: `https://twitter.com/ReactGrid`, fontAwesomeIcon: 'fab fa-twitter', active: true },
+      { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter', active: false },
+      { title: `Discord`, description: `Join our community`, url: `https://discord.gg/tWYV64j`, fontAwesomeIcon: 'fab fa-discord', active: true },
     ],
   },
   plugins: [
@@ -105,7 +107,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               linkImagesToOriginal: false,
-              maxWidth: 800
+              maxWidth: 1000,
+              showCaptions: true,
             }
           },
           {
@@ -127,18 +130,7 @@ module.exports = {
       options: {
         id: "GTM-WWDXHMH",
         includeInDevelopment: true,
-        defaultDataLayer: { platform: "gatsby" },
-
-        // Specify optional GTM environment details.
-        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
-        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
-        // dataLayerName: "YOUR_DATA_LAYER_NAME",
-
-        // Name of the event that is triggered
-        // on every Gatsby route change.
-        //
-        // Defaults to gatsby-route-change
-        // routeChangeEventName: "YOUR_ROUTE_CHANGE_EVENT_NAME",
+        defaultDataLayer: { platform: "dataLayer" },
       },
     },
     `gatsby-transformer-sharp`,
@@ -149,19 +141,20 @@ module.exports = {
     //     //trackingId: `ADD YOUR TRACKING ID HERE`,
     //   },
     // },
-    // {
-    //   resolve: `gatsby-plugin-gdpr-cookies`,
-    //   options: {
-    //     googleAnalytics: {
-    //       trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
-    //       anonymize: true
-    //     },
-    //     facebookPixel: {
-    //       pixelId: 'YOUR_FACEBOOK_PIXEL_ID'
-    //     },
-    //     environments: ['production', 'development']
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleTagManager: {
+          trackingId: 'GTM-WWDXHMH', // leave empty if you want to disable the tracker
+          cookieName: 'gatsby-gdpr-google-tagmanager', // default
+          dataLayerName: 'dataLayer', // default
+        },
+        // facebookPixel: {
+        //   pixelId: 'YOUR_FACEBOOK_PIXEL_ID'
+        // },
+        environments: ['production', 'development']
+      },
+    },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
@@ -176,6 +169,69 @@ module.exports = {
         icon: "src/assets/img/icon.png",
         crossOrigin: `use-credentials`,
       }
+    },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  // TODO add source 
+                  title: edge.node.frontmatter.title,
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  author: edge.node.frontmatter.author,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMdx(filter: {frontmatter: {posttype: {eq: "blog"}}, fields: {slug: {}}}, sort: {fields: fields___slug, order: ASC}) {
+                  edges {
+                    node {
+                      html
+                      excerpt
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        posttype
+                        title
+                        metaDescription
+                        metaTitle
+                        proMark
+                        tags
+                        date
+                        author
+                        canonicalUrl
+                      }
+                    }
+                  }
+                  totalCount
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "ReactGrid's blog RSS feed",
+          },
+        ],
+      },
     },
   ],
 }

@@ -2,7 +2,7 @@
 posttype: "docs"
 title: ReactGrid & ReactGridProps
 metaTitle: "ReactGridProps interface"
-metaDescription: "metaDescription"
+metaDescription: "ReactGrid docs"
 ---
 
 ReactGrid component has two essential properties which you must pass in properties to render - `columns` and `rows`.
@@ -27,6 +27,7 @@ interface ReactGridProps {
     readonly enableColumnSelection?: boolean;
     readonly labels?: TextLabels;
     readonly enableFullWidthHeader?: boolean;
+    readonly enableGroupIdRender?: boolean;
 
     readonly onCellsChanged?: (cellChanges: CellChange[]) => void;
     readonly onFocusLocationChanged?: (location: CellLocation) => void;
@@ -60,6 +61,7 @@ Name                            | Type                                          
 `enableColumnSelection?`        | `boolean`                                                         | Set `true` to enable column selection feature (by default `false`) |
 `labels?`                       | [`TextLabels`](/docs/3.0/7-api/0-interfaces/90-textlabels/)       | Object that contains labels of texts used by ReactGrid |
 `enableFullWidthHeader?`        | `boolean`                                                         | Set `true` to enable full width header (by default `false`, feature is experimental) |
+`enableGroupIdRender?`          | `boolean`                                                         | Set `true` to enable groupId element rendering (by default `false`) |
 
 #### Callbacks
 

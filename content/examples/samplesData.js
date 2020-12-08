@@ -32,12 +32,12 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Vertical and horizontal grouping (see the <LinkToDocs to={'/docs/3.0/4-cell-templates/5-GroupCell/'} />)</>,
-                    <>Custom cell templates (e.g. non editable number cell, see the <LinkToDocs to={'/docs/3.0/5-create-your-own-cell-template/'} />)</>,
-                    <>Context menu (adding and removing row, see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/5-context-menu/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Row reordering (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Vertical and horizontal grouping (see the <LinkToDocs to={'/docs/3.1/4-cell-templates/5-ChevronCell/'} />)</>,
+                    <>Custom cell templates (e.g. non editable number cell, see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Context menu (adding and removing row, see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Row reordering (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -64,13 +64,13 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Highlights (see the <LinkToDocs to={'/docs/3.0/4-cell-templates/5-GroupCell/'} />)</>,
-                    <>Custom cell templates (e.g. flag icon, see the <LinkToDocs to={'/docs/3.0/5-create-your-own-cell-template/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Column resize (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/2-column-resizing/'} />)</>,
-                    <>Row and column reordering (see the&nbsp;<LinkToDocs to={'/docs/3.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.0/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Context menu (see the <LinkToDocs to={'/docs/3.0/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Highlights (see the <LinkToDocs to={'/docs/3.1/4-cell-templates/5-GroupCell/'} />)</>,
+                    <>Custom cell templates (e.g. flag icon, see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Column resize (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/2-column-resizing/'} />)</>,
+                    <>Row and column reordering (see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Context menu (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -80,6 +80,66 @@ export const samplesData = [
         ],
         className: 'datagrid-sample',
         component: 'DatagridSample'
+    },
+    {
+        title: 'Athletes\' exercises',
+        icon: 'fas fa-border-all fa-3x',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    `Implements most ReactGrid features in a simple way`,
+                    `Calculates the athlete's points in the real time`,
+                    `Built-in Chevron Cell allows you to collapse the excercise's category
+                        by pressing on the chevron on pressing space`,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `SASS custom styling`,
+                ]
+            }
+        ],
+        className: 'exercises-sample',
+        component: 'ExcercisesDataSample'
+    },
+    {
+        title: 'Workhours',
+        icon: 'fas fa-border-all fa-3x',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    `Workhours sample ReactGrid implementation allows user to add new records by editing the last blank row`,
+                    `It is possible to render every row in various ways, ReactGrid empowers the user to fully configure each cell independently`,
+                    `The simple configurator shows how easily you can style your table`,
+                    `Sample contains custom written dropdown cell`,
+                    `The header row and the blank row are sticky, so you can always see the title of the column and you're able to add new records`,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `SASS custom styling`,
+                ]
+            }
+        ],
+        className: 'workhours-sample',
+        component: 'WorkhoursSample'
     },
     {
         title: 'Cryptocurrency Market',
