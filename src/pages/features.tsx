@@ -24,7 +24,7 @@ class Features extends React.Component<any, PageProps> {
       <Layout pages={pages} social={social} description={description} title={title}>
         <SEO title={title} />
         <div className="section mt-5 mt-md-0">
-          <div className="space-70"></div>
+          <div className="space-50"></div>
           <h2 style={{ fontSize: '3em' }} className="profile-title text-center mb-3">Features</h2>
           <Container>
             {features.map(item => <SingleFeature key={item.node.title} {...item.node} />)}

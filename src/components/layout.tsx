@@ -12,7 +12,6 @@ import MainNavbar from "./MainNavbar";
 const Layout = ({ title, social, pages, description, children }) => {
   return (
     <>
-
       <MainNavbar pages={pages} title={title} social={social} description={description} />
       <main className="layout-main-wrapper px-md-0">{children}</main>
       <Footer social={social} title={title} />
