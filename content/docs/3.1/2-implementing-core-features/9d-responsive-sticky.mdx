@@ -1,0 +1,32 @@
+---
+posttype: "docs"
+title: Responsive sticky headers
+metaTitle: "Responsive sticky headers"
+metaDescription: "ReactGrid docs"
+---
+import { ReactGrid } from "@silevis/reactgrid";
+
+#### Introduction
+
+This feature disables sticky when the sum of the sizes of sticky panes overflows given breakpoint value (by default `50`).
+
+#### Usage
+
+1. Feature is enabled by default. If you want to change breakpoints value you can add `horizontalStickyBreakpoint` and `verticalStickyBreakpoint` property to ReactGrid component.  
+In this example sticky will disable when their `width` or `height` will be more than `40%` of viewport.
+
+```tsx
+return (
+  <div style={{ width: "100vw", height: "100vh" }}>
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      enableFullWidthHeader
+      stickyLeftColumns={3}
+      stickyTopRows={5}
+      horizontalStickyBreakpoint={40}
+      verticalStickyBreakpoint={40}
+    />
+  </div>
+);
+```
