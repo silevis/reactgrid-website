@@ -14,8 +14,8 @@ const Blog = (props) => {
   const blogPageRoute = blogPage.route;
 
   return (
-    <Layout pages={pages} social={social} description={description} title={title}>
-      <SEO title={title} />
+    <Layout pages={pages} social={social} description={description} title={'Blog'}>
+      <SEO title={'Blog'} />
       <Header />
       <BlogView posts={posts} blogRoute={blogPageRoute} />
     </Layout>
