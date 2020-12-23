@@ -8,7 +8,8 @@ import {
 import { LiveCode } from './LiveCode';
 import { getId } from '../functions/getId';
 import {
-  GroupIdSample, LimitedHeightByParentSample, NotLimitedHeightByParentSample
+  GroupIdSample, LimitedHeightByParentSample, NotLimitedHeightByParentSample, AdvancedContextMenuHandlingSample,
+  SimpleContextMenuHandlingSample
 } from './../samples/index';
 
 
@@ -19,6 +20,8 @@ export default function CustomMDXComponents({ children }) {
         Alert: props => <Alert {...props} transition={{ baseClass: '', timeout: 0 }} >{props.children}</Alert>,
         LiveCode,
         GroupIdSample,
+        AdvancedContextMenuHandlingSample,
+        SimpleContextMenuHandlingSample,
         LimitedHeightByParentSample,
         NotLimitedHeightByParentSample,
         h1: props => (
