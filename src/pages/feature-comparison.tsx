@@ -75,10 +75,10 @@ class FeatureComparison extends React.Component {
     );
 
     return (
-      <Layout pages={pages} social={social} description={description} title={title}>
-        <SEO title={title} />
+      <Layout pages={pages} social={social} description={description} title={'Get now'}>
+        <SEO title={'Get now'} />
         <div className="section mt-5 mt-md-0 px-3">
-          <div className="space-70"></div>
+          <div className="space-50"></div>
           <h2 style={{ fontSize: '3em' }} className="text-center mb-3">Choose your version</h2>
           <div className="space-70"></div>
           <Container>

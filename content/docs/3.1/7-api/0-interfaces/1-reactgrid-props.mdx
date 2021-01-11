@@ -28,6 +28,9 @@ interface ReactGridProps {
     readonly labels?: TextLabels;
     readonly enableFullWidthHeader?: boolean;
     readonly enableGroupIdRender?: boolean;
+    readonly horizontalStickyBreakpoint?: number;
+    readonly verticalStickyBreakpoint?: number;
+
 
     readonly onCellsChanged?: (cellChanges: CellChange[]) => void;
     readonly onFocusLocationChanged?: (location: CellLocation) => void;
@@ -43,25 +46,27 @@ interface ReactGridProps {
 
 #### Properties
 
-Name                            | Type                                                              | Description |
-------------------------        | ---------------------------                                       | -------------  |
-`columns`                       | [`Columns`](/docs/3.1/7-api/0-interfaces/3-column/)`[]`           | Column's data |
-`rows`                          | [`Rows<Cell>`](/docs/3.1/7-api/0-interfaces/2-row/)`[]`           | Row's data |
-`customCellTemplates?`          | `CellTemplates`                                                   | Set of available custom cell templates |
-`focusLocation?`                | [`CellLocation`](/docs/3.1/7-api/0-interfaces/6-cell-location/)   | Focus position (managed constantly by outer app) |
-`initialFocusLocation?`         | [`CellLocation`](/docs/3.1/7-api/0-interfaces/6-cell-location/)   | Initial position of focus |
-`highlights?`                   | [`Highlight`](/docs/3.1/7-api/0-interfaces/9-highlight/)`[]`      | Array of highlight positions |
-`stickyTopRows?`                | `number`                                                          | Amount of rows which are sticky at the top |
-`stickyBottomRows?`             | `number`                                                          | Amount of rows which are sticky at the bottom |
-`stickyLeftColumns?`            | `number`                                                          | Amount of columns which are sticky on the left side |
-`stickyRightColumns?`           | `number`                                                          | Amount of columns which are sticky on the right side |
-`enableFillHandle?`             | `boolean`                                                         | Set `true` to enable cell fill feature (by default `false`) |
-`enableRangeSelection?`         | `boolean`                                                         | Set `true` to enable selection feature (by default `false`) |
-`enableRowSelection?`           | `boolean`                                                         | Set `true` to enable row selection feature (by default `false`) |
-`enableColumnSelection?`        | `boolean`                                                         | Set `true` to enable column selection feature (by default `false`) |
-`labels?`                       | [`TextLabels`](/docs/3.1/7-api/0-interfaces/90-textlabels/)       | Object that contains labels of texts used by ReactGrid |
-`enableFullWidthHeader?`        | `boolean`                                                         | Set `true` to enable full width header (by default `false`, feature is experimental) |
-`enableGroupIdRender?`          | `boolean`                                                         | Set `true` to enable groupId element rendering (by default `false`) |
+Name                                    | Type                                                              | Description |
+------------------------                | ---------------------------                                       | -------------  |
+`columns`                               | [`Columns`](/docs/3.1/7-api/0-interfaces/3-column/)`[]`           | Column's data |
+`rows`                                  | [`Rows<Cell>`](/docs/3.1/7-api/0-interfaces/2-row/)`[]`           | Row's data |
+`customCellTemplates?`                  | `CellTemplates`                                                   | Set of available custom cell templates |
+`focusLocation?`                        | [`CellLocation`](/docs/3.1/7-api/0-interfaces/6-cell-location/)   | Focus position (managed constantly by outer app) |
+`initialFocusLocation?`                 | [`CellLocation`](/docs/3.1/7-api/0-interfaces/6-cell-location/)   | Initial position of focus |
+`highlights?`                           | [`Highlight`](/docs/3.1/7-api/0-interfaces/9-highlight/)`[]`      | Array of highlight positions |
+`stickyTopRows?`                        | `number`                                                          | Amount of rows which are sticky at the top |
+`stickyBottomRows?`                     | `number`                                                          | Amount of rows which are sticky at the bottom |
+`stickyLeftColumns?`                    | `number`                                                          | Amount of columns which are sticky on the left side |
+`stickyRightColumns?`                   | `number`                                                          | Amount of columns which are sticky on the right side |
+`enableFillHandle?`                     | `boolean`                                                         | Set `true` to enable cell fill feature (by default `false`) |
+`enableRangeSelection?`                 | `boolean`                                                         | Set `true` to enable selection feature (by default `false`) |
+`enableRowSelection?`                   | `boolean`                                                         | Set `true` to enable row selection feature (by default `false`) |
+`enableColumnSelection?`                | `boolean`                                                         | Set `true` to enable column selection feature (by default `false`) |
+`labels?`                               | [`TextLabels`](/docs/3.1/7-api/0-interfaces/90-textlabels/)       | Object that contains labels of texts used by ReactGrid |
+`enableFullWidthHeader?`                | `boolean`                                                         | Set `true` to enable full width header (by default `false`, feature is experimental) |
+`enableGroupIdRender?`                  | `boolean`                                                         | Set `true` to enable groupId element rendering (by default `false`) |
+`readonly horizontalStickyBreakpoint?`  | `number`                                                          | Horizontal breakpoint in percents (%) of ReactGrid scrollable parent element width. Disables sticky when the sum of the sizes of sticky panes overflows given breakpoint value (by default `50`) |
+`verticalStickyBreakpoint?`             | `number`                                                          | Vertical breakpoint in percents (%) of ReactGrid scrollable parent element height. Disables sticky when the sum of the sizes of sticky panes overflows given breakpoint value (by default `50`) |
 
 #### Callbacks
 
