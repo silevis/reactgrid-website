@@ -3,40 +3,48 @@ posttype: "blog"
 title: How to integrate ReactGrid with Chart.js?
 description: ""
 canonicalUrl: ""
-date: "2020-11-13"
+date: "2021-01-11"
 tags:
-  ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid", "Chart.js"]
+  ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid", "Chart.js", "Typescript"]
 thumbnail: "./header-graphics.png"
 author: "Patryk Eliasz"
 authorImg: "./../../authors/silevis.png"
 published: false
 ---
 
-Welcome to the next article about our product - ReactGrid - React.js component for displaying data in a 
-spreadsheet-like way.
-
+ReactGrid is a React.js component for displaying and editing data in a spreadsheet-like way. 
 This guide shows you how to integrate it with the well-known pure Javascript library - Chart.js.
 
-![Such wow connection](./header-graphics.png)
+![Audiogram app](./full-view.png)
 
 ## Why ReactGrid?
 
-ReactGrid was designed with the idea of not only to display the data but also enter it.
-It doesn't care about your data schema, therefore you can easily map your data to our component.
-If your incoming data is not specified or you want to encapsulate an existing excel sheet into a secure app, ReactGrid should suit your needs.
-Nothing restrains you from using it on a mobile device with a touch capability, thus obtaining the same experience as on a desktop.
+There are plenty of different data tables available on the internet which perform great if you want to display one object per row. 
+Each of these objects has to have exactly the same static properties which are mapped to columns on the table.
+
+ReactGrid was designed to be independent of your data model.
+It doesn't care about your schema. You can render anything in any cell and thus you are able to display things the way you like it.
+
+Unlike other grid components, ReactGrid also performs great on mobile devices or those with a touch capability and provides the same experience as on a desktop.
 
 Before we get started let's list three main tasks:
 
-- displaying the collected data will be achieved with ReactGrid. To be **reactive** we will rerender the view only when 
-  the source data has changed.
-  In this example raw data comes from the audiometer - device that is used for making hearing tests. 
-  In a nutshell, audiometer measures multiple hearing difficulties at many frequencies, and the audiogram is a way of
+- displaying the collected data will be achieved with ReactGrid. To be **reactive** we will re-render the view only when the source data has changed.
+  In this example, raw data comes from the audiometer - a device that is used for making hearing tests.
+  In a nutshell, audiometer measures multiple hearing difficulties at many frequencies,  and the audiogram is a way of
   visualizing such disorders.
 - visualize the collected data on the line chart using Chart.js and its React wrapper,
 - add a possibility to enter a new value and rerender the whole view with an updated state.
 
 ## Let's code!
+
+**Initialize the project**
+
+Nothing simpler - just type one of the commands below into your terminal to initiate a React app with Typescript support.
+'Create React App' will take care of all the necessary stuff.
+
+<!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f#file-project_init -->
+<Gist id='32c10a2f03059d8153ca300d2f11314f' file='project_init' />
 
 **Define useful interfaces and types**
 
@@ -53,7 +61,7 @@ Relying on those interfaces now we can introduce `getColumns` function.
 In our app, we got a `Line` column, and after that, we got columns which are related to a particular frequency from 0Hz to 16000Hz.
 
 <!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=columns.ts -->
-<Gist id='cc2b0f02403956f7578205c84a137a2a' file='columns.ts' />
+<Gist id='32c10a2f03059d8153ca300d2f11314f' file='columns.ts' />
 
 The next stage is mapping all the rows. We make it in a similar way to previous examples.
 

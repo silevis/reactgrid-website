@@ -46,7 +46,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx(sort: { fields: [frontmatter___title], order: DESC },
+    allMdx(sort: { fields: [frontmatter___date], order: DESC },
       filter: {frontmatter: {posttype: {eq: "blog"}}}
       ) {
       edges {
