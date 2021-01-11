@@ -1,6 +1,5 @@
 import React from 'react';
-import { CellTemplate, Uncertain, Compatible, Cell } from "@silevis/reactgrid";
-import { CellStyle, UncertainCompatible } from '@silevis/reactgrid/lib';
+import { CellTemplate, Uncertain, Compatible, Cell, CellStyle, UncertainCompatible } from "@silevis/reactgrid";
 
 export interface DropdownCell extends Cell {
     type: 'dropdown';

@@ -1,6 +1,5 @@
 import React from 'react';
-import { CellTemplate, Uncertain, Compatible, Cell } from "@silevis/reactgrid";
-import { CellStyle } from '@silevis/reactgrid/lib';
+import { CellTemplate, Uncertain, Compatible, Cell, CellStyle } from "@silevis/reactgrid";
 
 export interface DisabledCell extends Cell {
     type: 'disabled';

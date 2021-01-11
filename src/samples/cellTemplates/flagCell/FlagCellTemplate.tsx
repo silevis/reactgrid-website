@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { CellTemplate, Cell, Compatible, Uncertain, UncertainCompatible, isNavigationKey, getCellProperty, isAlphaNumericKey, keyCodes } from '@silevis/reactgrid';
+import {
+    CellTemplate, Cell, Compatible, Uncertain, UncertainCompatible, isNavigationKey, getCellProperty,
+    isAlphaNumericKey, keyCodes
+} from '@silevis/reactgrid';
 import './flag-cell-style.scss';
 
 export interface FlagCell extends Cell {

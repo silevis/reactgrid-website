@@ -6,6 +6,7 @@ import {
   Alert,
 } from 'reactstrap';
 import { LiveCode } from './LiveCode';
+import Gist from 'react-gist';
 
 export default function BlogMDXComponents({ children }) {
   return (
@@ -13,6 +14,7 @@ export default function BlogMDXComponents({ children }) {
       components={{
         Alert: props => <Alert {...props} transition={{ baseClass: '', timeout: 0 }} >{props.children}</Alert>,
         LiveCode,
+        Gist,
         h1: props => (<>
           <h1 {...props}
             className="font-weight-bold pt-4 pb-3 mb-2"
