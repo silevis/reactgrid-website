@@ -1,7 +1,7 @@
 ---
 posttype: "blog"
 title: How to integrate ReactGrid with Chart.js?
-description: "Creating sample app with ReactGrid, Chart.js and Typescript"
+description: "Creating a sample app with ReactGrid, Chart.js and Typescript"
 canonicalUrl: ""
 date: "2021-01-11"
 tags:
@@ -43,7 +43,7 @@ Before we get started let's list three main tasks:
 Nothing simpler - just type one of the commands below into your terminal to initiate a React app with Typescript support.
 'Create React App' will take care of all the necessary stuff.
 
-<!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f#file-project_init -->
+<!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=project_init -->
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='project_init' />
 
 **Define useful interfaces and types**
@@ -107,7 +107,7 @@ All that's left is to render the component with:
 There are two things left to do:
 
 1. Add a header row to mark the data (devices and all the frequencies);
-2. Add possibility to edit data with ReactGrid's cell editor
+2. Add possibility to edit data with ReactGrid's cell editor;
 
 **Adding the header row**
 
@@ -135,7 +135,7 @@ If we `console.log(changes)` we get an array of objects as shown below:
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='changes.json' />
 
 To change our raw data we have to find `rowId` where the change takes place. 
-Then loop over all frequency samples and apply new value (`change.newCell.value`) to an appropriate cell or just return without changes.
+Then loop over all frequency samples and apply a new value (`change.newCell.value`) to an appropriate cell or just return without changes.
 
 <!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=AudiogramWithLineChart.ts -->
 <Gist id='32c10a2f03059d8153ca300d2f11314f' file='AudiogramWithLineChart.ts' />
@@ -148,7 +148,7 @@ Chart.js library delivers plenty of components to visualize data, but this time 
 We have to create two functions:
 1. `getChartData` - this function should return an object that contains two fields. The `labels` - which is an array of frequency title label
   and then `datasets` field to provide the `data` field which contains an array of values for each frequency. 
-  You can also style your line by setting for example a `backgroundColor` or `pointRadius` for better experience.
+  You can also style your line by setting for example a `backgroundColor` or `pointRadius` for a better experience.
 
   <!-- https://gist.github.com/patryk0493/32c10a2f03059d8153ca300d2f11314f?file=getChartData.ts -->
   <Gist id='32c10a2f03059d8153ca300d2f11314f' file='getChartData.ts' />
@@ -170,7 +170,7 @@ That's all! The job is done, now you can check the result below.
 What you learned after completing this guide:
 - what is ReactGrid and how to do a fully functional app; 
 - how you can use it in a reactive way;
-- why TypeScipt is also helpful in a small-scale project to avoid the most common mistakes.
+- why Typescript is also helpful in a small-scale project to avoid the most common mistakes.
 
 As you see integrating ReactGrid with other libraries like Chart.js is not so hard. 
 Of course, you don't need to start a Typescript project and make all data mappings to compose a predictable solution.
