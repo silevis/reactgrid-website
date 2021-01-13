@@ -1,9 +1,19 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title, canonicalUrl }) {
+interface SeoProps {
+  description: string;
+  lang: string;
+  meta: (
+    { name: string; content: any; property?: undefined; } | { property: string; content: any; name?: undefined; }
+  )[];
+  title: string;
+  canonicalUrl: string;
+  image?: string;
+}
+
+function SEO({ description = '', lang = 'en', meta, title, canonicalUrl = '', image }: SeoProps) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -44,6 +54,10 @@ function SEO({ description, lang, meta, title, canonicalUrl }) {
           property: `og:type`,
           content: `website`,
         },
+        image && {
+          property: `og:image`,
+          content: image,
+        },
         {
           name: `twitter:card`,
           content: `summary`,
@@ -68,19 +82,4 @@ function SEO({ description, lang, meta, title, canonicalUrl }) {
   )
 }
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-  canonicalUrl: '',
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-  canonicalUrl: PropTypes.bool,
-}
-
-export default SEO
+export default SEO;
