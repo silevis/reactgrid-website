@@ -41,6 +41,12 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
         canonicalUrl={post.frontmatter.canonicalUrl}
+        meta={[
+          {
+            property: `og:image`,
+            content: post.frontmatter.thumbnail.childImageSharp.fluid.src,
+          },
+        ]}
       />
       <div className="blog-page-header header-large" style={{ paddingTop: 66 }}>
         <div
