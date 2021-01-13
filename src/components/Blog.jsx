@@ -30,7 +30,7 @@ const BlogView = ({ posts, blogRoute }) => {
 const BlogPost = ({ node, blogRoute }) => {
   const linkUrl = blogRoute + node.fields.slug;
   return (
-    <Card className="card-blog card-plain blog-horizontal">
+    <Card className="card-blog card-plain blog-horizontal my-5">
       <Row>
         <Col lg="4">
           <div className="card-image h-100 img-raised">
@@ -45,7 +45,7 @@ const BlogPost = ({ node, blogRoute }) => {
               <Link to={linkUrl}>{node.frontmatter.title}</Link>
             </CardTitle>
             <p className="card-description text-muted mb-0">
-              {node.excerpt}{" "}
+              {node.excerpt || ''}{" "}
               <Link to={linkUrl}>read more</Link>
             </p>
             <div className="author">

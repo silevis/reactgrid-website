@@ -1,6 +1,5 @@
 import React from 'react';
-import { CellTemplate, Uncertain, Compatible, Cell } from "@silevis/reactgrid";
-import { CellStyle, keyCodes } from '@silevis/reactgrid/lib';
+import { CellTemplate, Uncertain, Compatible, Cell, CellStyle, keyCodes } from "@silevis/reactgrid";
 
 export interface ButtonCell extends Cell {
     type: 'button';

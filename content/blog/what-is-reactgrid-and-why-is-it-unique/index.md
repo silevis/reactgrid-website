@@ -8,6 +8,7 @@ tags: ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid"]
 thumbnail: "./ReactGrid-illustration05.png"
 author: "Patryk Eliasz"
 authorImg: "./../../authors/silevis.png"
+published: true
 ---
 
 ReactGrid is a React component which enables you to add spreadsheet-like behavior to your app. It was created to satisfy a narrow group of recipients for whom other products are not an appropriate solution.

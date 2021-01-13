@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { CellTemplate, Cell, Compatible, getCellProperty, Uncertain, UncertainCompatible } from '@silevis/reactgrid';
+import {
+  CellTemplate, Cell, Compatible, getCellProperty, Uncertain, UncertainCompatible
+} from '@silevis/reactgrid';
 import './rate-cell-style.scss';
 
 export interface RateCell extends Cell {
