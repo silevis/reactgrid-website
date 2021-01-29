@@ -44,7 +44,7 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
         meta={[
           {
             property: `og:image`,
-            content: post.frontmatter.thumbnail.childImageSharp.fluid.src,
+            content: siteUrl + post.frontmatter.thumbnail.childImageSharp.fluid.src,
           },
         ]}
       />
