@@ -46,6 +46,18 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
             property: `og:image`,
             content: siteUrl + post.frontmatter.thumbnail.childImageSharp.fluid.src,
           },
+          {
+            property: `twitter:image`,
+            content: siteUrl + post.frontmatter.thumbnail.childImageSharp.fluid.src,
+          },
+          {
+            property: `twitter:card`,
+            content: 'summary_large_image',
+          },
+          {
+            property: `og:type`,
+            content: 'article',
+          },
         ]}
       />
       <div className="blog-page-header header-large" style={{ paddingTop: 66 }}>
