@@ -12,12 +12,15 @@ proMark: true
 </Alert>
 
 ReactGrid supports fill handle action in PRO version, but it is disabled by default. To turn it on you have to simply
-add `enableFillHandle` property to `ReactGrid` component.
+add `enableFillHandle` property to `ReactGrid` component. If you want to use autocomplete feature, add `enableAutocomplete` property.
+This feature allows you to set further values to be filled in based on the data contained in the selection. Otherwise, the data is repeated
+respective to the direction. Also, data isn't predicted when `ctrl` key is pressed.
 
 ```tsx
 <ReactGrid
     {...props}
     enableFillHandle //highlight-line
+    enableAutocomplete //highlight-line
 />
 ```
 
