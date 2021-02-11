@@ -1,0 +1,86 @@
+---
+posttype: "blog"
+title: Liquidity planner with ReactGrid
+description: "Description"
+canonicalUrl: ""
+date: "2021-02-16" 
+tags:
+  ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid", "Chart.js", "Typescript"]
+thumbnail: "./header-graphics.png"
+author: "Patryk Eliasz"
+authorImg: "./../../authors/silevis.png"
+published: true
+---
+
+We made ReactGrid to compose your view with arbitrary cell order. In many components and tools in React ecosystem you have to
+keep the same data schema in all rows. Our component breaks out from the frame. 
+
+Today we will show you how to build liquidity planner - an app that provides strategy for financial planning in a long term.
+Our app will provide entering, aggregating and evaluating planned cash flows. 
+
+In the Internet you can find many spreadsheets files that are used by e.g. accountants and financial analyst -
+one of them as inspiration will be moved from spreadsheet to standalone, fully **reactive** React.js app. 
+We also visualize common parameters that helps in decision making wuth the Chart.js library.
+
+## Why do this ?
+
+
+
+## Planning app with ReactGrid
+
+Before we starting coding we will tak about good practices that helps to make predictable app. Obviously it's a good idea
+to apply them in all projects:
+
+1. Separate the data from ReactGrid
+
+  Main concept of **reactivity** is updating your view every time that your data changes. 
+  Very often we have no influence on the data structure, but we can map then to structure that is the most convinient for us. 
+  Before the data will become acceptable by ReactGrid or Chart.js we have to calculate a few variables in a repeatable way.
+  This data lives only for a moment and should be independent from data and ReactGrid internal interfaces like `Column` and `Row`.
+  
+  ### wykres render
+
+  Don't do that ⚠️
+
+  ```ts
+    import * as React from "react";
+    import { ReactGrid, Row } from "@silevis/reactgrid";
+
+    const LiquidityPlanner: React.FC = () => {
+      const [rows, setRows] = React.useState<Row[]>(() => getReactGridRows());
+      return (
+        <>
+            ...
+        </>
+      );
+    };
+  ```
+
+2. Apply changes directly to data
+
+  ReactGrid constain it's own encapsulated state to manage many invisible functionalities like virtual scrolling or rendering optimizations. 
+  This state is based on `rows` and `columns` - two necessary ReactGrid props. ReactGrid is read-only until you define
+  your own changes handling function. After that cycle of **reactivity** concept is completed.
+
+  ### wykres appluychanges
+
+3. 
+
+## Coding, coding, coding...
+
+## Handling changes and data visualizing
+
+<!-- ![Audiogram app](./full-view.png) -->
+
+## Why ReactGrid?
+
+
+
+<iframe src="https://codesandbox.io/embed/reactgrid-liquidity-planner-526ps?fontsize=14&hidenavigation=1&module=%2Fsrc%2FLiquidityPlanner.tsx&theme=dark"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  title="reactgrid-liquidity-planner"
+  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+></iframe>
+
+## Summary
