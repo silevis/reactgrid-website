@@ -156,7 +156,7 @@ const Contact = ({ data }) => {
 
 
   return (
-    <Layout pages={pages} social={social} description={description} title={'Contact us'}>
+    <Layout pages={pages} social={social} description={description} title={title}>
       <SEO title={'Contact us'} />
       <div className="section mt-5 mt-md-0">
         <div className="contactus-1 ">

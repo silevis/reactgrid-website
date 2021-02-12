@@ -48,9 +48,9 @@ class Index extends React.Component<PageProps<any>, {}> {
                   ReactGrid is available in two versions: MIT, which serves the full interface, but is limited in functionality
                   and PRO, which is a fully functional version. You can compare both versions <Link to={featuresComparisonPage.route}>here</Link>.
                 </p>
-                <a href={featuresComparisonPage.route}>
+                <Link to={featuresComparisonPage.route}>
                   <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
-                </a>
+                </Link>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
