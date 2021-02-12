@@ -48,15 +48,18 @@ const handleChangesOnlyOnDateCell = (changes: CellChange<DateCell>[]) => { // ev
 #### Definition
 
 ```ts
-type CellChange<TCell extends Cell = DefaultCellTypes & Cell> = TCell extends Cell ? Change<TCell> : never;
-
-interface Change<TCell extends Cell = DefaultCellTypes> {
+declare type CellChange<TCell extends Cell = DefaultCellTypes & Cell> = TCell extends Cell ? {
+    /** Row's `Id` where the change ocurred */
     readonly rowId: Id;
+    /** Column's `Id` where the change ocurred */
     readonly columnId: Id;
+    /** Extracted cell type of `TCell` (e.g. `text`, `chevron` and so on) */
     readonly type: TCell['type'];
+    /** Previous content of the cell */
     readonly previousCell: TCell;
+    /** New content of the cell */
     readonly newCell: TCell;
-}
+} : never;
 ```
 
 `TCell` is type that extends common [`Cell`](/docs/3.1/7-api/0-interfaces/4-cell/) type. 
