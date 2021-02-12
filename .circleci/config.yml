@@ -20,10 +20,6 @@ jobs:
           command: npm install
 
       - run:
-          name: Install fabric ui
-          command: npm i office-ui-fabric-react@latest
-
-      - run:
           name: Install ReactGrid Pro
           command: npm install http://pkg.reactgrid.com/$REACTGRID_PRO_AUTH_TOKEN --no-save -f
 
