@@ -136,7 +136,21 @@ Except title, all of groups has an array of amount of money spent/earned for eac
 Groups are agregated vertically (inflows and outflows separately) into total of inflow or outflow per each month.
 Last column presets all of the totals in ?callendar? year.
 
-"Cash in" and "Cash out" make up the "Total" row. This and the other cell  
+"Cash in" and "Cash out" make up the "Total" row. This row and the other cells should update thir content when source data
+has changed or e.g. user typed new value into cell.
+
+Some items remain to be explained (and it's the hardest thing to understand): 
+- "Cumulative row" takes cash in bank, adds "Cash in" then substrracts "Cash out".
+- User can manipalate value green cell "Cashbox/bank" and is called a "Opening balance". The rest of cells in this row are
+  filled automaticly by moving already calculated value from the cumulative to the next month in "Cashbox/bank"
+- there operations are repeated until all moths are filled
+
+Last part is the "Credit line". User can update it by typing it. This variable is contant fo all months and is use for 
+calculating "Credit line overdraft" - in a nutshell - if the absolute value from "Cumulative" exceeds given credit line, 
+then cell should display this result.
+
+What about chart? This part should give as a instant knowledge about company finance state. In this case we limit outselves
+to display "Cashbox/bank" and "Credit Line Overdraft" as a line chart and cash inflow and out flow as bars.
 
 ## Coding, coding, coding...
 
