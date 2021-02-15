@@ -20,10 +20,6 @@ jobs:
           command: npm install
 
       - run:
-          name: Install fabric ui
-          command: npm i office-ui-fabric-react@latest
-
-      - run:
           name: Install ReactGrid Pro
           command: npm install http://pkg.reactgrid.com/$REACTGRID_PRO_AUTH_TOKEN --no-save -f
 
@@ -36,6 +32,14 @@ jobs:
           command: mkdir /tmp/build &&
             mkdir /tmp/build/public &&
             mv public/* /tmp/build/public
+
+      - run:
+          name: Add changes
+          command: git add .
+
+      - run:
+          name: Commit files
+          command: git commit -m "Updating files [ci skip]"
 
       - run:
           name: Checkout to deploy branch
