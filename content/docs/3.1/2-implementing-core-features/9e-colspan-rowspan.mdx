@@ -1,0 +1,25 @@
+---
+posttype: "docs"
+title: Colspan and rowspan cell
+metaTitle: "Colspan and rowspan cell"
+metaDescription: "ReactGrid docs"
+---
+
+#### Introduction
+
+This feature allows you to set colspan and rowspan in a cell.
+
+#### Usage
+
+This feature is experimental and incomplete. If you want to use it, please use only cells which type is ```header```. 
+In other case, you can see strange behaviour of cells.
+
+```tsx
+...
+    cells: [
+      ...
+      { type: "header", text: 'total', colspan: 3, rowspan: 2 },
+      ...
+    ]
+...
+```

@@ -112,7 +112,7 @@ export const samplesData = [
         component: 'ExcercisesDataSample'
     },
     {
-        title: 'Workhours',
+        title: 'Customization ability',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
         description: [
