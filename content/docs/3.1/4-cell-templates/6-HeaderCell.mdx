@@ -7,6 +7,7 @@ metaDescription: "ReactGrid docs"
 
 The main purpose of this cell is to mark its content as not focusable and read-only. Usually used to mark header rows 
 and columns. `HeaderCell` also prevents scroll action (it's helpfull on a touch screens to perform row and column selection).
+```HeaderCell``` interface is extended by ```Span```, therefore you can span this cell.
 
 #### Implementation
 
@@ -15,9 +16,9 @@ and columns. `HeaderCell` also prevents scroll action (it's helpfull on a touch 
 #### Interface declaration 
 
 ```ts
-interface HeaderCell extends Cell {
-    type: 'header',
-    text: string,
+interface HeaderCell extends Cell, Span {
+    type: 'header';
+    text: string;
 }
 ```
 
