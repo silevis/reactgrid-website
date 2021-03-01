@@ -1,11 +1,11 @@
 ---
 posttype: "blog"
-title: Liquidity planner with ReactGrid
-description: "Description"
+title: Financial liquidity planner with ReactGrid and Chart.js
+description: "Tips for implemeing ReactGrid in your project"
 canonicalUrl: ""
 date: "2021-02-16" 
 tags:
-  ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid", "Chart.js", "Typescript"]
+  ["Reactjs", "JavaScript", "DataGrid", "DataTable", "ReactGrid", "Chart.js", "Typescript", "Liquidity planner", "budget planner"]
 thumbnail: "./header-graphics.png"
 author: "Patryk Eliasz"
 authorImg: "./../../authors/silevis.png"
@@ -16,16 +16,15 @@ We made ReactGrid to compose your view with arbitrary cell order. In many compon
 keep the same data schema in all rows. Our component breaks out from the frame. You can add it to your project simply by
 running. 
 
-```sh
-npm i @silevis/reactgrid
-```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=install.sh -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='install.sh' />
 
 Even if you don't need it in your project right now, you can leave a ⭐ in our [Github project](https://github.com/silevis/reactgrid).
 
 Today we will show you how to build a liquidity planner - an app that provides a strategy for financial planning in a long term.
 Our app will provide entering, aggregating, and evaluating planned cash flows. 
 
-On the Internet, you can find many spreadsheets files that e.g. accountants and financial analyst use -
+On the Internet, you can find many spreadsheets files that e.g. accountants and financial analysts use -
 one of them as inspiration will be moved from spreadsheet to standalone, fully **reactive** React.js app. 
 We also visualize common parameters that help in decision-making with the Chart.js library.
 
@@ -48,22 +47,8 @@ to apply them in all projects:
   Before the data will become acceptable by ReactGrid or Chart.js we have to calculate a few variables in a repeatable way.
   This data lives only “for a moment” and should be independent of data and ReactGrid internal interfaces like `Column` and `Row`.
 
-  Avoid that ⚠️
-
-  ```tsx
-    import * as React from "react";
-    import { ReactGrid, Row } from "@silevis/reactgrid";
-
-    const App: React.FC = () => {
-      const [rows, setRows] = React.useState<Row[]>(() => getReactGridRows());
-      return (
-        <ReactGrid
-          rows={rows}
-          ...{props}
-        />
-      );
-    };
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=separating-data.tsx -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='separating-data.tsx' />
 
 2. Apply changes directly to the data
 
@@ -74,29 +59,8 @@ to apply them in all projects:
 
   Be aware of updating data that are directly related with ReactGrid interfaces ⚠️
 
-  ```tsx
-    import * as React from "react";
-    import { ReactGrid, Row, CellChange } from "@silevis/reactgrid";
-
-    const App: React.FC = () => {
-      const [rows, setRows] = React.useState<Row[]>(() => getReactGridRows());
-      const handleChanges = (changes: CellChange[]) => {
-        changes.forEach((change) => {
-          setRows(rows => [
-            ...rows,
-            // ...
-          ])
-        });
-      };
-      return (
-        <ReactGrid
-          rows={rows}
-          onCellsChanged={handleChanges}
-          ...{props}
-        />
-      );
-    };
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=handling-changes.tsx -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='handling-changes.tsx' />
 
 3. Use Typescript wherever it is possible
 
@@ -109,53 +73,35 @@ to apply them in all projects:
   [discriminating unions](https://www.typescriptlang.org/docs/handbook/unions-and-intersections.html#discriminating-unions).
   Implemented in ReactGrid's `CellChange` type allows you to ensure that the `checked` field on `newCell` really exists.
 
-  ```tsx
-  const handleChangesOnDefaults = (changes: CellChange[]) => { // evaluates as `CellChange<CheckboxCell> | CellChange<Datecell> | ...`
-    changes.forEach(change => {
-      if (change.type === 'checkbox') {
-        console.log(change.newCell.checked);
-        console.log(change.previousCell.checked);
-      }
-      // ...
-    });
-  };
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=typescript.tsx -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='typescript.tsx' />
 
 4. Compose your cell styling and behavior 
 
-  In most cases, you will use built-in cell templates like `NumberCell` or `DateCell`. ReactGrid allow you to style onCellsChanged
+  In most cases, you will use built-in cell templates like `NumberCell` or `DateCell`. ReactGrid allows you to style `onCellsChanged`
   and its behavior without introducing for example "non-editable number cell with blue background".
   If you predict that, compose them like that:
 
-  ```tsx
-  boldLine(nonEditable(numberCell(yearlyInflow, "bg-blue")));
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=composing.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='composing.ts' />
 
 5. Avoid merging metadata with cells
 
-  Since all of the cells has no idea where they are placed, it’s tempting to extend them with some meta data.
-  You also can meet a similar situation that came into being when some cells are related with each other - when building tree list.
+  Since all of the cells has no idea where they are placed, it’s tempting to extend them with some metadata.
+  You also can meet a similar situation that came into being when some cells are related with each other - when building a tree list.
   Let’s have a look at the `ChevronCell` interface:
 
-  ```ts
-  interface ChevronCell extends Cell {
-    type: 'chevron';
-    text: string;
-    isExpanded?: boolean;
-    hasChildren?: boolean;
-    parentId?: Id;
-    indent?: number;
-  }
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=ChevronCell.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='ChevronCell.ts' />
 
-  Except `parentId` (which can actually be a row, column, or another cell) you can only control its look.
+  Except `parentId` (which can actually be a row, column, or another cell) you can only control its look. 
   There is no place declaring tree structure, dependencies between cells, or other data.
   We recommend extracting this metadata. The easiest way is to move this logic into a separate React hook that will contain 
   those variables/data/logic.
 
-  We will show you how to implement row toggling and working with tree like structure in the next article.
+  We will show you how to implement row toggling and working with tree-like structures in the next article.
 
-## What this planner do?
+## What does this planner do?
 
 We could talk for a long time about financials, but there is no place for it. 
 It’s time to explain all of them in a nutshell. You can skip this chapter if you like.
@@ -166,8 +112,8 @@ Two of them (opening balance and credit line) are just numbers. We merged types 
 Each entry is called "group" and has its own title like "Traveling expenses" for outflow and "Sales" for inflow.
 Except for the title, all groups have an array of the amount of money spent/earned for each month.
 
-Groups are aggregated vertically (inflows and outflows separately) into a total inflow or outflow per month.
-The last column presents all of the totals in a ?callendar? year.
+Groups are aggregated vertically (inflows and outflows separately) into a total inflow or outflow per month. 
+The last column presents all of the totals in a calendar year.
 
 "Cash in" and "Cash out" make up the "Total" row. This row and the other cells should update their content when sourcing data
 has changed or e.g. user typed a new value into the cell.
@@ -175,11 +121,11 @@ has changed or e.g. user typed a new value into the cell.
 Some items remain to be explained (and it's the hardest thing to understand): 
 - "Cumulative row" takes cash in the bank, adds "Cash in" and then subtracts "Cash out".
 - User can manipulate value green cell "Cashbox/bank" and is called an "Opening balance". The rest of the cells in this row are
-  filled automatically by moving already calculated value from the cumulative to the next month in "Cashbox/bank"
+  filled automatically by moving already calculated value from the cumulative to the next month in the "Cashbox/bank"
 - their operations are repeated until all moths are filled
 
 The last part is the "Credit line". Users can update it by typing it. This variable is constant for all months and is used for 
-calculating "Credit line overdraft" - in a nutshell - if the absolute value from "Cumulative" exceeds given credit line, 
+calculating "Credit line overdraft" - in a nutshell - if the absolute value from "Cumulative" exceeds the given credit line, 
 then the cell should display this result.
 
 What about the chart? This part should give as an instant knowledge about company finance state. In this case, we limit ourselves
@@ -190,25 +136,17 @@ to display "Cashbox/bank" and "Credit Line Overdraft" as a line chart and cash i
 As we mentioned in the previous chapter we have been talked about 5. tips for good app implementation with ReactGrid.
 
 We created a fully working liquidity planner example on 
-[codesandbox.io](https://codesandbox.io/embed/reactgrid-liquidity-planner-526ps?fontsize=14&hidenavigation=1&module=%2Fsrc%2FLiquidityPlanner.tsx&theme=dark). We will not discuss every line of code, but only code fragments through the prism of the mentioned times of work with ReactGrid.
+[codesandbox.io](https://codesandbox.io/embed/reactgrid-liquidity-planner-526ps?fontsize=14&hidenavigation=1&module=%2Fsrc%2FLiquidityPlanner.tsx&theme=dark). 
+We will not discuss every line of code, but only code fragments through the prism of the mentioned times of work with ReactGrid.
 
   1. Separate the data from ReactGrid
 
-    App component named `LiquidityPlanner` has 4 React `useState` hooks, each of them stores part of raw financial data.
+    App component named `LiquidityPlanner` has four React's `useState` hooks, each of them stores part of raw financial data.
     E. g. `cashInflow` is initiated with `emptyInflows` that comes from the `rawData.ts` file. These data have no connection
     with ReactGrid's interfaces, and can be used directly by other components like charts.
 
-    ```ts
-    const emptyMonthsValues: Values = [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN];
-
-    export const inflows: CashInflow[] = [
-      {
-        title: "Sales",
-        values: emptyMonthsValues
-      },
-      // ... 
-    ];
-    ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=cash-inflow.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='cash-inflow.ts' />
 
   2. Applying changes to the data
 
@@ -216,28 +154,8 @@ We created a fully working liquidity planner example on
     Each change is applied by dispatching `setCashInflow`. To set updated inflows we used a technique called currying 
     ([more info](https://javascript.info/currying-partials)), to apply particular `change` on desired groups (`cashInflow`).
 
-    ```tsx
-    import * as React from "react";
-    import { CellChange, NumberCell, ReactGrid } from "@silevis/reactgrid";
-
-    const LiquidityPlanner: React.FC = () => {
-      const [cashInflow, setCashInflow] = React.useState(() => [...emptyInflows]);
-      // ...
-      const handleChanges = (changes: CellChange[]) => {
-        changes.forEach((change: CellChange<NumberCell>) => {
-          // ... 
-          setCashInflow((cashInflow) => applyChange(change)(cashInflow));
-        });
-      };
-      // ...
-      return (
-        <ReactGrid
-          // ...
-          onCellsChanged={handleChanges}
-        />
-      );
-    };
-    ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=applying-changes.tsx -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='applying-changes.tsx' />
 
     ![Reactvity cycle](./reactivity-cycle.png)
 
@@ -250,22 +168,11 @@ We created a fully working liquidity planner example on
     A real example from our app shows how we narrower expected to change object type exclusively to `NumberCell`, 
     therefore you are sure that you are able to access only actually existing fields.
 
-    ```ts
-      const handleChanges = (changes: CellChange[]) => {
-        changes.forEach((change: CellChange<NumberCell>) => {
-          if (change.rowId === CASHBOXBANK_ROW_ID && change.columnId === 1) {
-            setOpeningBalance(change.newCell.value);
-          }
-          if (change.rowId === CREDITLINE_ROW_ID && change.columnId === 1) {
-            setCreditLine(change.newCell.value);
-          }
-          // ...
-        });
-      };
-    ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=typescript-and-reactgrid.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='typescript-and-reactgrid.ts' />
 
     The other part is e. g. extending the set of built-in cell templates with your own. To be able to do it you have to pass the
-    name of your custom Cell interface into generic `CellChange` interface.
+    name of your custom Cell interface into a generic `CellChange` interface.
    
     Of course, you are not obliged to move your project right now to Typescript, but we highly suggest using static typing.
 
@@ -273,51 +180,15 @@ We created a fully working liquidity planner example on
 
     When you working with ReactGrid it's highly possible that you will need to achieve the same or similar behavior 
     or styling on many cells. The solution is quite simple - small, reusable functions. 
-    Knowledge of the ReactGrid's [documentation](/docs/) will definitely be useful.
+    Familiarity with [documentation](/docs/) will definitely be useful.
 
-    ```ts
-    export const textCell = (
-      text: string,
-      className = "",
-      style?: CellStyle
-    ): TextCell => ({ type: "text", text, className, style });
-
-    const numberCell = (
-      value: number,
-      className = "",
-      style?: CellStyle
-    ): NumberCell => ({ type: "number", value, className, style });
-
-    const showZero = (cell: NumberCell): NumberCell => ({
-      ...cell,
-      nanToZero: true,
-      hideZero: false
-    });
-
-    const nonEditable = (cell: DefaultCellTypes): DefaultCellTypes => ({
-      ...cell,
-      nonEditable: true
-    });
-    ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=composaable-functions.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='composaable-functions.ts' />
 
     and the usage: a function that uses mentioned functions to fill up the cells array on a single row.
 
-    ```ts
-    function getCashboxBankRow(title: string, cashboxBank: MonthlyValues): Row {
-      return {
-        rowId: CASHBOXBANK_ROW_ID,
-        cells: [
-          nonEditable(textCell(title)),
-          ...months().map((_, idx) =>
-            idx === 0
-              ? numberCell(cashboxBank[idx])
-              : nonEditable(showZero(numberCell(cashboxBank[idx])))
-          ),
-          nonEditable(emptyTextCell)
-        ]
-      };
-    }
-  ```
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=defining-row.ts -->
+<Gist id='87547e63e1bd67105f8d023b24d82512' file='defining-row.ts' />
 
 ## Live demo
 
@@ -330,8 +201,8 @@ We created a fully working liquidity planner example on
 
 ## Summary
 
-Liquidity planner is only one of many possible ReactGrid use cases when standard data table is not enougth.
-The main purpose of this article was to show you a five usefull tips that helps you start ReactGrid project using good practices.
+Liquidity planner is only one of many possible ReactGrid use cases when the standard data table is not enough.
+The main purpose of this article was to show you five useful tips that help you start the ReactGrid project using good practices.
 
 Don't forget to leave a ⭐ on our [Github project](https://github.com/silevis/reactgrid).
 
