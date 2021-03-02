@@ -11,59 +11,70 @@ import {
   NavLink,
 } from "reactstrap";
 import { samplesData } from '../../content/examples/samplesData';
+import { useQueryParam } from "gatsby-query-params";
 import * as samples from '../samples';
 
-class SamplesWrapper extends React.Component {
-  state = {
-    activeTabIdx: 0,
-    activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
-  };
-  setActiveTab = idx => {
-    if (this.state.activeTabIdx !== idx) {
-      this.setState({
-        activeTabIdx: idx,
-        activeComponent: samplesData.filter(sample => sample.enabled)[idx].component
-      });
+const SamplesWrapper: React.FC = () => {
+  const exampleParam = useQueryParam('example', 'budget-planner');
+  console.log(exampleParam);
+
+  const [activeTabIdx, setActiveTabIdx] = React.useState(samplesData
+    .filter(sample => sample.enabled)
+    .findIndex(sample => {
+      console.log(sample.urlParam, exampleParam, sample.urlParam === exampleParam);
+
+      return sample.urlParam === exampleParam
+    }));
+  console.log(activeTabIdx);
+
+  const [activeComponent, setActiveComponent] =
+    React.useState(() => samplesData.filter(sample => sample.enabled)[activeTabIdx].component);
+
+  const setActiveTab = idx => {
+    if (activeTabIdx !== idx) {
+      setActiveTabIdx(idx);
+      setActiveComponent(samplesData.filter(sample => sample.enabled)[idx].component)
     }
   }
 
-  render() {
-    const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
-      <NavItem key={idx} className="pb-3">
-        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
-          style={{ cursor: 'pointer' }} onClick={() => { this.setActiveTab(idx) }}>
-          {sample.title}
-        </NavLink>
-      </NavItem>
-    );
-    const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
-      <SampleTab
-        key={idx}
-        tabId={idx}
-        title={sample.title}
-        description={sample.description}
-        className={sample.className}
-        component={this.state.activeComponent}
-      />
-    );
+  const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
+    <NavItem key={idx} className="pb-3">
+      <NavLink
+        className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
+        style={{ cursor: 'pointer' }}
+        onClick={() => { setActiveTab(idx) }}
+      >
+        {sample.title}
+      </NavLink>
+    </NavItem>
+  );
+  const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
+    <SampleTab
+      key={idx}
+      tabId={idx}
+      title={sample.title}
+      description={sample.description}
+      className={sample.className}
+      component={activeComponent}
+    />
+  );
 
-    return (
-      <Container className="section  px-3">
-        <Row>
-          <Col>
+  return (
+    <Container className="section  px-3">
+      <Row>
+        <Col>
+          <div className="space-50"></div>
+          <Nav pills className={`justify-content-center nav-pills-icons`}  >
+            {tabMenuItems}
             <div className="space-50"></div>
-            <Nav pills className={`justify-content-center nav-pills-icons`}  >
-              {tabMenuItems}
-              <div className="space-50"></div>
-              <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
-                {sampleTabs}
-              </TabContent>
-            </Nav>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
+            <TabContent activeTab={activeTabIdx} className="example-tabs-content w-100">
+              {sampleTabs}
+            </TabContent>
+          </Nav>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
 const SampleTab = ({ tabId, title, description, component, className }) => {

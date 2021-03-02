@@ -13,6 +13,7 @@ const LinkToDocs = ({ to, children }) => {
 export const samplesData = [
     {
         title: 'Budget planner',
+        urlParam: 'budget-planner',
         icon: 'fas fa-search-dollar fa-3x',
         enabled: true,
         description: [
@@ -52,6 +53,7 @@ export const samplesData = [
         title: 'Multi user',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'multi-user',
         description: [
             {
                 header: `Capabilities:`,
@@ -85,6 +87,7 @@ export const samplesData = [
         title: 'Athletes\' exercises',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'athletes-exercises',
         description: [
             {
                 header: `Capabilities:`,
@@ -115,6 +118,7 @@ export const samplesData = [
         title: 'Customization ability',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'customization-ability',
         description: [
             {
                 header: `Capabilities:`,
@@ -140,6 +144,34 @@ export const samplesData = [
         ],
         className: 'workhours-sample',
         component: 'WorkhoursSample'
+    },
+    {
+        title: 'Financial liquidity planner',
+        icon: 'fas fa-search-dollar fa-3x',
+        urlParam: 'liquidity-planner',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    // TODO
+                    // `This sample app was made for related article in our blog: ` + <><LinkToDocs to={'/blog/'} /></>,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    <>Sticky columns (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    `Fill handle`,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `CSS custom styling`,
+                ]
+            }
+        ],
+        className: 'liquidity-planner-app',
+        component: 'LiquidityPlanner'
     },
     {
         title: 'Cryptocurrency Market',

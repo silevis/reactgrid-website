@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
+
+body {
+  font-family: "DM Sans", sans-serif;
+}
+
+.liquidity-planner-app .reactgrid .rg-cell:not(.rg-cell-nonEditable) {
+  background-color: rgb(212, 241, 201);
+}
+
+.liquidity-planner-app .sample-wrapper {
+  max-height: 600px;
+}
+
+.month-header-cell {
+  justify-content: center;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.bg-blue {
+  background-color: rgba(39, 151, 255, 0.2);
+}
+
+.text-red {
+  color: red;
+}

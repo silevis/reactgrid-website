@@ -49,7 +49,7 @@ export const rows: Row<DefaultCellTypes | FlagCell>[] = [ // union of all  avail
 ```ts
 export interface Row<TCell extends Cell = DefaultCellTypes> {
   readonly rowId: Id;
-  readonly cells: Cell[] | TCell[];
+  readonly cells: TCell[];
   readonly height?: number;
   readonly reorderable?: boolean;
 };
