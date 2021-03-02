@@ -13,42 +13,31 @@ import {
 import { samplesData } from '../../content/examples/samplesData';
 import { useQueryParam } from "gatsby-query-params";
 import * as samples from '../samples';
+import { Link } from 'gatsby';
 
 const SamplesWrapper: React.FC = () => {
   const exampleParam = useQueryParam('example', 'budget-planner');
   console.log(exampleParam);
 
-  const [activeTabIdx, setActiveTabIdx] = React.useState(samplesData
-    .filter(sample => sample.enabled)
-    .findIndex(sample => {
-      console.log(sample.urlParam, exampleParam, sample.urlParam === exampleParam);
+  const enabledExamples = samplesData.filter(sample => sample.enabled);
 
-      return sample.urlParam === exampleParam
-    }));
-  console.log(activeTabIdx);
+  const activeTabIdx = enabledExamples.findIndex(sample => sample.urlParam === exampleParam);
 
-  const [activeComponent, setActiveComponent] =
-    React.useState(() => samplesData.filter(sample => sample.enabled)[activeTabIdx].component);
+  const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam).component;
 
-  const setActiveTab = idx => {
-    if (activeTabIdx !== idx) {
-      setActiveTabIdx(idx);
-      setActiveComponent(samplesData.filter(sample => sample.enabled)[idx].component)
-    }
-  }
-
-  const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
+  const tabMenuItems = enabledExamples.map((sample, idx) =>
     <NavItem key={idx} className="pb-3">
-      <NavLink
-        className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
-        style={{ cursor: 'pointer' }}
-        onClick={() => { setActiveTab(idx) }}
-      >
-        {sample.title}
-      </NavLink>
+      <Link to={'/examples?example=' + sample.urlParam}>
+        <NavLink
+          className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
+          style={{ cursor: 'pointer' }}
+        >
+          {sample.title}
+        </NavLink>
+      </Link>
     </NavItem>
   );
-  const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
+  const sampleTabs = enabledExamples.map((sample, idx) =>
     <SampleTab
       key={idx}
       tabId={idx}
