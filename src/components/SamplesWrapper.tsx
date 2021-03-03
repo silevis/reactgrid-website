@@ -10,7 +10,7 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { samplesData } from '../../content/examples/samplesData';
+import { samplesData } from '../../content/examples/examplesData';
 import { useQueryParam } from "gatsby-query-params";
 import * as samples from '../samples';
 import { Link } from 'gatsby';
@@ -27,7 +27,7 @@ const SamplesWrapper: React.FC = () => {
 
   const tabMenuItems = enabledExamples.map((sample, idx) =>
     <NavItem key={idx} className="pb-3">
-      <Link to={'/examples?example=' + sample.urlParam}>
+      <Link to={'/examples/?example=' + sample.urlParam}>
         <NavLink
           className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
           style={{ cursor: 'pointer' }}
@@ -82,17 +82,13 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
                 <Col md="6" className="pb-4">
                   <h3>{column1.header}</h3>
                   <ul className="">
-                    {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
+                    {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left">{item}</li>)}
                   </ul>
                 </Col>
                 <Col md="6">
                   <h3>{column2.header}</h3>
                   <ul className="">
-                    {column2.content.map((item, idx) => {
-                      return <li key={idx} className="pb-2 text-left">
-                        {/* {<i className="fas fa-check pr-1 text-primary"></i>}  */}
-                        {item}</li>
-                    })}
+                    {column2.content.map((item, idx) => <li key={idx} className="pb-2 text-left">{item}</li>)}
                   </ul>
                 </Col>
               </Row>

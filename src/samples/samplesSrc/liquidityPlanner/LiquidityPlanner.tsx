@@ -81,6 +81,7 @@ export const LiquidityPlanner: React.FC = () => {
           columns={columns}
           onCellsChanged={handleChanges}
           stickyLeftColumns={1}
+          stickyRightColumns={1}
           // props below are availble for PRO version
           enableFillHandle
           enableRangeSelection
