@@ -10,60 +10,60 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import { samplesData } from '../../content/examples/samplesData';
+import { samplesData } from '../../content/examples/examplesData';
+import { useQueryParam } from "gatsby-query-params";
 import * as samples from '../samples';
+import { Link } from 'gatsby';
 
-class SamplesWrapper extends React.Component {
-  state = {
-    activeTabIdx: 0,
-    activeComponent: samplesData.filter(sample => sample.enabled)[0].component,
-  };
-  setActiveTab = idx => {
-    if (this.state.activeTabIdx !== idx) {
-      this.setState({
-        activeTabIdx: idx,
-        activeComponent: samplesData.filter(sample => sample.enabled)[idx].component
-      });
-    }
-  }
+const SamplesWrapper: React.FC = () => {
+  const exampleParam = useQueryParam('example', 'budget-planner');
+  console.log(exampleParam);
 
-  render() {
-    const tabMenuItems = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
-      <NavItem key={idx} className="pb-3">
-        <NavLink className={classnames({ active: this.state.activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
-          style={{ cursor: 'pointer' }} onClick={() => { this.setActiveTab(idx) }}>
+  const enabledExamples = samplesData.filter(sample => sample.enabled);
+
+  const activeTabIdx = enabledExamples.findIndex(sample => sample.urlParam === exampleParam);
+
+  const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam).component;
+
+  const tabMenuItems = enabledExamples.map((sample, idx) =>
+    <NavItem key={idx} className="pb-3">
+      <Link to={'/examples/?example=' + sample.urlParam}>
+        <NavLink
+          className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
+          style={{ cursor: 'pointer' }}
+        >
           {sample.title}
         </NavLink>
-      </NavItem>
-    );
-    const sampleTabs = samplesData.filter(sample => sample.enabled).map((sample, idx) =>
-      <SampleTab
-        key={idx}
-        tabId={idx}
-        title={sample.title}
-        description={sample.description}
-        className={sample.className}
-        component={this.state.activeComponent}
-      />
-    );
+      </Link>
+    </NavItem>
+  );
+  const sampleTabs = enabledExamples.map((sample, idx) =>
+    <SampleTab
+      key={idx}
+      tabId={idx}
+      title={sample.title}
+      description={sample.description}
+      className={sample.className}
+      component={activeComponent}
+    />
+  );
 
-    return (
-      <Container className="section  px-3">
-        <Row>
-          <Col>
+  return (
+    <Container className="section  px-3">
+      <Row>
+        <Col>
+          <div className="space-50"></div>
+          <Nav pills className={`justify-content-center nav-pills-icons`}  >
+            {tabMenuItems}
             <div className="space-50"></div>
-            <Nav pills className={`justify-content-center nav-pills-icons`}  >
-              {tabMenuItems}
-              <div className="space-50"></div>
-              <TabContent activeTab={this.state.activeTabIdx} className="example-tabs-content w-100">
-                {sampleTabs}
-              </TabContent>
-            </Nav>
-          </Col>
-        </Row>
-      </Container>
-    )
-  }
+            <TabContent activeTab={activeTabIdx} className="example-tabs-content w-100">
+              {sampleTabs}
+            </TabContent>
+          </Nav>
+        </Col>
+      </Row>
+    </Container>
+  )
 }
 
 const SampleTab = ({ tabId, title, description, component, className }) => {
@@ -82,17 +82,13 @@ const SampleTab = ({ tabId, title, description, component, className }) => {
                 <Col md="6" className="pb-4">
                   <h3>{column1.header}</h3>
                   <ul className="">
-                    {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left" dangerouslySetInnerHTML={{ __html: item }}></li>)}
+                    {column1.content.map((item, idx) => <li key={idx} className="pb-3 text-left">{item}</li>)}
                   </ul>
                 </Col>
                 <Col md="6">
                   <h3>{column2.header}</h3>
                   <ul className="">
-                    {column2.content.map((item, idx) => {
-                      return <li key={idx} className="pb-2 text-left">
-                        {/* {<i className="fas fa-check pr-1 text-primary"></i>}  */}
-                        {item}</li>
-                    })}
+                    {column2.content.map((item, idx) => <li key={idx} className="pb-2 text-left">{item}</li>)}
                   </ul>
                 </Col>
               </Row>

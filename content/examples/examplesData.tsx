@@ -1,18 +1,31 @@
 import React from 'react';
 import { Link } from "gatsby";
 
+interface ExampleInfo {
+    title: string;
+    icon: string;
+    urlParam?: string;
+    enabled: boolean;
+    className: string;
+    component: string;
+    description: {
+        header: string;
+        content: React.ReactNode;
+    }[] | string;
+}
 
-const LinkToDocs = ({ to, children }) => {
+const ExternalLink: React.FC<{ to: string; title?: string }> = ({ to, title = 'docs', children }) => {
     return (
         <Link to={to}>
-            {children || <><span className='text-nowrap'>docs <i className="fas fa-external-link-alt fa-xs"></i></span></>}
+            {children || <><span className='text-nowrap'>{title} <i className="fas fa-external-link-alt fa-xs"></i></span></>}
         </Link>
     )
 }
 
-export const samplesData = [
+export const samplesData: ExampleInfo[] = [
     {
         title: 'Budget planner',
+        urlParam: 'budget-planner',
         icon: 'fas fa-search-dollar fa-3x',
         enabled: true,
         description: [
@@ -32,12 +45,12 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Vertical and horizontal grouping (see the <LinkToDocs to={'/docs/3.1/4-cell-templates/5-ChevronCell/'} />)</>,
-                    <>Custom cell templates (e.g. non editable number cell, see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
-                    <>Context menu (adding and removing row, see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Row reordering (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Vertical and horizontal grouping (see the <ExternalLink to={'/docs/3.1/4-cell-templates/5-ChevronCell/'} />)</>,
+                    <>Custom cell templates (e.g. non editable number cell, see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Context menu (adding and removing row, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Row reordering (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -52,6 +65,7 @@ export const samplesData = [
         title: 'Multi user',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'multi-user',
         description: [
             {
                 header: `Capabilities:`,
@@ -64,13 +78,13 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Highlights (see the <LinkToDocs to={'/docs/3.1/4-cell-templates/5-GroupCell/'} />)</>,
-                    <>Custom cell templates (e.g. flag icon, see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Column resize (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/2-column-resizing/'} />)</>,
-                    <>Row and column reordering (see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Context menu (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Highlights (see the <ExternalLink to={'/docs/3.1/4-cell-templates/5-GroupCell/'} />)</>,
+                    <>Custom cell templates (e.g. flag icon, see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Column resize (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/2-column-resizing/'} />)</>,
+                    <>Row and column reordering (see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Context menu (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -85,6 +99,7 @@ export const samplesData = [
         title: 'Athletes\' exercises',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'athletes-exercises',
         description: [
             {
                 header: `Capabilities:`,
@@ -98,10 +113,10 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
                     `Copy/cut/paste`,
                     `Touch capability`,
                     `SASS custom styling`,
@@ -115,6 +130,7 @@ export const samplesData = [
         title: 'Customization ability',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
+        urlParam: 'customization-ability',
         description: [
             {
                 header: `Capabilities:`,
@@ -129,9 +145,9 @@ export const samplesData = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Range selection (+ multi selection, see the&nbsp;<LinkToDocs to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Sticky row and column (see the <LinkToDocs to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Custom cell templates (see the <LinkToDocs to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
                     `Copy/cut/paste`,
                     `Touch capability`,
                     `SASS custom styling`,
@@ -140,6 +156,33 @@ export const samplesData = [
         ],
         className: 'workhours-sample',
         component: 'WorkhoursSample'
+    },
+    {
+        title: 'Financial liquidity planner',
+        icon: 'fas fa-search-dollar fa-3x',
+        urlParam: 'liquidity-planner',
+        enabled: true,
+        description: [
+            {
+                header: `Capabilities:`,
+                content: [
+                    <>This sample app was made for related article on our blog: <ExternalLink to={'/blog/financial-liquidity-planner-with-reactgrid-and-chartjs'} title='open' /></>,
+                ]
+            },
+            {
+                header: `Core features (applied):`,
+                content: [
+                    <>Sticky columns (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    `Fill handle`,
+                    `Copy/cut/paste`,
+                    `Touch capability`,
+                    `CSS custom styling`,
+                ]
+            }
+        ],
+        className: 'liquidity-planner-app',
+        component: 'LiquidityPlanner'
     },
     {
         title: 'Cryptocurrency Market',
