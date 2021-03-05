@@ -127,15 +127,15 @@ export const samplesData: ExampleInfo[] = [
         component: 'ExcercisesDataSample'
     },
     {
-        title: 'Customization ability',
+        title: 'Customization',
         icon: 'fas fa-border-all fa-3x',
         enabled: true,
-        urlParam: 'customization-ability',
+        urlParam: 'customization',
         description: [
             {
                 header: `Capabilities:`,
                 content: [
-                    `Workhours sample ReactGrid implementation allows user to add new records by editing the last blank row`,
+                    `Customization sample ReactGrid implementation allows user to add new records by editing the last blank row`,
                     `It is possible to render every row in various ways, ReactGrid empowers the user to fully configure each cell independently`,
                     `The simple configurator shows how easily you can style your table`,
                     `Sample contains custom written dropdown cell`,

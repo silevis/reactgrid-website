@@ -33,7 +33,7 @@ const applyChange = (change: CellChange<NumberCell>) => <
 
 export const LiquidityPlanner: React.FC = () => {
   const [openingBalance, setOpeningBalance] = React.useState(10000);
-  const [creditLine, setCreditLine] = React.useState(12000);
+  const [creditLine, setCreditLine] = React.useState(3000);
   const [cashInflow, setCashInflow] = React.useState(() => [...emptyInflows]);
   const [cashOutflow, setCashOutflow] = React.useState(() => [
     ...emptyOutflows
@@ -70,7 +70,7 @@ export const LiquidityPlanner: React.FC = () => {
 
   return (
     <>
-      <div style={{ width: 1575 }}>
+      <div style={{ width: 1523 }} className="liquidity-planner-app">
         <Bar
           data={getChartData(plannerData)}
           options={chartOptions}
@@ -80,13 +80,15 @@ export const LiquidityPlanner: React.FC = () => {
           rows={rows}
           columns={columns}
           onCellsChanged={handleChanges}
+          stickyTopRows={1}
           stickyLeftColumns={1}
-          stickyRightColumns={1}
           // props below are availble for PRO version
+          stickyRightColumns={1}
+          // stickyBottomRows={4}
           enableFillHandle
           enableRangeSelection
         />
       </div>
     </>
   );
-};;
+};
