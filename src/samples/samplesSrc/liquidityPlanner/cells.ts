@@ -7,6 +7,11 @@ import {
 
 export const emptyTextCell: TextCell = { type: "text", text: "" };
 
+const numberFormat = new Intl.NumberFormat("de", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+
 export const textCell = (
   text: string,
   className = "",
@@ -17,7 +22,13 @@ export const numberCell = (
   value: number,
   className = "",
   style?: CellStyle
-): NumberCell => ({ type: "number", value, className, style });
+): NumberCell => ({
+  type: "number",
+  value,
+  className,
+  style,
+  format: numberFormat
+});
 
 export const nonEditable = (cell: DefaultCellTypes): DefaultCellTypes => ({
   ...cell,
@@ -30,28 +41,49 @@ export const showZero = (cell: NumberCell): NumberCell => ({
   hideZero: false
 });
 
-export const boldLine = (cell: DefaultCellTypes): DefaultCellTypes => ({
+export const bottomLine = (cell: DefaultCellTypes): DefaultCellTypes => ({
   ...cell,
   style: {
     ...cell.style,
     border: {
       ...cell.style?.border,
-      top: {
-        width: "2px",
-        color: "gray",
+      bottom: {
+        width: "1px",
+        color: "#A6A6A6",
         style: "solid"
       }
     }
   }
 });
 
-export function monthHeaderCell(month: string): DefaultCellTypes {
+export const noSideBorders = (cell: DefaultCellTypes): DefaultCellTypes => ({
+  ...cell,
+  style: {
+    ...cell.style,
+    border: {
+      ...cell.style?.border,
+      left: {
+        style: "none"
+      },
+      right: {
+        style: "none"
+      }
+    }
+  }
+});
+
+export function monthHeaderCell(
+  month: string,
+  additionalClassNames = ""
+): DefaultCellTypes {
   return nonEditable(
-    textCell(month, "month-header-cell", {
+    textCell(month, `text-lg font-bold ${additionalClassNames}`, {
       background: "#107C41",
       color: "white",
       border: {
-        bottom: { style: "none" }
+        bottom: { style: "none" },
+        left: { style: "none" },
+        right: { style: "none" }
       }
     })
   );

@@ -16,6 +16,15 @@ const emptyMonthsValues: MonthlyValues = [
   NaN
 ];
 
+const toFixed = (n: number, fixed: number) =>
+  ~~(Math.pow(10, fixed) * n) / Math.pow(10, fixed);
+
+function generateRandomValues(value: number, variation: number): MonthlyValues {
+  const min = value - variation;
+  const max = value + variation;
+  return months().map(() => toFixed(Math.random() * (max - min + 1) + min, 2));
+}
+
 export const inflows: CashInflow[] = [
   {
     title: "Sales",
@@ -105,11 +114,3 @@ export const outflows: CashOutflow[] = [
     values: generateRandomValues(1000, 500)
   }
 ];
-
-function generateRandomValues(value: number, variation: number): MonthlyValues {
-  const min = value - variation;
-  const max = value + variation;
-  return months().map(
-    () => Math.floor(Math.random() * (max - min + 1)) + min
-  );
-}

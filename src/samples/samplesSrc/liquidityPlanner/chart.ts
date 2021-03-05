@@ -51,7 +51,7 @@ export const getChartData = (
     },
     {
       label: "Credit Line Overdraft",
-      borderColor: "red",
+      borderColor: "#CF1322",
       type: "line",
       fill: false,
       lineTension: 0,
@@ -81,7 +81,7 @@ export const chartOptions: ChartOptions = {
   },
   layout: {
     padding: {
-      left: 220
+      left: 145
     }
   },
   scales: {

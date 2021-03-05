@@ -24,7 +24,7 @@ Even if you don't need it in your project right now, you can leave a ⭐ in our 
 Today we will show you how to build a liquidity planner - an app that provides a strategy for financial planning in a long term.
 Our app will provide entering, aggregating, and evaluating planned cash flows.
 
-![Finished app](./finished-app.png)
+![Finished app](./finished-app.gif)
 
 On the Internet, you can find many spreadsheets files that e.g. accountants and financial analysts use -
 one of them, as an inspiration, will be moved from spreadsheet to standalone, fully **reactive** React.js app. 
@@ -114,7 +114,8 @@ to apply them in all projects:
 
 We could debate financial issues for a long time, but there is not enough room for it so let's look at them in a nutshell. You can skip this chapter if you like.
 
-You can place a new value only in highlighted light green cells - opening balance, cash inflows, and outflows, and finally the credit line.
+You can place a new value only in light green cells (credit line, opening balance) or with white background (cash inflows and outflows). 
+Grayed-out cells are read-only.
 
 Two of them (opening balance and credit line) are just numbers. We merged types of cash flow into two. 
 Each entry is called "group" and has its own title like "Travelling expenses" for outflow and "Sales" for inflow.
@@ -132,9 +133,13 @@ Some items remain to be explained (and it's the hardest thing to understand):
     filled automatically by moving already calculated value from the cumulative to the next month in the "Cashbox/bank".
   - their operations are repeated until all moths are filled.
 
+![Calculating totals and cumulative](./calculation-pseudo-algorithm.png)
+
 The last part is the "Credit line". Users can update it by typing it in. This variable is constant for all months and is used for 
 calculating "Credit line overdraft" - in a nutshell - if the absolute value from "Cumulative" exceeds the given credit line, 
 then the cell should display this result.
+
+![Calculating credit line overdraft](./calculation-pseudo-algorithm.png)
 
 What about the chart? This part should give us an instant knowledge about the company's state of finance. In this case, we limit ourselves
 to display "Cashbox/bank" and "Credit Line Overdraft" as a line chart and cash inflow and outflow as bars.

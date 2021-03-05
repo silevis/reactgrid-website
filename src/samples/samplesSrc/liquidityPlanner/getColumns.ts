@@ -6,7 +6,7 @@ export function getColumns(): Column[] {
   return [
     {
       columnId: "titlesColumn",
-      width: 250
+      width: 200
     },
     { columnId: 1, width: COL_WIDTH },
     { columnId: 2, width: COL_WIDTH },
@@ -22,7 +22,7 @@ export function getColumns(): Column[] {
     { columnId: 12, width: COL_WIDTH },
     {
       columnId: "Totals",
-      width: 150
+      width: 120
     }
   ];
 }

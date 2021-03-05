@@ -12,9 +12,10 @@ import {
   nonEditable,
   textCell,
   monthHeaderCell,
-  boldLine,
+  bottomLine,
   numberCell,
-  showZero
+  showZero,
+  noSideBorders
 } from "./cells";
 
 export const CASHBOXBANK_ROW_ID = "cashboxBank";
@@ -25,6 +26,9 @@ export const LIQUIDFUNDS_ROW_ID = "liquidFunds";
 export const MONTHSTOTAL_ROW_ID = "monthsTotal";
 export const CUMULATIVE_ROW_ID = "cumulative";
 
+const ROW_HEIGHT = 32;
+const HEADING_ROW_HEIGHT = 40;
+
 function sumGroupValues(values: MonthlyValues): number {
   return values.reduce(
     (prev, curr) => (isNaN(prev) ? 0 : prev) + (isNaN(curr) ? 0 : curr)
@@ -34,11 +38,22 @@ function sumGroupValues(values: MonthlyValues): number {
 function getHeaderRow(): Row {
   return {
     rowId: HEADER_ROW_ID,
-    height: 35,
+    height: ROW_HEIGHT,
     cells: [
       nonEditable(emptyTextCell),
-      ...months().map((_, idx) => nonEditable(monthHeaderCell(`${idx + 1}`))),
-      nonEditable(textCell("Totals", "month-header-cell"))
+      nonEditable(monthHeaderCell("Jan", "justify-content-center")),
+      nonEditable(monthHeaderCell("Feb", "justify-content-center")),
+      nonEditable(monthHeaderCell("Mar", "justify-content-center")),
+      nonEditable(monthHeaderCell("Apr", "justify-content-center")),
+      nonEditable(monthHeaderCell("May", "justify-content-center")),
+      nonEditable(monthHeaderCell("Jun", "justify-content-center")),
+      nonEditable(monthHeaderCell("Jul", "justify-content-center")),
+      nonEditable(monthHeaderCell("Aug", "justify-content-center")),
+      nonEditable(monthHeaderCell("Sep", "justify-content-center")),
+      nonEditable(monthHeaderCell("Oct", "justify-content-center")),
+      nonEditable(monthHeaderCell("Nov", "justify-content-center")),
+      nonEditable(monthHeaderCell("Dec", "justify-content-center")),
+      nonEditable(monthHeaderCell("Totals", "justify-content-end"))
     ]
   };
 }
@@ -46,11 +61,15 @@ function getHeaderRow(): Row {
 function getLiquidFundsRow(title: string): Row {
   return {
     rowId: LIQUIDFUNDS_ROW_ID,
-    height: 35,
+    height: HEADING_ROW_HEIGHT,
     cells: [
-      boldLine(nonEditable(textCell(title, "font-weight-bold"))),
-      ...months().map(() => boldLine(nonEditable(emptyTextCell))),
-      boldLine(nonEditable(emptyTextCell))
+      bottomLine(
+        nonEditable(textCell(title, "align-items-end text-lg font-bold"))
+      ),
+      ...months().map(() =>
+        noSideBorders(bottomLine(nonEditable(emptyTextCell)))
+      ),
+      bottomLine(nonEditable(emptyTextCell))
     ]
   };
 }
@@ -58,12 +77,13 @@ function getLiquidFundsRow(title: string): Row {
 function getCashboxBankRow(title: string, cashboxBank: MonthlyValues): Row {
   return {
     rowId: CASHBOXBANK_ROW_ID,
+    height: ROW_HEIGHT,
     cells: [
-      nonEditable(textCell(title)),
+      nonEditable(textCell(title, "padding-left-lg")),
       ...months().map((_, idx) =>
         idx === 0
-          ? numberCell(cashboxBank[idx])
-          : nonEditable(showZero(numberCell(cashboxBank[idx])))
+          ? numberCell(cashboxBank[idx], "light-green-bg")
+          : nonEditable(showZero(numberCell(cashboxBank[idx], "disabled")))
       ),
       nonEditable(emptyTextCell)
     ]
@@ -76,16 +96,22 @@ function getMonthsTotalRow(
   yearlyGroupsDiff: number
 ): Row {
   const monthsTotalCell = (value: number) =>
-    boldLine(nonEditable(showZero(numberCell(value, "bg-blue"))));
+    bottomLine(
+      nonEditable(showZero(numberCell(value, "text-md disabled font-bold")))
+    );
   return {
     rowId: MONTHSTOTAL_ROW_ID,
-    height: 35,
+    height: HEADING_ROW_HEIGHT,
     cells: [
-      boldLine(nonEditable(textCell(title, "bg-blue font-weight-bold"))),
+      bottomLine(nonEditable(textCell(title, "text-lg font-bold"))),
       ...months().map((_, idx) =>
         monthsTotalCell(monthlyInflowOuflowDiffs[idx])
       ),
-      boldLine(nonEditable(showZero(numberCell(yearlyGroupsDiff, "bg-blue"))))
+      bottomLine(
+        nonEditable(
+          showZero(numberCell(yearlyGroupsDiff, "text-lg disabled font-bold"))
+        )
+      )
     ]
   };
 }
@@ -97,23 +123,39 @@ function getCumulativeRow(
 ): Row {
   return {
     rowId: CUMULATIVE_ROW_ID,
-    height: 35,
+    height: HEADING_ROW_HEIGHT,
     cells: [
-      boldLine(nonEditable(textCell(title, "bg-blue font-weight-bold"))),
+      bottomLine(
+        nonEditable(textCell(title, "align-items-end text-lg font-bold"))
+      ),
       ...months().map((_, idx) =>
-        boldLine(
-          nonEditable(showZero(numberCell(cumulativeTotals[idx], "bg-blue")))
+        bottomLine(
+          nonEditable(
+            showZero(
+              numberCell(
+                cumulativeTotals[idx],
+                "align-items-end disabled text-md font-bold"
+              )
+            )
+          )
         )
       ),
-      boldLine(
-        nonEditable(showZero(numberCell(yearlyInflowOuflowDiff, "bg-blue")))
+      bottomLine(
+        nonEditable(
+          showZero(
+            numberCell(
+              yearlyInflowOuflowDiff,
+              "align-items-end disabled font-bold text-lg"
+            )
+          )
+        )
       )
     ]
   };
 }
 
 function getGroupRows(
-  title: string,
+  title: "Inflow" | "Outflow",
   summaryTitle: string,
   groups: (CashInflow | CashOutflow)[],
   monthlyGroupTotals: MonthlyValues,
@@ -122,29 +164,58 @@ function getGroupRows(
   return [
     {
       rowId: `${title}Header`,
-      height: 35,
+      height: HEADING_ROW_HEIGHT,
       cells: [
-        boldLine(nonEditable(textCell(title, "font-weight-bold"))),
-        ...months().map((_) => boldLine(nonEditable(emptyTextCell))),
-        boldLine(nonEditable(emptyTextCell))
+        bottomLine(
+          nonEditable(
+            textCell(
+              title,
+              `align-items-end text-lg font-bold text-${title === "Inflow" ? "green" : "blue"
+              }`
+            )
+          )
+        ),
+        ...months().map((_) =>
+          noSideBorders(bottomLine(nonEditable(emptyTextCell)))
+        ),
+        bottomLine(nonEditable(emptyTextCell))
       ]
     },
     ...groups.map<Row>(({ title, values }) => ({
       rowId: title,
+      height: ROW_HEIGHT,
       cells: [
-        nonEditable(textCell(title)),
+        nonEditable(textCell(title, "padding-left-lg")),
         ...values.map((_, idx) => numberCell(values[idx])),
-        nonEditable(showZero(numberCell(sumGroupValues(values))))
+        nonEditable(
+          showZero(numberCell(sumGroupValues(values), "font-bold disabled"))
+        )
       ]
     })),
     {
       rowId: `${title}Summary`,
+      height: ROW_HEIGHT,
       cells: [
-        nonEditable(textCell(summaryTitle)),
+        nonEditable(textCell(summaryTitle, "padding-left-lg font-bold")),
         ...months().map((_, idx) =>
-          nonEditable(showZero(numberCell(monthlyGroupTotals[idx])))
+          nonEditable(
+            showZero(
+              numberCell(
+                monthlyGroupTotals[idx],
+                `font-bold disabled text-${title === "Inflow" ? "green" : "blue"
+                }`
+              )
+            )
+          )
         ),
-        nonEditable(showZero(numberCell(yearlyGroupTotal)))
+        nonEditable(
+          showZero(
+            numberCell(
+              yearlyGroupTotal,
+              `font-bold disabled text-${title === "Inflow" ? "green" : "blue"}`
+            )
+          )
+        )
       ]
     }
   ];
@@ -160,33 +231,41 @@ export function getCreditLineRows(
   return [
     {
       rowId: CREDITLINE_ROW_ID,
+      height: ROW_HEIGHT,
       cells: [
-        nonEditable(textCell("Credit line")),
+        nonEditable(textCell("Credit line", "padding-left-lg")),
         ...months().map((_, idx) =>
           idx === 0
-            ? numberCell(creditLine)
-            : nonEditable(showZero(numberCell(creditLine)))
+            ? numberCell(creditLine, "light-green-bg")
+            : nonEditable(showZero(numberCell(creditLine, "disabled")))
         ),
-        nonEditable(showZero(numberCell(creditLine)))
+        nonEditable(showZero(numberCell(creditLine, "font-bold disabled")))
       ]
     },
     {
       rowId: CREDITLINEOVERDRAFT_ROW_ID,
-      height: 35,
+      height: HEADING_ROW_HEIGHT,
       cells: [
-        nonEditable(textCell("V. Credit Line Overdraft", "font-weight-bold")),
+        nonEditable(
+          textCell("Credit line overdraft", "align-items-end text-lg font-bold")
+        ),
         ...months().map((_, idx) => {
           const overdraft =
             -cumulativeTotals[idx] - (isNaN(creditLine) ? 0 : creditLine);
           return nonEditable(
             numberCell(
               overdraft > 0 ? overdraft : NaN,
-              overdraft > 0 ? "text-red" : ""
+              overdraft > 0
+                ? "align-items-end disabled text-md text-red font-bold"
+                : "disabled"
             )
           );
         }),
         nonEditable(
-          numberCell(yearlyOverdraft > 0 ? yearlyOverdraft : NaN, "text-red")
+          numberCell(
+            yearlyOverdraft > 0 ? yearlyOverdraft : NaN,
+            "align-items-end disabled text-red text-lg font-bold"
+          )
         )
       ]
     }
@@ -209,17 +288,17 @@ export function getRows({
 }: InputVariables & OutputVariables): Row[] {
   return [
     getHeaderRow(),
-    getLiquidFundsRow("I. Liquid funds"),
+    getLiquidFundsRow("Liquid funds"),
     getCashboxBankRow("Cashbox/bank", cashboxBank),
     ...getGroupRows(
-      "II. Inflow",
+      "Inflow",
       "Cash in (total)",
       cashInflow,
       monthlyInflowTotals,
       yearlyInflowTotal
     ),
     ...getGroupRows(
-      "III. Outflow",
+      "Outflow",
       "Cash out (total)",
       cashOutflow,
       monthlyOutflowTotals,
@@ -230,11 +309,7 @@ export function getRows({
       monthlyInflowOuflowDiffs,
       yearlyInflowOuflowDiff
     ),
-    getCumulativeRow(
-      "IV. Cumulative",
-      cumulativeTotals,
-      yearlyInflowOuflowDiff
-    ),
+    getCumulativeRow("Cumulative", cumulativeTotals, yearlyInflowOuflowDiff),
     ...getCreditLineRows(cumulativeTotals, yearlyInflowOuflowDiff, creditLine)
   ];
 }

@@ -16,13 +16,10 @@ import * as samples from '../samples';
 import { Link } from 'gatsby';
 
 const SamplesWrapper: React.FC = () => {
+  // TODO fix rerendering issue
   const exampleParam = useQueryParam('example', 'budget-planner');
-  console.log(exampleParam);
-
   const enabledExamples = samplesData.filter(sample => sample.enabled);
-
   const activeTabIdx = enabledExamples.findIndex(sample => sample.urlParam === exampleParam);
-
   const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam).component;
 
   const tabMenuItems = enabledExamples.map((sample, idx) =>
