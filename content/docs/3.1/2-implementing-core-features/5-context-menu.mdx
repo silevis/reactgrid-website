@@ -6,7 +6,66 @@ metaDescription: "ReactGrid docs"
 proMark: true
 ---
 import { ReactGrid } from "@silevis/reactgrid";
-const simpleCode = `interface Person {
+
+<Alert color="primary">
+  <i class="fas fa-exclamation-circle pr-2"></i>
+	Context menu is only available in PRO version
+</Alert>
+
+ReactGrid comes with a custom context menu feature. Custom menu entries can be easily created thus
+allowing for personalized experiences.
+By default, the context menu is disabled. You can enable it by providing a handler function
+to your ReactGrid using the `onContextMenu` property.
+
+#### Enabling simple context menu
+
+This guide is based on [handling data changes](/docs/3.1/2-implementing-core-features/1-handling-changes/).
+
+1. Update imports by adding [`Id`](/docs/3.1/7-api/1-types/4-id/), [`SelectionMode`](/docs/3.1/7-api/1-types/7-selection-mode/) 
+and [`MenuOption`](/docs/3.1/7-api/0-interfaces/8-menuoption/) interfaces.
+
+```ts
+import { ReactGrid, CellChange, Row, Column, Id, MenuOption, SelectionMode } from "@silevis/reactgrid";
+```
+
+2. Implement the context menu handler function
+
+The `menuOptions` argument of `simpleHandleContextMenu` contains a list of default menu entries
+provided by ReactGrid - copy, cut and paste.
+For now, we'll simply define it, which will enable the default ReactGrid context menu.
+
+```tsx
+const [people, setPeople] = React.useState<Person[]>(getPeople());
+  const rows = getRows(people);
+  const columns = getColumns();
+
+  const handleChanges = (changes: CellChange[]) => {
+    setPeople((prevPeople) => applyChangesToPeople(changes, prevPeople));
+  };
+
+  const simpleHandleContextMenu = (
+    selectedRowIds: Id[],
+    selectedColIds: Id[],
+    selectionMode: SelectionMode,
+    menuOptions: MenuOption[]
+  ): MenuOption[] => {
+    return menuOptions;
+  }
+
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      onCellsChanged={handleChanges}
+      onContextMenu={simpleHandleContextMenu}
+    />
+  );
+```
+
+Here's the result. Right-click anywhere in the grid to see the context menu.
+
+<LiveCode 
+  code={`interface Person {
     name: string;
     surname: string;
 }
@@ -85,8 +144,69 @@ const SimpleContextMenuHandlingSample = () => {
 }
 ${``}
 render(<SimpleContextMenuHandlingSample/>)
-`;
-const advancedCode = `interface Person {
+`}
+  title='Basic menu context handling live demo'
+  noInline={true}
+/> 
+
+#### Advanced example - removing columns and rows
+
+The default menu, though pretty, may seem a bit lacklustre when it comes to the functionality it provides.
+Let's try and extend it a bit - we'll make it possible to remove people using the context menu.
+
+
+1. Implement a more advanced context menu handler function.
+
+```ts
+const handleContextMenu = (
+  selectedRowIds: Id[],
+  selectedColIds: Id[],
+  selectionMode: SelectionMode,
+  menuOptions: MenuOption[]
+): MenuOption[] => {
+  if (selectionMode === "row") {
+    menuOptions = [
+      ...menuOptions,
+      {
+        id: "removePerson",
+        label: "Remove person",
+        handler: () => {
+          setPeople(prevPeople => {
+            return [...prevPeople.filter((person, idx) => !selectedRowIds.includes(idx))]
+          })
+        }
+      }
+    ];
+  }
+  return menuOptions;
+}
+```
+
+2. Update the `ReactGrid` component's properties. Note that rows must be selectable for our feature to work.
+After all, we will be removing the *currently selected* rows.
+
+```tsx
+return (
+  <ReactGrid
+    rows={rows}
+    columns={columns}
+    onCellsChanged={handleChanges}
+    onContextMenu={handleContextMenu}
+    enableFillHandle
+    enableRangeSelection
+    enableRowSelection
+  />
+)
+```
+
+#### Live demo
+
+You can see the effect of the changes we've just introduced in the demo below.
+To test the new feature, simply select a row by clicking a header cell or one of the leftmost cells,
+then right-click anywhere and use the new menu entry.
+
+<LiveCode 
+  code={`interface Person {
   name: string;
   surname: string;
 }
@@ -180,129 +300,7 @@ const AdvancedContextMenuHandlingSample = () => {
 }
 ${``}
 render(<AdvancedContextMenuHandlingSample/>)
-`;
-
-<Alert color="primary">
-  <i class="fas fa-exclamation-circle pr-2"></i>
-	Context menu is only available in PRO version
-</Alert>
-
-ReactGrid comes with a custom context menu feature. Custom menu entries can be easily created thus
-allowing for personalized experiences.
-By default, the context menu is disabled. You can enable it by providing a handler function
-to your ReactGrid using the `onContextMenu` property.
-
-#### Enabling simple context menu
-
-This guide is based on [handling data changes](/docs/3.1/2-implementing-core-features/1-handling-changes/).
-
-1. Update imports by adding [`Id`](/docs/3.1/7-api/1-types/4-id/), [`SelectionMode`](/docs/3.1/7-api/1-types/7-selection-mode/) 
-and [`MenuOption`](/docs/3.1/7-api/0-interfaces/8-menuoption/) interfaces.
-
-```ts
-import { ReactGrid, CellChange, Row, Column, Id, MenuOption, SelectionMode } from "@silevis/reactgrid";
-```
-
-2. Implement the context menu handler function
-
-The `menuOptions` argument of `simpleHandleContextMenu` contains a list of default menu entries
-provided by ReactGrid - copy, cut and paste.
-For now, we'll simply define it, which will enable the default ReactGrid context menu.
-
-```tsx
-const [people, setPeople] = React.useState<Person[]>(getPeople());
-  const rows = getRows(people);
-  const columns = getColumns();
-
-  const handleChanges = (changes: CellChange[]) => {
-    setPeople((prevPeople) => applyChangesToPeople(changes, prevPeople));
-  };
-
-  const simpleHandleContextMenu = (
-    selectedRowIds: Id[],
-    selectedColIds: Id[],
-    selectionMode: SelectionMode,
-    menuOptions: MenuOption[]
-  ): MenuOption[] => {
-    return menuOptions;
-  }
-
-  return (
-    <ReactGrid
-      rows={rows}
-      columns={columns}
-      onCellsChanged={handleChanges}
-      onContextMenu={simpleHandleContextMenu}
-    />
-  );
-```
-
-Here's the result. Right-click anywhere in the grid to see the context menu.
-
-<LiveCode 
-  code={simpleCode}
-  title='Basic menu context handling live demo'
-  noInline={true}
-/> 
-
-#### Advanced example - removing columns and rows
-
-The default menu, though pretty, may seem a bit lacklustre when it comes to the functionality it provides.
-Let's try and extend it a bit - we'll make it possible to remove people using the context menu.
-
-
-1. Implement a more advanced context menu handler function.
-
-```ts
-const handleContextMenu = (
-  selectedRowIds: Id[],
-  selectedColIds: Id[],
-  selectionMode: SelectionMode,
-  menuOptions: MenuOption[]
-): MenuOption[] => {
-  if (selectionMode === "row") {
-    menuOptions = [
-      ...menuOptions,
-      {
-        id: "removePerson",
-        label: "Remove person",
-        handler: () => {
-          setPeople(prevPeople => {
-            return [...prevPeople.filter((person, idx) => !selectedRowIds.includes(idx))]
-          })
-        }
-      }
-    ];
-  }
-  return menuOptions;
-}
-```
-
-2. Update the `ReactGrid` component's properties. Note that rows must be selectable for our feature to work.
-After all, we will be removing the *currently selected* rows.
-
-```tsx
-return (
-  <ReactGrid
-    rows={rows}
-    columns={columns}
-    onCellsChanged={handleChanges}
-    onContextMenu={handleContextMenu}
-    enableFillHandle
-    enableRangeSelection
-    enableRowSelection
-  />
-)
-```
-
-#### Live demo
-
-You can see the effect of the changes we've just introduced in the demo below.
-To test the new feature, simply select a row by clicking a header cell or one of the leftmost cells,
-then right-click anywhere and use the new menu entry.
-
-<LiveCode 
-  code={advancedCode}
+`}
   title='Advanced menu context handling live demo'
   noInline={true}
 /> 
