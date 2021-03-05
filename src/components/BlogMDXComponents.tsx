@@ -1,6 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import React from 'react';
-import { Link } from "gatsby";
+import { graphql, Link, useStaticQuery } from "gatsby";
 import {
   Table,
   Alert,
@@ -8,7 +8,28 @@ import {
 import { LiveCode } from './LiveCode';
 import Gist from 'react-gist';
 
+const getHostname = (url: string) => {
+  try {
+    return new URL(url).hostname
+  } catch (error) {
+    return false;
+  }
+};
+
 export default function BlogMDXComponents({ children }) {
+
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            siteUrl
+          }
+        }
+      }
+    `
+  );
+
   return (
     <MDXProvider
       components={{
@@ -41,7 +62,14 @@ export default function BlogMDXComponents({ children }) {
         table: props => <div style={{ overflowX: 'auto' }}><Table {...props}>{props.children}</Table></div>,
         th: props => <th {...props} className="font-weight-bold">{props.children}</th>,
         li: props => <li {...props} style={{ fontSize: '1.1rem', lineHeight: '2rem' }}>{props.children}</li>,
-        a: props => <Link {...props} to={props.href} className={props.className}> {props.children} </Link>,
+        a: props => {
+          if (getHostname(props.href) === getHostname(site.siteMetadata.siteUrl)) {
+            return <Link {...props} to={props.href} className={props.className}> {props.children} </Link>
+          } else {
+            return <a {...props} href={props.href} className={props.className} rel="noreferrer"
+              target="_blank"> {props.children} </a>
+          }
+        },
         img: props => <div className='d-flex justify-content-center'><img className='img-raised' {...props}>{props.children}</img> </div>
       }}
     >

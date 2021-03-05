@@ -32,7 +32,12 @@ class Index extends React.Component<PageProps<any>, {}> {
 
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
-        <SEO title={title} />
+        <SEO
+          title={title}
+          bookmarkTitlePrefix={title}
+          bookmarkTitleSuffix={`Spreadsheet experience for your React app`}
+          description={`ReactGrid is a component for displaying and editing data in a spreadsheet-like way. Our Community version is free and open source, or you can take a 1 month trial of ReactGrid PRO.`}
+        />
         <div className="wrapper" ref="wrapper">
           <div className="d-none d-md-block space-50"></div>
           <Container className="pb-5">

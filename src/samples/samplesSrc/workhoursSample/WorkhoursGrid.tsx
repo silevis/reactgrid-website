@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ReactGrid } from '@silevis/reactgrid'
-import { CellChange, Row, Cell } from '@silevis/reactgrid/core';
+import { CellChange, Row, Cell } from '@silevis/reactgrid';
 import { ExtendedColumn, initialColumns, usePrevious, getHeaderCell, transformLogsToModel, getCellValue, getBlankRow } from './utils';
 import { initialWorkhours, WorkLog } from '../../data/workhoursData/initialValues';
 import { DropdownCellTemplate } from '../../cellTemplates/dropdownCellTemplate/dropdownCellTemplate';

@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, canonicalUrl }) {
+function SEO({ description, lang, meta, title, bookmarkTitlePrefix = ``, bookmarkTitleSuffix = ``, canonicalUrl }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,7 +18,7 @@ function SEO({ description, lang, meta, title, canonicalUrl }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -26,7 +26,7 @@ function SEO({ description, lang, meta, title, canonicalUrl }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.description}`}
+      titleTemplate={`${bookmarkTitlePrefix || title} | ${bookmarkTitleSuffix || site.siteMetadata.title}`}
       meta={[
         {
           name: `description`,
@@ -83,4 +83,4 @@ SEO.propTypes = {
   canonicalUrl: PropTypes.bool,
 }
 
-export default SEO
+export default SEO;

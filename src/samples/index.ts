@@ -11,3 +11,4 @@ export * from './samplesSrc/limitedHeightByParentSample/LimitedHeightByParentSam
 export * from './samplesSrc/notLimitedHeightByParentSample/NotLimitedHeightByParentSample';
 export * from './samplesSrc/simpleContextMenuHandling/SimpleContextMenuHandlingSample';
 export * from './samplesSrc/stickyPanesSample/StickyPanesSample';
+export * from './samplesSrc/liquidityPlanner/LiquidityPlanner';

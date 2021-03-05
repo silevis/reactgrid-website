@@ -22,7 +22,10 @@ class Features extends React.Component<any, PageProps> {
     const features = data.allFeaturesYaml.edges;
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
-        <SEO title={'Features'} />
+        <SEO
+          title={'Features'}
+          description={`ReactGrid is a feature rich spreadsheet-like datagrid available in Open Source or PRO versions. They're all there for one reason - to make your application goals a reality.`}
+        />
         <div className="section mt-5 mt-md-0">
           <div className="space-50"></div>
           <h2 style={{ fontSize: '3em' }} className="profile-title text-center mb-3">Features</h2>

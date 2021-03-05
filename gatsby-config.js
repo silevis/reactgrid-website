@@ -3,7 +3,7 @@ module.exports = {
     title: `ReactGrid`,
     author: `Silevis Software Sp. z o.o.`,
     description: `Spreadsheet experience for your React app`,
-    siteUrl: `http://reactgrid.com`,
+    siteUrl: `https://reactgrid.com`,
     pages: [
       { id: 'home', title: `Home`, description: ``, route: `/`, active: false },
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
@@ -84,6 +84,7 @@ module.exports = {
         name: `img`,
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-source-filesystem`,
