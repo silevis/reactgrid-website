@@ -1,7 +1,6 @@
 import * as React from "react";
-import { ReactGrid, Column, Row } from "@silevis/reactgrid";
+import { ReactGrid, Column, Row, Id } from "@silevis/reactgrid";
 import "./styling.scss";
-import { Id } from '@silevis/reactgrid/lib';
 
 
 interface Person {

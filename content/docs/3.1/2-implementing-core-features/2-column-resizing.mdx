@@ -6,66 +6,6 @@ metaDescription: "ReactGrid docs"
 proMark: true
 ---
 import { ReactGrid } from "@silevis/reactgrid";
-const code = `interface Person {
-  name: string;
-  surname: string;
-}
-${` `}
-const getPeople = (): Person[] => [
-  { name: "Thomas", surname: "Goldman" },
-  { name: "Susie", surname: "Quattro" },
-  { name: "", surname: "" }
-];
-${` `}
-const getColumns = (): Column[] => [
-  { columnId: "name", width: 150, resizable: true },
-  { columnId: "surname", width: 150, resizable: true }
-];
-${` `}
-const headerRow: Row = {
-  rowId: "header",
-  cells: [
-    { type: "header", text: "Name" },
-    { type: "header", text: "Surname" }
-  ]
-};
-${` `}
-const getRows = (people: Person[]): Row[] => [
-  headerRow,
-  ...people.map<Row>((person, idx) => ({
-    rowId: idx,
-    cells: [
-      { type: "text", text: person.name },
-      { type: "text", text: person.surname }
-    ]
-  }))
-];
-${` `}
-const ColumnResizingSample = () => {
-  const [people] = React.useState<Person[]>(getPeople());
-  const [columns, setColumns] = React.useState<Column[]>(getColumns());
-  ${` `}
-  const rows = getRows(people);
-  ${` `}
-  const handleColumnResize = (ci: Id, width: number) => {
-    setColumns((prevColumns) => {
-      const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
-      const resizedColumn = prevColumns[columnIndex];
-      const updatedColumn = { ...resizedColumn, width };
-      prevColumns[columnIndex] = updatedColumn;
-      return [...prevColumns];
-    });
-  }
-  ${` `}
-  return <ReactGrid 
-    rows={rows} 
-    columns={columns} 
-    onColumnResized={handleColumnResize} 
-  />;
-}
-${` `}
-render(<ColumnResizingSample/>)
-`;
 
 <Alert color="primary">
 	<i class="fas fa-exclamation-circle pr-3"></i>
@@ -135,7 +75,66 @@ function App() {
 Let's check the results:
 
 <LiveCode 
-  code={code}
+  code={`interface Person {
+  name: string;
+  surname: string;
+}
+${` `}
+const getPeople = (): Person[] => [
+  { name: "Thomas", surname: "Goldman" },
+  { name: "Susie", surname: "Quattro" },
+  { name: "", surname: "" }
+];
+${` `}
+const getColumns = (): Column[] => [
+  { columnId: "name", width: 150, resizable: true },
+  { columnId: "surname", width: 150, resizable: true }
+];
+${` `}
+const headerRow: Row = {
+  rowId: "header",
+  cells: [
+    { type: "header", text: "Name" },
+    { type: "header", text: "Surname" }
+  ]
+};
+${` `}
+const getRows = (people: Person[]): Row[] => [
+  headerRow,
+  ...people.map<Row>((person, idx) => ({
+    rowId: idx,
+    cells: [
+      { type: "text", text: person.name },
+      { type: "text", text: person.surname }
+    ]
+  }))
+];
+${` `}
+const ColumnResizingSample = () => {
+  const [people] = React.useState<Person[]>(getPeople());
+  const [columns, setColumns] = React.useState<Column[]>(getColumns());
+  ${` `}
+  const rows = getRows(people);
+  ${` `}
+  const handleColumnResize = (ci: Id, width: number) => {
+    setColumns((prevColumns) => {
+      const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
+      const resizedColumn = prevColumns[columnIndex];
+      const updatedColumn = { ...resizedColumn, width };
+      prevColumns[columnIndex] = updatedColumn;
+      return [...prevColumns];
+    });
+  }
+  ${` `}
+  return <ReactGrid 
+    rows={rows} 
+    columns={columns} 
+    onColumnResized={handleColumnResize} 
+  />;
+}
+${` `}
+render(<ColumnResizingSample/>)
+`}
   title='Column resizing live demo'
   noInline={true}
 /> 
