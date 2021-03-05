@@ -26,6 +26,7 @@ Our app will provide entering, aggregating, and evaluating planned cash flows.
 
 ![Finished app](./finished-app.gif)
 
+
 On the Internet, you can find many spreadsheets files that e.g. accountants and financial analysts use -
 one of them, as an inspiration, will be moved from spreadsheet to standalone, fully **reactive** React.js app. 
 We also visualize common parameters that help in decision-making with the Chart.js library.
@@ -133,13 +134,13 @@ Some items remain to be explained (and it's the hardest thing to understand):
     filled automatically by moving already calculated value from the cumulative to the next month in the "Cashbox/bank".
   - their operations are repeated until all moths are filled.
 
-![Calculating totals and cumulative](./calculation-pseudo-algorithm.png)
+![Calculating totals and cumulative](./calculation-pseudo-algorithm-part-1.png)
 
 The last part is the "Credit line". Users can update it by typing it in. This variable is constant for all months and is used for 
 calculating "Credit line overdraft" - in a nutshell - if the absolute value from "Cumulative" exceeds the given credit line, 
 then the cell should display this result.
 
-![Calculating credit line overdraft](./calculation-pseudo-algorithm.png)
+![Calculating credit line overdraft](./calculation-pseudo-algorithm-part-2.png)
 
 What about the chart? This part should give us an instant knowledge about the company's state of finance. In this case, we limit ourselves
 to display "Cashbox/bank" and "Credit Line Overdraft" as a line chart and cash inflow and outflow as bars.
@@ -154,7 +155,7 @@ In the penultimate chapter, we discussed 5. tips for good app implementation wit
   E. g. `cashInflow` is initiated with `emptyInflows` that comes from the `rawData.ts` file. This data has no connection
   with ReactGrid's interfaces, and can be used directly by other components like charts.
 
-  <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=cash-inflow.ts -->
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=cash-inflow.ts -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='cash-inflow.ts' />
 
 2. **Applying changes to the data**
@@ -163,7 +164,7 @@ In the penultimate chapter, we discussed 5. tips for good app implementation wit
   Each change is applied by dispatching `setCashInflow`. To set updated inflows we used a technique called currying 
   ([more info](https://javascript.info/currying-partials)), to apply particular `change` on desired groups (`cashInflow`).
 
-  <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=applying-changes.tsx -->
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=applying-changes.tsx -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='applying-changes.tsx' />
 
   ![Reactvity cycle](./reactivity-cycle.png)
@@ -177,7 +178,7 @@ In the penultimate chapter, we discussed 5. tips for good app implementation wit
   A real example from our app shows how we narrowed down the expected change object type exclusively to `NumberCell`, 
   therefore you are sure that you are able to access only actually existing fields.
 
-  <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=typescript-and-reactgrid.ts -->
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=typescript-and-reactgrid.ts -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='typescript-and-reactgrid.ts' />
 
   The other part is e. g. extending the set of built-in cell templates with your own. To be able to do it you have to pass the
@@ -191,12 +192,12 @@ In the penultimate chapter, we discussed 5. tips for good app implementation wit
   or styling on many cells. The solution is quite simple - small, reusable functions. 
   Familiarity with [documentation](/docs/) will definitely be useful.
 
-  <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=composeable-functions.ts -->
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=composeable-functions.ts -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='composeable-functions.ts' />
 
   and the usage: a function that uses mentioned functions to fill up the cells array in a single row.
 
-  <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=defining-row.ts -->
+<!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=defining-row.ts -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='defining-row.ts' />
 
 ## Live demo
