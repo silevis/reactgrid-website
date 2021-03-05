@@ -15,7 +15,7 @@ const Blog = (props) => {
 
   return (
     <Layout pages={pages} social={social} description={description} title={title}>
-      <SEO title={'Blog'} />
+      <SEO title={'Blog'} description={`Explore ReactGrid and unleash the potential of all your React apps with tips, tools, and practices`} />>
       <Header />
       <BlogView posts={posts} blogRoute={blogPageRoute} />
     </Layout>
