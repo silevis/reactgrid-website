@@ -20,23 +20,7 @@ export default DocsRedirectPage;
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        docsVersions {
-          slug
-          desc
-          index
-          active
-        }
-      }
+      ...SiteMetadata
     }
   }
 `

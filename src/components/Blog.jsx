@@ -35,7 +35,7 @@ const BlogPost = ({ node, blogRoute }) => {
         <Col lg="4">
           <div className="card-image h-100 img-raised">
             <Link to={linkUrl} className="h-100">
-              <Img sizes={node.frontmatter.thumbnail.childImageSharp.sizes} className="img rounded h-100" />
+              <Img fluid={node.frontmatter.thumbnail.childImageSharp.fluid} className="img rounded h-100" />
             </Link>
           </div>
         </Col>
@@ -49,7 +49,7 @@ const BlogPost = ({ node, blogRoute }) => {
               <Link to={linkUrl}>read more</Link>
             </p>
             <div className="author">
-              <Img sizes={node.frontmatter.authorImg.childImageSharp.sizes} className="avatar img-raised" />
+              <Img fluid={node.frontmatter.authorImg.childImageSharp.fluid} className="avatar img-raised" />
               <div className="text" style={{ top: '-42px' }}>
                 <span className="text-muted">Written by {node.frontmatter.author}</span>
                 <div className="meta text-black">{node.frontmatter.date}</div>

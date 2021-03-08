@@ -74,9 +74,9 @@
     "react-typography": "^0.16.19",
     "reactstrap": "^8.7.1",
     "styled-components": "^4.4.1",
-    "typeface-merriweather": "0.0.72",
-    "typeface-montserrat": "0.0.75",
-    "typeface-poppins": "0.0.72"
+    "typeface-merriweather": "^1.1.13",
+    "typeface-montserrat": "^1.1.13",
+    "typeface-poppins": "^1.1.13"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",

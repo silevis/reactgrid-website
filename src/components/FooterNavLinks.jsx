@@ -9,13 +9,7 @@ const FooterNavLinks = () => {
         query {
           site {
             siteMetadata {
-              footerNav {
-                id
-                title
-                description
-                route
-                active
-              }
+              ...FooterNav
             }
           }
         }

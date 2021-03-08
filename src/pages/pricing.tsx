@@ -140,30 +140,7 @@ export default Pricing
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        docsVersions {
-          slug
-          desc
-          index
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-      }
+      ...SiteMetadata
     }
   }
 `
