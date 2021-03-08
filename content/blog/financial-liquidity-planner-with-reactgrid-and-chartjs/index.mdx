@@ -132,7 +132,7 @@ Some items remain to be explained (and it's the hardest thing to understand):
   - "Cumulative row" takes cash in the bank, adds "Cash in" and then subtracts "Cash out".
   - User can manipulate the value of a green cell "Cashbox/bank" and is called an "Opening balance". The rest of the cells in this row are
     filled automatically by moving already calculated value from the cumulative to the next month in the "Cashbox/bank".
-  - their operations are repeated until all moths are filled.
+  - these operations are repeated until all months are filled.
 
 ![Calculating totals and cumulative](./calculation-pseudo-algorithm-part-1.png)
 
@@ -167,7 +167,7 @@ In the penultimate chapter, we discussed 5. tips for good app implementation wit
 <!-- https://gist.github.com/patryk0493/87547e63e1bd67105f8d023b24d82512?file=applying-changes.tsx -->
   <Gist id='87547e63e1bd67105f8d023b24d82512' file='applying-changes.tsx' />
 
-  ![Reactvity cycle](./reactivity-cycle.png)
+  ![Reactivity cycle](./reactivity-cycle.png)
 
   Implementing changes handling in this way closes the reactivity cycle, therefore our task of processing input data
   into outputs is fully repeatable and has no side effects.
