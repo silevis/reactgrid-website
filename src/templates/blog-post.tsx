@@ -7,7 +7,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import Img from 'gatsby-image';
+import { getSrc } from "gatsby-plugin-image";
 import { isBrowserIE } from "../functions/isBrowserIE";
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import BlogMDXComponents from '../components/BlogMDXComponents';
@@ -45,11 +45,11 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
         meta={[
           {
             property: `og:image`,
-            content: siteUrl + post.frontmatter.thumbnail.childImageSharp.fluid.src,
+            content: siteUrl + getSrc(post.frontmatter.thumbnail),
           },
           {
             property: `twitter:image`,
-            content: siteUrl + post.frontmatter.thumbnail.childImageSharp.fluid.src,
+            content: siteUrl + getSrc(post.frontmatter.thumbnail),
           },
           {
             property: `twitter:card`,
@@ -65,14 +65,14 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
         <div
           className="page-header-image"
           data-parallax={true}
-          style={{ backgroundImage: `url(${post.frontmatter.thumbnail.childImageSharp.fluid.base64})` }}
+          style={{ backgroundImage: `url(${getSrc(post.frontmatter.thumbnail)})` }}
         />
         <Container>
           <Row>
             <Col className="ml-auto mr-auto text-center" md="8">
               <h1 className="title" style={{ paddingBottom: 30, lineHeight: '3rem' }}>{post.frontmatter.title}</h1>
               <div className="author">
-                <Img fluid={post.frontmatter.authorImg.childImageSharp.fluid} className="avatar img-raised" />
+                {/* <Img fluid={post.frontmatter.authorImg.childImageSharp.fluid} className="avatar img-raised" /> */}
               </div>
               <h4 className="description" style={{ paddingTop: 30 }}>Written by {post.frontmatter.author}</h4>
               <h4 className="description">on {post.frontmatter.date}</h4>
@@ -118,16 +118,20 @@ export const pageQuery = graphql`
         ...BlogPostNode
         authorImg {
           childImageSharp {
-            fluid(maxWidth: 120) {
-              ...Fluid
-            }
+            gatsbyImageData(
+              width: 120
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
         }
         thumbnail {
           childImageSharp {
-            fluid(quality: 100, maxWidth: 1920) {
-              ...Fluid
-            }
+            gatsbyImageData(
+              width: 1920
+              placeholder: BLURRED
+              formats: [AUTO, WEBP, AVIF]
+            )
           }
         }
       }

@@ -42,16 +42,20 @@ export const pageQuery = graphql`
             ...BlogPostNode
             authorImg {
               childImageSharp {
-                fluid(maxWidth: 120) {
-                  ...Fluid
-                }
+                gatsbyImageData(
+                  width: 120
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
             thumbnail {
               childImageSharp {
-                fluid(maxWidth: 900) {
-                  ...Fluid
-                }
+                gatsbyImageData(
+                  width: 200
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
               }
             }
           }

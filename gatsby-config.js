@@ -137,6 +137,7 @@ module.exports = {
         defaultDataLayer: { platform: "dataLayer" },
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     // {
@@ -200,7 +201,7 @@ module.exports = {
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   author: edge.node.frontmatter.author,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
+                  custom_elements: [{ "content:encoded": edge.node.html }], // there should be `edge.node.html`
                 })
               })
             },

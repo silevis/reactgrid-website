@@ -7,8 +7,8 @@ import {
   Row,
   Col
 } from "reactstrap";
-import Img from 'gatsby-image'
-import { Link } from 'gatsby';
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { Link, graphql } from 'gatsby';
 
 const BlogView = ({ posts, blogRoute }) => {
   const blogPosts = posts?.map(({ node }) => {
@@ -35,7 +35,7 @@ const BlogPost = ({ node, blogRoute }) => {
         <Col lg="4">
           <div className="card-image h-100 img-raised">
             <Link to={linkUrl} className="h-100">
-              <Img fluid={node.frontmatter.thumbnail.childImageSharp.fluid} className="img rounded h-100" />
+              {/* <GatsbyImage image={getImage(node.frontmatter.thumbnail)} alt={''} className="img rounded h-100" /> */}
             </Link>
           </div>
         </Col>
@@ -49,7 +49,7 @@ const BlogPost = ({ node, blogRoute }) => {
               <Link to={linkUrl}>read more</Link>
             </p>
             <div className="author">
-              <Img fluid={node.frontmatter.authorImg.childImageSharp.fluid} className="avatar img-raised" />
+              {/* <GatsbyImage image={getImage(node.frontmatter.thumbnail)} alt={''} className='avatar img-raised' /> */}
               <div className="text" style={{ top: '-42px' }}>
                 <span className="text-muted">Written by {node.frontmatter.author}</span>
                 <div className="meta text-black">{node.frontmatter.date}</div>
@@ -63,3 +63,11 @@ const BlogPost = ({ node, blogRoute }) => {
 }
 
 export default BlogView;
+
+export const pageQuery = graphql`
+  query BlogPostsQuery {
+    site {
+      ...SiteMetadata
+    }
+  }
+`
