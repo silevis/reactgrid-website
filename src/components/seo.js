@@ -1,9 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from "react";
+import Helmet from "react-helmet";
+import { useStaticQuery, graphql } from "gatsby";
 
-function SEO({ description, lang, meta, title, bookmarkTitlePrefix = ``, bookmarkTitleSuffix = ``, canonicalUrl }) {
+function SEO({ description = ``, lang = `en`, meta = [], title = ``, bookmarkTitlePrefix = ``, bookmarkTitleSuffix = ``, canonicalUrl = undefined }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -66,21 +65,6 @@ function SEO({ description, lang, meta, title, bookmarkTitlePrefix = ``, bookmar
       <script src="https://klesun-misc.github.io/TypeScript/lib/typescriptServices.js"></script>
     </Helmet>
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-  canonicalUrl: '',
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-  canonicalUrl: PropTypes.bool,
 }
 
 export default SEO;

@@ -134,31 +134,7 @@ const DocsNavButton = ({ post, title, docsPageRoute, children = null }) => {
 export const pageQuery = graphql`
   query DocsPostBySlug($slug: String!) {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-        docsVersions {
-          slug
-          desc
-          index
-          active
-        }
-        docsPagesOrder
-      }
+      ...SiteMetadata
     }
     mdx(fields: { slug: { eq: $slug } }) {
       body

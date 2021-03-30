@@ -53,12 +53,7 @@ class MainNavbar extends React.Component<any, {}> {
                     query {
                       site {
                         siteMetadata {
-                          docsVersions {
-                            slug
-                            desc
-                            index
-                            active
-                          }
+                          ...DocVersions
                         }
                       }
                     }

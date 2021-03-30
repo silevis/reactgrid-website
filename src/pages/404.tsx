@@ -20,24 +20,7 @@ export default NotFoundPage;
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-      }
+      ...SiteMetadata
     }
   }
 `

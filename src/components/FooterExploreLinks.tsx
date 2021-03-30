@@ -9,13 +9,7 @@ const FooterExploreLinks = () => {
         query {
           site {
             siteMetadata {
-              explore {
-                id
-                title
-                description
-                route
-                active
-              }
+              ...Explore
             }
           }
         }

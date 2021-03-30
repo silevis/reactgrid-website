@@ -13,6 +13,7 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import BlogMDXComponents from '../components/BlogMDXComponents';
 import { ShareButtons } from '../components/ShareButtons';
 import "../assets/css/gist.css";
+import SiteMetadata from './../graphql/siteMetadata.query';
 
 interface BlogPostTemplatePageProps {
   [key: string]: any;
@@ -71,7 +72,7 @@ const BlogPost: FC<PageProps<BlogPostTemplatePageProps>> = ({ data }) => {
             <Col className="ml-auto mr-auto text-center" md="8">
               <h1 className="title" style={{ paddingBottom: 30, lineHeight: '3rem' }}>{post.frontmatter.title}</h1>
               <div className="author">
-                <Img sizes={post.frontmatter.authorImg.childImageSharp.sizes} className="avatar img-raised" />
+                <Img fluid={post.frontmatter.authorImg.childImageSharp.fluid} className="avatar img-raised" />
               </div>
               <h4 className="description" style={{ paddingTop: 30 }}>Written by {post.frontmatter.author}</h4>
               <h4 className="description">on {post.frontmatter.date}</h4>
@@ -104,25 +105,7 @@ export default BlogPost;
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
-      siteMetadata {
-        title
-        description
-        siteUrl
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-      }
+      ...SiteMetadata
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
@@ -132,23 +115,18 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        author
-        canonicalUrl
-        tags
+        ...BlogPostNode
         authorImg {
           childImageSharp {
-            sizes(maxWidth: 120) {
-              ...GatsbyImageSharpSizes
+            fluid(maxWidth: 120) {
+              ...Fluid
             }
           }
         }
         thumbnail {
           childImageSharp {
             fluid(quality: 100, maxWidth: 1920) {
-              ...GatsbyImageSharpFluid
+              ...Fluid
             }
           }
         }

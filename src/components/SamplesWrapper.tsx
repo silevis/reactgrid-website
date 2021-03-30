@@ -24,10 +24,12 @@ const SamplesWrapper: React.FC = () => {
 
   const tabMenuItems = enabledExamples.map((sample, idx) =>
     <NavItem key={idx} className="pb-3">
-      <Link to={'/examples/?example=' + sample.urlParam}>
+      <Link to={'/examples/?example=' + sample.urlParam}
+      >
         <NavLink
           className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
           style={{ cursor: 'pointer' }}
+          tag='span'
         >
           {sample.title}
         </NavLink>

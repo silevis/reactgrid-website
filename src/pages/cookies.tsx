@@ -69,7 +69,7 @@ class Cookies extends React.Component<PageProps<any>, {}> {
             <Container>
               <Row>
                 <Col className="ml-auto mr-auto" md="10">
-                  <Row className="justify-content-between ">
+                  <Row className="justify-content-between">
                     <Col>
                       <h1 className="h1 px-3">This is the Cookie Policy for ReactGrid</h1>
                       <h3 className="h3 px-3 mb-0 text-muted">Effective date: 16 December 2019</h3>
@@ -200,11 +200,11 @@ class Cookies extends React.Component<PageProps<any>, {}> {
                         <p className="pb-3">Hopefully that has clarified things for you and as was previously mentioned if there is
                         something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case
                         it does interact with one of the features you use on our site.
-                             </p>
+                        </p>
                         <p className="pb-3">
                           However if you are still looking for more information then you can contact us through
                           one of our preferred contact methods:
-                            </p>
+                        </p>
                         <ul className="pl-0">
                           <li>
                             <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
@@ -229,24 +229,7 @@ export default Cookies
 export const pageQuery = graphql`
   query {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-      }
+      ...SiteMetadata
     }
   }
 `

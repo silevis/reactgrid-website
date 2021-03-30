@@ -15,7 +15,7 @@ const Blog = (props) => {
 
   return (
     <Layout pages={pages} social={social} description={description} title={title}>
-      <SEO title={'Blog'} description={`Explore ReactGrid and unleash the potential of all your React apps with tips, tools, and practices`} />>
+      <SEO title={'Blog'} description={`Explore ReactGrid and unleash the potential of all your React apps with tips, tools, and practices`} />
       <Header />
       <BlogView posts={posts} blogRoute={blogPageRoute} />
     </Layout>
@@ -27,24 +27,7 @@ export default Blog
 export const pageQuery = graphql`
   query BlogPostsQuery {
     site {
-      siteMetadata {
-        title
-        description
-        pages {
-          description
-          id
-          route
-          title
-          active
-        }
-        social {
-          description
-          fontAwesomeIcon
-          title
-          url
-          active
-        }
-      }
+      ...SiteMetadata
     }
     allMdx(sort: { fields: [frontmatter___date], order: DESC },
       filter: {frontmatter: {posttype: {eq: "blog"}, published: {eq: true}}}
@@ -56,22 +39,18 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            title
-            description
-            author
-            canonicalUrl
-            date(formatString: "DD MMMM YYYY")
-            thumbnail {
+            ...BlogPostNode
+            authorImg {
               childImageSharp {
-                sizes(maxWidth: 900) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxWidth: 120) {
+                  ...Fluid
                 }
               }
             }
-            authorImg {
+            thumbnail {
               childImageSharp {
-                sizes(maxWidth: 120) {
-                  ...GatsbyImageSharpSizes
+                fluid(maxWidth: 900) {
+                  ...Fluid
                 }
               }
             }
