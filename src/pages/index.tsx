@@ -49,10 +49,6 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
                 </p>
-                <p className="h4 font-weight-light">
-                  ReactGrid is available in two versions: MIT, which serves the full interface, but is limited in functionality
-                  and PRO, which is a fully functional version. You can compare both versions <Link to={featuresComparisonPage.route}>here</Link>.
-                </p>
                 <Link to={featuresComparisonPage.route}>
                   <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
                 </Link>

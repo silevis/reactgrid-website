@@ -17,7 +17,7 @@ const FooterExploreLinks = () => {
       render={data => {
         const { explore } = data.site.siteMetadata;
         return explore
-          .filter(page => page.active)
+          .filter(page => page.active && page.title !== 'Feature comparison')
           .map(page => <FooterLink key={page.id} route={page.route} title={page.title} />)
       }}
     />
