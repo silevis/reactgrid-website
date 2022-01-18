@@ -22,13 +22,12 @@ class Index extends React.Component<PageProps<any>, {}> {
   render() {
     const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
+    const githubSocial = social.find(social => social.title === 'Github');
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
-    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     // const npmSocial = social.find(social => social.title === 'npm');
-    // const githubSocial = social.find(social => social.title === 'Github');
 
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
@@ -49,9 +48,9 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
                 </p>
-                <Link to={featuresComparisonPage.route}>
+                <a href={githubSocial.url} target="_blank">
                   <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
-                </Link>
+                </a>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
@@ -120,11 +119,11 @@ class Index extends React.Component<PageProps<any>, {}> {
                 </li>
               </ul>
               <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
-                <Link to={featuresComparisonPage.route}>
+                <a href={githubSocial.url} target="_blank">
                   <Button className="my-5 mr-3 px-3 d-inline-block btn-simple d-flex align-items-center" size='lg'>
                     <i className="fas fa-exchange-alt fa-xl pr-2"></i>Get Now
                   </Button>
-                </Link>
+                </a>
               </div>
               <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
             </Col>
