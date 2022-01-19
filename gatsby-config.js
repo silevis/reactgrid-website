@@ -217,7 +217,6 @@ module.exports = {
                         title
                         metaDescription
                         metaTitle
-                        proMark
                         tags
                         date
                         author
