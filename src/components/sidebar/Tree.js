@@ -8,7 +8,7 @@ import {
 const calculateTreeData = (navOrder, edges, version) => {
 
   const originalData = true ? edges.filter(({ node: { fields: { slug } } }) => slug !== '/') : edges;
-  const tree = originalData.reduce((accu, { node: { fields: { slug }, frontmatter: { title } } }) => {
+  const tree = originalData.reduce((accu, { node: { fields: { slug }, frontmatter: { title, proMark } } }) => {
     const parts = slug.split('/');
     if (parts[1] !== version) return accu;
     let { items: prevItems } = accu;
@@ -28,12 +28,14 @@ const calculateTreeData = (navOrder, edges, version) => {
     if (existingItem) {
       existingItem.url = slug;
       existingItem.title = title;
+      existingItem.proMark = proMark;
     } else {
       prevItems.push({
         label: parts[parts.length - 1],
         url: slug,
         items: [],
         title,
+        proMark
       });
     }
     return accu;

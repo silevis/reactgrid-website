@@ -143,6 +143,7 @@ export const pageQuery = graphql`
         title
         metaDescription
         metaTitle
+        proMark
       }
     }
     allMdx(filter: {frontmatter: {posttype: {eq: "docs"}}, fields: {slug: {}}}, sort: {fields: fields___slug, order: ASC}) {
@@ -157,6 +158,7 @@ export const pageQuery = graphql`
             title
             metaDescription
             metaTitle
+            proMark
           }
         }
       }

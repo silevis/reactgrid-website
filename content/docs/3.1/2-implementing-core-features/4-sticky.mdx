@@ -3,13 +3,19 @@ posttype: "docs"
 title: Sticky rows and columns
 metaTitle: "Sticky rows and columns"
 metaDescription: "ReactGrid docs"
+proMark: true
 ---
 import { ReactGrid } from "@silevis/reactgrid";
 
 #### Introduction
 
 ReactGrid allows you to stick chosen rows and columns at the top or left side and additionally on the right and at the bottom 
-of the ReactGrid viewport. Sticky rows or columns will be visible at all times, no matter what the scroll position is.
+of the ReactGrid viewport only in PRO version. Sticky rows or columns will be visible at all times, no matter what the scroll position is.
+ 
+<Alert color="primary">
+	<i class="fas fa-exclamation-circle pr-3"></i>
+	Right and bottom sticky ranges are only available in PRO version
+</Alert>
 
 Sticky rows and columns can be enabled by adding dedicated `ReactGrid` component properties:
 - `stickyTopRows`
