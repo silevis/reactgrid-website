@@ -45,12 +45,12 @@ export const samplesData: ExampleInfo[] = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Vertical and horizontal grouping (see the <ExternalLink to={'/docs/3.1/4-cell-templates/5-ChevronCell/'} />)</>,
-                    <>Custom cell templates (e.g. non editable number cell, see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
-                    <>Context menu (adding and removing row, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
-                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Row reordering (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Vertical and horizontal grouping (see the <ExternalLink to={'/docs/4.0/4-cell-templates/5-ChevronCell/'} />)</>,
+                    <>Custom cell templates (e.g. non editable number cell, see the <ExternalLink to={'/docs/4.0/5-create-your-own-cell-template/'} />)</>,
+                    <>Context menu (adding and removing row, see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Row reordering (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4a-selections/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -78,13 +78,13 @@ export const samplesData: ExampleInfo[] = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Highlights (see the <ExternalLink to={'/docs/3.1/4-cell-templates/5-GroupCell/'} />)</>,
-                    <>Custom cell templates (e.g. flag icon, see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
-                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Column resize (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/2-column-resizing/'} />)</>,
-                    <>Row and column reordering (see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
-                    <>Range, column and row selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Context menu (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/5-context-menu/'} />)</>,
+                    <>Highlights (see the <ExternalLink to={'/docs/4.0/4-cell-templates/5-GroupCell/'} />)</>,
+                    <>Custom cell templates (e.g. flag icon, see the <ExternalLink to={'/docs/4.0/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Column resize (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/2-column-resizing/'} />)</>,
+                    <>Row and column reordering (see the&nbsp;<ExternalLink to={'/docs/4.0/2-implementing-core-features/3-column-and-row-reordering/'} />)</>,
+                    <>Range, column and row selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/4.0/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Context menu (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/5-context-menu/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,
@@ -113,10 +113,10 @@ export const samplesData: ExampleInfo[] = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Custom cell templates (see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/4.0/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <ExternalLink to={'/docs/4.0/5-create-your-own-cell-template/'} />)</>,
                     `Copy/cut/paste`,
                     `Touch capability`,
                     `SASS custom styling`,
@@ -145,9 +145,9 @@ export const samplesData: ExampleInfo[] = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
-                    <>Sticky row and column (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Custom cell templates (see the <ExternalLink to={'/docs/3.1/5-create-your-own-cell-template/'} />)</>,
+                    <>Range selection (+ multi selection, see the&nbsp;<ExternalLink to={'/docs/4.0/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky row and column (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Custom cell templates (see the <ExternalLink to={'/docs/4.0/5-create-your-own-cell-template/'} />)</>,
                     `Copy/cut/paste`,
                     `Touch capability`,
                     `SASS custom styling`,
@@ -172,8 +172,8 @@ export const samplesData: ExampleInfo[] = [
             {
                 header: `Core features (applied):`,
                 content: [
-                    <>Sticky columns (see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4-sticky/'} />)</>,
-                    <>Range selection (+ multi selection, see the <ExternalLink to={'/docs/3.1/2-implementing-core-features/4a-selections/'} />)</>,
+                    <>Sticky columns (see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4-sticky/'} />)</>,
+                    <>Range selection (+ multi selection, see the <ExternalLink to={'/docs/4.0/2-implementing-core-features/4a-selections/'} />)</>,
                     `Fill handle`,
                     `Copy/cut/paste`,
                     `Touch capability`,

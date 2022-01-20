@@ -3,7 +3,7 @@
   title: Multi user capability
   description: "ReactGrid supports multiple users operations on the same sheet simultaneously "
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/6-highlights/"
+  externalLink: "/docs/4.0/2-implementing-core-features/6-highlights/"
 - mediaSrc: fill-handle
   imgAlt: "Video describing fill handle feature"
   title: Fill handle
@@ -27,25 +27,25 @@
   title: "Column Resize"
   description: Modify the width of each column with drag&drop capability
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/2-column-resizing/"
+  externalLink: "/docs/4.0/2-implementing-core-features/2-column-resizing/"
 - mediaSrc: column-reorder
   imgAlt: "Video describing colum reordering feature"
   title: "Column reordering"
   description: "Select columns, drag them and drop at the desired destination"
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/"
+  externalLink: "/docs/4.0/2-implementing-core-features/3-column-and-row-reordering/"
 - mediaSrc: row-reorder
   imgAlt: "Video describing row reordering feature"
   title: "Row reordering"
   description: "Select rows, drag them and drop at the desired destination"
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/3-column-and-row-reordering/"
+  externalLink: "/docs/4.0/2-implementing-core-features/3-column-and-row-reordering/"
 - mediaSrc: sticky
   imgAlt: "Video describing sticky rows and columns"
   title: "Sticky columns and rows"
   description: You're able to lock specific rows or columns so that they are always visible when scrolling
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/4-sticky/"
+  externalLink: "/docs/4.0/2-implementing-core-features/4-sticky/"
 - mediaSrc: copy-cut-paste
   imgAlt: "Video describing copy-cut-paste feature"
   title: "Copy, cut, paste"
@@ -57,13 +57,13 @@
   title: "Group Id"
   description: "Apply changes to specyfic cells on pasting data and executing fill handle action"
   externalLinkText: ""
-  externalLink: "/docs/3.1/2-implementing-core-features/5a-groupId/"
+  externalLink: "/docs/4.0/2-implementing-core-features/5a-groupId/"
 - mediaSrc: context-menu
   imgAlt: "Video describing context menu feature"
   title: Context menu
   description: Use our built-in context menu or replace it with third party component
   externalLinkText: "Open in docs"
-  externalLink: "/docs/3.1/2-implementing-core-features/5-context-menu/"
+  externalLink: "/docs/4.0/2-implementing-core-features/5-context-menu/"
 - mediaSrc: touch-device
   imgAlt: Animation for optimized for Touch devices feature
   title: Optimized for Touch devices
