@@ -84,6 +84,12 @@ class Index extends React.Component<PageProps<any>, {}> {
                     ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices
                   </h4>
                 </li>
+                <li>
+                  <h3 className="mb-1">100% free</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is free for personal and commercial use
+                  </h4>
+                </li>
               </ul>
               <h1 className="title font-weight-normal pb-2">ReactGrid is NOT</h1>
               <ul className="pl-5">
