@@ -1,4 +1,4 @@
-import { Row } from "@silevis/reactgrid/lib";
+import { Row } from "@silevis/reactgrid";
 import { noBorderCellStyle } from "./utils";
 import { Athlete } from "./model";
 import { SampleCellTypes } from "./ExcercisesDataSample";
