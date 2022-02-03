@@ -87,7 +87,7 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <li>
                   <h3 className="mb-1">100% free</h3>
                   <h4 className="pb-3">
-                    ReactGrid is free for personal and commercial use
+                    ReactGrid is free for personal and commercial use under the MIT license
                   </h4>
                 </li>
               </ul>

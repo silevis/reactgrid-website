@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { ReactGrid } from '@silevis/reactgrid';
-import { Column, CellChange, NumberCell, DefaultCellTypes, ChevronCell } from '@silevis/reactgrid/lib';
+import { ReactGrid, Column, CellChange, NumberCell, DefaultCellTypes, ChevronCell } from '@silevis/reactgrid';
 import { Athlete, Excercise, Result } from './model';
 import { DisabledCell, DisabledCellTemplate } from '../../cellTemplates/disabledCellTemplate/DisabledCellTemplate';
 import { initialAthletes, initialExcercises, initialResults, parameters } from '../../data/excercisesData/initialValues';

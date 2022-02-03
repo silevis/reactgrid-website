@@ -1,4 +1,4 @@
-import { BorderProps, CellStyle, Row } from "@silevis/reactgrid/lib";
+import { BorderProps, CellStyle, Row } from "@silevis/reactgrid";
 import { SampleCellTypes } from "./ExcercisesDataSample";
 
 export const noBorder: BorderProps = {

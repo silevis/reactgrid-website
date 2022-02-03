@@ -23,12 +23,12 @@ const SamplesWrapper: React.FC = () => {
   const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam).component;
 
   const tabMenuItems = enabledExamples.map((sample, idx) =>
-    <NavItem key={idx} className="pb-3">
+    <NavItem key={idx} className="pb-0 pb-md-3 flex-shrink-0" id={`item-${idx}`}>
       <Link to={'/examples/?example=' + sample.urlParam}
       >
         <NavLink
-          className={classnames({ active: activeTabIdx === idx, 'h-100 d-flex flex-column justify-content-center': true })}
-          style={{ cursor: 'pointer' }}
+          className={classnames([{ active: activeTabIdx === idx }])}
+          style={{ cursor: 'pointer'}}
           tag='span'
         >
           {sample.title}
@@ -36,6 +36,7 @@ const SamplesWrapper: React.FC = () => {
       </Link>
     </NavItem>
   );
+
   const sampleTabs = enabledExamples.map((sample, idx) =>
     <SampleTab
       key={idx}
@@ -48,12 +49,11 @@ const SamplesWrapper: React.FC = () => {
   );
 
   return (
-    <Container className="section  px-3">
+    <Container className="section px-3">
       <Row>
         <Col>
-          <div className="space-50"></div>
           <Nav pills className={`justify-content-center nav-pills-icons`}  >
-            {tabMenuItems}
+            <div className="d-flex w-100" style={{overflowX: 'auto', justifyContent: 'space-between'}}>{tabMenuItems}</div>
             <div className="space-50"></div>
             <TabContent activeTab={activeTabIdx} className="example-tabs-content w-100">
               {sampleTabs}
