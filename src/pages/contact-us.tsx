@@ -13,7 +13,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 
 const categories = [
   "General questions",
-  "PRO version inquiry",
   "Request for quotation",
   "Support",
   "Other"

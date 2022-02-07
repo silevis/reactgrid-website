@@ -93,7 +93,6 @@ const DocsPostTemplate: FC<PageProps> = ({ data, location }) => {
             <Col md="9" lg="7" xl="7" className="pl-md-5 pr-lg-5 pl-lg-2">
               <h1 id="docs-header"><span className="text-primary">
                 {post.frontmatter.metaTitle}
-                {/* {post.frontmatter.proMark && <i className="fas fa-tachometer-alt pl-2"></i>} */}
               </span>
               </h1>
               <CustomMDXComponents>

@@ -16,7 +16,8 @@ import {
 class MainNavbar extends React.Component<any, {}> {
 
   render() {
-    const { pages, title, description } = this.props;
+    const { pages, title, description, social } = this.props;
+    const githubSocial = social.find(social => social.title === 'Github');
     return (
       <header className="sticky-header ">
         <div className="header header-2">
@@ -60,7 +61,6 @@ class MainNavbar extends React.Component<any, {}> {
                   `}
                     render={data => {
                       const docsVersions = data.site.siteMetadata.docsVersions.find(version => version.active);
-                      const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
                       // const githubSocial = social.find(social => social.title === 'Github');
                       const navbarLinks = pages.filter(page => page.active).map(page => {
                         const route = page.route === '/docs' ? `${page.route}${docsVersions.slug}${docsVersions.index}/` : page.route
@@ -68,9 +68,13 @@ class MainNavbar extends React.Component<any, {}> {
                         return <NavbarLink key={page.id} route={route}>{page.title}</NavbarLink>
                       });
                       const getNow = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
-                        <NavLink to={featuresComparisonPage.route} tag={Link} activeClassName="main-navigation-active font-weight-bold" className='h-100 d-flex align-items-center'>
-                          <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize">Get Now</Button>
-                        </NavLink>
+                        <a href={githubSocial.url} target="_blank" className='h-100 d-flex align-items-center'>
+                          <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize d-flex align-items-center">
+                            <i className="fab fa-github mr-1" />
+                            
+                            Get Now
+                          </Button>
+                        </a>
                       </li>
                       // const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
                       //   <Button rel="noopener noreferrer" className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">

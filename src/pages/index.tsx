@@ -22,13 +22,12 @@ class Index extends React.Component<PageProps<any>, {}> {
   render() {
     const { data } = this.props;
     const { title, description, pages, social } = data.site.siteMetadata;
+    const githubSocial = social.find(social => social.title === 'Github');
     // const demoPage = pages.find(page => page.id === 'examples');
     // const docsVersion = docsVersions.find(version => version.active);
-    const featuresComparisonPage = pages.find(page => page.id === 'feature-comparison');
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     // const npmSocial = social.find(social => social.title === 'npm');
-    // const githubSocial = social.find(social => social.title === 'Github');
 
     return (
       <Layout pages={pages} social={social} description={description} title={title}>
@@ -46,16 +45,28 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <h1 className="title display-1 mb-5 text-primary page-title">
                   Spreadsheet experience for your React app.
                 </h1>
+                
                 <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
                 </p>
-                <p className="h4 font-weight-light">
-                  ReactGrid is available in two versions: MIT, which serves the full interface, but is limited in functionality
-                  and PRO, which is a fully functional version. You can compare both versions <Link to={featuresComparisonPage.route}>here</Link>.
-                </p>
-                <Link to={featuresComparisonPage.route}>
-                  <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
-                </Link>
+                
+                <div className="d-flex align-items-center">
+                  <a href={githubSocial.url} target="_blank">
+                    <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>
+                      Check on Github
+                    </Button>
+                  </a>
+
+                  <iframe 
+                    src="https://stars.devunltd.com/badge.html?user=silevis&amp;repo=reactgrid&amp;button=true&amp;buttoncount=true" 
+                    className="ml-4"
+                    frameBorder="0" 
+                    scrolling="0" 
+                    width="250" 
+                    height="45" 
+                    title="Star on GitHub"
+                  />
+                </div>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
@@ -87,6 +98,12 @@ class Index extends React.Component<PageProps<any>, {}> {
                   <h3 className="mb-1">Optimized for touch devices</h3>
                   <h4 className="pb-3">
                     ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices
+                  </h4>
+                </li>
+                <li>
+                  <h3 className="mb-1">100% free</h3>
+                  <h4 className="pb-3">
+                    ReactGrid is free for personal and commercial use under the MIT license
                   </h4>
                 </li>
               </ul>
@@ -124,11 +141,11 @@ class Index extends React.Component<PageProps<any>, {}> {
                 </li>
               </ul>
               <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
-                <Link to={featuresComparisonPage.route}>
+                <a href={githubSocial.url} target="_blank">
                   <Button className="my-5 mr-3 px-3 d-inline-block btn-simple d-flex align-items-center" size='lg'>
-                    <i className="fas fa-exchange-alt fa-xl pr-2"></i>Get Now
+                    <i className="fas fa-exchange-alt pr-2"></i>Get Now
                   </Button>
-                </Link>
+                </a>
               </div>
               <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
             </Col>

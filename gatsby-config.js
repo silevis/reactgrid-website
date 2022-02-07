@@ -10,7 +10,6 @@ module.exports = {
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
-      { id: 'feature-comparison', title: `Feature-comparison`, description: ``, route: `/feature-comparison`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
     ],
     footerNav: [
@@ -21,13 +20,13 @@ module.exports = {
     ],
     explore: [
       { id: 'features', title: `Features`, description: ``, route: `/features`, active: true },
-      { id: 'feature-comparison', title: `Feature comparison`, description: ``, route: `/feature-comparison`, active: true },
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
       { id: 'contact-us', title: `Contact us`, description: ``, route: `/contact-us`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
     ],
     docsVersions: [
+      { slug: "/4.0", desc: '4.0', index: '/0-introduction', active: true },
       { slug: "/3.1", desc: '3.1', index: '/0-introduction', active: true },
       { slug: "/3.0", desc: '3.0', index: '/0-introduction', active: true }
     ],
