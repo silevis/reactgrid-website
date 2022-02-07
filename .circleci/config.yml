@@ -16,10 +16,6 @@ jobs:
             git config --global user.name "$GITHUB_AUTHOR_NAME"
 
       - run:
-          name: Install build essentials
-          command: apt-get install make nasm autoconf automake libtool dpkg pkgconfig libpng libpng-dev g++
-
-      - run:
           name: Install Dependencies
           command: npm install
 
