@@ -17,7 +17,7 @@ jobs:
 
       - run:
           name: Install build essentials
-          command: apt-get add make nasm autoconf automake libtool dpkg pkgconfig libpng libpng-dev g++
+          command: apt-get install make nasm autoconf automake libtool dpkg pkgconfig libpng libpng-dev g++
 
       - run:
           name: Install Dependencies
