@@ -9,7 +9,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/tag": "^0.20.3",
-    "@silevis/reactgrid": "^4.0.1",
+    "@silevis/reactgrid": "^4.0.2",
     "@types/chart.js": "2.9",
     "@types/helmet": "^4.0.0",
     "@types/react": "^17.0.3",
