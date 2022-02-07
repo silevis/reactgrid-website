@@ -45,12 +45,28 @@ class Index extends React.Component<PageProps<any>, {}> {
                 <h1 className="title display-1 mb-5 text-primary page-title">
                   Spreadsheet experience for your React app.
                 </h1>
+                
                 <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
                 </p>
-                <a href={githubSocial.url} target="_blank">
-                  <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>Get Now</Button>
-                </a>
+                
+                <div className="d-flex align-items-center">
+                  <a href={githubSocial.url} target="_blank">
+                    <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>
+                      Check on Github
+                    </Button>
+                  </a>
+
+                  <iframe 
+                    src="https://stars.devunltd.com/badge.html?user=silevis&amp;repo=reactgrid&amp;button=true&amp;buttoncount=true" 
+                    className="ml-4"
+                    frameBorder="0" 
+                    scrolling="0" 
+                    width="250" 
+                    height="45" 
+                    title="Star on GitHub"
+                  />
+                </div>
               </Col>
               <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
                 <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
@@ -127,7 +143,7 @@ class Index extends React.Component<PageProps<any>, {}> {
               <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
                 <a href={githubSocial.url} target="_blank">
                   <Button className="my-5 mr-3 px-3 d-inline-block btn-simple d-flex align-items-center" size='lg'>
-                    <i className="fas fa-exchange-alt fa-xl pr-2"></i>Get Now
+                    <i className="fas fa-exchange-alt pr-2"></i>Get Now
                   </Button>
                 </a>
               </div>

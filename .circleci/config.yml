@@ -20,10 +20,6 @@ jobs:
           command: npm install
 
       - run:
-          name: Install ReactGrid Pro
-          command: npm install https://pkg.reactgrid.com/$REACTGRID_PRO_AUTH_TOKEN --no-save -f
-
-      - run:
           name: Build static
           command: npm run build
 

@@ -69,7 +69,11 @@ class MainNavbar extends React.Component<any, {}> {
                       });
                       const getNow = <li key={'getStartedLink'} className="align-items-center d-flex p-0">
                         <a href={githubSocial.url} target="_blank" className='h-100 d-flex align-items-center'>
-                          <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize">Get Now</Button>
+                          <Button type="button" className="btn-primary btn-sm px-4 py-2 text-capitalize d-flex align-items-center">
+                            <i className="fab fa-github mr-1" />
+                            
+                            Get Now
+                          </Button>
                         </a>
                       </li>
                       // const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
