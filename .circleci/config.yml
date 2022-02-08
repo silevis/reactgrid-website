@@ -30,14 +30,6 @@ jobs:
             mv public/* /tmp/build/public
 
       - run:
-          name: Add changes
-          command: git add .
-
-      - run:
-          name: Commit files
-          command: git commit -m "Updating files [ci skip]"
-
-      - run:
           name: Checkout to deploy branch
           command: git checkout $GITHUB_DEPLOY_BRANCH
 
