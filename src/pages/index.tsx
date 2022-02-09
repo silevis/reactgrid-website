@@ -47,7 +47,7 @@ class Index extends React.Component<PageProps<any>, {}> {
                 </h1>
                 
                 <p className="em-xxs font-weight-light pb-3">
-                  ReactGrid is a component for displaying and editing data in a spreadsheet-like way.
+                  ReactGrid is an open-source React component for displaying and editing data in a spreadsheet-like way.
                 </p>
                 
                 <div className="d-flex align-items-center">
