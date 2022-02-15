@@ -2,29 +2,39 @@ import React from "react"
 import { graphql, Link, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import {
-  Container,
-  Row,
-  Col,
-  Button
-} from "reactstrap";
-import SamplePoster from "../assets/img/sample.png";
-import Video from "../assets/video/sample.mp4";
+import { Container, Row, Col, Button, Card } from "reactstrap"
+import SamplePoster from "../assets/img/sample.png"
+import Video from "../assets/video/sample.mp4"
 
+const blocks = [
+  {
+    title: "Place any cell anywhere",
+    caption:
+      "ReactGrid is fully customizable and extensible. You can literally place any cell type anywhere in the grid",
+  },
+  {
+    title: "Optimized for touch devices",
+    caption: "ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices",
+  },
+  {
+    title: "Open sourced and MIT licensed",
+    caption: "ReactGrid is free for personal and commercial use under the MIT license",
+  },
+]
 
 class Index extends React.Component<PageProps<any>, {}> {
   componentDidMount() {
-    document.body.classList.add("reset-page");
+    document.body.classList.add("reset-page")
   }
   componentWillUnmount() {
-    document.body.classList.remove("reset-page");
+    document.body.classList.remove("reset-page")
   }
   render() {
-    const { data } = this.props;
-    const { title, description, pages, social } = data.site.siteMetadata;
-    const githubSocial = social.find(social => social.title === 'Github');
+    const { data } = this.props
+    const { title, description, pages, social } = data.site.siteMetadata
+    const githubSocial = social.find((social) => social.title === "Github")
     // const demoPage = pages.find(page => page.id === 'examples');
-    // const docsVersion = docsVersions.find(version => version.active);
+    // const docsVersion = docsVersions.find(version => versions.active);
     // const docsPage = pages.find(page => page.id === 'docs');
     // const usps = data.allUspsYaml.edges;
     // const npmSocial = social.find(social => social.title === 'npm');
@@ -41,35 +51,41 @@ class Index extends React.Component<PageProps<any>, {}> {
           <div className="d-none d-md-block space-50"></div>
           <Container className="pb-5">
             <Row>
-              <Col className="mr-auto text-left align-items-center" md="12" lg="7" >
+              <Col className="mr-auto text-left align-items-center" md="12" lg="7">
                 <h1 className="title display-1 mb-5 text-primary page-title">
                   Spreadsheet experience for your React app.
                 </h1>
-                
+
                 <p className="em-xxs font-weight-light pb-3">
                   ReactGrid is an open-source React component for displaying and editing data in a spreadsheet-like way.
                 </p>
-                
+
                 <div className="d-flex align-items-center">
                   <a href={githubSocial.url} target="_blank">
-                    <Button type="button" color='primary' className="px-5 py-3" style={{ fontSize: '1.3em' }}>
+                    <Button type="button" color="primary" className="px-5 py-3" style={{ fontSize: "1.3em" }}>
                       Check on Github
                     </Button>
                   </a>
 
-                  <iframe 
-                    src="https://stars.devunltd.com/badge.html?user=silevis&amp;repo=reactgrid&amp;button=true&amp;buttoncount=true" 
+                  <iframe
+                    src="https://stars.devunltd.com/badge.html?user=silevis&amp;repo=reactgrid&amp;button=true&amp;buttoncount=true"
                     className="ml-4"
-                    frameBorder="0" 
-                    scrolling="0" 
-                    width="250" 
-                    height="45" 
+                    frameBorder="0"
+                    scrolling="0"
+                    width="250"
+                    height="45"
                     title="Star on GitHub"
                   />
                 </div>
               </Col>
-              <Col className="ml-auto mt-5 mt-md-0 d-flex align-items-center justify-content-center" md="12" lg="5" >
-                <video controls autoPlay loop poster={SamplePoster} style={{ maxWidth: '500px', width: '100%', boxShadow: '#787878 0px 0px 10px -3px' }}>
+              <Col className="ml-auto mt-5 mt-ml-0 d-flex align-items-center justify-content-center" md="12" lg="5">
+                <video
+                  controls
+                  autoPlay
+                  loop
+                  poster={SamplePoster}
+                  style={{ maxWidth: "500px", width: "100%", boxShadow: "#787878 0px 0px 10px -3px" }}
+                >
                   <source src={Video} type="video/mp4" />
                   <track kind="captions" />
                 </video>
@@ -77,86 +93,26 @@ class Index extends React.Component<PageProps<any>, {}> {
             </Row>
           </Container>
         </div>
+
         <Container>
           <Row className="align-items-center">
-            <Col className="pb-5">
-              <h1 className="title font-weight-normal pb-2">Why is ReactGrid unique?</h1>
-              <ul className="pl-5">
-                <li>
-                  <h3 className="mb-1">Reactive</h3>
-                  <h4 className="pb-3">
-                    ReactGrid is written purely in React with reactivity in mind. Rendering happens based on state changes
-                  </h4>
-                </li>
-                <li>
-                  <h3 className="mb-1">Place any cell anywhere</h3>
-                  <h4 className="pb-3">
-                    ReactGrid is fully customizable and extensible. You can literally place any cell type anywhere in the grid
-                  </h4>
-                </li>
-                <li>
-                  <h3 className="mb-1">Optimized for touch devices</h3>
-                  <h4 className="pb-3">
-                    ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices
-                  </h4>
-                </li>
-                <li>
-                  <h3 className="mb-1">100% free</h3>
-                  <h4 className="pb-3">
-                    ReactGrid is free for personal and commercial use under the MIT license
-                  </h4>
-                </li>
-              </ul>
-              <h1 className="title font-weight-normal pb-2">ReactGrid is NOT</h1>
-              <ul className="pl-5">
-                <li>
-                  <h3 className="mb-1">Record-based data table</h3>
-                  <h4>
-                    Looking for a data grid with Sorting, Filtering, Grouping and Spreadsheet-like edit modes?<br /> Check out these:
-                  </h4>
-                  <ul className="pb-4">
-                    <li>
-                      <h4 className="mb-1"><a href={'https://www.ag-grid.com/'} target="_blank" rel="noreferrer">Ag-grid</a></h4>
-                    </li>
-                    <li>
-                      <h4 className="mb-1"><a href={'https://handsontable.com/'} target="_blank" rel="noreferrer">Handsontable</a></h4>
-                    </li>
-                    <li>
-                      <h4 className="mb-1"><a href={'https://js.devexpress.com/'} target="_blank" rel="noreferrer">DevExtreme DataGrid</a></h4>
-                    </li>
-                    <li>
-                      <h4 className="mb-1"><a href={'https://www.telerik.com/kendo-ui/'} target="_blank" rel="noreferrer">Telerik Kendo UI DataTable</a></h4>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <h3 className="mb-1">Spreadsheet with formulas</h3>
-                  <h4>
-                    Do you need to display a fully functional spreadsheet in the browser? Have a look at &nbsp;
-                    <a href={'https://demos.telerik.com/kendo-ui/spreadsheet/index'} target="_blank" rel="noreferrer">
-                      Telerik Kendo UI Spreadsheet </a>or&nbsp;
-                    <a href={'https://dhtmlx.com/docs/products/dhtmlxSpreadsheet/'} target="_blank" rel="noreferrer">dhtmlxSpreadsheet</a>&nbsp;
-                    which have a toolbar, coordinates and support formulas.
-                  </h4>
-                </li>
-              </ul>
-              <div className="buttons font-weight-bold text-uppercase d-flex justify-content-center">
-                <a href={githubSocial.url} target="_blank">
-                  <Button className="my-5 mr-3 px-3 d-inline-block btn-simple d-flex align-items-center" size='lg'>
-                    <i className="fas fa-exchange-alt pr-2"></i>Get Now
-                  </Button>
-                </a>
-              </div>
-              <h4 className="mb-1">For support, questions and more features reach us at <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a></h4>
+            <Col className="pb-5 d-flex flex-row" style={{ gap: "2rem" }}>
+              {blocks.map((block, idx) => (
+                <Card className="p-3 bg-primary-light" key={idx}>
+                  <h4 className="mb-4">{block.title}</h4>
+
+                  <p className="pb-3 mb-1">{block.caption}</p>
+                </Card>
+              ))}
             </Col>
           </Row>
-        </Container >
+        </Container>
       </Layout>
     )
   }
 }
 
-export default Index;
+export default Index
 
 /* const USP = ({ number, header, description, features, graphics }) => {
   return (

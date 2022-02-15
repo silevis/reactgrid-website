@@ -170,7 +170,7 @@ const Contact = ({ data }) => {
                       Sienkiewicza Street 17/3<br />
                       25-007 Kielce<br />
                       Poland<br /><br />
-                      <span>
+                      {/* <span>
                         <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
                         <Button size='sm' className="btn-simple ml-2" onClick={() => copy('reactgrid@silevis.com')} id="Popover1">
                           <i className="far fa-copy"></i>
@@ -178,7 +178,7 @@ const Contact = ({ data }) => {
                         <Popover placement="top" isOpen={copyPopoverOpen} target="Popover1" toggle={toggleCopyPopover}>
                           <PopoverBody>Copied!</PopoverBody>
                         </Popover>
-                      </span>
+                      </span> */}
                     </p>
                   </div>
                 </div>
