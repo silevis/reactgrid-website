@@ -10,7 +10,8 @@ module.exports = {
       { id: 'examples', title: `Examples`, description: ``, route: `/examples`, active: true },
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
-      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: true },
+      { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
+      { id: 'help', title: `Help`, description: ``, route: `/help`, active: true },
     ],
     footerNav: [
       { id: 'team', title: `Team`, description: ``, route: `/team`, active: false },

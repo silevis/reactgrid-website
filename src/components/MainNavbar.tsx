@@ -15,8 +15,7 @@ import {
 
 class MainNavbar extends React.Component<any, {}> {
   render() {
-    const { pages, title, description, social } = this.props
-    const githubSocial = social.find((social) => social.title === "Github")
+    const { pages, title, description } = this.props
     return (
       <header className="sticky-header ">
         <div className="header header-2">
@@ -85,7 +84,6 @@ class MainNavbar extends React.Component<any, {}> {
                         data.site.siteMetadata.docsVersions.find(
                           (version) => version.active
                         )
-                      // const githubSocial = social.find(social => social.title === 'Github');
                       const navbarLinks = pages
                         .filter((page) => page.active)
                         .map((page) => {
@@ -93,7 +91,6 @@ class MainNavbar extends React.Component<any, {}> {
                             page.route === "/docs"
                               ? `${page.route}${docsVersions.slug}${docsVersions.index}/`
                               : page.route
-                          // const title = page.route === '/docs' ? [`${page.title}`, <Badge color="success" style={{padding: '1px'}} className="p-1 ml-1 mb-0">{docsVersions.desc}</Badge>] : page.title
                           return (
                             <NavbarLink key={page.id} route={route}>
                               {page.title}
@@ -118,11 +115,6 @@ class MainNavbar extends React.Component<any, {}> {
                           </a>
                         </li>
                       )
-                      // const github = <li key={'githubLink'} className="align-items-center d-flex p-0">
-                      //   <Button rel="noopener noreferrer" className="btn-sm btn-simple m-0 align-items-center d-flex px-2" color="github" href={githubSocial.url} target="_blank">
-                      //     Github{' '}<i className={`${githubSocial.fontAwesomeIcon} pl-1`} />
-                      //   </Button>
-                      // </li>
                       return [...navbarLinks, getNow]
                     }}
                   />

@@ -119,7 +119,6 @@ const Contact = ({ data }) => {
 
     const templateParams = {
       email: state.email.value,
-      category: state.category.value,
       fullName: state.fullName.value,
       companyName: state.companyName.value,
       message: state.message.value,
