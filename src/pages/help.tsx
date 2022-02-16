@@ -17,14 +17,21 @@ class Help extends React.Component<any, PageProps> {
     const { title, description, pages, social } = data.site.siteMetadata
 
     return (
-      <Layout pages={pages} social={social} description={description} title={title}>
+      <Layout
+        pages={pages}
+        social={social}
+        description={description}
+        title={title}
+      >
         <SEO
-          title={"Features"}
-          description={`ReactGrid is a feature rich spreadsheet-like datagrid available in Open Source or PRO versions. They're all there for one reason - to make your application goals a reality.`}
+          title={"Help"}
+          description={`ReactGrid is a feature rich spreadsheet-like datagrid component to make your application goals a reality.`}
         />
         <div className="section mt-5 mt-md-0">
-          {/* <div className="space-50"></div> */}
-          <h2 style={{ fontSize: "3em" }} className="profile-title text-center mb-3">
+          <h2
+            style={{ fontSize: "3em" }}
+            className="profile-title text-center mb-3"
+          >
             Need help?
           </h2>
           <Container>
@@ -32,33 +39,44 @@ class Help extends React.Component<any, PageProps> {
               <Col sm="4" lg="4">
                 <div className="text-center">
                   <div style={{ fontSize: "5em" }} className="mb-4">
-                    <i className="fas fa-circle-question text-primary strokeme"></i>
+                    <i className="fas fa-question-circle text-primary strokeme" />
                   </div>
-                  <h3 className="pb-3">Got questions?</h3>
-                  <p className="pb-3">Add a question on StackOverflow and tag it with #REACTGRIDZIX</p>
-                </div>
-              </Col>
-              <Col sm="4" lg="4">
-                <div className="text-center">
-                  <div style={{ fontSize: "5em" }} className="mb-4">
-                    <i className="far fa-comment-question strokeme text-primary">
-                      <i className="fas fa-paint-brush strokeme text-primary" style={{ marginLeft: "-0.3em" }}></i>
-                    </i>
-                  </div>
-                  <h3 className="pb-3">Technical issues?</h3>
-                  <p className="pb-3">Please create an issue on our Github following the template</p>
-                </div>
-              </Col>
-              <Col sm="4" lg="4">
-                <div className="text-center">
-                  <div style={{ fontSize: "5em" }} className="mb-4">
-                    <i className="fas fa-palette strokeme text-primary">
-                      <i className="far fa-comment-question strokeme text-primary" style={{ marginLeft: "-0.3em" }}></i>
-                    </i>
-                  </div>
-                  <h3 className="pb-3">Need talented developers?</h3>
+                  <h3 className="pb-2">Got questions?</h3>
                   <p className="pb-3">
-                    Get a cloud native software development team 100% dedicated to your product. [Schedule a meeting]
+                    Submit a question on StackOverflow and add the #reactgrid
+                    tag
+                  </p>
+                </div>
+              </Col>
+              <Col sm="4" lg="4">
+                <div className="text-center">
+                  <div style={{ fontSize: "5em" }} className="mb-4">
+                    <i className="fas fa-bug text-primary strokeme" />
+                  </div>
+                  <h3 className="pb-2">Technical issues?</h3>
+                  <p className="pb-3">
+                    Please create an issue on our{" "}
+                    <a
+                      href="https://github.com/silevis/reactgrid"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Github
+                    </a>
+                  </p>
+                </div>
+              </Col>
+              <Col sm="4" lg="4">
+                <div className="d-flex flex-column align-items-center text-center">
+                  <div style={{ fontSize: "5em" }} className="mb-4">
+                    <i className="fas fa-users text-primary strokeme" />
+                  </div>
+                  <h3 className="pb-2">Need talented developers?</h3>
+                  <p className="pb-3">
+                    Get a cloud native software development team 100% dedicated
+                    to your product.
+                    <br />
+                    [CALENDLY]
                   </p>
                 </div>
               </Col>

@@ -5,9 +5,8 @@ import SEO from "../components/seo";
 import Container from 'reactstrap/lib/Container';
 import {
   Label, FormGroup, Input, InputGroupText, Row, Col, InputGroup, InputGroupAddon, CardBody,
-  Form, Card, Button, FormFeedback, CustomInput, Alert, Popover, PopoverBody
+  Form, Card, Button, FormFeedback, CustomInput, Alert
 } from 'reactstrap';
-import copy from 'copy-to-clipboard';
 import emailjs from 'emailjs-com';
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -24,10 +23,6 @@ const USER_ID = "user_f8AmrIhk6YqY1dxIup7Pk";
 const SITE_KEY = "6LfcVb4ZAAAAAMAMPGSOfuYSsBhX89cgFcc4fWcV";
 
 const form = {
-  category: {
-    isInvalid: undefined,
-    value: ''
-  },
   fullName: {
     isInvalid: undefined,
     value: ''
@@ -59,10 +54,6 @@ const Contact = ({ data }) => {
   const [emailSent, setEmailSent] = React.useState(undefined);
   const [validateForm, setValidateForm] = React.useState(false);
 
-  const [copyPopoverOpen, setCopyPopoverOpen] = React.useState(false);
-
-  const toggleCopyPopover = () => setCopyPopoverOpen(!copyPopoverOpen);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>, field: string) => {
     const target = event.target;
     const value = target[target.type === 'checkbox' ? 'checked' : 'value'];
@@ -71,9 +62,6 @@ const Contact = ({ data }) => {
     switch (field) {
       case 'email':
         isInvalid = validateEmail(value as string);
-        break;
-      case 'category':
-        isInvalid = validateCategory(value as string);
         break;
       case 'companyName':
         isInvalid = validateCompanyName(value as string);
@@ -113,7 +101,7 @@ const Contact = ({ data }) => {
 
   const validateMessage = (message: string) => message.length > 20;
 
-  const isFormValid = !reCAPTHA || !validateEmail(state.email.value) || !validateCategory(state.category.value)
+  const isFormValid = !reCAPTHA || !validateEmail(state.email.value)
     || !validateAgreement(state.agreement.value) || !validateFullname(state.fullName.value)
     || !validateCompanyName(state.companyName.value) || !validateMessage(state.message.value);
 
@@ -169,16 +157,7 @@ const Contact = ({ data }) => {
                       Silevis Software Sp. z o.o.<br />
                       Sienkiewicza Street 17/3<br />
                       25-007 Kielce<br />
-                      Poland<br /><br />
-                      {/* <span>
-                        <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com">reactgrid@silevis.com</a>
-                        <Button size='sm' className="btn-simple ml-2" onClick={() => copy('reactgrid@silevis.com')} id="Popover1">
-                          <i className="far fa-copy"></i>
-                        </Button>
-                        <Popover placement="top" isOpen={copyPopoverOpen} target="Popover1" toggle={toggleCopyPopover}>
-                          <PopoverBody>Copied!</PopoverBody>
-                        </Popover>
-                      </span> */}
+                      Poland
                     </p>
                   </div>
                 </div>
@@ -187,25 +166,6 @@ const Contact = ({ data }) => {
                 <Card className="card-contact card-raised">
                   <Form id="contact-form" method="post" role="form" onSubmit={handleformSubmit}>
                     <CardBody>
-                      <FormGroup>
-                        <Label for="category">Select a category</Label>
-                        <InputGroup >
-                          <InputGroupAddon addonType="prepend">
-                            <InputGroupText>
-                              <i className="far fa-question-circle"></i>
-                            </InputGroupText>
-                          </InputGroupAddon>
-                          <Input type="select" aria-label="Select a category..." placeholder="Select a category..." bsSize="lg"
-                            value={state.category.value || 'Select an option'}
-                            onChange={e => handleChange(e, 'category')}
-                            invalid={validateForm && !state.category.isInvalid}
-                          >
-                            <option>Select an option</option>
-                            {categories.map(category => <option key={category}>{category}</option>)}
-                          </Input>
-                          <FormFeedback>You have to select an option!</FormFeedback>
-                        </InputGroup>
-                      </FormGroup>
                       <FormGroup>
                         <Label for="fullName">Full name</Label>
                         <InputGroup >
@@ -275,7 +235,7 @@ const Contact = ({ data }) => {
                       </FormGroup>
                       <Row>
                         <Col>
-                          {emailSent === false && <Alert color="danger">
+                          {!emailSent && <Alert color="danger">
                             {isFormValid ? 'Complete contact form and try again' : 'An error occurred while sending a message'}
                           </Alert>}
                         </Col>
