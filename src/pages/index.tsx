@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, Link, PageProps } from "gatsby"
+import { graphql, PageProps } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { Container, Row, Col, Button, Card } from "reactstrap"
@@ -95,16 +95,16 @@ class Index extends React.Component<PageProps<any>, {}> {
         </div>
 
         <Container>
-          <Row className="align-items-center">
-            <Col className="pb-5 d-flex flex-row" style={{ gap: "2rem" }}>
-              {blocks.map((block, idx) => (
-                <Card className="p-3 bg-primary-light" key={idx}>
+          <Row className="pb-5">
+            {blocks.map((block, idx) => (
+              <Col xs="12" md="4" style={{ gap: "2rem" }} className="d-flex flex-column">
+                <Card className="p-3 bg-primary-light" style={{height: '100%'}} key={idx}>
                   <h4 className="mb-4">{block.title}</h4>
 
                   <p className="pb-3 mb-1">{block.caption}</p>
                 </Card>
-              ))}
-            </Col>
+              </Col>
+            ))}
           </Row>
         </Container>
       </Layout>

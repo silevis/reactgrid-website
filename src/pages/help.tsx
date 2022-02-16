@@ -42,9 +42,17 @@ class Help extends React.Component<any, PageProps> {
                     <i className="fas fa-question-circle text-primary strokeme" />
                   </div>
                   <h3 className="pb-2">Got questions?</h3>
+
                   <p className="pb-3">
-                    Submit a question on StackOverflow and add the #reactgrid
-                    tag
+                    Submit a question on{" "}
+                    <a
+                      href="https://stackoverflow.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      StackOverflow
+                    </a>{" "}
+                    and add the #reactgrid tag
                   </p>
                 </div>
               </Col>
@@ -54,6 +62,7 @@ class Help extends React.Component<any, PageProps> {
                     <i className="fas fa-bug text-primary strokeme" />
                   </div>
                   <h3 className="pb-2">Technical issues?</h3>
+
                   <p className="pb-3">
                     Please create an issue on our{" "}
                     <a
@@ -73,11 +82,18 @@ class Help extends React.Component<any, PageProps> {
                     <i className="fas fa-users text-primary strokeme" />
                   </div>
                   <h3 className="pb-2">Need talented developers?</h3>
+
                   <p className="pb-3">
                     Get a cloud native software development team 100% dedicated
                     to your product.
                     <br />
-                    [CALENDLY]
+                    <a
+                      href="https://calendly.com/michael-matejko/meeting"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Schedule a meeting with our CTO
+                    </a>
                   </p>
                 </div>
               </Col>
