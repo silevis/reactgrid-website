@@ -9,6 +9,46 @@ export interface DropdownNumberCell extends Cell {
   value: number;
 }
 
+export const CellComponent: React.FC<{cell:Compatible<DropdownNumberCell>, onChange: (e: React.FormEvent<HTMLInputElement>) => void}> = ({cell, onChange}) => {
+    const [isOpen, setOpen] = React.useState<boolean>(false);
+    return (
+        <>
+          <div className="wrapper">
+            <div className="value">{cell.value}</div>
+            <div
+              className="chevron"
+              onClick={() => {
+                setOpen(!isOpen)
+              }}
+            >
+              <div
+                style={{
+                  transform: !isOpen ? "rotate(0deg)" : "rotate(90deg)",
+                  transitionDuration: "200ms",
+                }}
+              >
+                {" "}
+                ❯
+              </div>
+            </div>
+          </div>
+          {isOpen && (
+            <div className="dropdown">
+              <input
+                type="range"
+                min={DropdownNumberCellTemplate.MIN_VAL}
+                max={DropdownNumberCellTemplate.MAX_VAL}
+                step={DropdownNumberCellTemplate.STEP}
+                defaultValue={cell.value.toString()}
+                onPointerDown={(e) => e.stopPropagation()}
+                onChange={onChange}
+              />
+            </div>
+          )}
+        </>
+    )
+}
+ 
 export class DropdownNumberCellTemplate implements CellTemplate<DropdownNumberCell> {
 
   static MIN_VAL: number = 0
@@ -46,32 +86,15 @@ export class DropdownNumberCellTemplate implements CellTemplate<DropdownNumberCe
   };
 
   render(cell: Compatible<DropdownNumberCell>, isInEditMode: boolean, onCellChanged: (cell: Compatible<DropdownNumberCell>, commit: boolean) => void): React.ReactNode {
-    const [isOpen, setOpen] = React.useState<boolean>(false);
-    return (
-      <>
-        <div className="wrapper">
-          <div className="value">{cell.value}</div>
-          <div className="chevron" onClick={() => { setOpen(!isOpen) }}>
-            <div style={{ transform: !isOpen ? 'rotate(0deg)' : 'rotate(90deg)', transitionDuration: '200ms' }}
-            > ❯
-            </div>
-          </div>
-        </div>
-        {isOpen &&
-          <div className="dropdown">
-            <input
-              type="range"
-              min={DropdownNumberCellTemplate.MIN_VAL}
-              max={DropdownNumberCellTemplate.MAX_VAL}
-              step={DropdownNumberCellTemplate.STEP}
-              defaultValue={cell.value.toString()}
-              onPointerDown={e => e.stopPropagation()}
-              onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                onCellChanged(this.getCompatibleCell({ ...cell, value: parseInt(e.currentTarget.value, 10) }), true);
-              }}
-            />
-          </div>}
-      </>
-    )
+    const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+        onCellChanged(
+          this.getCompatibleCell({
+            ...cell,
+            value: parseInt(e.currentTarget.value, 10),
+          }),
+          true
+        )
+      }
+    return <CellComponent onChange={onChange} cell={cell}/>
   }
 }
