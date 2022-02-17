@@ -35,8 +35,7 @@ const Footer = ({ title, social }) => {
                   Silevis Software Sp. z o.o.<br />
                     Sienkiewicza Street 17/3<br />
                     25-007 Kielce<br />
-                    Poland<br /><br />
-                  <i className="far fa-envelope pr-1"></i> <a href="mailto:reactgrid@silevis.com" className="text-break">reactgrid@silevis.com</a>
+                    Poland
                 </p>
               </address>
             </Col>

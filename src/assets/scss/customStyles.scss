@@ -510,3 +510,36 @@ span.anchor {
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
 }
+
+.github-starcounter {
+    display: flex;
+    flex: 0;
+    align-items: center;
+    border: 1px solid lightgray;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 1.5rem;
+    padding: 0.5rem 0.875rem;
+    font-weight: normal;
+    font-size: 1.25rem;
+    color: black;
+    i {
+      margin-right: 10px;
+    }
+    span {
+      margin-right: 1rem;
+      &::after {
+        content: "";
+        width: 1px;
+        height: 80%;
+        background: grey;
+      }
+    }
+    transition: color 0.1s ease-in-out;
+    &:hover {
+      color: gray;
+    }
+    &:focus {
+      color: black;
+    }
+  }

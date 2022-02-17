@@ -24,7 +24,7 @@ class Features extends React.Component<any, PageProps> {
       <Layout pages={pages} social={social} description={description} title={title}>
         <SEO
           title={'Features'}
-          description={`ReactGrid is a feature rich spreadsheet-like datagrid available in Open Source or PRO versions. They're all there for one reason - to make your application goals a reality.`}
+          description={`ReactGrid is a feature rich spreadsheet-like datagrid component to make your application goals a reality.`}
         />
         <div className="section mt-5 mt-md-0">
           <div className="space-50"></div>
