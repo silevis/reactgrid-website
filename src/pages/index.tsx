@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import { Container, Row, Col, Button, Card } from "reactstrap"
 import SamplePoster from "../assets/img/sample.png"
 import Video from "../assets/video/sample.mp4"
+import { GithubStarcounter } from "../components/GithubStarcounter"
 
 const blocks = [
   {
@@ -14,11 +15,13 @@ const blocks = [
   },
   {
     title: "Optimized for touch devices",
-    caption: "ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices",
+    caption:
+      "ReactGrid gives the same experience to you no matter if you work on desktop or mobile devices",
   },
   {
     title: "Open sourced and MIT licensed",
-    caption: "ReactGrid is free for personal and commercial use under the MIT license",
+    caption:
+      "ReactGrid is free for personal and commercial use under the MIT license",
   },
 ]
 
@@ -40,7 +43,12 @@ class Index extends React.Component<PageProps<any>, {}> {
     // const npmSocial = social.find(social => social.title === 'npm');
 
     return (
-      <Layout pages={pages} social={social} description={description} title={title}>
+      <Layout
+        pages={pages}
+        social={social}
+        description={description}
+        title={title}
+      >
         <SEO
           title={title}
           bookmarkTitlePrefix={title}
@@ -51,40 +59,53 @@ class Index extends React.Component<PageProps<any>, {}> {
           <div className="d-none d-md-block space-50"></div>
           <Container className="pb-5">
             <Row>
-              <Col className="mr-auto text-left align-items-center" md="12" lg="7">
+              <Col
+                className="mr-auto text-left align-items-center"
+                md="12"
+                lg="7"
+              >
                 <h1 className="title display-1 mb-5 text-primary page-title">
                   Spreadsheet experience for your React app.
                 </h1>
 
                 <p className="em-xxs font-weight-light pb-3">
-                  ReactGrid is an open-source React component for displaying and editing data in a spreadsheet-like way.
+                  ReactGrid is an open-source React component for displaying and
+                  editing data in a spreadsheet-like way.
                 </p>
 
-                <div className="d-flex align-items-center">
+                <div
+                  className="d-flex align-items-center flex-wrap"
+                  style={{ gap: "1rem" }}
+                >
                   <a href={githubSocial.url} target="_blank">
-                    <Button type="button" color="primary" className="px-5 py-3" style={{ fontSize: "1.3em" }}>
+                    <Button
+                      type="button"
+                      color="primary"
+                      className="px-5 py-3"
+                      style={{ fontSize: "1.3em" }}
+                    >
                       Check on Github
                     </Button>
                   </a>
 
-                  <iframe
-                    src="https://stars.devunltd.com/badge.html?user=silevis&amp;repo=reactgrid&amp;button=true&amp;buttoncount=true"
-                    className="ml-4"
-                    frameBorder="0"
-                    scrolling="0"
-                    width="250"
-                    height="45"
-                    title="Star on GitHub"
-                  />
+                  <GithubStarcounter githubUrl={githubSocial.url} />
                 </div>
               </Col>
-              <Col className="ml-auto mt-5 mt-ml-0 d-flex align-items-center justify-content-center" md="12" lg="5">
+              <Col
+                className="ml-auto mt-5 mt-ml-0 d-flex align-items-center justify-content-center"
+                md="12"
+                lg="5"
+              >
                 <video
                   controls
                   autoPlay
                   loop
                   poster={SamplePoster}
-                  style={{ maxWidth: "500px", width: "100%", boxShadow: "#787878 0px 0px 10px -3px" }}
+                  style={{
+                    maxWidth: "500px",
+                    width: "100%",
+                    boxShadow: "#787878 0px 0px 10px -3px",
+                  }}
                 >
                   <source src={Video} type="video/mp4" />
                   <track kind="captions" />
@@ -97,8 +118,17 @@ class Index extends React.Component<PageProps<any>, {}> {
         <Container>
           <Row className="pb-5">
             {blocks.map((block, idx) => (
-              <Col xs="12" md="4" style={{ gap: "2rem" }} className="d-flex flex-column">
-                <Card className="p-3 bg-primary-light" style={{height: '100%'}} key={idx}>
+              <Col
+                xs="12"
+                md="4"
+                style={{ gap: "2rem" }}
+                className="d-flex flex-column"
+              >
+                <Card
+                  className="p-3 bg-primary-light"
+                  style={{ height: "100%" }}
+                  key={idx}
+                >
                   <h4 className="mb-4">{block.title}</h4>
 
                   <p className="pb-3 mb-1">{block.caption}</p>
