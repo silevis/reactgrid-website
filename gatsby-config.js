@@ -11,7 +11,7 @@ module.exports = {
       { id: 'docs', title: `Docs`, description: ``, route: `/docs`, active: true },
       { id: 'pricing', title: `Pricing`, description: ``, route: `/pricing`, active: false },
       { id: 'blog', title: `Blog`, description: ``, route: `/blog`, active: false },
-      { id: 'help', title: `Help`, description: ``, route: `/help`, active: true },
+      { id: 'support', title: `Support`, description: ``, route: `/support`, active: true },
     ],
     footerNav: [
       { id: 'team', title: `Team`, description: ``, route: `/team`, active: false },

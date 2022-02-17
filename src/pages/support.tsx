@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import { isBrowserIE } from "../functions/isBrowserIE"
 import { Container, Row, Col } from "reactstrap"
 
-class Help extends React.Component<any, PageProps> {
+class Support extends React.Component<any, PageProps> {
   componentDidMount() {
     if (!isBrowserIE()) {
       document.documentElement.scrollTop = 0
@@ -32,7 +32,7 @@ class Help extends React.Component<any, PageProps> {
             style={{ fontSize: "3em" }}
             className="profile-title text-center mb-3"
           >
-            Need help?
+            Need support?
           </h2>
           <Container>
             <Row className="py-lg-5">
@@ -46,13 +46,13 @@ class Help extends React.Component<any, PageProps> {
                   <p className="pb-3">
                     Submit a question on{" "}
                     <a
-                      href="https://stackoverflow.com/"
+                      href="https://stackoverflow.com/questions/ask?tags=reactgrid%20reactjs%20javascript"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       StackOverflow
                     </a>{" "}
-                    and add the #reactgrid tag
+                    with the #reactgrid tag
                   </p>
                 </div>
               </Col>
@@ -66,7 +66,7 @@ class Help extends React.Component<any, PageProps> {
                   <p className="pb-3">
                     Please create an issue on our{" "}
                     <a
-                      href="https://github.com/silevis/reactgrid"
+                      href="https://github.com/silevis/reactgrid/issues"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -105,7 +105,7 @@ class Help extends React.Component<any, PageProps> {
   }
 }
 
-export default Help
+export default Support
 
 export const pageQuery = graphql`
   query {
