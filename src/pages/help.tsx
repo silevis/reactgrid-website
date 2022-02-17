@@ -36,7 +36,7 @@ class Help extends React.Component<any, PageProps> {
           </h2>
           <Container>
             <Row className="py-lg-5">
-              <Col md="4" className="mb-5">
+              <Col md="4" className="mt-5">
                 <div className="text-center">
                   <div style={{ fontSize: "5em" }} className="mb-4">
                     <i className="fas fa-question-circle text-primary strokeme" />
@@ -56,7 +56,7 @@ class Help extends React.Component<any, PageProps> {
                   </p>
                 </div>
               </Col>
-              <Col md="4" className="mb-5">
+              <Col md="4" className="mt-5">
                 <div className="text-center">
                   <div style={{ fontSize: "5em" }} className="mb-4">
                     <i className="fas fa-bug text-primary strokeme" />
@@ -76,7 +76,7 @@ class Help extends React.Component<any, PageProps> {
                   </p>
                 </div>
               </Col>
-              <Col md="4">
+              <Col md="4" className="mt-5">
                 <div className="d-flex flex-column align-items-center text-center">
                   <div style={{ fontSize: "5em" }} className="mb-4">
                     <i className="fas fa-users text-primary strokeme" />
