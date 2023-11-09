@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./header";
 
-const inter = Inter({ subsets: ["latin"] });
+const dm_sans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+});
 
 export const metadata: Metadata = {
   title: "ReactGrid Website",
@@ -16,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${dm_sans.variable}`}>
+      <body>
         <Header />
         {children}
       </body>

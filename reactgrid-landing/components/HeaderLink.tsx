@@ -16,7 +16,9 @@ export const HeaderLink = ({ href, children }: Props) => {
   return (
     <Link
       href={href}
-      className={`border-l-2 border-lime-600 flex justify-center items-center ${underlineClass}`}
+      className={`${
+        href === "/get-now" ? "bg-green-secondary" : ""
+      } border-l-2 border-white flex justify-center items-center ${underlineClass}`}
     >
       {children}
     </Link>
