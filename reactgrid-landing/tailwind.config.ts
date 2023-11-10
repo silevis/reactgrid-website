@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       fontFamily: {
         "dm-sans": ["var(--font-dm-sans)"],
+        "dm-mono": ["var(--font-dm-mono)"],
       },
       colors: {
         green: {
-          primary: "#107C41",
-          secondary: "#0D6334",
+          primary: "var(--green-primary)",
+          secondary: "var(--green-secondary)",
         },
-        white: "#ffffff",
+        white: "var(--white-primary)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -26,20 +27,34 @@ const config: Config = {
       padding: {
         "40px": "40px",
       },
-    },
-    fontSize: {
-      xs: "16px",
-      sm: "20px",
-      md: "24px",
-      xl: "30px",
-      "2xl": "56px",
-      "3xl": "88px",
-    },
-    gridTemplateColumns: {
-      header: "repeat(12, 0.5fr)",
-    },
-    gridTemplateRows: {
-      header: "repeat(9, 96px)",
+      borderWidth: {
+        DEFAULT: "1px",
+        "0": "0",
+        "1": "1px",
+        "2": "2px",
+        "3": "3px",
+        "4": "4px",
+        "6": "6px",
+        "8": "8px",
+      },
+      fontSize: {
+        xs: "16px",
+        sm: "20px",
+        md: "24px",
+        xl: "30px",
+        "2xl": "56px",
+        "3xl": "88px",
+      },
+      gridTemplateColumns: {
+        header: "repeat(12, 0.5fr)",
+      },
+      gridTemplateRows: {
+        header: "repeat(9, 96px)",
+      },
+      boxShadow: {
+        'reactgrid-sample': '0px 16px 32px 0px rgba(0, 0, 0, 0.10)',
+      },
+
     },
   },
   plugins: [require("daisyui")],
