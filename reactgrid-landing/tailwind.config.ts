@@ -24,9 +24,6 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-      padding: {
-        "40px": "40px",
-      },
       borderWidth: {
         DEFAULT: "1px",
         "0": "0",
@@ -55,6 +52,13 @@ const config: Config = {
         'reactgrid-sample': '0px 16px 32px 0px rgba(0, 0, 0, 0.10)',
       },
 
+    },
+    screens: {
+      'sm': '640px',
+      'md': '780px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
     },
   },
   plugins: [require("daisyui")],
