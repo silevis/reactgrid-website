@@ -20,8 +20,8 @@ export const NavItems = () => {
   }, [isOpen]);
 
   return (
-    <nav className="relative bg-green-primary top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-white grid grid-cols-header h-[96px] text-white">
-      <div className="col-start-1 2xl:col-start-3 col-end-13 md:col-end-5 2xl:col-end-7 border-l-1 border-white flex items-center ps-5 justify-start">
+    <nav className="relative bg-green-primary top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-header h-[96px] text-white">
+      <div className="col-start-1 2xl:col-start-3 col-end-13 md:col-end-5 2xl:col-end-7 border-l-1 border-green-light flex items-center ps-5 justify-start">
         <Link href="/">
           <Image src={logoIcon} alt="ReactGrid" width={180} />
         </Link>
@@ -39,8 +39,8 @@ export const NavItems = () => {
       <div className="absolute md:hidden right-10 top-1/2 transform -translate-y-1/2 z-50">
         <Hamburger toggled={isOpen} toggle={setOpen} />
       </div>
-      <span className="border-l-1 hidden 2xl:flex border-white"></span>
-      <span className="border-l-1 hidden 2xl:flexborder-white"></span>
+      <span className="border-l-1 hidden 2xl:flex border-l-1 border-green-light"></span>
+      <span className="hidden 2xl:flex"></span>
     </nav>
   );
 };

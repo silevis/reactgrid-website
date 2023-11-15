@@ -14,12 +14,15 @@ const config: Config = {
       },
       colors: {
         green: {
+          light: "var(--green-light)",
           primary: "var(--green-primary)",
           secondary: "var(--green-secondary)",
         },
         white: "var(--white-primary)",
         black: {
-          primary: "var(--black-primary)"
+          primary: "var(--black-primary)",
+          secondary: 'var(--black-secondary)',
+          secondary2: 'var(--black-secondary2)'
         }
       },
       backgroundImage: {
