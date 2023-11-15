@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export const HeroSection = () => {
   return (
-    <div className="pb-4 box-border font-dm-sans bg-green-primary text-md 2xl:text-xl text-white hero-section grid grid-cols-header grid-rows-header">
-      <div className="border-b-1 border-l-1 col-start-1 col-end-3 row-start-1 row-end-7"></div>
-      <div className="title-text border-4 col-start-1 2xl:col-start-3 col-end-13 md:col-end-11 2xl:col-end-9 row-start-1 row-span-6 flex justify-items-center items-center p-[40px]">
+    <div className="pb-4 box-border font-dm-sans bg-green-primary text-md 2xl:text-xl text-white hero-section grid grid-cols-header grid-rows-header-xs sm:grid-rows-header">
+      <div className="hidden 2xl:block border-b-1 border-l-1 col-start-1 col-end-3 row-start-1 row-end-7"></div>
+      <div className="title-text border-2 md:border-2 col-start-1 2xl:col-start-3 col-end-13 md:col-end-11 2xl:col-end-9 row-start-1 row-span-4 sm:row-span-6 flex justify-items-center items-center p-[20px] sm:p-[40px]">
         <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">
           Spreadsheet experience for your React app
         </h1>
@@ -40,7 +40,7 @@ export const HeroSection = () => {
       <div className="border-b-1 col-start-9 col-end-11 font-bold hidden 2xl:flex justify-center items-center text-green-secondary">
         3.14
       </div>
-      <div className="inline-block border-l-1 border-b-1 col-start-1 2xl:col-start-3 col-end-13 sm:col-end-9 md:col-end-7 row-start-7 row-span-2 text-xs sm:text-sm md:text-md flex justify-center items-center p-[40px]">
+      <div className="inline-block border-l-1 border-b-1 col-start-1 2xl:col-start-3 col-end-13 sm:col-end-9 md:col-end-7 row-start-5 sm:row-start-7 row-span-2 text-xs sm:text-sm md:text-md flex justify-center items-center p-[20px] sm:p-[40px]">
         <h2>
           ReactGrid is a component for displaying and entering data in a
           spreadsheet-like way.
@@ -57,14 +57,14 @@ export const HeroSection = () => {
       </div>
       <Link
         href="/"
-        className="inline-block border-l-1 border-b-1 col-start-1 2xl:col-start-3 col-end-7 md:col-end-4 2xl:col-end-5 row-start-9 flex justify-center gap-2 text-xs sm:text-sm font-bold items-center  bg-green-secondary"
+        className="inline-block border-l-1 border-b-1 col-start-1 2xl:col-start-3 col-end-7 md:col-end-4 2xl:col-end-5 row-start-8 sm:row-start-9 flex justify-center gap-2 text-xs sm:text-sm font-bold items-center  bg-green-secondary"
       >
         Get Started <BsFillRocketTakeoffFill />
       </Link>
       <Link
         href="https://github.com/silevis/reactgrid"
         target="_blank"
-        className="inline-block border-l-1 border-b-1 col-start-7 md:col-start-4 2xl:col-start-5 col-end-13 md:col-end-7 row-start-9 flex justify-center items-center text-xs sm:text-sm font-bold gap-2  bg-green-secondary"
+        className="inline-block border-l-1 border-b-1 col-start-7 md:col-start-4 2xl:col-start-5 col-end-13 md:col-end-7 row-start-8 sm:row-start-9 flex justify-center items-center text-xs sm:text-sm font-bold gap-2  bg-green-secondary"
       >
         <BsGithub /> Github
       </Link>

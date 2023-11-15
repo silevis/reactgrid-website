@@ -18,6 +18,9 @@ const config: Config = {
           secondary: "var(--green-secondary)",
         },
         white: "var(--white-primary)",
+        black: {
+          primary: "var(--black-primary)"
+        }
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -47,7 +50,7 @@ const config: Config = {
         navLinks: "repeat(4, 1fr)"
       },
       gridTemplateRows: {
-        'header-sm': "repeat(7, 70px)",
+        'header-xs': "repeat(7, 70px)",
         header: "repeat(9, 96px)",
       },
       boxShadow: {
