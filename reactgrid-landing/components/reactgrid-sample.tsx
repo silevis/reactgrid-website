@@ -5,8 +5,10 @@ export default function ReactGridMainExample() {
   return (
     <div className="text-white font-dm-sans pb-[80px]">
       <div className="bg-green-primary pt-[128px] pb-[80px]">
-        <h1 className="text-2xl font-bold text-center">ReactGrid component</h1>
-        <p className="text-center text-xs">
+        <h1 className="text-xl md:text-2xl font-bold text-center">
+          ReactGrid component
+        </h1>
+        <p className="text-center text-xs px-8">
           Congue dictum neque, nibh at vel turpis dignissim felis pellentesque.
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>

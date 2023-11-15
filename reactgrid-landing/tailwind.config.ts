@@ -44,8 +44,10 @@ const config: Config = {
       },
       gridTemplateColumns: {
         header: "repeat(12, 0.5fr)",
+        navLinks: "repeat(4, 1fr)"
       },
       gridTemplateRows: {
+        'header-sm': "repeat(7, 70px)",
         header: "repeat(9, 96px)",
       },
       boxShadow: {

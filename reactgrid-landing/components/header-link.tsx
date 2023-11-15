@@ -18,7 +18,7 @@ export const HeaderLink = ({ href, children }: Props) => {
       href={href}
       className={`${
         href === "/get-now" ? "" : ""
-      } border-l-1 border-white col-span-2 2xl:col-span-1 flex text-xs font-bold justify-center items-center ${underlineClass}`}
+      } border-l-1 border-white flex text-xs font-bold justify-center items-center ${underlineClass}`}
     >
       {children}
     </Link>
