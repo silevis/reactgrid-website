@@ -1,39 +1,55 @@
 import githubIcon from "@/public/static/github.svg";
 import npmIcon from "@/public/static/npm.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
-    <footer className="grid grid-cols-header bg-footer py-[40px] gap-y-32">
+    <footer className="grid grid-cols-header bg-black-primary py-[40px] gap-y-32">
       <div className="flex justify-between gap-y-16 col-start-3 col-end-11 flex-wrap lg:flex-nowrap">
         <div className="w-[100%] sm:w-[50%] lg:w-auto">
           <h2 className="font-bold text-sm mb-[32px]">Info</h2>
           <ul className="text-white-secondary3 flex flex-col gap-y-2">
-            <li>Cookies</li>
-            <li>Privacy Policy</li>
+            <Link href="/cookies">Cookies</Link>
+            <Link href="/privacy-policy">Privacy Policy</Link>
           </ul>
         </div>
         <div className="w-[100%] sm:w-[50%] lg:w-auto">
           <h2 className="font-bold text-sm mb-[32px]">Explore</h2>
           <ul className="text-white-secondary3 flex flex-col gap-y-2">
-            <li>Features</li>
-            <li>Examples</li>
-            <li>Docs</li>
-            <li>Contact us</li>
+            <li>
+              <Link href="/features">Features</Link>
+            </li>
+            <li>
+              <Link href="/examples">Examples</Link>
+            </li>
+            <li>
+              <Link href="/docs">Docs</Link>
+            </li>
+            <li>
+              <Link href="/contact-us">Contact us</Link>
+            </li>
           </ul>
         </div>
         <div className="w-[100%] sm:w-[50%] lg:w-auto">
           <h2 className="font-bold text-sm mb-[32px]">Social</h2>
           <ul className="text-white-secondary3 flex gap-x-8">
             <li>
-              <Image src={npmIcon} alt="npm icon" className="md:w-auto" />
+              <Link
+                href="https://www.npmjs.com/package/@silevis/reactgrid"
+                target="_blank"
+              >
+                <Image src={npmIcon} alt="npm icon" className="md:w-auto" />
+              </Link>
             </li>
             <li>
-              <Image
-                src={githubIcon}
-                alt="github icon"
-                className=" md:w-auto"
-              />
+              <Link href="https://github.com/silevis/reactgrid" target="_blank">
+                <Image
+                  src={githubIcon}
+                  alt="github icon"
+                  className=" md:w-auto"
+                />
+              </Link>
             </li>
           </ul>
         </div>

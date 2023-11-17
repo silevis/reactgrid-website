@@ -29,7 +29,6 @@ const config: Config = {
           secondary: "var(--black-secondary)",
           secondary2: "var(--black-secondary2)",
         },
-        footer: "var(--black-footer)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
