@@ -18,12 +18,18 @@ const config: Config = {
           primary: "var(--green-primary)",
           secondary: "var(--green-secondary)",
         },
-        white: "var(--white-primary)",
+        white: {
+          primary: "var(--white-primary)",
+          secondary: "var(--white-secondary)",
+          secondary2: "var(--white-secondary2)",
+          secondary3: "var(--white-secondary3)",
+        },
         black: {
           primary: "var(--black-primary)",
-          secondary: 'var(--black-secondary)',
-          secondary2: 'var(--black-secondary2)'
-        }
+          secondary: "var(--black-secondary)",
+          secondary2: "var(--black-secondary2)",
+        },
+        footer: "var(--black-footer)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -50,23 +56,22 @@ const config: Config = {
       },
       gridTemplateColumns: {
         header: "repeat(12, 0.5fr)",
-        navLinks: "repeat(4, 1fr)"
+        navLinks: "repeat(4, 1fr)",
       },
       gridTemplateRows: {
-        'header-xs': "repeat(7, 70px)",
+        "header-xs": "repeat(7, 70px)",
         header: "repeat(9, 96px)",
       },
       boxShadow: {
-        'reactgrid-sample': '0px 16px 32px 0px rgba(0, 0, 0, 0.10)',
+        "reactgrid-sample": "0px 16px 32px 0px rgba(0, 0, 0, 0.10)",
       },
-
     },
     screens: {
-      'sm': '640px',
-      'md': '780px',
-      'lg': '1024px',
-      'xl': '1280px',
-      '2xl': '1536px',
+      sm: "640px",
+      md: "780px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px",
     },
   },
   plugins: [require("daisyui")],

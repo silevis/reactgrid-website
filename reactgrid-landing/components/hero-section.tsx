@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const HeroSection = () => {
   return (
-    <div className="pb-4 box-border font-dm-sans bg-green-primary text-md 2xl:text-xl text-white hero-section grid grid-cols-header grid-rows-header-xs sm:grid-rows-header">
+    <div className="pb-4 box-border font-dm-sans bg-green-primary text-md 2xl:text-xl text-white-primary hero-section grid grid-cols-header grid-rows-header-xs sm:grid-rows-header">
       <div className="hidden 2xl:block border-b-1 border-l-1 border-green-light col-start-1 col-end-3 row-start-1 row-end-7"></div>
       <div className="title-text border-2 md:border-3 col-start-1 2xl:col-start-3 col-end-13 md:col-end-11 2xl:col-end-9 row-start-1 row-span-4 sm:row-span-6 border-green-light flex justify-items-center items-center p-[20px] sm:p-[40px]">
         <h1 className="text-xl sm:text-2xl xl:text-3xl font-bold">

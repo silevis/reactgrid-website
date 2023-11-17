@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { DM_Mono, DM_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "./header";
+import Header from "../components/header";
+import { Footer } from "@/components/footer";
 
 const dm_sans = DM_Sans({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
