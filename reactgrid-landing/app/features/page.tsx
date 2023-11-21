@@ -68,12 +68,12 @@ const featuresList = [
 
 export default function FeaturesPage() {
   return (
-    <section className="">
-      <div className="grid grid-cols-header grid-rows-2 py-[128px]">
-        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-md sm:text-xl md:text-2xl font-bold text-center text-black-primary">
+    <section>
+      <div className="grid grid-cols-header pt-[224px] pb-[128px]">
+        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary">
           Features
         </h1>
-        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm">
+        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm px-8">
           Congue dictum neque, nibh at vel turpis dignissim felis pellentesque.
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
@@ -86,6 +86,7 @@ export default function FeaturesPage() {
                 <Image
                   src={feature.icon}
                   alt="ReactGrid"
+                  priority
                   width={300}
                   className="w-[150px] md:w-auto"
                 />

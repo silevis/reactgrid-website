@@ -8,7 +8,7 @@ export const FeaturesSecondarySection = () => {
   return (
     <section className="bg-green-primary pb-[200px] pt-[50px] mt-[128px]">
       <div className="grid grid-cols-header justify-items-center py-[50px] md:py-[128px]">
-        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-md sm:text-xl md:text-2xl font-bold text-center text-white-primary">
+        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-white-primary">
           Header for this section
         </h1>
         <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-center text-xs md:text-sm px-8 text-white-secondary max-w-[700px]">

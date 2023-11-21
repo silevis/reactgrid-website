@@ -7,7 +7,7 @@ export const WhyUsSection = () => {
   return (
     <section>
       <div className="grid grid-cols-header grid-rows-2 py-[128px]">
-        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-md sm:text-xl md:text-2xl font-bold text-center text-black-primary">
+        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary">
           Why is ReactGrid unique?
         </h1>
         <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-center text-xs md:text-sm px-8 text-black-secondary">
@@ -27,7 +27,7 @@ export const WhyUsSection = () => {
             <h2 className="text-black-primary font-bold text-sm">
               Open source
             </h2>
-            <p className="text-black-secondary2 text-center px-8 md:px-8">
+            <p className="text-black-secondary2 text-center px-8">
               ReactGrid follows an open-source development model, allowing free
               access, modification, and distribution of its source code.
             </p>

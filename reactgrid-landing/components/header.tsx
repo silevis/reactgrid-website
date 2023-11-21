@@ -28,7 +28,7 @@ export default function Header() {
     <nav
       className={`${isHomePage ? "relative" : "fixed"} w-full ${
         isHomePage ? "bg-green-primary" : "bg-white-primary"
-      }  top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-header h-[96px] text-white-primary`}
+      }  top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-header h-[96px] text-white-primary z-50`}
     >
       <div className="col-start-1 2xl:col-start-3 col-end-13 md:col-end-5 2xl:col-end-7 border-l-1 border-green-light flex items-center ps-5 justify-start">
         <Link href="/">

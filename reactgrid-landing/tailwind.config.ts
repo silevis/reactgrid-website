@@ -23,6 +23,7 @@ const config: Config = {
           secondary: "var(--white-secondary)",
           secondary2: "var(--white-secondary2)",
           secondary3: "var(--white-secondary3)",
+          secondary4: "var(--white-secondary4)",
         },
         black: {
           primary: "var(--black-primary)",
@@ -62,7 +63,7 @@ const config: Config = {
         header: "repeat(9, 96px)",
       },
       boxShadow: {
-        "reactgrid-sample": "0px 16px 32px 0px rgba(0, 0, 0, 0.10)",
+        "reactgrid-sample": "0px 4px 64px 0px rgba(0, 0, 0, 0.12)",
       },
     },
     screens: {
@@ -73,6 +74,16 @@ const config: Config = {
       "2xl": "1536px",
     },
   },
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          success: "#107c41",
+        },
+      },
+    ],
+  },
+
   plugins: [require("daisyui")],
 };
 
