@@ -55,25 +55,13 @@ export default function ExamplesPage() {
   return (
     <section>
       <div className="grid grid-cols-header grid-rows-2 pt-[224px] pb-[40px]">
-        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary px-8">
+        <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary px-4">
           Configurable example
         </h1>
-        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm px-8">
+        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm px-4">
           Congue dictum neque, nibh at vel turpis dignissim felis pellentesque.
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
-      </div>
-      <div className="grid grid-cols-header mb-[40px]">
-        <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 flex justify-center gap-y-2 gap-x-2 md:gap-x-8 flex-wrap px-8">
-          <button className="btn btn-outline btn-success">
-            Budget planner
-          </button>
-          <button className="btn btn-outline btn-success">Multi user</button>
-          <button className="btn btn-outline btn-success">
-            Athletes exercises
-          </button>
-          <button className="btn btn-outline btn-success">Workhours</button>
-        </div>
       </div>
       <div className="relative h-[600px] md:h-[800px] grid grid-cols-header react-grid-sample2">
         <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 h-full shadow-reactgrid-sample rounded-t-[16px] text-[#a5a5a5] font-bold text-xl bg-white-primary">
@@ -86,7 +74,7 @@ export default function ExamplesPage() {
         </div>
       </div>
       <div className="grid grid-cols-header pt-[80px] bg-white-secondary4">
-        <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary flex gap-x-16 mb-[128px] flex-col md:flex-row px-8">
+        <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary flex gap-x-16 mb-[128px] flex-col md:flex-row px-4">
           <div className="flex-1">
             <h2 className="text-black-primary font-bold text-sm">
               Capabilities

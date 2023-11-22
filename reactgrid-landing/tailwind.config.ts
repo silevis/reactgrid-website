@@ -60,7 +60,7 @@ const config: Config = {
       },
       gridTemplateRows: {
         "header-xs": "repeat(7, 70px)",
-        header: "repeat(9, 96px)",
+        header: "repeat(9, 86px)",
       },
       boxShadow: {
         "reactgrid-sample": "0px 4px 64px 0px rgba(0, 0, 0, 0.12)",

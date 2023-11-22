@@ -73,7 +73,7 @@ export default function FeaturesPage() {
         <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary">
           Features
         </h1>
-        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm px-8">
+        <p className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary text-center text-xs md:text-sm px-4">
           Congue dictum neque, nibh at vel turpis dignissim felis pellentesque.
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
@@ -93,7 +93,7 @@ export default function FeaturesPage() {
                 <h2 className="text-black-primary font-bold text-sm">
                   {feature.title}
                 </h2>
-                <p className="text-black-secondary text-center px-8 md:px-16">
+                <p className="text-black-secondary text-center px-4 md:px-16">
                   {feature.desc}
                 </p>
               </div>
