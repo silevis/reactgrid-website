@@ -1,6 +1,5 @@
 import logo from "@/public/static/logo-green.svg";
 import Image from "next/image";
-import "@/styles.scss";
 
 export default function ReactGridMainExample() {
   return (
