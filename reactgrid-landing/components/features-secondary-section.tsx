@@ -7,7 +7,7 @@ import customCellTemplates from "@/public/static/custom-cell-templates.svg";
 export const FeaturesSecondarySection = () => {
   return (
     <section className="bg-green-primary pb-[200px] mt-[128px] md:mt-[256px]">
-      <div className="grid grid-cols-header justify-items-center py-[50px] md:py-[128px]">
+      <div className="grid grid-cols-main justify-items-center py-[50px] md:py-[128px]">
         <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-white-primary">
           Header for this section
         </h1>
@@ -16,7 +16,7 @@ export const FeaturesSecondarySection = () => {
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
       </div>
-      <div className="grid grid-cols-header sm:grid-rows-2 gap-y-16 xl:gap-y-32">
+      <div className="grid grid-cols-main sm:grid-rows-2 gap-y-16 xl:gap-y-32">
         <div className="col-start-1 col-span-12 sm:col-span-6 md:col-start-2 md:col-span-5 xl:col-start-3 xl:col-span-4 flex flex-col items-center gap-y-4">
           <Image
             src={stylingIcon}

@@ -69,7 +69,7 @@ const featuresList = [
 export default function FeaturesPage() {
   return (
     <section>
-      <div className="grid grid-cols-header pt-[224px] pb-[128px]">
+      <div className="grid grid-cols-main pt-[128px] pb-[128px]">
         <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary">
           Features
         </h1>
@@ -78,7 +78,7 @@ export default function FeaturesPage() {
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
       </div>
-      <div className="grid grid-cols-header mb-[250px]">
+      <div className="grid grid-cols-main mb-[250px]">
         <div className="col-start-2 col-end-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-16 gap-y-16 xl:gap-y-32">
           {featuresList.map((feature, index) => {
             return (

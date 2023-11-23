@@ -54,7 +54,7 @@ const coreFeatures = [
 export default function ExamplesPage() {
   return (
     <section>
-      <div className="grid grid-cols-header grid-rows-2 pt-[224px] pb-[40px]">
+      <div className="grid grid-cols-main grid-rows-2 pt-[128px] pb-[40px]">
         <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary px-4">
           Configurable example
         </h1>
@@ -63,7 +63,7 @@ export default function ExamplesPage() {
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
       </div>
-      <div className="relative h-[600px] md:h-[800px] grid grid-cols-header react-grid-sample2">
+      <div className="relative h-[600px] md:h-[800px] grid grid-cols-main react-grid-sample2">
         <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 h-full shadow-reactgrid-sample rounded-t-[16px] text-[#a5a5a5] font-bold text-xl bg-white-primary">
           <div className="h-[60px] border-b-1 border-white-secondary3 flex items-center ps-5">
             <Image src={logo} alt="ReactGrid" />
@@ -73,7 +73,7 @@ export default function ExamplesPage() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-header pt-[80px] bg-white-secondary4">
+      <div className="grid grid-cols-main pt-[80px] bg-white-secondary4">
         <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-black-secondary flex gap-x-16 mb-[128px] flex-col md:flex-row px-4">
           <div className="flex-1">
             <h2 className="text-black-primary font-bold text-sm">

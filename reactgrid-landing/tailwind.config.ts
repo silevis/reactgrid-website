@@ -55,7 +55,7 @@ const config: Config = {
         "3xl": "88px",
       },
       gridTemplateColumns: {
-        header: "repeat(12, 0.5fr)",
+        main: "repeat(12, 0.5fr)",
         navLinks: "repeat(4, 1fr)",
       },
       gridTemplateRows: {

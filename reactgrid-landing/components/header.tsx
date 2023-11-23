@@ -22,7 +22,7 @@ export default function Header({ children }: { children: any }) {
           <nav
             className={`relative w-full ${
               isHomePage ? "bg-green-primary" : "bg-white-primary"
-            }  top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-header h-[86px] text-white-primary`}
+            }  top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-main h-[86px] text-white-primary`}
           >
             <div className="flex-none lg:hidden flex items-center ps-2">
               <label

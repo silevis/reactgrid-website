@@ -6,7 +6,7 @@ import illustration3 from "@/public/static/illustration3.svg";
 export const WhyUsSection = () => {
   return (
     <section>
-      <div className="grid grid-cols-header grid-rows-2 mt-[128px] md:mt-[256px]">
+      <div className="grid grid-cols-main grid-rows-2 mt-[128px] md:mt-[256px]">
         <h1 className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 text-xl md:text-2xl font-bold text-center text-black-primary">
           Why is ReactGrid unique?
         </h1>
@@ -15,7 +15,7 @@ export const WhyUsSection = () => {
           Nulla iaculis faucibus nisi nunc netus dolor.
         </p>
       </div>
-      <div className="grid grid-cols-header mt-[40px]">
+      <div className="grid grid-cols-main mt-[40px]">
         <div className="col-start-1 col-end-13 sm:col-start-2 sm:col-end-12 xl:col-start-3 xl:col-end-11 flex justify-around xl:justify-between flex-wrap gap-y-16 xl:gap-y-16 xl:gap-x-16">
           <div className="flex flex-initial xl:flex-1 w-full md:w-[46%] xl:w-auto flex-col items-center gap-y-4">
             <Image
