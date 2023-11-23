@@ -80,9 +80,12 @@ export default function FeaturesPage() {
       </div>
       <div className="grid grid-cols-header mb-[250px]">
         <div className="col-start-2 col-end-12 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-16 gap-y-16 xl:gap-y-32">
-          {featuresList.map((feature) => {
+          {featuresList.map((feature, index) => {
             return (
-              <div className="col-span-1 flex flex-col items-center gap-y-4 border-2 border-white-primary">
+              <div
+                key={index}
+                className="col-span-1 flex flex-col items-center gap-y-4 border-2 border-white-primary"
+              >
                 <Image
                   src={feature.icon}
                   alt="ReactGrid"

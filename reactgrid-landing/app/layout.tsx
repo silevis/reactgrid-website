@@ -30,9 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dm_mono.variable} ${dm_sans.variable}`}>
       <body>
-        <Header />
-        {children}
-        <Footer />
+        <Header>
+          {children}
+          <Footer />
+        </Header>
       </body>
     </html>
   );
