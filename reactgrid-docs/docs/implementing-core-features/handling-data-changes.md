@@ -3,6 +3,7 @@ posttype: "docs"
 title: Handling data changes
 metaTitle: "Handling data changes"
 metaDescription: "ReactGrid docs"
+sidebar_position: 1
 ---
 
 #### Idea of handling data changes

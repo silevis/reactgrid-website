@@ -53,21 +53,15 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "My Site",
+      title: "",
       logo: {
         alt: "My Site Logo",
         src: "img/logo.svg",
+        srcDark: "img/logo-light.svg",
       },
       items: [
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
-          position: "left",
-          label: "Tutorial",
-        },
-        { to: "/blog", label: "Blog", position: "left" },
-        {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/silevis/reactgrid",
           label: "GitHub",
           position: "right",
         },
@@ -80,8 +74,8 @@ const config: Config = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
-              to: "/docs/intro",
+              label: "Getting started",
+              to: "/getting-started",
             },
           ],
         },
@@ -89,16 +83,16 @@ const config: Config = {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "NPM",
+              href: "https://www.npmjs.com/package/@silevis/reactgrid",
             },
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/reactgrid",
             },
             {
               label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              href: "https://twitter.com/ReactGrid",
             },
           ],
         },
@@ -106,17 +100,13 @@ const config: Config = {
           title: "More",
           items: [
             {
-              label: "Blog",
-              to: "/blog",
-            },
-            {
               label: "GitHub",
               href: "https://github.com/facebook/docusaurus",
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © 2019-2023 <a target="_blank" href="https://www.silevis.com">Silevis Software</a> Sp. z o.o., MIT License.`,
     },
     prism: {
       theme: prismThemes.github,
