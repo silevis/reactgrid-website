@@ -1,11 +1,13 @@
+{"use client"}
+
 ---
+
 posttype: "docs"
 title: Handling data changes
 metaTitle: "Handling data changes"
 metaDescription: "ReactGrid docs"
----
 
-import { ReactGrid } from "@silevis/reactgrid";
+---
 
 #### Idea of handling data changes
 
@@ -134,3 +136,73 @@ render(<App/>)
   title="Handling changes live demo"
   noInline={true}
 />{" "}
+
+import "@silevis/reactgrid-3/styles.css";
+
+<ReactGrid
+  rows={[
+    {
+      rowId: "header",
+      cells: [
+        {
+          type: "header",
+          text: "Name",
+        },
+        {
+          type: "header",
+          text: "Surname",
+        },
+      ],
+    },
+    {
+      rowId: 0,
+      cells: [
+        {
+          type: "text",
+          text: "Thomas",
+        },
+        {
+          type: "text",
+          text: "Goldman",
+        },
+      ],
+    },
+    {
+      rowId: 1,
+      cells: [
+        {
+          type: "text",
+          text: "Susie",
+        },
+        {
+          type: "text",
+          text: "Quattro",
+        },
+      ],
+    },
+    {
+      rowId: 2,
+      cells: [
+        {
+          type: "text",
+          text: "",
+        },
+        {
+          type: "text",
+          text: "",
+        },
+      ],
+    },
+  ]}
+  columns={[
+    {
+      columnId: "name",
+      width: 150,
+    },
+    {
+      columnId: "surname",
+      width: 150,
+    },
+  ]}
+/>
+;
