@@ -12,7 +12,8 @@
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "build:doc": "npx jsdoc2md --files ./docs/input/*.tsx --configure ./jsdoc2md-config.json > ./docs/output/file.md"
   },
   "dependencies": {
     "@docusaurus/core": "3.0.0",
@@ -20,14 +21,18 @@
     "@mdx-js/react": "^3.0.0",
     "@silevis/reactgrid": "^4.1.2",
     "clsx": "^1.2.1",
+    "jsdoc-babel": "^0.5.0",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@docusaurus/module-type-aliases": "3.0.0",
     "@docusaurus/tsconfig": "3.0.0",
     "@docusaurus/types": "3.0.0",
+    "jsdoc-to-markdown": "^8.0.0",
     "typescript": "~5.2.2"
   },
   "browserslist": {

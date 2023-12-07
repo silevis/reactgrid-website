@@ -5,13 +5,9 @@ metaTitle: "Column resizing"
 metaDescription: "ReactGrid docs"
 proMark: true
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
-
-<Alert color="primary">
-	<i class="fas fa-exclamation-circle pr-3"></i>
-	This feature is only available in PRO version
-</Alert>
+import { ReactGrid } from "@silevis/reactgrid-3";
+import { LiveCode } from "/components/LiveCode";
 
 #### Allow column to be resized
 
@@ -21,7 +17,7 @@ to the corresponding column object and set its value to `true`.
 ```ts
 const [columns, setColumns] = React.useState<Column[]>(() => [
   { columnId: "Name", width: 100, resizable: true }, //highlight-line
-  { columnId: "Surname", width: 100, resizable: true } //highlight-line
+  { columnId: "Surname", width: 100, resizable: true }, //highlight-line
 ]);
 ```
 
@@ -30,20 +26,20 @@ you will see your mouse pointer change to indicate that a column can be resized.
 However, you'll quickly notice that the column resizing functionality doesn't work.
 Why is that? We still need to handle the events fired by ReactGrid when a column is being resized.
 Similar to how we handled data changes in [Handling data changes](/docs/3.0/2-implementing-core-features/1-handling-changes/),
- we can also define a handler function for that and pass it to our ReactGrid component.
+we can also define a handler function for that and pass it to our ReactGrid component.
 
 #### Implement the event handler function
 
 ```ts
 const handleColumnResize = (ci: Id, width: number) => {
   setColumns((prevColumns) => {
-    const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
+    const columnIndex = prevColumns.findIndex((el) => el.columnId === ci);
     const resizedColumn = prevColumns[columnIndex];
     const updatedColumn = { ...resizedColumn, width };
     prevColumns[columnIndex] = updatedColumn;
     return [...prevColumns];
   });
-}
+};
 ```
 
 #### Pass the handler function
@@ -62,7 +58,7 @@ return (
 
 Let's check the results:
 
-<LiveCode 
+<LiveCode
   code={`
 ${` `}
 const App = () => {
@@ -122,6 +118,6 @@ const App = () => {
 ${` `}
 render(<App/>)
 `}
-  title='Column resizing live demo'
+  title="Column resizing live demo"
   noInline={true}
-/> 
+/>

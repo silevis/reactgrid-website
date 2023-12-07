@@ -1,6 +1,5 @@
 import type { MDXComponents } from "mdx/types";
 import { LiveCode } from "./components/LiveCode";
-import { ReactGrid } from "./lib/ReactGrid3";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -24,7 +23,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </iframe>
     ),
     LiveCode,
-    ReactGrid: (props) => <ReactGrid {...props} />,
+    // ReactGrid: (props) => <ReactGrid {...props} />,
     ...components,
   };
 }
