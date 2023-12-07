@@ -1,7 +1,6 @@
 export default {
-  logo: <span>My Nextra Documentation</span>,
+  logo: <span>React Grid Docs</span>,
   project: {
-    link: "https://github.com/shuding/nextra",
+    link: "https://github.com/silevis/reactgrid",
   },
-  // ... other theme options
 };
