@@ -10,6 +10,12 @@ const config = {
   },
   primaryHue: { dark: 143, light: 140 },
   primarySaturation: { dark: 30, light: 30 },
+  footer: {
+    component: ""
+  },
+  editLink: {
+    component: ""
+  }
 };
 
 export default config;
