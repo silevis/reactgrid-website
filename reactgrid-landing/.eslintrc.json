@@ -1,8 +1,19 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "rules": {
+      // ...
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-uses-react": "off"
+  },
+  "plugins": ["react", "react-hooks"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx", "*.js"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parser": "@typescript-eslint/parser"
     }
   ]

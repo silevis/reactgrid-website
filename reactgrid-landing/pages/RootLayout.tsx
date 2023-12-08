@@ -11,17 +11,6 @@ export default function RootLayout({
     //   <body>
     <Header>
       <Component {...pageProps} />
-
-      <Runner
-        code={function () {
-          return <p>testest</p>;
-        }}
-        scope={{
-          import: {
-            ReactGrid: ReactGrid,
-          },
-        }}
-      />
       <Footer />
     </Header>
     //   </body>

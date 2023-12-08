@@ -1,6 +1,7 @@
 const withNextra = require("nextra")({
   theme: "nextra-theme-docs",
-  themeConfig: "./theme.config.jsx",
+  // theme: "./nextra/reactgrid-nextra-theme.tsx",
+  themeConfig: "./nextra/theme.config.jsx",
 });
 
 module.exports = withNextra();

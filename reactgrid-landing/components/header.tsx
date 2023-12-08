@@ -8,11 +8,13 @@ import { HeaderLink } from "./header-link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { DrawerLink } from "./drawer-link";
+import { Logo } from "./Logo";
 
 export default function Header({ children }: { children: any }) {
   const pathname = usePathname();
-
   const isHomePage = pathname === "/";
+
+  // if (document.documentElement.classList.contains("dark")) console.log("dark")
 
   return (
     <>
@@ -20,9 +22,9 @@ export default function Header({ children }: { children: any }) {
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           <nav
-            className={`relative w-full ${
+            className={`relative w-full dark:bg-green-primary ${
               isHomePage ? "bg-green-primary" : "bg-white-primary"
-            }  top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-main h-[86px] text-white-primary`}
+            } top-0 border-t-1 border-l-1 border-b-1 border-r-1 font-dm-sans border-green-light grid grid-cols-main h-[86px] text-white-primary`}
           >
             <div className="flex-none lg:hidden flex items-center ps-2">
               <label
@@ -47,13 +49,7 @@ export default function Header({ children }: { children: any }) {
               </label>
             </div>
             <div className="col-start-2 md:col-start-1 2xl:col-start-3 col-end-13 md:col-end-5 2xl:col-end-7 xl:border-l-1 border-green-light flex items-center justify-start ps-0.5 md:ps-4">
-              <Link href="/">
-                <Image
-                  src={isHomePage ? logoIcon : nightLogoIcon}
-                  alt="ReactGrid"
-                  width={180}
-                />
-              </Link>
+              <Logo />
             </div>
             <div
               className={`grid hidden md:grid text-black-primary md:text-white-primary col-start-5 col-end-13 2xl:col-start-7 2xl:col-end-11 grid-cols-1 md:grid-cols-navLinks justify-items-start md:justify-items-stretch content-start md:content-stretch md:top-auto gap-y-4 md:gap-y-0 menu-horizontal`}

@@ -20,7 +20,7 @@ export const HeaderLink = ({ href, children }: Props) => {
     <Link
       href={href}
       className={`md:border-l-1 border-green-light flex  ${
-        isHomePage ? "md:text-white-primary" : "md:text-black-primary"
+        isHomePage ? "md:text-white-primary" : "md:text-black-primary dark:text-white-primary"
       } text-xs font-bold justify-start md:justify-center items-center ${underlineClass}`}
     >
       {children}
