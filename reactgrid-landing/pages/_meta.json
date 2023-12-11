@@ -1,0 +1,10 @@
+{
+  "docs": {
+    "title": "Introduction"
+  },
+  "-- More": {
+    "type": "separator",
+    "title": "More"
+  },
+  "FAQ": "FAQ"
+}

@@ -1,16 +1,9 @@
 {
-"-- Versions": {
+  "-- Versions": {
     "type": "separator",
     "title": "Versions"
   },
   "3.0": "",
   "3.1": "",
-  "4.0": "",
-  "-- More": {
-    "type": "separator",
-    "title": "More"
-  },
-  "FAQ": {
-    "title": "FAQ"
-  }
+  "4.0": ""
 }
