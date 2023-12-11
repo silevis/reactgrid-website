@@ -10,7 +10,9 @@ export interface Props {
 
 export const HeaderLink = ({ href, children }: Props) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  
+  const isActive = pathname?.split('/').includes(href.replace(/\//g,""))
+
 
   const isHomePage = pathname === "/";
 

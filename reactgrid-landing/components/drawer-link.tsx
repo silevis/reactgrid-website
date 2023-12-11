@@ -4,7 +4,8 @@ import { Props } from "./header-link";
 
 export const DrawerLink = ({ href, children }: Props) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+    const isActive = pathname?.split("/").includes(href.replace(/\//g, ""));
+
 
   const underlineClass = isActive
     ? "current text-green-primary md:border-b-2"
