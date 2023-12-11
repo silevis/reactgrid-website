@@ -24,10 +24,11 @@ Limiting the size of `ReactGrid` can be achieved by adding CSS class listed belo
 
 Multiple nested scrollable elements can cause unexpected experience like incorrect cell editor position, wrong focus location etc.
 
-<Alert color="info">
-	<i class="fas fa-exclamation-circle pr-2"></i>
+import { Callout } from 'nextra/components'
+
+<Callout color="info">
 	If all rows/columns can't be rendered in viewport - virtual scrolling still works fine.
-</Alert>
+</Callout>
 
 #### Example: ReactGrid component limited by the height of its parent
 
