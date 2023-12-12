@@ -5,7 +5,6 @@ metaTitle: "Context menu"
 metaDescription: "ReactGrid docs"
 proMark: true
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
 import { Callout } from 'nextra/components'
 
@@ -57,7 +56,12 @@ return (
 
 Here's the result. Right-click anywhere in the grid to see the context menu.
 
-<LiveCode 
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-3";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3/styles.css";
+
+<LiveCode
+  scope={{ReactGrid, Column, Row}}
   code={`const SimpleContextMenuHandlingSample = () => {
   ${``}
   const [columns] = React.useState<Column[]>(() => [
@@ -211,6 +215,7 @@ To test the new feature, simply select a column or a row by clicking a header ce
 then right-click anywhere and use the new menu entry.
 
 <LiveCode 
+  scope={{ReactGrid, Column, Row}}
   code={`const AdvancedContextMenuHandlingSample = () => {
   ${``}
   const [columns, setColumns] = React.useState<Column[]>(() => [

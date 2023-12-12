@@ -5,7 +5,7 @@ metaTitle: "Column and row reordering"
 metaDescription: "ReactGrid docs" 
 proMark: true
 ---
-import { ReactGrid } from "@silevis/reactgrid";
+
 
 #### How to implement column and row reordering?
 
@@ -190,7 +190,12 @@ const ColumnsAndRowsReorderSample = () => {
 
 #### Live demo
 
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-3.1";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3.1/styles.css";
+
 <LiveCode 
+  scope={{ReactGrid, Column, Row}}
   code={`interface Person {
   id: number;
   name: string;

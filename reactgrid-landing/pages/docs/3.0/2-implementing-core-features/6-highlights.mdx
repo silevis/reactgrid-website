@@ -4,7 +4,6 @@ title: Highlights
 metaTitle: "Highlights"
 metaDescription: "ReactGrid docs"
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
 #### Highlights usage
 
@@ -16,7 +15,7 @@ by applying custom CSS classes to them or by setting their border colours.
 1. Import the [`Highlight`](/docs/3.0/7-api/0-interfaces/9-highlight/) interface
 
 ```ts
-import { ReactGrid, Highlight } from "@silevis/reactgrid";
+
 ```
 
 2. Define an array of [`Highlight`](/docs/3.0/7-api/0-interfaces/9-highlight/) objects
@@ -25,7 +24,7 @@ import { ReactGrid, Highlight } from "@silevis/reactgrid";
 const highlights: Highlight[] = [
   { columnId: "Name", rowId: 1, borderColor: "#00ff00" },
   { columnId: "Surname", rowId: 2, borderColor: "#0000ff" },
-  { columnId: "Name", rowId: 3, borderColor: "#ff0000" }
+  { columnId: "Name", rowId: 3, borderColor: "#ff0000" },
 ];
 ```
 
@@ -43,7 +42,12 @@ return (
 
 #### Live demo
 
-<LiveCode 
+import { ReactGrid, Highlight } from "@silevis/reactgrid-3";
+import LiveCode from "nextra/components/LiveCode.tsx";
+import "@silevis/reactgrid-3/styles.css";
+
+<LiveCode
+  scope={{ ReactGrid, Highlight }}
   code={`const HighlightsSample = () => {
   const [columns, setColumns] = React.useState<Column[]>(() => [
     { columnId: "Name", width: 100 },
@@ -98,6 +102,5 @@ return (
 ${``}
 render(<HighlightsSample/>)
 `}
-  title='Advanced menu context handling live demo'
   noInline={true}
-/> 
+/>

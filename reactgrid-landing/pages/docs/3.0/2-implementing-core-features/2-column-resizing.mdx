@@ -5,7 +5,6 @@ metaTitle: "Column resizing"
 metaDescription: "ReactGrid docs"
 proMark: true
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
 
 import { Callout } from 'nextra/components'
@@ -63,7 +62,13 @@ return (
 
 Let's check the results:
 
+
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-3";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3/styles.css";
+
 <LiveCode 
+scope={{ReactGrid, Column, Row}}
   code={`
 ${` `}
 const App = () => {
@@ -123,6 +128,5 @@ const App = () => {
 ${` `}
 render(<App/>)
 `}
-  title='Column resizing live demo'
   noInline={true}
 /> 

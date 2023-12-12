@@ -5,7 +5,7 @@ metaTitle: "Sticky rows and columns"
 metaDescription: "ReactGrid docs"
 proMark: true
 ---
-import { ReactGrid } from "@silevis/reactgrid";
+
 
 #### Introduction
 
@@ -118,9 +118,14 @@ return (
 
 #### Result
 
+import { ReactGrid} from "@silevis/reactgrid-3";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3/styles.css";
+
 Here's how sticky rows and columns look in action (we recommend playing with this demo in the fullscreen mode):
 
 <LiveCode 
+scope={{ReactGrid}}
   code={`const StickyPanesSample = () => {
   ${``}
   const [columns] = React.useState<Column[]>(() => [

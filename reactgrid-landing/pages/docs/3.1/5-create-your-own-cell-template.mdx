@@ -239,10 +239,57 @@ function App() {
 
 #### Result
 
-<iframe
-    src="https://codesandbox.io/embed/reactgrid-creating-new-cell-template-pdiux?fontsize=14&hidenavigation=1&theme=dark"
-    style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
-    title="reactgrid-creating-new-cell-template"
-    allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-    sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+import { ReactGrid, Column, Row, DefaultCellTypes } from "@silevis/reactgrid-3.1";
+import { FlagCell, FlagCellTemplate } from "../content/cellTemplates/flagCell/FlagCellTemplate";
+import LiveCode from "nextra/components/LiveCode.tsx";
+import "@silevis/reactgrid-3.1/styles.css";
+import "../content/cellTemplates/flagCell/flag-cell-style.css";
+
+<LiveCode scope={{ReactGrid, Column, Row, DefaultCellTypes, FlagCell, FlagCellTemplate }} code={
+`
+interface Flag {
+  isoCode: string;
+}
+
+const getFlags = (): Flag[] => [
+  { isoCode: "pl" },
+  { isoCode: "de" },
+  { isoCode: "mx" },
+  { isoCode: "" }
+];
+
+const getColumns = (): Column[] => [{ columnId: "flag", width: 150 }];
+
+const headerRow: Row = {
+  rowId: "header",
+  height: 40,
+  cells: [{ type: "header", text: "Flags" }]
+};
+
+const getRows = (flags: Flag[]): Row<DefaultCellTypes | FlagCell>[] => [
+  headerRow,
+  ...flags.map<Row<DefaultCellTypes | FlagCell>>((flag, idx) => ({
+    rowId: idx,
+    height: 60,
+    cells: [{ type: "flag", text: flag.isoCode }]
+  }))
+];
+
+function App() {
+  const [flags] = React.useState<Flag[]>(getFlags());
+
+  const rows = getRows(flags);
+  const columns = getColumns();
+
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      customCellTemplates={{ flag: new FlagCellTemplate() }}
+    />
+  );
+}
+
+render(<App />, document.getElementById("root"));
+`}  >
+</LiveCode>

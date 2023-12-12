@@ -175,12 +175,60 @@ npm start
 ```
 Or simply play around with the interactive demo below:
 
-<iframe
-  src="https://codesandbox.io/embed/reactgrid-getting-started-0754c?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-  title="reactgrid-getting-started"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-3.1";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3.1/styles.css";
+
+<LiveCode scope={{ReactGrid, Row, Column}} code={
+`
+ interface Person {
+  name: string;
+  surname: string;
+}
+
+const getPeople = (): Person[] => [
+  { name: "Thomas", surname: "Goldman" },
+  { name: "Susie", surname: "Quattro" },
+  { name: "", surname: "" }
+];
+
+const getColumns = (): Column[] => [
+  { columnId: "name", width: 150 },
+  { columnId: "surname", width: 150 }
+];
+
+const headerRow: Row = {
+  rowId: "header",
+  cells: [
+    { type: "header", text: "Name" },
+    { type: "header", text: "Surname" }
+  ]
+};
+
+const getRows = (people: Person[]): Row[] => [
+  headerRow,
+  ...people.map<Row>((person, idx) => ({
+    rowId: idx,
+    cells: [
+      { type: "text", text: person.name },
+      { type: "text", text: person.surname }
+    ]
+  }))
+];
+
+function App() {
+  const [people] = React.useState<Person[]>(getPeople());
+
+  const rows = getRows(people);
+  const columns = getColumns();
+
+  return <ReactGrid rows={rows} columns={columns} />;
+}
+
+render(<App />, document.getElementById("root"));
+`}  >
+</LiveCode>
+
 
 #### Summary
 

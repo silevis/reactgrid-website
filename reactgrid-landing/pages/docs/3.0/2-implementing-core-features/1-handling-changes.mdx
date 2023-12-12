@@ -4,7 +4,7 @@ title: Handling data changes
 metaTitle: "Handling data changes"
 metaDescription: "ReactGrid docs"
 ---
-import { ReactGrid } from "@silevis/reactgrid";
+
 
 #### Idea of handling data changes
 
@@ -65,8 +65,14 @@ And here's an interactive demo showing the event handler in action.
 Notice how it is now possible to edit the data not only by typing new values into the cells,
 but also by using the fill handle (only PRO) or by pasting data from the clipboard.
 
+<br/>
+
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-3";
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3/styles.css";
 
 <LiveCode 
+scope={{ReactGrid, Column, Row}}
   code={`const App = () => {
   ${` `}
   const [columns] = React.useState<Column[]>(() => [
@@ -127,6 +133,5 @@ but also by using the fill handle (only PRO) or by pasting data from the clipboa
 ${` `}
 render(<App/>)
 `}
-  title='Handling changes live demo'
   noInline={true}
 /> 

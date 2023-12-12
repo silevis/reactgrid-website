@@ -26,25 +26,42 @@ Multiple nested scrollable elements can cause unexpected experience like incorre
 
 import { Callout } from 'nextra/components'
 
+
+
 <Callout color="info">
-	<i class="fas fa-exclamation-circle pr-2"></i>
 	If all rows/columns can't be rendered in viewport - virtual scrolling still works fine.
 </Callout>
 
 #### Example: ReactGrid component limited by the height of its parent
+import { ReactGrid } from "@silevis/reactgrid-3.1";
+import {LimitedHeightByParentSample} from "../../content/samplesSrc/limitedHeightByParentSample/LimitedHeightByParentSample"
+import {NotLimitedHeightByParentSample} from "../../content/samplesSrc/notLimitedHeightByParentSample/NotLimitedHeightByParentSample"
+import LiveCode from "nextra/components/LiveCode.tsx"
+import "@silevis/reactgrid-3.1/styles.css";
 
-<div className={'py-4'}>
-    <LimitedHeightByParentSample/>
-</div>  
+
+<LiveCode
+scope={{ReactGrid, LimitedHeightByParentSample}}
+code={`
+const App = () => <LimitedHeightByParentSample/>
+render(<App/>)
+`}
+/>
+
+ 
 
 In this case, not all the passed rows can be rendered, so scrollbar appears and sticky pane is pinned directly to the top of the 
 parent element. 
 
 #### Example: ReactGrid component NOT limited by the height of its parent
 
-<div className={'py-4'}>
-    <NotLimitedHeightByParentSample />
-</div>    
+<LiveCode
+scope={{ReactGrid, NotLimitedHeightByParentSample}}
+code={`
+const App = () => <NotLimitedHeightByParentSample/>
+render(<App/>)
+`}
+/> 
 
 ReactGrid renders all the passed rows and columns if sticky panes are passed - they are pinned directly to the edge 
 of `body` element.
