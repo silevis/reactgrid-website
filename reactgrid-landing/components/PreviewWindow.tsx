@@ -36,7 +36,7 @@ export default function PreviewWindow({
         <p className="bold font-bold block w-full text-lg ">{title}</p>
       </div>
       <div
-        className={`flex h-full ${
+        className={`flex h-full overflow-auto ${
           darkModePreview
             ? "dark:text-white-primary dark:bg-black-primary"
             : "dark:text-black-primary dark:bg-white-primary"
