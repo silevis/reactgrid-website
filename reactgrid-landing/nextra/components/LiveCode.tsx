@@ -1,6 +1,6 @@
 import PreviewWindow from "@/components/PreviewWindow";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-
+// Import Head from 'next/head' if you haven't already
 
 /**
  * LiveCode Component Props
@@ -12,7 +12,6 @@ import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
  * @property {string} language - The language of the code.
  * @property {boolean} disabled - A boolean indicating whether the LiveCode component is disabled.
  */
-
 
 /**
  * LiveCode Component
@@ -35,36 +34,40 @@ export default function LiveCode({
   language: string;
   disabled: boolean;
 }) {
-  return (
-    <LiveProvider
-      noInline={noInline}
-      scope={scope}
-      code={code}
-      language={language}
-      disabled={disabled}
-    >
-      <div
-        className={`LiveCode flex ${sideBySide ? "flex-row" : "flex-col"} `}
-        // * It just works...
-        // 'style' has to overwrite default LiveEditor styles.
-        style={{ gap: "2rem" }}
-      >
-        <PreviewWindow title="Code">
-          <LiveEditor style={{ width: "100%" }} />
-        </PreviewWindow>
-        <PreviewWindow title={"Preview"}>
-          {/* TailwindCSS won't work here */}
-          <div
-            style={{
-              padding: "2rem",
-            }}
-          >
-            <LiveError />
 
-            <LivePreview />
-          </div>
-        </PreviewWindow>
-      </div>
-    </LiveProvider>
+
+
+  return (
+      <LiveProvider
+      // TODO: Change theme based on color-theme
+        noInline={noInline}
+        scope={scope}
+        code={code}
+        language={language}
+        disabled={disabled}
+      >
+        <div
+          className={`LiveCode flex ${sideBySide ? "flex-row" : "flex-col"} `}
+          // * It just works...
+          // 'style' has to overwrite default LiveEditor styles.
+          style={{ gap: "2rem" }}
+        >
+          <PreviewWindow title="Code">
+            <LiveEditor style={{ width: "100%", fontFamily: "monospace" }} />
+          </PreviewWindow>
+          <PreviewWindow title={"Preview"}>
+            {/* TailwindCSS won't work here */}
+            <div
+              style={{
+                padding: "2rem",
+              }}
+            >
+              <LiveError />
+
+              <LivePreview />
+            </div>
+          </PreviewWindow>
+        </div>
+      </LiveProvider>
   );
 }
