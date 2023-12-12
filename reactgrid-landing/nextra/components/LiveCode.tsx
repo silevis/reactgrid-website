@@ -26,6 +26,7 @@ export default function LiveCode({
   sideBySide = false,
   language,
   disabled = false,
+  noPreview = false,
 }: {
   code: string;
   scope: Record<string, unknown>;
@@ -33,28 +34,27 @@ export default function LiveCode({
   sideBySide: boolean;
   language: string;
   disabled: boolean;
+  noPreview: boolean;
 }) {
-
-
-
   return (
-      <LiveProvider
+    <LiveProvider
       // TODO: Change theme based on color-theme
-        noInline={noInline}
-        scope={scope}
-        code={code}
-        language={language}
-        disabled={disabled}
+      noInline={noInline}
+      scope={scope}
+      code={code}
+      language={language}
+      disabled={disabled}
+    >
+      <div
+        className={`LiveCode flex ${sideBySide ? "flex-row" : "flex-col"} `}
+        // * It just works...
+        // 'style' has to overwrite default LiveEditor styles.
+        style={{ gap: "2rem" }}
       >
-        <div
-          className={`LiveCode flex ${sideBySide ? "flex-row" : "flex-col"} `}
-          // * It just works...
-          // 'style' has to overwrite default LiveEditor styles.
-          style={{ gap: "2rem" }}
-        >
-          <PreviewWindow title="Code">
-            <LiveEditor style={{ width: "100%", fontFamily: "monospace" }} />
-          </PreviewWindow>
+        <PreviewWindow title="Code">
+          <LiveEditor style={{ width: "100%", fontFamily: "monospace" }} />
+        </PreviewWindow>
+        {!noPreview && (
           <PreviewWindow title={"Preview"}>
             {/* TailwindCSS won't work here */}
             <div
@@ -67,7 +67,8 @@ export default function LiveCode({
               <LivePreview />
             </div>
           </PreviewWindow>
-        </div>
-      </LiveProvider>
+        )}
+      </div>
+    </LiveProvider>
   );
 }
