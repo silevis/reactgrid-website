@@ -1,4 +1,4 @@
-import { Row } from "@silevis/reactgrid";
+import { Row } from "@silevis/reactgrid-3";
 import {
   CashOutflow,
   CashInflow,
