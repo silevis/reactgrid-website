@@ -26,7 +26,13 @@ This feature develops [handling changes](/docs/4.0/2-implementing-core-features/
 Let's start with updating imports:
 
 ```ts
-import { ReactGrid, Column, Row, CellChange, TextCell} from "@silevis/reactgrid";
+import {
+  ReactGrid,
+  Column,
+  Row,
+  CellChange,
+  TextCell,
+} from "@silevis/reactgrid";
 ```
 
 #### Sample Undo/Redo feature
@@ -36,72 +42,76 @@ We have an array of changes made by the user at each step. The place in the hist
 Look at this function:
 
 ```tsx
-  const applyNewValue = (
-    changes: CellChange<TextCell>[],
-    prevPeople: Person[],
-    usePrevValue: boolean = false
-  ): Person[] => {
-    changes.forEach((change) => {
-      const personIndex = change.rowId;
-      const fieldName = change.columnId;
-      const cell = usePrevValue ? change.previousCell : change.newCell;
-      prevPeople[personIndex][fieldName] = cell.text;
-    });
-    return [...prevPeople];
-  };
+const applyNewValue = (
+  changes: CellChange<TextCell>[],
+  prevPeople: Person[],
+  usePrevValue: boolean = false
+): Person[] => {
+  changes.forEach((change) => {
+    const personIndex = change.rowId;
+    const fieldName = change.columnId;
+    const cell = usePrevValue ? change.previousCell : change.newCell;
+    prevPeople[personIndex][fieldName] = cell.text;
+  });
+  return [...prevPeople];
+};
 ```
+
 Function `applyChangesToPeople` is a similar function which is responsible for handling changes.
 Additionally we need to store all the changes and the index of changes, which will help us to move within the changes array.
 
 ```tsx
-    const applyChangesToPeople = (
-    changes: CellChange<TextCell>[],
-    prevPeople: Person[]
-  ): Person[] => {
-    const updated = applyNewValue(changes, prevPeople);
-    setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), changes]);
-    setCellChangesIndex(cellChangesIndex + 1);
-    return updated;
-  };
+const applyChangesToPeople = (
+  changes: CellChange<TextCell>[],
+  prevPeople: Person[]
+): Person[] => {
+  const updated = applyNewValue(changes, prevPeople);
+  setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), changes]);
+  setCellChangesIndex(cellChangesIndex + 1);
+  return updated;
+};
 ```
 
 The `undoChanges` function allows you to set the previous value and change the index in the appropriate place in the array.
-The change index is moved one step backwards. 
+The change index is moved one step backwards.
 
 ```tsx
-  const undoChanges = (
-    changes: CellChange<TextCell>[],
-    prevPeople: Person[]
-  ): Person[] => {
-    const updated = applyNewValue(changes, prevPeople, true);
-    setCellChangesIndex(cellChangesIndex - 1);
-    return updated;
-  };
+const undoChanges = (
+  changes: CellChange<TextCell>[],
+  prevPeople: Person[]
+): Person[] => {
+  const updated = applyNewValue(changes, prevPeople, true);
+  setCellChangesIndex(cellChangesIndex - 1);
+  return updated;
+};
 ```
+
 The `redoChanges` function allows you to set the restored change. Change index also has to be moved one position forward.
 
 ```tsx
-  const redoChanges = (
-    changes: CellChange<TextCell>[],
-    prevPeople: Person[]
-  ): Person[] => {
-    const updated = applyNewValue(changes, prevPeople);
-    setCellChangesIndex(cellChangesIndex + 1);
-    return updated;
-  };
+const redoChanges = (
+  changes: CellChange<TextCell>[],
+  prevPeople: Person[]
+): Person[] => {
+  const updated = applyNewValue(changes, prevPeople);
+  setCellChangesIndex(cellChangesIndex + 1);
+  return updated;
+};
 ```
 
 Let's use the above functions inside an example `App` component. We added two hooks inside it:
 
 ```ts
 const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
-const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(() => []);
+const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(
+  () => []
+);
 ```
 
-The first one stores current index of changes for the second hook - storing an array of changes that has affected 
+The first one stores current index of changes for the second hook - storing an array of changes that has affected
 the `TextCells`.
 
-We have wrapped ReactGrid with `div` element that listens to `onKeyDown` event. 
+We have wrapped ReactGrid with `div` element that listens to `onKeyDown` event.
 Changes can be also restored/redone with two buttons.
 
 Inside both methods (`handleUndoChanges` and `handleRedoChanges`) we update our data - poople array.
@@ -112,14 +122,16 @@ function App() {
   const [people, setPeople] = React.useState<Person[]>(getPeople());
 
   const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
-  const [cellChanges, setCellChanges] = React.useState<CellChange<TextCell>[][]>(() => []);
-  
+  const [cellChanges, setCellChanges] = React.useState<
+    CellChange<TextCell>[][]
+  >(() => []);
+
   const rows = getRows(people);
   const columns = getColumns();
 
-  const handleChanges = (changes: CellChange<TextCell>[]) => { 
-    setPeople((prevPeople) => applyChangesToPeople(changes, prevPeople)); 
-  }; 
+  const handleChanges = (changes: CellChange<TextCell>[]) => {
+    setPeople((prevPeople) => applyChangesToPeople(changes, prevPeople));
+  };
 
   const handleUndoChanges = () => {
     if (cellChangesIndex >= 0) {
@@ -164,9 +176,157 @@ function App() {
 
 And here's an interactive demo showing the Undo / Redo feature.
 
-<iframe src="https://codesandbox.io/embed/undo-redo-feature-dpozf?fontsize=14&hidenavigation=1&theme=dark"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="reactgrid-undo-redo-feature"
-  allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-  sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-></iframe>
+
+import LiveCode from "nextra/components/LiveCode.tsx";
+import {
+  ReactGrid,
+  Column,
+  Row,
+  CellChange,
+  TextCell,
+} from "@silevis/reactgrid-4";
+import "@silevis/reactgrid-4/styles.css";
+
+<LiveCode
+scope={{ReactGrid,
+  Column,
+  Row,
+  CellChange,
+  TextCell}}
+code={`
+interface Person {
+  name: string;
+  surname: string;
+}
+
+const getPeople = (): Person[] => [
+{ name: "Thomas", surname: "Goldman" },
+{ name: "Susie", surname: "Quattro" },
+{ name: "", surname: "" }
+];
+
+const getColumns = (): Column[] => [
+{ columnId: "name", width: 150 },
+{ columnId: "surname", width: 150 }
+];
+
+const headerRow: Row = {
+rowId: "header",
+cells: [
+{ type: "header", text: "Name" },
+{ type: "header", text: "Surname" }
+]
+};
+
+const getRows = (people: Person[]): Row[] => [
+headerRow,
+...people.map<Row>((person, idx) => ({
+rowId: idx,
+cells: [
+{ type: "text", text: person.name },
+{ type: "text", text: person.surname }
+]
+}))
+];
+
+const isMacOs = () => window.navigator.appVersion.indexOf("Mac") !== -1;
+
+function App() {
+const [people, setPeople] = React.useState<Person[]>(getPeople());
+
+const [cellChangesIndex, setCellChangesIndex] = React.useState(() => -1);
+const [cellChanges, setCellChanges] = React.useState<
+CellChange<TextCell>[][]
+
+> (() => []);
+
+const applyNewValue = (
+changes: CellChange<TextCell>[],
+prevPeople: Person[],
+usePrevValue: boolean = false
+): Person[] => {
+changes.forEach((change) => {
+const personIndex = change.rowId;
+const fieldName = change.columnId;
+const cell = usePrevValue ? change.previousCell : change.newCell;
+prevPeople[personIndex][fieldName] = cell.text;
+});
+return [...prevPeople];
+};
+
+const applyChangesToPeople = (
+changes: CellChange<TextCell>[],
+prevPeople: Person[]
+): Person[] => {
+const updated = applyNewValue(changes, prevPeople);
+setCellChanges([...cellChanges.slice(0, cellChangesIndex + 1), changes]);
+setCellChangesIndex(cellChangesIndex + 1);
+return updated;
+};
+
+const rows = getRows(people);
+const columns = getColumns();
+
+const undoChanges = (
+changes: CellChange<TextCell>[],
+prevPeople: Person[]
+): Person[] => {
+const updated = applyNewValue(changes, prevPeople, true);
+setCellChangesIndex(cellChangesIndex - 1);
+return updated;
+};
+
+const redoChanges = (
+changes: CellChange<TextCell>[],
+prevPeople: Person[]
+): Person[] => {
+const updated = applyNewValue(changes, prevPeople);
+setCellChangesIndex(cellChangesIndex + 1);
+return updated;
+};
+
+const handleChanges = (changes: CellChange<TextCell>[]) => {
+setPeople((prevPeople) => applyChangesToPeople(changes, prevPeople));
+};
+
+const handleUndoChanges = () => {
+if (cellChangesIndex >= 0) {
+setPeople((prevPeople) =>
+undoChanges(cellChanges[cellChangesIndex], prevPeople)
+);
+}
+};
+
+const handleRedoChanges = () => {
+if (cellChangesIndex + 1 <= cellChanges.length - 1) {
+setPeople((prevPeople) =>
+redoChanges(cellChanges[cellChangesIndex + 1], prevPeople)
+);
+}
+};
+
+return (
+<div
+onKeyDown={(e) => {
+if ((!isMacOs() && e.ctrlKey) || e.metaKey) {
+switch (e.key) {
+case "z":
+handleUndoChanges();
+return;
+case "y":
+handleRedoChanges();
+return;
+}
+}
+}} >
+<ReactGrid rows={rows} columns={columns} onCellsChanged={handleChanges} />
+<button onClick={handleUndoChanges}>Undo</button>
+<button onClick={handleRedoChanges}>Redo</button>
+</div>
+);
+}
+
+render(<App />, document.getElementById("root"));
+
+`}
+/>

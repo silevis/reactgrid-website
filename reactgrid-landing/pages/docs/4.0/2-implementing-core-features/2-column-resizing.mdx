@@ -4,7 +4,6 @@ title: Column resizing
 metaTitle: "Column resizing"
 metaDescription: "ReactGrid docs"
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
 #### Allow column to be resized
 
@@ -13,8 +12,8 @@ to the corresponding column object and set its value to `true`.
 
 ```tsx
 const getColumns = (): Column[] => [
-    { columnId: "name", width: 150, resizable: true }, //highlight-line
-    { columnId: "surname", width: 150, resizable: true } //highlight-line
+  { columnId: "name", width: 150, resizable: true }, //highlight-line
+  { columnId: "surname", width: 150, resizable: true }, //highlight-line
 ];
 ```
 
@@ -29,12 +28,12 @@ we can also define a handler function for that and pass it to our ReactGrid comp
 
 ```tsx
 function App() {
-    const [people] = React.useState<Person[]>(getPeople());
-    const [columns, setColumns] = React.useState<Column[]>(getColumns()); //highlight-line
+  const [people] = React.useState<Person[]>(getPeople());
+  const [columns, setColumns] = React.useState<Column[]>(getColumns()); //highlight-line
 
-    const rows = getRows(people);
+  const rows = getRows(people);
 
-    return <ReactGrid rows={rows} columns={columns} />;
+  return <ReactGrid rows={rows} columns={columns} />;
 }
 ```
 
@@ -45,22 +44,28 @@ changes by calling `setColumns` function and returning array of updated columns 
 
 ```tsx
 function App() {
-    const [people] = React.useState<Person[]>(getPeople());
-    const [columns, setColumns] = React.useState<Column[]>(getColumns());
+  const [people] = React.useState<Person[]>(getPeople());
+  const [columns, setColumns] = React.useState<Column[]>(getColumns());
 
-    const rows = getRows(people);
+  const rows = getRows(people);
 
-    const handleColumnResize = (ci: Id, width: number) => {
-        setColumns((prevColumns) => {
-            const columnIndex = prevColumns.findIndex(el => el.columnId === ci);
-            const resizedColumn = prevColumns[columnIndex];
-            const updatedColumn = { ...resizedColumn, width };
-            prevColumns[columnIndex] = updatedColumn;
-            return [...prevColumns];
-        });
-    }
+  const handleColumnResize = (ci: Id, width: number) => {
+    setColumns((prevColumns) => {
+      const columnIndex = prevColumns.findIndex((el) => el.columnId === ci);
+      const resizedColumn = prevColumns[columnIndex];
+      const updatedColumn = { ...resizedColumn, width };
+      prevColumns[columnIndex] = updatedColumn;
+      return [...prevColumns];
+    });
+  };
 
-    return <ReactGrid rows={rows} columns={columns} onColumnResized={handleColumnResize} />;
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      onColumnResized={handleColumnResize}
+    />
+  );
 }
 ```
 
@@ -68,7 +73,13 @@ function App() {
 
 Let's check the results:
 
-<LiveCode 
+import LiveCode from "nextra/components/LiveCode.tsx";
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-4";
+
+import "@silevis/reactgrid-4/styles.css";
+
+<LiveCode
+  scope={{ ReactGrid, Column, Row }}
   code={`interface Person {
   name: string;
   surname: string;
@@ -129,6 +140,6 @@ const ColumnResizingSample = () => {
 ${` `}
 render(<ColumnResizingSample/>)
 `}
-  title='Column resizing live demo'
+  title="Column resizing live demo"
   noInline={true}
-/> 
+/>

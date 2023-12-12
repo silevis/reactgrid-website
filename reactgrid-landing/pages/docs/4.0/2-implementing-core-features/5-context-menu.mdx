@@ -4,7 +4,6 @@ title: Context menu
 metaTitle: "Context menu"
 metaDescription: "ReactGrid docs"
 ---
-import { ReactGrid } from "@silevis/reactgrid";
 
 #### Introduction
 
@@ -60,7 +59,13 @@ const [people, setPeople] = React.useState<Person[]>(getPeople());
 
 Here's the result. Right-click anywhere in the grid to see the context menu.
 
+import LiveCode from "nextra/components/LiveCode.tsx";
+import { ReactGrid, Column, Row } from "@silevis/reactgrid-4";
+import "@silevis/reactgrid-4/styles.css";
+
+
 <LiveCode 
+  scope={{ReactGrid, Column, Row}}
   code={`interface Person {
     name: string;
     surname: string;
@@ -202,6 +207,7 @@ To test the new feature, simply select a row by clicking a header cell or one of
 then right-click anywhere and use the new menu entry.
 
 <LiveCode 
+scope={{ReactGrid, Column, Row}}
   code={`interface Person {
   name: string;
   surname: string;
