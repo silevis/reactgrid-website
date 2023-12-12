@@ -5,14 +5,11 @@ metaTitle: "Introduction to 3.1"
 metaDescription: "ReactGrid docs"
 ---
 
+
+import Image from 'next/image'
+
+
 ReactGrid lets you create custom data grids inside your ReactJS applications, which look and feel like spreadsheets.
-
-#### About MIT and PRO version
-
-ReactGrid in both version uses the same component interface. However, if you implement a PRO feature (using MIT package) 
-probably nothing will happen. 
-
-A functionality that is partly or fully supported by PRO version is marked by <i class="fas fa-rocket fa-lg"></i> icon.
 
 #### Caveats
 a) If you notice `sticky` incorrect behavior, when you try to pin them to HTML `<body>` tag, add this line to `index.html` file in your project.
@@ -26,11 +23,26 @@ It should be helpful in many cases and different mobile devices.
 
 Desktop Browsers
 
-<div class="pb-4 flex">![Chrome](/chrome.svg) ![Firefox](/firefox.svg) ![Edge](/edge.png) ![Safari](/safari.svg)</div>
+<br/>
+
+
+<div style={{display: "flex",  gap: "2rem", height: "3rem"}}>
+<Image src="/chrome.svg" alt="Chrome logo." width={50} height={50} />
+<Image src="/firefox.svg" alt="Firefox logo." width={50} height={50} />
+<Image src="/edge.svg" alt="Edge logo." width={50} height={50} />
+<Image src="/safari.svg" alt="Safari logo." width={50} height={50} />
+ </div>
+
+<br/>
+
 
 Mobile Browsers
 
-<div class="mb-5 pb-4 flex">![Chrome](/chrome.svg) ![Firefox](/firefox.svg) ![Safari](/safari.png)</div>
+<br/>
 
-{/* | :-: | :-: | :-: | :-: | :-: | :-: | :-:|
-| 80+ | 61+ | 57+ | 13.1+ | 13+ | 9+ | 45+ | */}
+
+<div style={{display: "flex",  gap: "2rem", height: "3rem"}}>
+<Image src="/chrome.svg" alt="Chrome logo." width={50} height={50} />
+<Image src="/firefox.svg" alt="Firefox logo." width={50} height={50} />
+<Image src="/safari.svg" alt="Safari logo." width={50} height={50} />
+ </div>
