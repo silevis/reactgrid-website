@@ -257,42 +257,42 @@ interface Flag {
 }
 
 const getFlags = (): Flag[] => [
-{ isoCode: "pl" },
-{ isoCode: "de" },
-{ isoCode: "mx" },
-{ isoCode: "" }
+  { isoCode: "pl" },
+  { isoCode: "de" },
+  { isoCode: "mx" },
+  { isoCode: "" },
 ];
 
 const getColumns = (): Column[] => [{ columnId: "flag", width: 150 }];
 
 const headerRow: Row = {
-rowId: "header",
-height: 40,
-cells: [{ type: "header", text: "Flags" }]
+  rowId: "header",
+  height: 40,
+  cells: [{ type: "header", text: "Flags" }],
 };
 
 const getRows = (flags: Flag[]): Row<DefaultCellTypes | FlagCell>[] => [
-headerRow,
-...flags.map<Row<DefaultCellTypes | FlagCell>>((flag, idx) => ({
-rowId: idx,
-height: 60,
-cells: [{ type: "flag", text: flag.isoCode }]
-}))
+  headerRow,
+  ...flags.map<Row<DefaultCellTypes | FlagCell>>((flag, idx) => ({
+    rowId: idx,
+    height: 60,
+    cells: [{ type: "flag", text: flag.isoCode }],
+  })),
 ];
 
 function App() {
-const [flags] = React.useState<Flag[]>(getFlags());
+  const [flags] = React.useState<Flag[]>(getFlags());
 
-const rows = getRows(flags);
-const columns = getColumns();
+  const rows = getRows(flags);
+  const columns = getColumns();
 
-return (
-<ReactGrid
-rows={rows}
-columns={columns}
-customCellTemplates={{ flag: new FlagCellTemplate() }}
-/>
-);
+  return (
+    <ReactGrid
+      rows={rows}
+      columns={columns}
+      customCellTemplates={{ flag: new FlagCellTemplate() }}
+    />
+  );
 }
 
 render(<App />, document.getElementById("root"));
