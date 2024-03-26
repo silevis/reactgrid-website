@@ -21,7 +21,7 @@ This guide is based on [handling data changes](/docs/4.0/2-implementing-core-fea
 and [`MenuOption`](/docs/4.0/7-api/0-interfaces/8-menuoption/) interfaces.
 
 ```ts
-import { ReactGrid, CellChange, Row, Column, Id, MenuOption, SelectionMode } from "@silevis/reactgrid";
+import { ReactGrid, CellChange, Row, Column, Id, MenuOption, SelectionMode, CellLocation } from "@silevis/reactgrid";
 ```
 
 2. Implement the context menu handler function
@@ -43,7 +43,8 @@ const [people, setPeople] = React.useState<Person[]>(getPeople());
     selectedRowIds: Id[],
     selectedColIds: Id[],
     selectionMode: SelectionMode,
-    menuOptions: MenuOption[]
+    menuOptions: MenuOption[],
+    selectedRanges: Array<CellLocation[]>
   ): MenuOption[] => {
     return menuOptions;
   }
