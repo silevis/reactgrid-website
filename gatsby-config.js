@@ -41,7 +41,6 @@ module.exports = {
       { title: `Github`, description: `Check our github repo`, url: `https://github.com/silevis/reactgrid`, fontAwesomeIcon: 'fab fa-github', active: true },
       { title: `Twitter`, description: `Check our Twitter profile`, url: `https://twitter.com/ReactGrid`, fontAwesomeIcon: 'fab fa-twitter', active: true },
       { title: `Gitter`, description: `Chat on Gitter`, url: `https://gitter.im/silevis-reactgrid/community`, fontAwesomeIcon: 'fab fa-gitter', active: false },
-      { title: `Discord`, description: `Join our community`, url: `https://discord.gg/tWYV64j`, fontAwesomeIcon: 'fab fa-discord', active: true },
     ],
   },
   plugins: [

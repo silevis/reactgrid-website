@@ -52,6 +52,7 @@ const SamplesWrapper: React.FC = () => {
     <Container className="section px-3">
       <Row>
         <Col>
+          <p style={{ marginBottom: 10, textAlign: "right", color: "#5c5c5c" }}>version: 4.1.5</p>
           <Nav pills className={`justify-content-center nav-pills-icons`}  >
             <div className="d-flex w-100" style={{overflowX: 'auto', justifyContent: 'space-between'}}>{tabMenuItems}</div>
             <div className="space-50"></div>
