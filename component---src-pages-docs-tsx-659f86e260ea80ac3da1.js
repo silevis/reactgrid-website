@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{HPWl:function(t,n,e){"use strict";e.r(n);var i=e("q1tI"),a=e.n(i),u=e("Wbzz");n.default=function(t){return a.a.useEffect((function(){var n=t.data,e=n.site.siteMetadata.pages.filter((function(t){return t.active&&!0===t.active})).find((function(t){return"docs"===t.id})),i=n.site.siteMetadata.docsVersions.find((function(t){return t.active}));Object(u.navigate)(""+e.route+i.slug+i.index+"/")})),null}}}]);
-//# sourceMappingURL=component---src-pages-docs-tsx-659f86e260ea80ac3da1.js.map
