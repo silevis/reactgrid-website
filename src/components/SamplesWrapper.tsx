@@ -20,7 +20,7 @@ const SamplesWrapper: React.FC = () => {
   const exampleParam = useQueryParam('example', 'budget-planner');
   const enabledExamples = samplesData.filter(sample => sample.enabled);
   const activeTabIdx = enabledExamples.findIndex(sample => sample.urlParam === exampleParam);
-  const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam).component;
+  const activeComponent = enabledExamples.find(sample => sample.urlParam === exampleParam)?.component;
 
   const tabMenuItems = enabledExamples.map((sample, idx) =>
     <NavItem key={idx} className="pb-0 pb-md-3 flex-shrink-0" id={`item-${idx}`}>
@@ -52,7 +52,7 @@ const SamplesWrapper: React.FC = () => {
     <Container className="section px-3">
       <Row>
         <Col>
-          <p style={{ marginBottom: 10, textAlign: "right", color: "#5c5c5c" }}>version: 4.1.6</p>
+          <p style={{ marginBottom: 10, textAlign: "right", color: "#5c5c5c" }}>version: 4.1.8</p>
           <Nav pills className={`justify-content-center nav-pills-icons`}  >
             <div className="d-flex w-100" style={{overflowX: 'auto', justifyContent: 'space-between'}}>{tabMenuItems}</div>
             <div className="space-50"></div>

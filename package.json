@@ -9,7 +9,7 @@
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "@mdx-js/tag": "^0.20.3",
-    "@silevis/reactgrid": "^4.1.6",
+    "@silevis/reactgrid": "^4.1.8",
     "@types/chart.js": "2.9",
     "@types/helmet": "^4.0.0",
     "@types/react": "^17.0.3",
@@ -79,6 +79,8 @@
     "typeface-poppins": "^1.1.13"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.0",
     "node-sass": "^4.14.1"
   },
   "keywords": [
