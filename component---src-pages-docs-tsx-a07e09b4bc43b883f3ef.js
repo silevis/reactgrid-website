@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[15],{HPWl:function(t,e,a){"use strict";a.r(e);var i=a("q1tI"),s=a.n(i),n=a("Wbzz");e.default=t=>(s.a.useEffect(()=>{const{data:e}=t,{pages:a}=e.site.siteMetadata,i=a.filter(t=>t.active&&!0===t.active).find(t=>"docs"===t.id),s=e.site.siteMetadata.docsVersions.find(t=>t.active);Object(n.navigate)(`${i.route}${s.slug}${s.index}/`)}),null)}}]);
+//# sourceMappingURL=component---src-pages-docs-tsx-a07e09b4bc43b883f3ef.js.map
